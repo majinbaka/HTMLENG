@@ -1,0 +1,4 @@
+interface:
+  display_name: "English Tutor"
+  short_description: "Build a daily English site with saved progress"
+  default_prompt: "Use $english-tutor to build or continue my daily English-learning site."
