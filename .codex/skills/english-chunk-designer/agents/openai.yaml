@@ -1,0 +1,4 @@
+interface:
+  display_name: "English Chunk Designer"
+  short_description: "Design small A2–B1 lessons with five daily chunks"
+  default_prompt: "Use $english-chunk-designer to revise a SpeakSprint lesson with five practical chunks, active recall, and spaced reuse."

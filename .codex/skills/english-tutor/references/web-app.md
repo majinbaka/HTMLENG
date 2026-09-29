@@ -100,7 +100,7 @@ Because `localStorage` is tied to the browser and origin, explain that progress 
 
 ## Lesson page content
 
-Each day should support about 30 minutes and include:
+Each day should support about 30–40 minutes and include:
 
 - a brief retrieval warm-up when prior lessons exist;
 - a short original reading or a verified listening/video resource;
@@ -110,6 +110,10 @@ Each day should support about 30 minutes and include:
 - a speaking challenge with a typed response field;
 - a mini-quiz;
 - contextual hints and feedback after submission.
+
+The expanded lessons also contain two variations per chunk, five or six rapid recall prompts, spaced warm-up recall, partner conversation prompts, and a self-reported daily summary. Chunk cards show meanings, usage, patterns, and examples. Recall models require a nonempty attempt before display; accept alternative natural responses rather than grading them by exact text. These extra practice fields use `data-save` and the shared persistence handler.
+
+Lesson content revision 2 uses `v2-comp*` and `v2-quiz*` answer keys so old responses cannot accidentally answer new questions. Keep previous answers and history. For an unfinished legacy lesson, archive its previous checkpoints before requiring the revised comprehension and quiz; keep its speaking checkpoint. Completed days retain their completion dates and review access. `assessmentV2` records submitted scores; chunk-use checks and speaking measurements are explicitly self-reported. Missing measurements must remain unknown, not zero.
 
 Use the current week's curriculum topic. Keep most language understandable at A2 while adding a small B1 stretch. When external material is used, provide a resilient text-based fallback so the lesson is still usable offline or if the link disappears.
 

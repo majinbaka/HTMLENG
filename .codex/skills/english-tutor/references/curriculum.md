@@ -10,7 +10,7 @@ Use this as a flexible spine, not a script. Each week contains seven possible da
 - Day 4: Tools and collaboration — who I work with and how
 - Day 5: Meetings and updates — giving a short status update
 - Day 6: Review through a simulated colleague conversation
-- Day 7: Weekly check and a one-minute self-introduction
+- Day 7: Weekly introduction; repeat the 60-second baseline and give a two-minute work introduction
 
 Useful grammar emerges around present simple, adverbs of frequency, present continuous, basic question forms, and `and / but / because`.
 
@@ -50,15 +50,18 @@ Recycle `I think`, `because`, `however`, `the reason is`, comparison forms, and 
 
 Useful grammar emerges around past simple, time markers, `going to`, present continuous for arrangements, and `will` for predictions or immediate decisions.
 
-## Default 30-minute lesson shape
+## Default 30–40-minute lesson shape
 
-- Warm-up and retrieval: 3 minutes
-- Short input (reading or listening): 5 minutes
+- Measurable mission and warm-up retrieval: 4 minutes
+- Short input and comprehension: 7 minutes
 - Five chunks in context: 5 minutes
-- Comprehension: 4 minutes
-- Shadowing: 4 minutes
-- Speaking challenge: 6 minutes
-- Mini-quiz and reflection: 3 minutes
+- Two variations per chunk: 4 minutes
+- Rapid recall of current and old chunks: 3 minutes
+- Shadowing and speaking challenge: 5 minutes
+- Colleague conversation: 3 minutes
+- Mini-quiz and reflection: 4 minutes
+
+Use [English Chunk Designer](../../english-chunk-designer/SKILL.md) for the content rules. Days 7, 14, 21, and 28 practise five earlier chunks rather than introducing five more. Rotate old chunks through recall at lesson offsets +1, +3, +7, and +14. Record the same 60-second task at the start and end of each week; compare only observations actually recorded.
 
 Do not show all sections at once. A listening passage may be tutor-read text, text-to-speech-friendly original material, learner-provided audio, or a verified external clip. For shadowing, use two to four natural sentences from original or appropriately brief source material and mark useful pauses or stressed words when helpful.
 

@@ -22,6 +22,8 @@ Before editing, inspect the files relevant to the request and preserve their con
 
 Use [references/web-app.md](references/web-app.md) for behavioral invariants and quality checks. Use [references/curriculum.md](references/curriculum.md) when adding or revising lesson content. The site remains plain HTML, CSS, and JavaScript with no backend unless the user explicitly asks for an architectural change.
 
+For lesson design and chunk exercises, also use [English Chunk Designer](../english-chunk-designer/SKILL.md). Each day practises exactly five target chunks with meanings, patterns, examples, variation, and recall; weekly reviews recycle five old chunks. Allow 30–40 minutes for the expanded practice. During conversation simulations, collect errors and give at most three corrections after four to eight exchanges rather than interrupting every answer.
+
 Make the smallest coherent change in the existing files. Reuse shared CSS and JavaScript rather than copying behavior into lesson pages. Do not overwrite learner progress, unrelated customization, completed lesson content, or all 28 pages when only one day is requested. When a new daily lesson is requested, edit its existing `lessons/day-NN.html` file and only the shared metadata or styles actually needed.
 
 Every lesson remains reachable from `index.html`. Past completed lessons remain reviewable. Future lessons stay visibly locked and must remain protected when opened by direct URL. Verify links and progression behavior after any relevant change.
@@ -47,7 +49,7 @@ In chat, deliver the lesson in small stages rather than revealing the entire les
 5. Give a short shadowing activity and a speaking challenge.
 6. End with a small quiz and a concise review after the learner answers.
 
-Keep a normal lesson near 30 minutes. Prefer instructions in simple English; add concise Vietnamese support when misunderstanding would block progress. Keep input mostly understandable while adding a small stretch beyond the learner's current level.
+Keep a normal lesson within 30–40 minutes. Prefer instructions in simple English; add concise Vietnamese support when misunderstanding would block progress. Keep input mostly understandable while adding a small stretch beyond the learner's current level.
 
 Never provide exercise answers before the learner attempts them unless they explicitly ask to reveal or explain the answer. If the learner is stuck, give a graduated hint first.
 
