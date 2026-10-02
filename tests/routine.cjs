@@ -1,9 +1,10 @@
+const { waitForRuntime } = require("./static-helpers.cjs");
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const {chromium} = require('playwright');
 const {completeRoutine} = require('./routine-helpers.cjs');
-const base = process.env.BASE_URL || 'http://127.0.0.1:18765';
+const base = process.env.BASE_URL || 'http://127.0.0.1:8000/out';
 const key = 'englishTutorProgressV1';
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
@@ -19,7 +20,7 @@ const key = 'englishTutorProgressV1';
     emit(words,final=true){this.onresult({resultIndex:0,results:[Object.assign([{transcript:words}],{isFinal:final})]})}
    };
   });
-  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const page=waitForRuntime(await context.newPage()),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.clock.install({time:new Date('2026-10-01T09:00:00+07:00')});
   const get=()=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);
   const go=day=>page.goto(`${base}/lessons/day-${String(day).padStart(2,'0')}.html`);
@@ -100,7 +101,7 @@ const key = 'englishTutorProgressV1';
   await Promise.all([page.waitForEvent('load'),page.locator('#import-progress').setInputFiles({name:'progress.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(backup))})]);
   assert.deepEqual((await get()).dayState[1].routine.baseline,saved.dayState[1].routine.baseline);
   // The recognition control degrades to typing without a service.
-  const unsupported=await browser.newContext();await unsupported.addInitScript(()=>{window.SpeechRecognition=undefined;window.webkitSpeechRecognition=undefined});const fallback=await unsupported.newPage();await fallback.goto(`${base}/lessons/day-28.html`);assert.equal(await fallback.locator('#voice-start').isDisabled(),true);await fallback.locator('[data-phase="1"]').click();await fallback.locator('#routine-recall').fill('Typing still works.');await fallback.reload();assert.equal(await fallback.locator('#routine-recall').inputValue(),'Typing still works.');await unsupported.close();
+  const unsupported=await browser.newContext();await unsupported.addInitScript(()=>{window.SpeechRecognition=undefined;window.webkitSpeechRecognition=undefined});const fallback=waitForRuntime(await unsupported.newPage());await fallback.goto(`${base}/lessons/day-28.html`);assert.equal(await fallback.locator('#voice-start').isDisabled(),true);await fallback.locator('[data-phase="1"]').click();await fallback.locator('#routine-recall').fill('Typing still works.');await fallback.reload();assert.equal(await fallback.locator('#routine-recall').inputValue(),'Typing still works.');await unsupported.close();
   const screenshots=process.env.SCREENSHOT_DIR||'/tmp/speaksprint-routine-qa';fs.mkdirSync(screenshots,{recursive:true});
   for(const width of [1440,390]){
    await page.setViewportSize({width,height:1000});await page.goto(base);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.screenshot({path:path.join(screenshots,`routine-dashboard-${width}.png`)});

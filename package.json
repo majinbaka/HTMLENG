@@ -1,0 +1,24 @@
+{
+  "name": "speaksprint",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack && node scripts/package-static.mjs",
+    "start": "bash start-server.sh",
+    "test": "node tests/static-export.cjs && node tests/routine.cjs && node tests/weekly-review.cjs && node tests/topics.cjs",
+    "format": "prettier --write src next.config.mjs scripts/package-static.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "next": "^16.3.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "prettier": "^3.9.9"
+  }
+}

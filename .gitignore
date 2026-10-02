@@ -1,0 +1,37 @@
+# Dependencies installed locally; hosting only serves the static export.
+node_modules/
+
+# Next.js intermediate build files and local caches.
+.next/
+.cache/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs and test artifacts.
+*.log
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/coverage/
+
+# Local environment settings (keep shareable examples).
+.env*
+!.env.example
+!.env.sample
+
+# Python cache and virtual environments used by content scripts.
+__pycache__/
+*.py[cod]
+.venv/
+
+# Operating-system and editor temporary files.
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Keep out/, .nojekyll and HTML entry points in Git: deployment serves
+# the whole repository without a build step. Keep source and lockfiles
+# so the static export can be rebuilt with npm ci && npm run build.

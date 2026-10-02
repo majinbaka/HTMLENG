@@ -1,12 +1,13 @@
+const { waitForRuntime } = require("./static-helpers.cjs");
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const {chromium} = require('playwright');
-const base = process.env.BASE_URL || 'http://127.0.0.1:18765';
+const base = process.env.BASE_URL || 'http://127.0.0.1:8000/out';
 const key = 'englishTutorProgressV1';
 const sandbox = {window:{}};
-vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/topics-data.js'),'utf8'),sandbox);
+vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../public/assets/topics-data.js'),'utf8'),sandbox);
 const bank = sandbox.window.SpeakSprintTopicsData;
 assert.equal(bank.sessions.length,12);
 assert.equal(new Set(bank.sessions.map(s=>s.id)).size,12);
@@ -21,7 +22,7 @@ for(const s of bank.sessions){
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try {
   const context=await browser.newContext({timezoneId:'Asia/Ho_Chi_Minh'});
-  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const page=waitForRuntime(await context.newPage()),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.clock.install({time:new Date('2026-10-02T09:00:00+07:00')});
   const get=()=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);
   const go=s=>page.goto(`${base}/topics/index.html?session=${s}`);

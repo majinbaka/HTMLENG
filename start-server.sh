@@ -16,6 +16,11 @@ if [[ ! "$PORT" =~ ^[0-9]+$ ]] || (( PORT < 1 || PORT > 65535 )); then
   exit 1
 fi
 
+if [[ ! -f "$SCRIPT_DIR/out/index.html" ]]; then
+  echo "Chưa có bản build tĩnh. Chạy npm ci rồi npm run build trước."
+  exit 1
+fi
+
 LOCAL_IP="$(hostname -I 2>/dev/null | awk '{print $1}')"
 
 echo "SpeakSprint đang chạy."

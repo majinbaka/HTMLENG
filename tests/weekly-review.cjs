@@ -1,3 +1,4 @@
+const { waitForRuntime } = require("./static-helpers.cjs");
 // Run against start-server.sh with Playwright installed:
 // BASE_URL=http://127.0.0.1:8000 node tests/weekly-review.cjs
 const assert = require('node:assert/strict');
@@ -6,11 +7,11 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { chromium } = require('playwright');
 const { completeRoutine } = require('./routine-helpers.cjs');
-const base = process.env.BASE_URL || 'http://127.0.0.1:8000';
+const base = process.env.BASE_URL || 'http://127.0.0.1:8000/out';
 const key = 'englishTutorProgressV1';
 const root = path.resolve(__dirname, '..');
 const sandbox = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'assets/weekly-review-data.js'), 'utf8'), sandbox);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'public/assets/weekly-review-data.js'), 'utf8'), sandbox);
 const bank = sandbox.window.SpeakSprintReviewBank;
 
 function seed(done = 0) {
@@ -25,7 +26,7 @@ function seed(done = 0) {
     ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE } : {}) });
   try {
     const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
-    const page = await context.newPage();
+    const page = waitForRuntime(await context.newPage());
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     async function setState(value) {
