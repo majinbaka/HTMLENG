@@ -45,7 +45,7 @@ SpeakSprint có favicon, icon màn hình chính và manifest PWA. Bấm **Cài �
 
 Sau lần tải đầu, service worker lưu toàn bộ bản tĩnh để dashboard, 28 bài học và chủ đề có thể mở offline. Micro nhận diện giọng nói và nguồn bên ngoài vẫn có thể cần mạng. Tiến độ giữ trong localStorage/IndexedDB của cùng origin; hãy xuất JSON trước khi chuyển trình duyệt hoặc thiết bị.
 
-Manifest và service worker dùng đường dẫn tương đối, hỗ trợ deploy nguyên repo, thư mục con hoặc riêng `out/`. Mỗi build có cache theo nội dung; sau khi bản mới tải xong, đóng mọi tab/cửa sổ SpeakSprint rồi mở lại để cập nhật. Cache chỉ xóa bản build cũ của cùng đường dẫn, không xóa tiến độ.
+Manifest và service worker dùng đường dẫn tương đối, hỗ trợ deploy nguyên repo, thư mục con hoặc riêng `out/`. Mỗi build có cache theo nội dung; app kiểm tra bản mới khi mở/reload hoặc quay lại cửa sổ. Sau khi bản mới tải xong, nhấn **Cập nhật ứng dụng** để kích hoạt và tải lại. Với bản app cũ chưa có nút này, đóng mọi tab/cửa sổ SpeakSprint rồi mở lại một lần để nhận bản mới. Cache chỉ xóa bản build cũ của cùng đường dẫn, không xóa tiến độ.
 
 Icon gốc nằm ở `public/icons/icon.svg`; chạy `npm run icons` để sinh lại PNG (cần Chromium của Playwright), rồi `npm run build`. Bộ `tests/pwa.cjs` kiểm tra manifest/icon, cài đặt, hướng dẫn iOS, scope thư mục con, bài học offline và tiến độ sau reload.
 

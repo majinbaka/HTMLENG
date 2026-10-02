@@ -6,6 +6,8 @@ export default function InstallApp({ prefix }) {
   const [installed, setInstalled] = useState(false);
   const [busy, setBusy] = useState(false);
   const [ios, setIos] = useState(false);
+  const [waiting, setWaiting] = useState(null);
+  const updating = useRef(false);
 
   useEffect(() => {
     const standalone = window.matchMedia("(display-mode: standalone)");
@@ -28,20 +30,65 @@ export default function InstallApp({ prefix }) {
     window.addEventListener("beforeinstallprompt", available);
     window.addEventListener("appinstalled", done);
     standalone.addEventListener("change", sync);
+    let registration;
+    let disposed = false;
+    const checkUpdate = () => {
+      if (registration && navigator.onLine)
+        registration.update().catch(() => {});
+    };
+    const visible = () => {
+      if (document.visibilityState === "visible") checkUpdate();
+    };
+    const controllerChanged = () => {
+      if (updating.current) window.location.reload();
+    };
+    const detectWaiting = () => {
+      if (
+        !disposed &&
+        registration?.waiting &&
+        navigator.serviceWorker.controller
+      )
+        setWaiting(registration.waiting);
+    };
+    const updateFound = () => {
+      registration.installing?.addEventListener("statechange", detectWaiting);
+    };
     if (
       process.env.NODE_ENV === "production" &&
       window.isSecureContext &&
       "serviceWorker" in navigator
     ) {
+      navigator.serviceWorker.addEventListener(
+        "controllerchange",
+        controllerChanged,
+      );
+      window.addEventListener("online", checkUpdate);
+      document.addEventListener("visibilitychange", visible);
       navigator.serviceWorker
         .register(new URL(`${prefix}sw.js`, window.location.href), {
           updateViaCache: "none",
+        })
+        .then((value) => {
+          if (disposed) return;
+          registration = value;
+          detectWaiting();
+          registration.addEventListener("updatefound", updateFound);
+          updateFound();
+          checkUpdate();
         })
         .catch((error) =>
           console.warn("SpeakSprint offline chưa sẵn sàng:", error),
         );
     }
     return () => {
+      disposed = true;
+      registration?.removeEventListener("updatefound", updateFound);
+      navigator.serviceWorker?.removeEventListener(
+        "controllerchange",
+        controllerChanged,
+      );
+      window.removeEventListener("online", checkUpdate);
+      document.removeEventListener("visibilitychange", visible);
       window.removeEventListener("beforeinstallprompt", available);
       window.removeEventListener("appinstalled", done);
       standalone.removeEventListener("change", sync);
@@ -69,6 +116,26 @@ export default function InstallApp({ prefix }) {
 
   return (
     <>
+      {waiting && (
+        <aside
+          className="install-app"
+          aria-label="Cập nhật SpeakSprint"
+          role="status"
+        >
+          <span>Bản mới đã sẵn sàng. Tiến độ đã lưu được giữ nguyên.</span>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => {
+              updating.current = true;
+              setBusy(true);
+              waiting.postMessage({ type: "SKIP_WAITING" });
+            }}
+          >
+            Cập nhật ứng dụng
+          </button>
+        </aside>
+      )}
       {!installed && (
         <aside className="install-app" aria-label="Cài SpeakSprint">
           <span>Học nhanh từ màn hình chính</span>

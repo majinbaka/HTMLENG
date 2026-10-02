@@ -10,7 +10,10 @@ self.addEventListener("install", event => {
     cache.addAll(ASSETS.map(asset => new Request(new URL(asset, BASE), { cache: "reload" })))
   ));
 });
-// Let existing tabs finish using their current build before activating an update.
+// Activate only after the learner explicitly requests the downloaded update.
+self.addEventListener("message", event => {
+  if (event.data?.type === "SKIP_WAITING") event.waitUntil(self.skipWaiting());
+});
 self.addEventListener("activate", event => {
   event.waitUntil((async () => {
     for (const name of await caches.keys()) {

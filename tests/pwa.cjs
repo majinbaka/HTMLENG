@@ -6,13 +6,18 @@ const { chromium } = require('playwright');
 const { waitForRuntime } = require('./static-helpers.cjs');
 const root = path.resolve(__dirname, '../out');
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.svg': 'image/svg+xml' };
+let serveUpdate = false;
 const server = http.createServer(async (req, res) => {
   let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
   if (pathname.startsWith('/nested/repo/')) pathname = pathname.slice('/nested/repo'.length);
   const file = path.resolve(root, '.' + pathname + (pathname.endsWith('/') ? 'index.html' : ''));
   try {
     if (!file.startsWith(root + path.sep)) throw new Error('Invalid path');
-    const data = await fs.readFile(file);
+    let data = await fs.readFile(file);
+    if (serveUpdate && path.basename(file) === 'sw.js')
+      data = Buffer.from(data.toString().replace(/const VERSION = "([^"]+)"/, 'const VERSION = "$1-test-update"'));
+    if (serveUpdate && path.basename(file) === 'index.html')
+      data = Buffer.from(data.toString().replace('</body>', '<span id="update-marker">Updated build</span></body>'));
     res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
     res.end(data);
   } catch { res.writeHead(404); res.end('Not found'); }
@@ -84,6 +89,15 @@ const server = http.createServer(async (req, res) => {
       assert.equal(await page.locator('#weekly-review-list > *').count(), 4);
       assert.deepEqual(errors, []);
       await context.setOffline(false);
+      // Download a second build while the current app window stays open.
+      serveUpdate = true;
+      await page.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
+      await page.getByRole('button', { name: 'Cập nhật ứng dụng', exact: true }).waitFor();
+      await page.getByRole('button', { name: 'Cập nhật ứng dụng', exact: true }).click();
+      await page.locator('#update-marker').waitFor();
+      await page.goto(base + 'lessons/day-01.html');
+      assert.equal(await page.locator('#routine-recall').inputValue(), 'My offline progress');
+      serveUpdate = false;
       await page.setViewportSize({ width: 390, height: 844 });
       await page.screenshot({ path: '/tmp/speaksprint-pwa-mobile.png', fullPage: true });
       await page.setViewportSize({ width: 1440, height: 900 });
