@@ -33,3 +33,28 @@ node --check assets/app.js
 ```
 
 Có thể đặt `PLAYWRIGHT_CHROMIUM_EXECUTABLE` để dùng Chromium đã cài, `NODE_PATH` nếu dùng Playwright từ runtime dùng chung, và `SCREENSHOT_DIR` để lưu ảnh kiểm tra. Bộ routine kiểm tra mọi URL bài học, luồng 5 bước, lưu/nhập/xuất, ôn +1/+7 ngày thực, streak và kết quả/lỗi giọng nói mô phỏng. Nhận diện micro thật cần kiểm tra thủ công trên trình duyệt/thiết bị sử dụng: cấp quyền, nói, dừng, sửa văn bản và tải lại để xác nhận đã lưu.
+
+## Chủ đề chuyên sâu · Senior Backend Interview
+
+Trên dashboard, mở **Chủ đề chuyên sâu**, hoặc truy cập `topics/index.html`. Lộ trình đầu là **Senior Backend Interview · Node.js & AI**, học theo thứ tự gợi ý hoặc chọn tự do, với tiến độ riêng:
+
+1. **Node.js runtime:** event loop/latency, worker pools/concurrency, streams/backpressure.
+2. **System design & data:** API/retry/idempotency, transaction/race condition, cache/queue/consistency.
+3. **AI application engineering:** RAG, tool calling và ranh giới thực thi, evaluation/cost/latency.
+4. **Production & mock interview:** prompt injection/data boundaries, incidents/observability, thiết kế AI support backend đa tenant.
+
+Mỗi buổi khoảng 30–40 phút: warm-up → input/đọc hiểu → 5 chunk và 5 thuật ngữ → recall → nói và 4–6 câu follow-up → quiz/đối chiếu. Gợi ý học 3 buổi mới/tuần, xen kẽ ôn, rồi lặp lại với hệ thống và ràng buộc của mình. Các ví dụ là giả định; không yêu cầu người học nhận thành tích không có thật. Buổi mock interview tái sử dụng chunk đã xuất hiện trước đó.
+
+Sổ 60 thuật ngữ có nghĩa tiếng Việt, collocation và điểm dễ dùng sai; tìm kiếm và đánh dấu **Cần ôn cách dùng**. Các câu mẫu của bài tập chỉ mở sau lượt thử. Câu trả lời mở/phát âm không tự chấm; quiz có đáp án và giải thích. Hoàn thành buổi yêu cầu đọc hiểu, 5 lượt recall, lời nói ít nhất 20 từ, xác nhận đã nói, số giây/chunk tự ghi, các follow-up, quiz đúng và ghi chú sửa/mục tiêu.
+
+Lưu bản nháp, bước hiện tại và lịch sử từng lượt trong `topicState` của cùng record `englishTutorProgressV1`; xuất/nhập từ dashboard hoặc trang chủ đề giữ cả tiến độ bài ngày lẫn chủ đề. Lịch ôn **+1 / +3 / +7 / +14 ngày lịch** tính từ lần hoàn thành đầu, giữ nguyên khi luyện lại. Lượt ôn che tài liệu trước khi tự kể; luyện sớm không xóa hạn tương lai. Chủ đề không tăng streak/XP hoặc thay đổi trạng thái 28 bài ngày. File JSON cũ vẫn nhập được theo cơ chế thay thế tiến độ hiện có.
+
+Nội dung nằm ở `assets/topics-data.js`, giao diện ở `assets/topics.js`, kiểm tra schema/lưu/nhập/xuất do `assets/app.js` quản lý. ID chủ đề và ID buổi là khóa lưu ổn định; giữ ID khi sửa tiêu đề hoặc sắp xếp. Nguồn kỹ thuật được liên kết trong từng buổi, nội dung bài học vẫn dùng được offline. Không có dịch vụ AI trực tiếp; micro dùng cùng chức năng nhận diện giọng nói của trình duyệt.
+
+Kiểm tra thêm:
+
+```sh
+BASE_URL=http://127.0.0.1:8000 node tests/topics.cjs
+node --check assets/topics.js
+node --check assets/topics-data.js
+```

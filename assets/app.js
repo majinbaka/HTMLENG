@@ -18,7 +18,25 @@ function validRoutine(value){
  const record=x=>object(x)&&typeof x.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&Number.isFinite(Date.parse(x.date))&&typeof x.text==='string'&&metric(x.ideas,3)&&metric(x.chunks,5);
  return object(value)&&(value.phase===undefined||(Number.isInteger(value.phase)&&value.phase>=0&&value.phase<5))&&(value.baseline===undefined||record(value.baseline))&&(value.sessions===undefined||(Array.isArray(value.sessions)&&value.sessions.every(record)))&&(value.recalls===undefined||(object(value.recalls)&&Object.entries(value.recalls).every(([offset,item])=>['1','7'].includes(offset)&&record(item))))&&(value.retrievalHistory===undefined||(Array.isArray(value.retrievalHistory)&&value.retrievalHistory.every(record)));
 }
-function valid(x){return x&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
+function validTopicState(value) {
+ const offsets = [1, 3, 7, 14];
+ const object = x => !!x && typeof x === 'object' && !Array.isArray(x);
+ const safeKey = key => /^[a-z][a-z0-9-]*$/.test(key) && !['constructor', 'prototype', '__proto__'].includes(key);
+ const date = x => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x) && !Number.isNaN(Date.parse(x)) && new Date(x).toISOString().slice(0, 10) === x;
+ const answers = x => object(x) && Object.entries(x).every(([k,v]) => safeKey(k) && ['string','boolean'].includes(typeof v));
+ const attempt = x => object(x) && date(x.date) && typeof x.at === 'string' && answers(x.answers);
+  if (value === undefined) return true;
+  return object(value) && Object.entries(value).every(([key,topic]) => safeKey(key) && object(topic) && object(topic.sessions) && object(topic.terms) &&
+   Object.entries(topic.terms).every(([k,v]) => safeKey(k) && typeof v === 'boolean') &&
+   (topic.lastSession === undefined || (typeof topic.lastSession === 'string' && safeKey(topic.lastSession))) &&
+   Object.entries(topic.sessions).every(([id,s]) => safeKey(id) && object(s) && answers(s.answers) &&
+    Number.isInteger(s.phase) && s.phase >= 0 && s.phase < 5 &&
+    (s.completedOn === undefined || date(s.completedOn)) &&
+    Array.isArray(s.history) && s.history.every(attempt) &&
+    object(s.reviews) && Object.entries(s.reviews).every(([offset,r]) => offsets.includes(Number(offset)) && attempt(r))));
+ }
+
+function valid(x){return x&&validTopicState(x.topicState)&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return valid(x)?x:clean()}catch{return clean()}}
 let state=load();
 function save(){state.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(state))}
@@ -27,7 +45,7 @@ const nextDay=()=>{for(let i=1;i<=TOTAL_DAYS;i++)if(!state.completedDays[i])retu
 const available=d=>Number.isInteger(d)&&d>=1&&d<=TOTAL_DAYS;
 function toast(s){const e=document.querySelector('#toast');if(!e)return;e.textContent=s;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2600)}
 function exportData(){const b=new Blob([JSON.stringify({...state,app:'SpeakSprint',exportedAt:new Date().toISOString()},null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='speak-sprint-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}
-function bindTools(){document.querySelector('#export-progress')?.addEventListener('click',exportData);document.querySelector('#import-progress')?.addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!valid(x))throw Error();state={version:1,completedDays:x.completedDays,dayState:x.dayState,currentStreak:x.currentStreak,longestStreak:x.longestStreak,lastNewDayCompletedDate:x.lastNewDayCompletedDate||null,updatedAt:x.updatedAt||new Date().toISOString()};save();location.reload()}catch{toast('File không hợp lệ. Tiến độ hiện tại vẫn được giữ.')}finally{e.target.value=''}});document.querySelector('#reset-progress')?.addEventListener('click',()=>{if(confirm('Xóa toàn bộ tiến độ và bản ghi âm SpeakSprint trong trình duyệt này?')){localStorage.removeItem(KEY);indexedDB.deleteDatabase(AUDIO_DB);location.reload()}})}
+function bindTools(){document.querySelector('#export-progress')?.addEventListener('click',exportData);document.querySelector('#import-progress')?.addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!valid(x))throw Error();state={version:1,completedDays:x.completedDays,dayState:x.dayState,...(x.topicState?{topicState:x.topicState}:{}),currentStreak:x.currentStreak,longestStreak:x.longestStreak,lastNewDayCompletedDate:x.lastNewDayCompletedDate||null,updatedAt:x.updatedAt||new Date().toISOString()};save();location.reload()}catch{toast('File không hợp lệ. Tiến độ hiện tại vẫn được giữ.')}finally{e.target.value=''}});document.querySelector('#reset-progress')?.addEventListener('click',()=>{if(confirm('Xóa toàn bộ tiến độ và bản ghi âm SpeakSprint trong trình duyệt này?')){localStorage.removeItem(KEY);indexedDB.deleteDatabase(AUDIO_DB);location.reload()}})}
 const AUDIO_DB='speakSprintAudioV1',AUDIO_STORE='recordings';
 function audioDb(){return new Promise((resolve,reject)=>{if(!('indexedDB'in window)){reject(Error('IndexedDB unavailable'));return}const req=indexedDB.open(AUDIO_DB,1);req.onupgradeneeded=()=>req.result.createObjectStore(AUDIO_STORE);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
 async function putAudio(id,blob){const db=await audioDb();return new Promise((resolve,reject)=>{const tx=db.transaction(AUDIO_STORE,'readwrite');tx.objectStore(AUDIO_STORE).put(blob,id);tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}})}
@@ -58,6 +76,7 @@ function renderWeeklyCards(){
  }).join('');
 }
 function dashboard(){
+ window.SpeakSprintTopics?.dashboard({state,today});
  renderWeeklyCards();renderRecallQueue(document.querySelector('#spaced-reviews'));renderRetentionSummary();
  const n=nextDay(),done=Object.keys(state.completedDays).filter(d=>Number(d)<=TOTAL_DAYS).length;
  document.querySelector('#current-day').textContent=String(Math.min(n,TOTAL_DAYS)).padStart(2,'0');document.querySelector('#current-total').textContent=`/ ${TOTAL_DAYS}`;document.querySelector('#current-streak').textContent=state.currentStreak;document.querySelector('#longest-streak').textContent=state.longestStreak;document.querySelector('#completed-count').textContent=done;document.querySelector('#completed-total').textContent=`/ ${TOTAL_DAYS}`;document.querySelector('#progress-fill').style.width=`${done/TOTAL_DAYS*100}%`;
@@ -337,5 +356,8 @@ main.addEventListener('input',update);main.addEventListener('change',update);
 function mark(type,ok,feedback){ds.checkpoints[type]=ok;if(feedback){feedback.textContent=ok?'Nice work — checkpoint saved.':'Not quite yet. Use the hint and try once more.';feedback.classList.add('show')}save();update()}
 function submitAssessment(type,prefix){const expected=(main.dataset[prefix]||'').split('|');const actual=expected.map((_,i)=>main.querySelector(`input[name="${prefix}-${i+1}"]:checked`)?.value);const correct=expected.filter((answer,i)=>answer===actual[i]).length;const answered=actual.filter(Boolean).length;ds.assessmentV2=ds.assessmentV2||{};ds.assessmentV2[type]={correct,total:expected.length,answered};const feedback=main.querySelector(`#${prefix}-feedback`);mark(type,correct===expected.length,feedback);feedback.textContent=answered<expected.length?`Bạn đã trả lời ${answered}/${expected.length} câu. Hãy thử đủ các câu trước.`:`${correct}/${expected.length} câu đúng. ${correct===expected.length?'Checkpoint đã lưu.':'Đọc lại tình huống và dùng gợi ý để thử lại.'}`;main.dispatchEvent(new Event('assessment-updated'))}
 document.querySelector('#submit-comprehension').onclick=()=>submitAssessment('comprehension','comp');document.querySelector('#speaking-done').onclick=()=>{const t=document.querySelector('#speaking-response').value.trim();if(t.split(/\s+/).length<8){document.querySelector('#speak-feedback').textContent='Hãy nhập ít nhất 8 từ về điều bạn vừa nói.';document.querySelector('#speak-feedback').classList.add('show');return}mark('speaking',true,document.querySelector('#speak-feedback'))};document.querySelector('#submit-quiz').onclick=()=>submitAssessment('quiz','quiz');document.querySelectorAll('.hint').forEach(b=>b.onclick=()=>{const e=document.querySelector(b.dataset.target);e.classList.toggle('show')});function update(){for(const k of ['comprehension','speaking','quiz'])document.querySelector(`#status-${k}`).textContent=ds.checkpoints[k]?'✓ Đã lưu':'Chưa hoàn thành';document.querySelector('#finish-day').disabled=!Object.values(ds.checkpoints).every(Boolean)||!routine.ready()||review}update();document.querySelector('#finish-day').onclick=()=>{if(review||!Object.values(ds.checkpoints).every(Boolean)||!routine.ready())return;routine.store();const prev=state.lastNewDayCompletedDate,now=today(),y=new Date();y.setDate(y.getDate()-1);const py=`${y.getFullYear()}-${String(y.getMonth()+1).padStart(2,'0')}-${String(y.getDate()).padStart(2,'0')}`;state.currentStreak=prev===now?state.currentStreak:prev===py?state.currentStreak+1:1;state.longestStreak=Math.max(state.longestStreak,state.currentStreak);state.lastNewDayCompletedDate=now;state.completedDays[d]=now;ds.status='completed';ds.resumeSection=null;save();location.href='../index.html'};}
-bindTools();document.body.dataset.page==='dashboard'?dashboard():lesson();
+bindTools();
+if(document.body.dataset.page==='dashboard')dashboard();
+else if(document.body.dataset.page==='topics')window.SpeakSprintTopics?.render({state,save,today,escapeHtml,addVoiceInput});
+else lesson();
 })();
