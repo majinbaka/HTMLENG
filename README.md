@@ -17,6 +17,16 @@ npm run build         # Sinh bản tĩnh trong out/ và index.html dẫn ở g�
 
 `out/` và `index.html` gốc được đưa vào Git để hosting chỉ phục vụ file vẫn hoạt động. Sau mỗi lần sửa nguồn, chạy `npm run build` rồi đưa cả nguồn và bản build mới vào cùng commit. Không chỉnh tay HTML trong `out/` hay `index.html` gốc. Có thể deploy riêng `out/` nếu sau này muốn.
 
+### Deploy trên Vercel
+
+`vercel.json` cấu hình Vercel phục vụ trực tiếp thư mục `out/` đã được đưa vào Git: Framework Preset là **Other**, bỏ qua cài dependency và build trên hosting, giữ URL có đuôi `.html`. Vercel mở dashboard tại `/`, bài học tại `/lessons/day-01.html`, chủ đề tại `/topics/index.html`; không thêm `/out/` vào URL trên Vercel.
+
+Trong **Settings → Build and Deployment**, Root Directory phải là gốc repo (nơi có `vercel.json`), không phải `src`, `public` hay `out`. Cấu hình trong file ghi đè Framework Preset, Install Command, Build Command và Output Directory cũ. Commit/push file này lên nhánh deploy để Vercel tạo deployment mới; redeploy commit cũ chưa có file sẽ không áp dụng bản sửa.
+
+Nếu gặp `404 NOT_FOUND`, kiểm tra deployment mới có nhận `vercel.json` và Output Directory là `out`. Với preset Other, Vercel có thể mặc định phục vụ `public/` khi thư mục này tồn tại; trong dự án này `public/` chỉ chứa asset nguồn, không có dashboard. Xem [hướng dẫn xử lý 404 của Vercel](https://vercel.com/kb/guide/why-is-my-deployed-project-giving-404) và [cấu hình vercel.json](https://vercel.com/docs/project-configuration/vercel-json).
+
+Sau mỗi lần sửa nội dung hoặc giao diện, vẫn chạy `npm run build` ở máy phát triển và commit `out/` mới trước khi push, vì Vercel phục vụ đúng bản build đã commit.
+
 ## Cấu trúc nguồn
 
 - `src/pages/`: dashboard, chủ đề và route động `lessons/[day].jsx`; `getStaticPaths` sinh 28 bài lúc build.
