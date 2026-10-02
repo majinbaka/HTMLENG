@@ -29,6 +29,16 @@ npm run build         # Sinh bản tĩnh trong out/ và index.html dẫn ở g�
 
 Tiến độ vẫn dùng khóa `englishTutorProgressV1`, file ghi âm vẫn ở IndexedDB. Chuyển đường dẫn sang `out/` trên **cùng origin** không đổi vùng lưu dữ liệu. Giữ nguyên ID bài và `data-save` khi sửa nội dung để câu trả lời cũ tiếp tục khớp.
 
+## Cài ứng dụng và học offline
+
+SpeakSprint có favicon, icon màn hình chính và manifest PWA. Bấm **Cài ứng dụng** ở cuối trang để mở hộp thoại cài của trình duyệt khi có hỗ trợ. Trên iPhone/iPad, mở bằng Safari rồi chọn **Chia sẻ → Thêm vào Màn hình chính**. Cài đặt và service worker cần HTTPS hoặc localhost; xem [điều kiện cài PWA trên MDN](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable).
+
+Sau lần tải đầu, service worker lưu toàn bộ bản tĩnh để dashboard, 28 bài học và chủ đề có thể mở offline. Micro nhận diện giọng nói và nguồn bên ngoài vẫn có thể cần mạng. Tiến độ giữ trong localStorage/IndexedDB của cùng origin; hãy xuất JSON trước khi chuyển trình duyệt hoặc thiết bị.
+
+Manifest và service worker dùng đường dẫn tương đối, hỗ trợ deploy nguyên repo, thư mục con hoặc riêng `out/`. Mỗi build có cache theo nội dung; sau khi bản mới tải xong, đóng mọi tab/cửa sổ SpeakSprint rồi mở lại để cập nhật. Cache chỉ xóa bản build cũ của cùng đường dẫn, không xóa tiến độ.
+
+Icon gốc nằm ở `public/icons/icon.svg`; chạy `npm run icons` để sinh lại PNG (cần Chromium của Playwright), rồi `npm run build`. Bộ `tests/pwa.cjs` kiểm tra manifest/icon, cài đặt, hướng dẫn iOS, scope thư mục con, bài học offline và tiến độ sau reload.
+
 ## Routine
 
 - 30 phút/buổi, 6 ngày/tuần: **Input 10 → Recall 5 → Retell 5 → Think 5 → Review 5**.

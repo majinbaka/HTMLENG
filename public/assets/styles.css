@@ -258,3 +258,10 @@ main{padding:12px 15px 60px}
 .topic-main .routine-tabs button{flex-basis:150px}
 .topic-main #topic-content,.topic-main section{scroll-margin-top:20px}
 @media(max-width:650px){.topic-feature{grid-template-columns:1fr;padding:22px;gap:18px}.topic-feature-actions{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}.topic-feature h3{font-size:25px}.term-grid{grid-template-columns:1fr}.topic-main header nav{gap:5px}.topic-main .routine-tabs button{flex-basis:120px}}
+
+.install-app{max-width:1184px;margin:0 auto 28px;padding:16px 21px;display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.install-app span{color:var(--muted)}
+.install-dialog{max-width:460px;width:calc(100% - 32px);border:1px solid var(--line);border-radius:20px;padding:28px;background:var(--card);color:var(--ink)}
+.install-dialog::backdrop{background:#153f3a80}
+.install-dialog h2{margin-top:0}
+@media(max-width:600px){.install-app{margin:0 16px 24px;flex-wrap:wrap}}

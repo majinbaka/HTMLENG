@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import InstallApp from "../components/InstallApp";
 
 // Keep the proven storage/recording engine isolated from React rendering.
 // All page links use document navigation, so listeners and media resources have
@@ -53,8 +54,24 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href={`${prefix}assets/styles.css`} />
+        <link
+          rel="icon"
+          href={`${prefix}icons/icon.svg`}
+          type="image/svg+xml"
+        />
+        <link
+          rel="icon"
+          href={`${prefix}icons/icon-32.png`}
+          type="image/png"
+          sizes="32x32"
+        />
+        <link rel="apple-touch-icon" href={`${prefix}icons/icon-180.png`} />
+        <link rel="manifest" href={`${prefix}manifest.webmanifest`} />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="SpeakSprint" />
       </Head>
       <Component {...pageProps} />
+      <InstallApp prefix={prefix} />
     </>
   );
 }

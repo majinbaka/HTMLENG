@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build --webpack && node scripts/package-static.mjs",
     "start": "bash start-server.sh",
-    "test": "node tests/static-export.cjs && node tests/routine.cjs && node tests/weekly-review.cjs && node tests/topics.cjs",
+    "test": "node tests/static-export.cjs && node tests/pwa.cjs && node tests/routine.cjs && node tests/weekly-review.cjs && node tests/topics.cjs",
+    "icons": "node scripts/build-icons.cjs",
     "format": "prettier --write src next.config.mjs scripts/package-static.mjs"
   },
   "engines": {
