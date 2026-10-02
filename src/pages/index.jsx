@@ -41,7 +41,7 @@ export default function Dashboard() {
             </div>
             <p>
               {
-                "Ôn dài hạn theo công việc của bạn: phỏng vấn kỹ thuật, thuật ngữ và tình huống thực tế. Mỗi chủ đề có tiến độ và lịch ôn riêng."
+                "Ôn dài hạn theo công việc của bạn: phỏng vấn kỹ thuật và chủ đề Làm việc với daily meeting, dự án, báo cáo, phân công và quản lý. Mỗi chủ đề có tiến độ và lịch ôn riêng."
               }
             </p>
           </div>

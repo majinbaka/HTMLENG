@@ -77,7 +77,9 @@ const server = http.createServer(async (req, res) => {
       await page.goto(base + 'lessons/day-28.html?offline=1');
       assert.equal(await page.locator('[data-day]').getAttribute('data-day'), '28');
       await page.goto(base + 'topics/index.html');
-      assert.equal(await page.locator('#topic-cards > a').count(), 12);
+      assert.equal(await page.locator('#topic-cards > a').count(), 19);
+      await page.goto(base + 'topics/index.html?topic=workplace-communication&session=project-kickoff');
+      assert.equal(await page.locator('#work-artifact').count(), 1);
       await page.goto(base);
       assert.equal(await page.locator('#weekly-review-list > *').count(), 4);
       assert.deepEqual(errors, []);

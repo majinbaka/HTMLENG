@@ -39,9 +39,9 @@ assert(mock.chunks.every(c => experience.slice(0,-1).some(s => s.chunks.some(old
   const get=()=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);
   const go=s=>page.goto(`${base}/topics/index.html?session=${s}`);
   const phase=i=>page.locator(`[data-topic-phase="${i}"]`).click();
-  const imp=async value=>{await Promise.all([page.waitForEvent('load'),page.locator('#import-progress').setInputFiles({name:'progress.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(value))})]);};
+  const imp=async value=>{await Promise.all([page.waitForEvent('load'),page.locator('#import-progress').setInputFiles({name:'progress.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(value))})]);await page.locator('body[data-runtime-ready="true"]').waitFor();};
   await page.goto(base);
-  assert.equal(await page.locator('#topic-dashboard a').count(),2);
+  assert.equal(await page.locator('#topic-dashboard a').count(),4);
   await page.goto(`${base}/topics/index.html`);assert.equal(await page.locator('#topic-cards>a').count(),19);assert.equal(await page.locator('.term-card').count(),95);
   await page.locator('#topic-stage').selectOption('2');assert.equal(await page.locator('#topic-cards>a').count(),3);
   await page.locator('#term-search').fill('authorization');assert.equal(await page.locator('.term-card').count(),1);
@@ -97,7 +97,7 @@ assert(mock.chunks.every(c => experience.slice(0,-1).some(s => s.chunks.some(old
   // All four calendar checkpoints and original completion dates survive late review.
   for(const offset of [1,3,7,14]){
    await page.clock.setSystemTime(new Date(`2026-10-${String(2+offset).padStart(2,'0')}T09:00:00+07:00`));
-   await page.goto(`${base}/topics/index.html`);assert.equal(await page.locator(`#topic-reviews a[href="index.html?session=event-loop&review=${offset}"]`).count(),1);
+   await page.goto(`${base}/topics/index.html`);assert.equal(await page.locator(`#topic-reviews a[href="index.html?topic=node-ai-interview&session=event-loop&review=${offset}"]`).count(),1);
    await page.goto(`${base}/topics/index.html?session=event-loop&review=${offset}`);
    await page.locator('#cold-text').fill(`I remember the event loop and three useful chunks on review ${offset}.`);await page.locator('#cold-chunks').fill('3');await page.locator('#cold-save').click();
    const saved=(await get()).topicState[bank.id].sessions['event-loop'];assert(saved.reviews[offset]);assert.equal(saved.completedOn,'2026-10-02');

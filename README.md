@@ -116,3 +116,30 @@ BASE_URL=http://127.0.0.1:8000/out node tests/topics.cjs
 node --check public/assets/topics.js
 node --check public/assets/topics-data.js
 ```
+
+## Chủ đề lớn · Làm việc
+
+Trên dashboard chọn **Làm việc · Trao đổi trong dự án phần mềm**, hoặc mở `out/topics/index.html?topic=workplace-communication`. Đây là lộ trình riêng, gồm **14 buổi, 60 chunk khác nhau và 70 mục thuật ngữ theo ngữ cảnh**:
+
+1. Kickoff: mục tiêu, vai trò, demo và bước tiếp theo.
+2. Làm rõ yêu cầu, phạm vi và tiêu chí nghiệm thu.
+3. Daily meeting: tiến độ, blocker, nhờ hỗ trợ và trao đổi sau họp.
+4. Trao đổi kỹ thuật: API contract, phương án và bằng chứng cần đo.
+5. Code review: lỗi cần sửa, gợi ý và phản hồi bất đồng.
+6. QA: bước tái hiện, expected/actual và bàn giao retest.
+7. Ôn tổng hợp: cuộc họp trước demo, dùng 5 chunk cũ.
+8. Planning: chia ticket, owner, estimate, capacity và dependency.
+9. Báo cáo: phần đã xong, còn lại, rủi ro và quyết định cần hỗ trợ.
+10. Thay đổi yêu cầu: tác động, thương lượng phạm vi và deadline.
+11. Release: go/no-go, giới hạn pilot, theo dõi và bàn giao.
+12. Sự cố: ảnh hưởng, điều chưa biết, phối hợp và lịch cập nhật.
+13. Quản lý: 1:1, feedback có bằng chứng, quá tải và kế hoạch hỗ trợ.
+14. Mô phỏng ngày làm việc: daily, phân công, thương lượng và handover, dùng 5 chunk cũ.
+
+Các tình huống gốc nối tiếp dự án giả định **Customer Import**, với PM Mai, backend Linh, frontend An và QA Bao. Ticket, giờ hẹn, dữ liệu mẫu và các quyết định giúp người học tập nói như đang phối hợp thật; đây không phải hướng dẫn vận hành kỹ thuật cho hệ thống thật. Không cần có kinh nghiệm dự án trước: dùng dữ kiện mô phỏng hoặc thay bằng bối cảnh công việc của mình.
+
+Mỗi buổi 30–40 phút có 5 chunk, hội thoại 100–200 từ, 3 câu đọc hiểu, 2 lượt biến đổi/chunk, recall che mẫu, shadowing, bài nói 60–90 giây, 6 lượt đối thoại theo vai, 2 câu quiz và rubric tự đánh giá. Buổi 7/14 ôn chunk cũ. Warm-up gợi lại buổi trước theo khoảng +1/+3/+7/+14; lịch ôn riêng dùng ngày lịch thực.
+
+Bước Speak có **Đầu ra công việc**: viết recap, ticket, comment PR, status report hoặc handover bằng tiếng Anh (ít nhất 15 từ). Đây là checkpoint bổ sung khi lưu buổi Làm việc; hệ thống kiểm tra có lượt viết, không tự chấm chất lượng nội dung. Bản nháp tự lưu; mọi câu mẫu bài tập vẫn chờ người học thử trước khi mở.
+
+Nội dung nằm ở `public/assets/workplace-data.js`; `topics.js` dùng chung giao diện cho hai chủ đề. Tham số `topic` chọn lộ trình, `session` chọn buổi; URL phỏng vấn cũ không có `topic` vẫn hoạt động. Tiến độ lưu riêng dưới `topicState['workplace-communication']`, giữ chung cơ chế xuất/nhập JSON, ôn +1/+3/+7/+14 và sử dụng offline; không thay đổi tiến độ bài ngày hoặc chủ đề phỏng vấn.

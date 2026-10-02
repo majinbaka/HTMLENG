@@ -12,7 +12,7 @@ function loadRuntime(prefix, pageType) {
   const files =
     pageType === "lesson"
       ? ["weekly-review-data.js", "app.js"]
-      : ["topics-data.js", "topics.js", "app.js"];
+      : ["topics-data.js", "workplace-data.js", "topics.js", "app.js"];
   runtimePromise = files.reduce(
     (promise, file) =>
       promise.then(

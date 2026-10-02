@@ -61,7 +61,9 @@ const server = http.createServer(async (req, res) => {
       assert.equal(page.url(), `${base}/out/topics/index.html?session=rag&review=7#main`);
       assert.equal(await page.locator('#topic-content').count(), 1);
       await page.goto(`${base}/out/topics/index.html`);
-      assert.equal(await page.locator('#topic-cards > a').count(), 12);
+      assert.equal(await page.locator('#topic-cards > a').count(), 19);
+      await page.goto(`${base}/out/topics/index.html?topic=workplace-communication&session=project-kickoff`);
+      assert.equal(await page.locator('#work-artifact').count(), 1);
       // A nested path on the same origin keeps the original storage and drafts.
       await page.goto(`${base}/out/lessons/day-01.html`);
       assert.equal(await page.locator('#routine-recall').inputValue(), marker);
