@@ -89,16 +89,21 @@ Có thể đặt `PLAYWRIGHT_CHROMIUM_EXECUTABLE` để dùng Chromium đã cài
 
 ## Chủ đề chuyên sâu · Senior Backend Interview
 
-Trên dashboard, mở **Chủ đề chuyên sâu**, hoặc truy cập `out/topics/index.html`. Lộ trình đầu là **Senior Backend Interview · Node.js & AI**, học theo thứ tự gợi ý hoặc chọn tự do, với tiến độ riêng:
+Trên dashboard, mở **Chủ đề chuyên sâu**, hoặc truy cập `out/topics/index.html`. Lộ trình đầu là **Senior Backend Interview · Technical & Real Experience**, học theo thứ tự gợi ý hoặc chọn tự do, với tiến độ riêng:
 
 1. **Node.js runtime:** event loop/latency, worker pools/concurrency, streams/backpressure.
 2. **System design & data:** API/retry/idempotency, transaction/race condition, cache/queue/consistency.
 3. **AI application engineering:** RAG, tool calling và ranh giới thực thi, evaluation/cost/latency.
 4. **Production & mock interview:** prompt injection/data boundaries, incidents/observability, thiết kế AI support backend đa tenant.
 
-Mỗi buổi khoảng 30–40 phút: warm-up → input/đọc hiểu → 5 chunk và 5 thuật ngữ → recall → nói và 4–6 câu follow-up → quiz/đối chiếu. Gợi ý học 3 buổi mới/tuần, xen kẽ ôn, rồi lặp lại với hệ thống và ràng buộc của mình. Các ví dụ là giả định; không yêu cầu người học nhận thành tích không có thật. Buổi mock interview tái sử dụng chunk đã xuất hiện trước đó.
+5. **Giới thiệu, dự án & giải quyết vấn đề:** giới thiệu 60–90 giây, kể dự án và ownership, điều tra issue/kiểm chứng/phòng ngừa.
+6. **Teamwork, presales & phỏng vấn thực tế:** hỗ trợ member, discovery/estimate/proposal, demo/objections/handoff và mock kinh nghiệm 60 phút.
 
-Sổ 60 thuật ngữ có nghĩa tiếng Việt, collocation và điểm dễ dùng sai; tìm kiếm và đánh dấu **Cần ôn cách dùng**. Các câu mẫu của bài tập chỉ mở sau lượt thử. Câu trả lời mở/phát âm không tự chấm; quiz có đáp án và giải thích. Hoàn thành buổi yêu cầu đọc hiểu, 5 lượt recall, lời nói ít nhất 20 từ, xác nhận đã nói, số giây/chunk tự ghi, các follow-up, quiz đúng và ghi chú sửa/mục tiêu.
+Tổng cộng **19 buổi**. Buổi 13–18 có thẻ chuẩn bị chuyện thật, khung trả lời có thời lượng, 6 follow-up, shadowing, lỗi dễ mắc và rubric tự đánh giá có bằng chứng. Buổi 19 tái sử dụng 5 chunk cũ: 3 phút chuẩn bị + 5 phút input + 2 phút recall + 45 phút hỏi–đáp qua 8 vòng + 5 phút review. Dùng đồng hồ riêng và bạn luyện hoặc tự đóng hai vai; không có người phỏng vấn AI tự động. Số giây lưu ở ô speaking là thời lượng câu trả lời chính, không phải toàn buổi mock.
+
+Mỗi buổi thường khoảng 30–40 phút: warm-up → input/đọc hiểu → 5 chunk và 5 thuật ngữ → recall → nói và 4–6 câu follow-up → quiz/đối chiếu. Gợi ý học 3 buổi mới/tuần, xen kẽ ôn, rồi lặp lại với hệ thống và ràng buộc của mình. Các ví dụ là giả định; không yêu cầu người học nhận thành tích không có thật. Buổi mock interview tái sử dụng chunk đã xuất hiện trước đó.
+
+Sổ 95 mục từ (gồm các từ được ôn lại trong ngữ cảnh khác) có nghĩa tiếng Việt, collocation và điểm dễ dùng sai; tìm kiếm và đánh dấu **Cần ôn cách dùng**. Các câu mẫu của bài tập chỉ mở sau lượt thử. Câu trả lời mở/phát âm không tự chấm; quiz có đáp án và giải thích. Hoàn thành buổi yêu cầu đọc hiểu, 5 lượt recall, lời nói ít nhất 20 từ, xác nhận đã nói, số giây/chunk tự ghi, các follow-up, quiz đúng và ghi chú sửa/mục tiêu.
 
 Lưu bản nháp, bước hiện tại và lịch sử từng lượt trong `topicState` của cùng record `englishTutorProgressV1`; xuất/nhập từ dashboard hoặc trang chủ đề giữ cả tiến độ bài ngày lẫn chủ đề. Lịch ôn **+1 / +3 / +7 / +14 ngày lịch** tính từ lần hoàn thành đầu, giữ nguyên khi luyện lại. Lượt ôn che tài liệu trước khi tự kể; luyện sớm không xóa hạn tương lai. Chủ đề không tăng streak/XP hoặc thay đổi trạng thái 28 bài ngày. File JSON cũ vẫn nhập được theo cơ chế thay thế tiến độ hiện có.
 

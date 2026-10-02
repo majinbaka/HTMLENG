@@ -1,14 +1,17 @@
 // Original interview practice. Technical references reviewed 2026-10-02.
+// Experience scenarios are fictional teaching material, not learner history.
 window.SpeakSprintTopicsData = {
   "id": "node-ai-interview",
   "category": "Chủ đề chuyên sâu",
-  "title": "Senior Backend Interview · Node.js & AI",
-  "description": "Diễn đạt kiến thức senior bằng tiếng Anh rõ ràng: giải thích cơ chế, bảo vệ quyết định, xử lý câu hỏi sâu và nói đúng thuật ngữ.",
+  "title": "Senior Backend Interview · Technical & Real Experience",
+  "description": "Luyện phỏng vấn kỹ thuật và kể kinh nghiệm thật: giới thiệu bản thân, dự án, xử lý issue, hỗ trợ member, proposal và demo với khách hàng.",
   "stages": [
     "01 · Node.js runtime",
     "02 · System design & data",
     "03 · AI application engineering",
-    "04 · Production & mock interview"
+    "04 · Production & mock interview",
+    "05 · Giới thiệu, dự án & giải quyết vấn đề",
+    "06 · Teamwork, presales & phỏng vấn thực tế"
   ],
   "sessions": [
     {
@@ -1599,6 +1602,1088 @@ window.SpeakSprintTopicsData = {
           "Microsoft · RAG overview",
           "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview"
         ]
+      ]
+    },
+    {
+      "id": "introduce-yourself",
+      "title": "Giới thiệu bản thân · Tell me about yourself",
+      "stage": 4,
+      "mission": "Giới thiệu trong 60–90 giây: vai trò → đóng góp nổi bật → cách cộng tác → lý do ứng tuyển; dùng ít nhất 3 chunk.",
+      "input": "Interviewer: Tell me about yourself and why you are interested in this role.\nCandidate: I am a backend developer with experience in building business applications. In my current role, I work on APIs and help the team plan releases. I mainly focus on reliable services and clear communication. One example is an order management project for a small retail business. My contribution was building the order API and working with QA on failure cases. I also helped a new teammate understand the code and supported sales with a short product demo. I enjoy turning unclear requests into small, testable tasks. I am looking for a role where I can take more responsibility for technical decisions while staying close to delivery. This position interests me because the team works directly with product and customers. I would like to learn more about how your backend team shares ownership.",
+      "chunks": [
+        {
+          "id": "experience-1",
+          "text": "I am a … with experience in …",
+          "meaning": "Tôi là… có kinh nghiệm về…",
+          "use": "Mở đầu gắn vai trò với năng lực liên quan",
+          "pattern": "I am a + role + with experience in + V-ing / noun",
+          "simple": "I am a developer with experience in testing.",
+          "example": "I am a backend developer with experience in building order APIs."
+        },
+        {
+          "id": "experience-2",
+          "text": "In my current role, I …",
+          "meaning": "Ở vai trò hiện tại, tôi…",
+          "use": "Tóm tắt công việc hiện tại",
+          "pattern": "In my current role, I + verb",
+          "simple": "In my current role, I review code.",
+          "example": "In my current role, I build APIs and support releases."
+        },
+        {
+          "id": "experience-3",
+          "text": "I mainly focus on …",
+          "meaning": "Tôi tập trung chủ yếu vào…",
+          "use": "Chọn một thế mạnh thay vì liệt kê công nghệ",
+          "pattern": "I mainly focus on + noun / V-ing",
+          "simple": "I mainly focus on testing.",
+          "example": "I mainly focus on reliable services and clear communication."
+        },
+        {
+          "id": "experience-4",
+          "text": "My contribution was …",
+          "meaning": "Đóng góp của tôi là…",
+          "use": "Tách phần cá nhân khỏi kết quả cả nhóm",
+          "pattern": "My contribution was + V-ing / noun",
+          "simple": "My contribution was writing the tests.",
+          "example": "My contribution was building the order API and checking failure cases."
+        },
+        {
+          "id": "experience-5",
+          "text": "I am looking for a role where I can …",
+          "meaning": "Tôi tìm vai trò mà tôi có thể…",
+          "use": "Nối kinh nghiệm với vị trí ứng tuyển",
+          "pattern": "I am looking for a role where I can + verb",
+          "simple": "I am looking for a role where I can learn.",
+          "example": "I am looking for a role where I can guide technical decisions."
+        }
+      ],
+      "terms": [
+        {
+          "term": "background",
+          "meaning": "Nền tảng kinh nghiệm",
+          "usage": "my engineering background",
+          "pitfall": "Không kể toàn bộ tiểu sử."
+        },
+        {
+          "term": "responsibility",
+          "meaning": "Trách nhiệm",
+          "usage": "take responsibility for delivery",
+          "pitfall": "Responsibility là phần chịu trách nhiệm; achievement là thành quả."
+        },
+        {
+          "term": "contribution",
+          "meaning": "Đóng góp cụ thể",
+          "usage": "my contribution to the project",
+          "pitfall": "Dùng I cho việc cá nhân, we cho việc nhóm."
+        },
+        {
+          "term": "strength",
+          "meaning": "Điểm mạnh",
+          "usage": "a strength supported by an example",
+          "pitfall": "Không chỉ nói hard-working mà thiếu minh chứng."
+        },
+        {
+          "term": "role fit",
+          "meaning": "Mức phù hợp với vai trò",
+          "usage": "explain my fit for the role",
+          "pitfall": "Gắn với mô tả công việc đã đọc, không đoán về công ty."
+        }
+      ],
+      "checks": [
+        {
+          "question": "What does the candidate do in the current role?",
+          "model": "They work on APIs and help plan releases."
+        },
+        {
+          "question": "What was their personal contribution to the order project?",
+          "model": "They built the order API and worked with QA on failure cases."
+        },
+        {
+          "question": "Why does this role interest them?",
+          "model": "They want more technical responsibility and direct work with product and customers."
+        }
+      ],
+      "followups": [
+        "Which part of that project did you personally own?",
+        "What is one strength your teammates would mention? Give an example.",
+        "You mentioned sales support. What did you actually prepare?",
+        "Why are you considering a new role now?",
+        "What would you need to learn in this position?",
+        "Can you give me a shorter, 30-second version of your introduction?"
+      ],
+      "quiz": [
+        {
+          "question": "Which opening helps the interviewer understand your fit?",
+          "options": [
+            "A complete list of every tool you have used.",
+            "Your role, relevant focus, and one example."
+          ],
+          "answer": 1,
+          "explanation": "A focused introduction gives the interviewer clear areas to explore."
+        },
+        {
+          "question": "You helped with one API in a team project. What is accurate?",
+          "options": [
+            "I built the whole platform myself.",
+            "My contribution was building the order API."
+          ],
+          "answer": 1,
+          "explanation": "Describe your own contribution without taking credit for the whole team."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Ghi vai trò hiện tại, số năm nếu nhớ chính xác, 2 trách nhiệm và 1 dự án liên quan JD.",
+        "Chọn 1 thế mạnh có việc thật chứng minh; ghi rõ phần mình làm và phần đồng đội.",
+        "Chuẩn bị lý do chuyển việc trung tính và 1 câu hỏi về team. Nếu chưa có kinh nghiệm thương mại, nói rõ personal project."
+      ],
+      "speakingGuide": [
+        "0–15 giây: vai trò và mảng công việc.",
+        "15–45 giây: một dự án + phần bạn làm + kết quả có căn cứ.",
+        "45–70 giây: hỗ trợ team hoặc khách hàng bằng một ví dụ.",
+        "70–90 giây: mong muốn ở vai trò mới và điểm liên quan JD."
+      ],
+      "pitfalls": [
+        "Không học thuộc thông tin giả trong ví dụ. Thay bằng sự thật của bạn.",
+        "Tránh mở đầu dài về tuổi/quê quán khi câu hỏi đang tập trung vào công việc.",
+        "Không tự gọi mình expert ở mọi công nghệ; chọn 1–2 điểm có thể trả lời sâu."
+      ],
+      "shadowing": "In my current role, / I work on APIs / and help the team plan releases. / My contribution was building the order API.",
+      "rubric": [
+        "Người nghe biết vai trò của tôi trong 15 giây đầu.",
+        "Tôi nêu một đóng góp cá nhân có ví dụ.",
+        "Tôi giải thích được vì sao muốn vai trò này mà không nói xấu công ty cũ."
+      ],
+      "grammar": "Dùng quá khứ đơn cho việc đã làm (I built / checked / helped); dùng hiện tại cho vai trò hiện tại. I would + động từ chỉ cách làm giả định.",
+      "duration": "35–40 phút"
+    },
+    {
+      "id": "project-deep-dive",
+      "title": "Kể dự án đã làm · Project deep dive",
+      "stage": 4,
+      "mission": "Kể một dự án thật trong 2 phút, rồi bảo vệ phạm vi cá nhân, quyết định và kết quả qua 6 câu hỏi sâu.",
+      "input": "Interviewer: Walk me through a project you are proud of.\nCandidate: The goal was to help store staff manage orders in one place. Before the project, they copied information between spreadsheets and often missed updates. Our team had four people, and we had eight weeks for the first release. I was responsible for the order API and the import flow. We chose a simple scheduled import because the client did not need live updates yet. The main constraint was the delivery date, so we kept advanced reports out of the first release. I discussed that scope with the product owner and wrote down the trade-off. We tested the import with sample files and asked two staff members to try the workflow. As a result, they could complete the agreed order flow in acceptance testing. We did not measure time savings after launch. If I did it again, I would agree on those measurements before development started.",
+      "chunks": [
+        {
+          "id": "experience-6",
+          "text": "The goal was to …",
+          "meaning": "Mục tiêu là…",
+          "use": "Bắt đầu bằng nhu cầu người dùng",
+          "pattern": "The goal was to + verb",
+          "simple": "The goal was to reduce errors.",
+          "example": "The goal was to help staff manage orders in one place."
+        },
+        {
+          "id": "experience-7",
+          "text": "I was responsible for …",
+          "meaning": "Tôi phụ trách…",
+          "use": "Giới hạn ownership cá nhân",
+          "pattern": "I was responsible for + noun / V-ing",
+          "simple": "I was responsible for testing.",
+          "example": "I was responsible for the order API and the import flow."
+        },
+        {
+          "id": "experience-8",
+          "text": "The main constraint was …",
+          "meaning": "Ràng buộc chính là…",
+          "use": "Giải thích hoàn cảnh quyết định",
+          "pattern": "The main constraint was + noun",
+          "simple": "The main constraint was time.",
+          "example": "The main constraint was the eight-week delivery date."
+        },
+        {
+          "id": "experience-9",
+          "text": "As a result, …",
+          "meaning": "Kết quả là…",
+          "use": "Nêu kết quả có bằng chứng",
+          "pattern": "As a result, + clause",
+          "simple": "As a result, the test passed.",
+          "example": "As a result, staff completed the agreed flow in acceptance testing."
+        },
+        {
+          "id": "experience-10",
+          "text": "If I did it again, I would …",
+          "meaning": "Nếu làm lại, tôi sẽ…",
+          "use": "Phản tư cụ thể, không phủ nhận toàn bộ dự án",
+          "pattern": "If I did it again, I would + verb",
+          "simple": "If I did it again, I would test earlier.",
+          "example": "If I did it again, I would agree on success measures before development."
+        }
+      ],
+      "terms": [
+        {
+          "term": "scope",
+          "meaning": "Phạm vi đã thống nhất",
+          "usage": "agree on the release scope",
+          "pitfall": "Không đồng nhất scope với mọi mong muốn của khách hàng."
+        },
+        {
+          "term": "ownership",
+          "meaning": "Phần chịu trách nhiệm đến cùng",
+          "usage": "take ownership of the import flow",
+          "pitfall": "Nêu giới hạn, người quyết định và người phối hợp."
+        },
+        {
+          "term": "constraint",
+          "meaning": "Ràng buộc",
+          "usage": "work within a time constraint",
+          "pitfall": "Phân biệt điều bắt buộc với sở thích công nghệ."
+        },
+        {
+          "term": "acceptance criteria",
+          "meaning": "Tiêu chí nghiệm thu",
+          "usage": "define acceptance criteria",
+          "pitfall": "Cần hành vi quan sát được, không chỉ easy to use."
+        },
+        {
+          "term": "trade-off",
+          "meaning": "Sự đánh đổi",
+          "usage": "explain a design trade-off",
+          "pitfall": "Nêu cả lợi ích và cái mất, không chỉ ưu điểm."
+        }
+      ],
+      "checks": [
+        {
+          "question": "Why did the team choose a scheduled import?",
+          "model": "The client did not need live updates yet."
+        },
+        {
+          "question": "What did the candidate own?",
+          "model": "The order API and the import flow."
+        },
+        {
+          "question": "What outcome was verified, and what was not measured?",
+          "model": "Staff completed the agreed flow in acceptance testing; time savings after launch were not measured."
+        }
+      ],
+      "followups": [
+        "Who used the system, and what did their workflow look like before?",
+        "Draw the request or data flow in words. Where did your work start and end?",
+        "Which alternative did you reject, and why was it less suitable?",
+        "What did you cut from the release? Who agreed to that?",
+        "How do you know the result improved the user experience?",
+        "What would you change if the client needed updates immediately?"
+      ],
+      "quiz": [
+        {
+          "question": "You have acceptance-test results but no production metrics. What can you say?",
+          "options": [
+            "We proved a 50% productivity increase.",
+            "Staff completed the agreed flow in acceptance testing."
+          ],
+          "answer": 1,
+          "explanation": "Report the evidence you actually have and state what was not measured."
+        },
+        {
+          "question": "What makes a design explanation stronger?",
+          "options": [
+            "Connect the choice to a constraint and name the trade-off.",
+            "List many framework names."
+          ],
+          "answer": 0,
+          "explanation": "The interviewer needs to understand why the choice suited this project."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Điền thẻ dự án: người dùng → vấn đề → team/thời gian → phạm vi cá nhân → 2 lựa chọn → kết quả.",
+        "Chuẩn bị đường đi dữ liệu bằng lời: user → API → xử lý → lưu trữ → phản hồi; chỉ dùng chi tiết bạn hiểu.",
+        "Ghi bằng chứng có thật: nghiệm thu, lỗi trước/sau, phản hồi, số đo nếu có; ghi rõ phần chưa đo."
+      ],
+      "speakingGuide": [
+        "20 giây: bối cảnh và mục tiêu nghiệp vụ.",
+        "30 giây: phạm vi của team và phần riêng của bạn.",
+        "40 giây: lựa chọn, phương án bị loại và ràng buộc.",
+        "30 giây: kết quả có căn cứ và điều sẽ làm khác."
+      ],
+      "pitfalls": [
+        "Đừng dành cả 2 phút đọc tech stack.",
+        "Nếu nói we built…, nối ngay I was responsible for… để làm rõ đóng góp.",
+        "Phân biệt prototype, dự án đã launch và dự án dừng giữa chừng."
+      ],
+      "shadowing": "The goal was to help store staff / manage orders in one place. / I was responsible for the order API / and the import flow.",
+      "rubric": [
+        "Có mục tiêu nghiệp vụ rõ.",
+        "Có lựa chọn và trade-off cụ thể.",
+        "Phân biệt kết quả quan sát được và tác động chưa đo."
+      ],
+      "grammar": "Dùng quá khứ đơn cho việc đã làm (I built / checked / helped); dùng hiện tại cho vai trò hiện tại. I would + động từ chỉ cách làm giả định.",
+      "duration": "35–40 phút"
+    },
+    {
+      "id": "issue-resolution",
+      "title": "Kể issue khó · Investigation, fix & prevention",
+      "stage": 4,
+      "mission": "Kể một vấn đề trong 2 phút theo bối cảnh → điều tra → xử lý → kiểm chứng → phòng ngừa, phân biệt giả thuyết và nguyên nhân đã xác nhận.",
+      "input": "Interviewer: Tell me about a difficult production issue you solved.\nCandidate: We noticed that some customers received two confirmation emails for one order. The order itself was not duplicated, but support received confused messages. My first step was to compare the order records with the email job logs. At first, I thought the checkout page sent two requests. The logs did not support that idea. After checking the retry path, I found that the email job could run again after a timeout. I worked with a teammate to stop the affected retry path while we prepared a safer fix. I added a check using the order ID before sending another confirmation. We verified the fix by replaying the timeout case in staging and watching the release with support. To prevent this from happening again, we added a regression test and documented the retry behavior. I learned to separate the customer impact from my first technical guess.",
+      "chunks": [
+        {
+          "id": "experience-11",
+          "text": "We noticed that …",
+          "meaning": "Chúng tôi nhận thấy…",
+          "use": "Nêu triệu chứng quan sát được",
+          "pattern": "We noticed that + clause",
+          "simple": "We noticed that the test failed.",
+          "example": "We noticed that customers received two confirmation emails."
+        },
+        {
+          "id": "experience-12",
+          "text": "My first step was to …",
+          "meaning": "Bước đầu tiên của tôi là…",
+          "use": "Kể việc điều tra đã làm",
+          "pattern": "My first step was to + verb",
+          "simple": "My first step was to read the logs.",
+          "example": "My first step was to compare order records with email job logs."
+        },
+        {
+          "id": "experience-13",
+          "text": "At first, I thought …",
+          "meaning": "Ban đầu, tôi nghĩ…",
+          "use": "Nêu giả thuyết ban đầu, có thể sai",
+          "pattern": "At first, I thought + clause",
+          "simple": "At first, I thought the file was empty.",
+          "example": "At first, I thought the checkout page sent two requests."
+        },
+        {
+          "id": "experience-14",
+          "text": "We verified the fix by …",
+          "meaning": "Chúng tôi kiểm chứng bản sửa bằng…",
+          "use": "Nêu cách test và theo dõi thực tế",
+          "pattern": "We verified the fix by + V-ing",
+          "simple": "We verified the fix by repeating the test.",
+          "example": "We verified the fix by replaying the timeout case in staging."
+        },
+        {
+          "id": "experience-15",
+          "text": "To prevent this from happening again, we …",
+          "meaning": "Để tránh tái diễn, chúng tôi…",
+          "use": "Kết thúc bằng thay đổi phòng ngừa",
+          "pattern": "To prevent this from happening again, we + past verb",
+          "simple": "To prevent this from happening again, we added a test.",
+          "example": "To prevent this from happening again, we tested the retry path."
+        }
+      ],
+      "terms": [
+        {
+          "term": "symptom",
+          "meaning": "Triệu chứng quan sát được",
+          "usage": "describe the symptom",
+          "pitfall": "Triệu chứng chưa phải nguyên nhân."
+        },
+        {
+          "term": "root cause",
+          "meaning": "Nguyên nhân gốc",
+          "usage": "confirm the root cause",
+          "pitfall": "Không gọi một phỏng đoán là nguyên nhân đã xác nhận."
+        },
+        {
+          "term": "mitigation",
+          "meaning": "Biện pháp giảm ảnh hưởng tạm thời",
+          "usage": "apply a temporary mitigation",
+          "pitfall": "Giảm tác động khác sửa tận gốc."
+        },
+        {
+          "term": "regression test",
+          "meaning": "Test ngăn lỗi cũ quay lại",
+          "usage": "add a regression test",
+          "pitfall": "Nêu tình huống test, không chỉ nói add more tests."
+        },
+        {
+          "term": "rollback",
+          "meaning": "Quay về bản trước",
+          "usage": "prepare a rollback plan",
+          "pitfall": "Kể điều đã làm; nếu chưa rollback, nói đó là phương án dự phòng."
+        }
+      ],
+      "checks": [
+        {
+          "question": "What was the customer impact?",
+          "model": "Customers received duplicate emails and contacted support; orders were not duplicated."
+        },
+        {
+          "question": "Which first guess was not supported by the logs?",
+          "model": "The guess that checkout sent two requests."
+        },
+        {
+          "question": "How did the team verify the fix?",
+          "model": "They replayed the timeout case in staging and watched the release with support."
+        }
+      ],
+      "followups": [
+        "How did you determine the impact and urgency?",
+        "What evidence ruled out your first hypothesis?",
+        "What did you do personally, and who helped you?",
+        "Why was your temporary mitigation acceptable? What did it affect?",
+        "What failure case did you add to the regression test?",
+        "What would you do if the same symptom returned after release?"
+      ],
+      "quiz": [
+        {
+          "question": "Logs contradict your first guess. What should your story show?",
+          "options": [
+            "I kept my original conclusion.",
+            "I changed my hypothesis based on the evidence."
+          ],
+          "answer": 1,
+          "explanation": "A strong investigation updates the explanation when evidence changes."
+        },
+        {
+          "question": "Which statement separates mitigation from prevention?",
+          "options": [
+            "We paused affected retries, then added a fix and a regression test.",
+            "We told support the issue was impossible."
+          ],
+          "answer": 0,
+          "explanation": "Explain the immediate action and the later work that reduces recurrence."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Chọn 1 issue thật; ghi triệu chứng, người bị ảnh hưởng và cách biết mức độ.",
+        "Viết timeline 4 mốc: phát hiện → giả thuyết/test → giảm tác động → fix và kiểm chứng.",
+        "Ghi rõ điều chưa biết. Ví dụ là một câu chuyện giản lược, không phải thiết kế bảo đảm gửi email đúng một lần trong mọi hệ thống."
+      ],
+      "speakingGuide": [
+        "20 giây: triệu chứng và ảnh hưởng nghiệp vụ.",
+        "45 giây: hai giả thuyết, bằng chứng và việc bạn thực hiện.",
+        "35 giây: giảm tác động, fix, test và theo dõi sau release.",
+        "20 giây: bài học và phòng ngừa."
+      ],
+      "pitfalls": [
+        "Không đổ lỗi cho member hay nói I fixed everything mà không giải thích.",
+        "Đừng nói fixed khi mới triển khai mà chưa kiểm chứng.",
+        "Nếu chưa xử lý production incident, kể bug ở staging và nói rõ môi trường."
+      ],
+      "shadowing": "At first, / I thought the checkout page sent two requests. / The logs did not support that idea. / My first step was to compare the records.",
+      "rubric": [
+        "Có bằng chứng để thay đổi hoặc xác nhận giả thuyết.",
+        "Tách giảm tác động khỏi sửa tận gốc.",
+        "Nêu kiểm chứng và một hành động phòng ngừa."
+      ],
+      "grammar": "Dùng quá khứ đơn cho việc đã làm (I built / checked / helped); dùng hiện tại cho vai trò hiện tại. I would + động từ chỉ cách làm giả định.",
+      "duration": "35–40 phút"
+    },
+    {
+      "id": "support-teammates",
+      "title": "Hỗ trợ member · Coaching without taking over",
+      "stage": 5,
+      "mission": "Kể trong 90–120 giây cách giúp một member vượt blocker nhưng vẫn tự làm được việc; xử lý bất đồng và áp lực deadline.",
+      "input": "Interviewer: Tell me about a time you helped a teammate who was struggling.\nCandidate: A new teammate was working on an import feature and had trouble with validation errors. I asked them to show me one failing example and explain what they had already tried. Instead of taking over, I suggested a short pairing session. We traced one row through the code and found that the validation message did not identify the field. I helped them break the task into smaller steps: reproduce the failure, improve the message, and add a test. They wrote the change, and I reviewed it with them. We agreed on a checkpoint the next afternoon because the release was close. I also told our lead what support was needed. By the next review, the teammate could explain the failure and handle a similar case independently. I learned that useful support should make the next task easier for the other person, not just finish today's ticket.",
+      "chunks": [
+        {
+          "id": "experience-16",
+          "text": "I asked them to …",
+          "meaning": "Tôi đề nghị bạn ấy…",
+          "use": "Tìm hiểu trước khi đưa giải pháp",
+          "pattern": "I asked them to + verb",
+          "simple": "I asked them to explain the error.",
+          "example": "I asked them to show one failing example."
+        },
+        {
+          "id": "experience-17",
+          "text": "Instead of taking over, I …",
+          "meaning": "Thay vì làm thay, tôi…",
+          "use": "Nêu cách hỗ trợ mà vẫn giữ ownership",
+          "pattern": "Instead of taking over, I + past verb",
+          "simple": "Instead of taking over, I asked a question.",
+          "example": "Instead of taking over, I suggested a short pairing session."
+        },
+        {
+          "id": "experience-18",
+          "text": "I helped them break … into …",
+          "meaning": "Tôi giúp bạn ấy chia… thành…",
+          "use": "Chia nhỏ blocker thành hành động",
+          "pattern": "I helped them break + task + into + steps",
+          "simple": "I helped them break the work into two steps.",
+          "example": "I helped them break the import fix into smaller steps."
+        },
+        {
+          "id": "experience-19",
+          "text": "We agreed on …",
+          "meaning": "Chúng tôi thống nhất…",
+          "use": "Nêu checkpoint hay trách nhiệm chung",
+          "pattern": "We agreed on + noun",
+          "simple": "We agreed on a time.",
+          "example": "We agreed on a checkpoint the next afternoon."
+        },
+        {
+          "id": "experience-20",
+          "text": "By the next review, …",
+          "meaning": "Đến lần review tiếp theo,…",
+          "use": "Cho thấy khả năng tự làm sau hỗ trợ",
+          "pattern": "By the next review, + clause",
+          "simple": "By the next review, the test passed.",
+          "example": "By the next review, they could explain the failure independently."
+        }
+      ],
+      "terms": [
+        {
+          "term": "blocker",
+          "meaning": "Vướng mắc ngăn tiến triển",
+          "usage": "remove a blocker",
+          "pitfall": "Hỏi đã thử gì trước khi kết luận thiếu năng lực."
+        },
+        {
+          "term": "pairing",
+          "meaning": "Cùng làm để hiểu và xử lý",
+          "usage": "a short pairing session",
+          "pitfall": "Không phải một người làm hết, người kia chỉ nhìn."
+        },
+        {
+          "term": "constructive feedback",
+          "meaning": "Góp ý giúp cải thiện",
+          "usage": "give constructive feedback",
+          "pitfall": "Góp ý hành vi/code và bước cải thiện, không công kích cá nhân."
+        },
+        {
+          "term": "checkpoint",
+          "meaning": "Mốc kiểm tra tiến độ",
+          "usage": "agree on a checkpoint",
+          "pitfall": "Cần thời điểm và kết quả mong đợi."
+        },
+        {
+          "term": "escalation",
+          "meaning": "Nhờ cấp phù hợp hỗ trợ quyết định",
+          "usage": "escalate a delivery risk",
+          "pitfall": "Nêu rủi ro và đề xuất, không chỉ kể lỗi của người khác."
+        }
+      ],
+      "checks": [
+        {
+          "question": "What did the candidate ask before giving advice?",
+          "model": "They asked for a failing example and what the teammate had already tried."
+        },
+        {
+          "question": "Who wrote the change?",
+          "model": "The teammate wrote it; the candidate reviewed it with them."
+        },
+        {
+          "question": "What evidence suggests the support helped?",
+          "model": "The teammate could explain the failure and handle a similar case independently."
+        }
+      ],
+      "followups": [
+        "How did you find out whether the blocker was technical or an unclear requirement?",
+        "What if the teammate disagreed with your review comment?",
+        "What would you do if the deadline was tomorrow?",
+        "How did you make sure they still owned the task?",
+        "When would you involve the team lead?",
+        "How did you check that your support helped beyond that one ticket?"
+      ],
+      "quiz": [
+        {
+          "question": "Which feedback is actionable?",
+          "options": [
+            "You are careless.",
+            "This error message misses the field name. Can we add it and test the case?"
+          ],
+          "answer": 1,
+          "explanation": "Specific feedback identifies the problem and a practical next step."
+        },
+        {
+          "question": "Which result best shows learning?",
+          "options": [
+            "I rewrote everything myself.",
+            "They handled a similar case independently."
+          ],
+          "answer": 1,
+          "explanation": "Independence is evidence that the support transferred understanding."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Chọn tình huống có blocker cụ thể, tránh tên thật nếu không cần.",
+        "Ghi câu hỏi bạn đã dùng, cách chia việc, người viết code và cách follow-up.",
+        "Chuẩn bị nhánh khó: member bất đồng, vẫn mắc sau hỗ trợ, hoặc deadline gấp."
+      ],
+      "speakingGuide": [
+        "20 giây: blocker và ảnh hưởng đến team.",
+        "40 giây: cách lắng nghe, cùng điều tra và hỗ trợ.",
+        "30 giây: ownership, checkpoint và phối hợp lead.",
+        "20 giây: dấu hiệu member tự làm tốt hơn."
+      ],
+      "pitfalls": [
+        "Không mô tả member là weak/lazy; nói rõ khó khăn quan sát được.",
+        "Không biến hỗ trợ thành câu chuyện mình là người hùng.",
+        "Nếu cần tự xử lý vì khẩn cấp, nói rõ lý do và buổi bàn giao/học lại sau đó."
+      ],
+      "shadowing": "Instead of taking over, / I suggested a short pairing session. / We agreed on a checkpoint / the next afternoon.",
+      "rubric": [
+        "Có lắng nghe trước khi hướng dẫn.",
+        "Member vẫn có phần việc tự chịu trách nhiệm.",
+        "Có kết quả quan sát được và cách theo dõi."
+      ],
+      "grammar": "Dùng quá khứ đơn cho việc đã làm (I built / checked / helped); dùng hiện tại cho vai trò hiện tại. I would + động từ chỉ cách làm giả định.",
+      "duration": "35–40 phút"
+    },
+    {
+      "id": "sales-proposal",
+      "title": "Hỗ trợ sales · Discovery, estimate & proposal",
+      "stage": 5,
+      "mission": "Kể trong 2 phút cách biến yêu cầu chưa rõ thành proposal: làm rõ mục tiêu, phạm vi, giả định, estimate và rủi ro.",
+      "input": "Interviewer: Have you supported sales before a project was signed?\nCandidate: Yes. A potential client wanted a reporting dashboard and asked for a fixed delivery date. I worked with sales to clarify the business goal before suggesting a solution. The client needed a weekly view of orders, not a live analytics platform. To clarify the scope, I asked which reports were essential and who would approve them. Based on the information available, I proposed a small first phase with one data source and three reports. This estimate assumed that the client would provide sample data and access in the first week. The main risk was poor data quality, so I recommended a discovery task before confirming the final effort. I documented the exclusions and reviewed the proposal with our delivery lead. Before committing to a date, we agreed to validate the import with a sample file. Sales used the revised scope in the next client meeting; I did not own the commercial negotiation.",
+      "chunks": [
+        {
+          "id": "experience-21",
+          "text": "I worked with sales to …",
+          "meaning": "Tôi phối hợp sales để…",
+          "use": "Làm rõ vai trò hỗ trợ presales",
+          "pattern": "I worked with sales to + verb",
+          "simple": "I worked with sales to prepare a demo.",
+          "example": "I worked with sales to clarify the business goal."
+        },
+        {
+          "id": "experience-22",
+          "text": "To clarify the scope, I asked …",
+          "meaning": "Để làm rõ phạm vi, tôi hỏi…",
+          "use": "Kể câu hỏi discovery thực tế",
+          "pattern": "To clarify the scope, I asked + question clause",
+          "simple": "To clarify the scope, I asked who would use it.",
+          "example": "To clarify the scope, I asked which reports were essential."
+        },
+        {
+          "id": "experience-23",
+          "text": "Based on the information available, …",
+          "meaning": "Dựa trên thông tin hiện có,…",
+          "use": "Đặt giới hạn cho đề xuất ban đầu",
+          "pattern": "Based on the information available, + clause",
+          "simple": "Based on the information available, we need another meeting.",
+          "example": "Based on the information available, I proposed a small first phase."
+        },
+        {
+          "id": "experience-24",
+          "text": "This estimate assumed that …",
+          "meaning": "Ước lượng này giả định rằng…",
+          "use": "Nêu dependency ảnh hưởng estimate",
+          "pattern": "This estimate assumed that + clause",
+          "simple": "This estimate assumed that the data was ready.",
+          "example": "This estimate assumed that the client would provide access in week one."
+        },
+        {
+          "id": "experience-25",
+          "text": "Before committing to …, we …",
+          "meaning": "Trước khi cam kết…, chúng tôi…",
+          "use": "Nêu bước xác minh trước lời hứa",
+          "pattern": "Before committing to + noun / V-ing, we + past verb",
+          "simple": "Before committing to a date, we checked the scope.",
+          "example": "Before committing to a date, we validated the import with sample data."
+        }
+      ],
+      "terms": [
+        {
+          "term": "discovery",
+          "meaning": "Giai đoạn tìm hiểu nhu cầu",
+          "usage": "run a discovery session",
+          "pitfall": "Hỏi mục tiêu và workflow trước khi chốt giải pháp."
+        },
+        {
+          "term": "proposal",
+          "meaning": "Đề xuất giải pháp/phạm vi triển khai",
+          "usage": "prepare a technical proposal",
+          "pitfall": "Không chỉ là báo giá; cần phạm vi, giả định và cách nghiệm thu."
+        },
+        {
+          "term": "estimate",
+          "meaning": "Ước lượng",
+          "usage": "provide an effort estimate",
+          "pitfall": "Estimate không phải lời bảo đảm khi giả định chưa được kiểm chứng."
+        },
+        {
+          "term": "assumption",
+          "meaning": "Giả định",
+          "usage": "document an assumption",
+          "pitfall": "Nêu ai xác nhận và nếu sai thì ảnh hưởng gì."
+        },
+        {
+          "term": "exclusion",
+          "meaning": "Phần nằm ngoài phạm vi",
+          "usage": "list scope exclusions",
+          "pitfall": "Nói rõ để khách hàng không hiểu demo bao gồm mọi thứ."
+        }
+      ],
+      "checks": [
+        {
+          "question": "What did the client actually need?",
+          "model": "A weekly view of orders, rather than live analytics."
+        },
+        {
+          "question": "What did the estimate depend on?",
+          "model": "Sample data and access being available in the first week."
+        },
+        {
+          "question": "What was the candidate responsible for, and what did they not own?",
+          "model": "They clarified technical scope and reviewed the proposal; they did not own commercial negotiation."
+        }
+      ],
+      "followups": [
+        "What discovery questions did you ask the client directly?",
+        "How did you turn those answers into deliverables and acceptance criteria?",
+        "How did you estimate work when the data quality was unknown?",
+        "What did you include and exclude in the first phase?",
+        "What if sales promised an earlier date without asking engineering?",
+        "Did the client sign? What evidence do you have about your contribution?"
+      ],
+      "quiz": [
+        {
+          "question": "The client has not provided sample data. Which estimate is clearer?",
+          "options": [
+            "It will definitely take ten days.",
+            "The estimate assumes usable sample data; we need to validate that first."
+          ],
+          "answer": 1,
+          "explanation": "Make the dependency explicit before turning an estimate into a commitment."
+        },
+        {
+          "question": "Sales asks for a shorter timeline. What helps?",
+          "options": [
+            "Offer a smaller first phase and review risks with delivery.",
+            "Promise the original scope in half the time."
+          ],
+          "answer": 0,
+          "explanation": "Discuss scope, capacity and uncertainty together with the people delivering the work."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Chuẩn bị mini proposal bằng 6 gạch đầu dòng: mục tiêu, deliverables, ngoài phạm vi, giả định, effort/rủi ro, nghiệm thu.",
+        "Ghi 3 câu discovery: ai dùng, quyết định nào cần hỗ trợ, hiện làm bằng cách nào.",
+        "Nếu chưa làm presales, dùng bài mô phỏng và nói I would…; không kể như hợp đồng đã thắng."
+      ],
+      "speakingGuide": [
+        "20 giây: yêu cầu ban đầu và vai trò sales/engineering.",
+        "35 giây: câu hỏi discovery và nhu cầu thật.",
+        "45 giây: phạm vi đề xuất, estimate, giả định và rủi ro.",
+        "20 giây: bước xác nhận và kết quả thương mại thật sự biết."
+      ],
+      "pitfalls": [
+        "Không nhận công thắng dự án chỉ vì đã làm proposal; nêu phần bạn đóng góp.",
+        "Phân biệt effort (person-days) và thời gian lịch (calendar weeks).",
+        "Không hứa tính năng hay deadline chưa được delivery team xác nhận."
+      ],
+      "shadowing": "Based on the information available, / I proposed a small first phase. / This estimate assumed that / the client would provide sample data.",
+      "rubric": [
+        "Có ít nhất 2 câu hỏi discovery cụ thể.",
+        "Đề xuất nêu cả deliverables, exclusions và assumptions.",
+        "Kết quả thương mại không vượt quá bằng chứng mình biết."
+      ],
+      "grammar": "Dùng quá khứ đơn cho việc đã làm (I built / checked / helped); dùng hiện tại cho vai trò hiện tại. I would + động từ chỉ cách làm giả định.",
+      "duration": "35–40 phút"
+    },
+    {
+      "id": "client-demo",
+      "title": "Demo cho khách hàng · Value, objections & handoff",
+      "stage": 5,
+      "mission": "Kể một demo presales trong 2 phút, rồi xử lý câu hỏi về tính năng chưa có, dữ liệu thật, lỗi demo và bước tiếp theo.",
+      "input": "Interviewer: Tell me about a demo you prepared to help win a project.\nCandidate: A client wanted to see whether our proposed dashboard could help a store manager review delayed orders. The purpose of the demo was to test that workflow, not show every possible feature. I built a small prototype with sample data and rehearsed the story with sales. Let me walk you through the flow: the manager opens the list, filters delayed orders, and checks the reason for one delay. What this shows is how the proposed screen could support a daily review. This version did not include live data or access control. When the client asked about those features, I explained the limit and noted them for the proposal. I had screenshots ready in case the demo failed. The client asked for a follow-up workshop with their operations team. The next step was to confirm the workflow and update the scope. That was a useful signal of interest, but it was not a signed contract.",
+      "chunks": [
+        {
+          "id": "experience-26",
+          "text": "The purpose of the demo was to …",
+          "meaning": "Mục đích demo là…",
+          "use": "Nối demo với câu hỏi nghiệp vụ",
+          "pattern": "The purpose of the demo was to + verb",
+          "simple": "The purpose of the demo was to get feedback.",
+          "example": "The purpose of the demo was to test the delayed-order workflow."
+        },
+        {
+          "id": "experience-27",
+          "text": "Let me walk you through …",
+          "meaning": "Để tôi trình bày từng bước…",
+          "use": "Dẫn người xem qua một luồng",
+          "pattern": "Let me walk you through + noun",
+          "simple": "Let me walk you through the screen.",
+          "example": "Let me walk you through the order review flow."
+        },
+        {
+          "id": "experience-28",
+          "text": "What this shows is …",
+          "meaning": "Điều này cho thấy…",
+          "use": "Giải thích giá trị của thao tác vừa demo",
+          "pattern": "What this shows is + noun / clause",
+          "simple": "What this shows is the current status.",
+          "example": "What this shows is how a manager could review delayed orders."
+        },
+        {
+          "id": "experience-29",
+          "text": "This version does not include …",
+          "meaning": "Phiên bản này chưa có…",
+          "use": "Nói rõ giới hạn khi khách hỏi sâu",
+          "pattern": "This version does not include + noun",
+          "simple": "This version does not include exports.",
+          "example": "This version does not include live data or access control."
+        },
+        {
+          "id": "experience-30",
+          "text": "The next step was to …",
+          "meaning": "Bước tiếp theo là…",
+          "use": "Kết thúc bằng follow-up cụ thể",
+          "pattern": "The next step was to + verb",
+          "simple": "The next step was to book a meeting.",
+          "example": "The next step was to confirm the workflow with operations."
+        }
+      ],
+      "terms": [
+        {
+          "term": "prototype",
+          "meaning": "Bản mẫu để kiểm tra ý tưởng",
+          "usage": "build a prototype",
+          "pitfall": "Prototype không tự chứng minh hệ thống sẵn sàng production."
+        },
+        {
+          "term": "sample data",
+          "meaning": "Dữ liệu mẫu",
+          "usage": "use clearly labelled sample data",
+          "pitfall": "Nói rõ dữ liệu giả lập, không trình bày như dữ liệu live."
+        },
+        {
+          "term": "objection",
+          "meaning": "Băn khoăn hoặc phản đối của khách",
+          "usage": "address a client objection",
+          "pitfall": "Hỏi rõ nhu cầu đằng sau câu phản đối trước khi hứa thêm tính năng."
+        },
+        {
+          "term": "fallback",
+          "meaning": "Phương án dự phòng",
+          "usage": "prepare a demo fallback",
+          "pitfall": "Ảnh/video dự phòng phải được giới thiệu đúng là bản ghi."
+        },
+        {
+          "term": "handoff",
+          "meaning": "Bàn giao thông tin/trách nhiệm",
+          "usage": "prepare a delivery handoff",
+          "pitfall": "Chuyển cả giới hạn, cam kết và câu hỏi chưa chốt cho team delivery."
+        }
+      ],
+      "checks": [
+        {
+          "question": "Which workflow did the demo test?",
+          "model": "A store manager reviewing delayed orders."
+        },
+        {
+          "question": "Which features were missing?",
+          "model": "Live data and access control."
+        },
+        {
+          "question": "What was the outcome, and what must not be claimed?",
+          "model": "The client requested a workshop; the candidate must not claim a signed contract."
+        }
+      ],
+      "followups": [
+        "Why did you choose this workflow instead of showing all screens?",
+        "How did you split preparation between you and sales?",
+        "The client asks: Does this already work with our live data? Respond directly.",
+        "The demo fails during the meeting. What do you say and do?",
+        "The client says a competitor has more features. How do you respond?",
+        "What did you hand over to delivery, and did the opportunity become a project?"
+      ],
+      "quiz": [
+        {
+          "question": "The demo uses sample data. A client asks if the integration is ready.",
+          "options": [
+            "Yes, everything is ready for production.",
+            "This uses sample data; we still need to validate your integration."
+          ],
+          "answer": 1,
+          "explanation": "State the demonstrated capability and the untested dependency separately."
+        },
+        {
+          "question": "A follow-up workshop is booked. Which outcome is accurate?",
+          "options": [
+            "We won the contract.",
+            "The client agreed to a workshop to confirm the workflow."
+          ],
+          "answer": 1,
+          "explanation": "Interest and an agreed next step are different from a signed contract."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Chọn một persona và một workflow 3 bước; ghi câu hỏi mà demo cần trả lời.",
+        "Lập bảng nói được bằng lời: đã chạy thật / giả lập / chưa có / cần xác nhận.",
+        "Chuẩn bị fallback, 2 câu objection và bàn giao gồm scope, feedback, việc còn mở, người phụ trách."
+      ],
+      "speakingGuide": [
+        "20 giây: mục tiêu khách hàng và vai trò bạn.",
+        "40 giây: luồng demo 3 bước và giá trị từng bước.",
+        "40 giây: giới hạn, câu hỏi khó và cách xử lý.",
+        "20 giây: follow-up, bàn giao và kết quả có bằng chứng."
+      ],
+      "pitfalls": [
+        "Không nói demo ổn nghĩa là production đã sẵn sàng.",
+        "Không né câu hỏi tính năng chưa có; nói giới hạn rồi cách xác minh.",
+        "Nếu chưa biết deal có ký không, nói I was not involved in the final commercial decision."
+      ],
+      "shadowing": "Let me walk you through the flow. / This version does not include live data. / The next step was to confirm the workflow.",
+      "rubric": [
+        "Demo giải quyết một câu hỏi của người dùng.",
+        "Nêu rõ dữ liệu và tính năng nào chỉ là mẫu.",
+        "Kết thúc với bước tiếp theo và người phụ trách."
+      ],
+      "grammar": "Dùng quá khứ đơn cho việc đã làm (I built / checked / helped); dùng hiện tại cho vai trò hiện tại. I would + động từ chỉ cách làm giả định.",
+      "duration": "35–40 phút"
+    },
+    {
+      "id": "experience-mock-interview",
+      "title": "Phỏng vấn thực tế · 60-minute experience interview",
+      "stage": 5,
+      "mission": "Mô phỏng 45 phút hỏi–đáp liên tục trong buổi 60 phút; dùng 5 chunk cũ, kể nhất quán đóng góp và bằng chứng qua các câu hỏi đào sâu.",
+      "input": "Interviewer: Give me a brief introduction, then choose one project for us to explore.\nCandidate: In my current role, I build backend services and support delivery. I would like to discuss an order management project. I was responsible for the order API and import flow.\nInterviewer: What went wrong, and what did you personally do?\nCandidate: Some confirmation emails were duplicated. My first step was to compare order records with email job logs. I worked with a teammate on the fix and tested the timeout case.\nInterviewer: Did you also support the client proposal?\nCandidate: Yes. This estimate assumed that sample data would be available early. I helped sales explain that dependency. We later demonstrated the workflow with sample data.\nInterviewer: Did your demo win the contract?\nCandidate: I cannot claim that. The next step was to confirm the workflow in a workshop. Sales handled the commercial decision. My evidence is the technical scope and demo feedback, not the final contract.",
+      "chunks": [
+        {
+          "id": "experience-2",
+          "text": "In my current role, I …",
+          "meaning": "Ở vai trò hiện tại, tôi…",
+          "use": "Tóm tắt công việc hiện tại",
+          "pattern": "In my current role, I + verb",
+          "simple": "In my current role, I review code.",
+          "example": "In my current role, I build APIs and support releases."
+        },
+        {
+          "id": "experience-7",
+          "text": "I was responsible for …",
+          "meaning": "Tôi phụ trách…",
+          "use": "Giới hạn ownership cá nhân",
+          "pattern": "I was responsible for + noun / V-ing",
+          "simple": "I was responsible for testing.",
+          "example": "I was responsible for the order API and the import flow."
+        },
+        {
+          "id": "experience-12",
+          "text": "My first step was to …",
+          "meaning": "Bước đầu tiên của tôi là…",
+          "use": "Kể việc điều tra đã làm",
+          "pattern": "My first step was to + verb",
+          "simple": "My first step was to read the logs.",
+          "example": "My first step was to compare order records with email job logs."
+        },
+        {
+          "id": "experience-24",
+          "text": "This estimate assumed that …",
+          "meaning": "Ước lượng này giả định rằng…",
+          "use": "Nêu dependency ảnh hưởng estimate",
+          "pattern": "This estimate assumed that + clause",
+          "simple": "This estimate assumed that the data was ready.",
+          "example": "This estimate assumed that the client would provide access in week one."
+        },
+        {
+          "id": "experience-30",
+          "text": "The next step was to …",
+          "meaning": "Bước tiếp theo là…",
+          "use": "Kết thúc bằng follow-up cụ thể",
+          "pattern": "The next step was to + verb",
+          "simple": "The next step was to book a meeting.",
+          "example": "The next step was to confirm the workflow with operations."
+        }
+      ],
+      "terms": [
+        {
+          "term": "evidence",
+          "meaning": "Bằng chứng cho điều mình kể",
+          "usage": "support a claim with evidence",
+          "pitfall": "Lần này ôn ý đã học: log, nghiệm thu, feedback; không cần bịa số."
+        },
+        {
+          "term": "personal contribution",
+          "meaning": "Đóng góp riêng của mình",
+          "usage": "separate my contribution from team results",
+          "pitfall": "Tái sử dụng contribution ở bài giới thiệu."
+        },
+        {
+          "term": "assumption",
+          "meaning": "Giả định",
+          "usage": "validate an estimate assumption",
+          "pitfall": "Ôn từ bài proposal; nói nếu giả định sai thì sao."
+        },
+        {
+          "term": "trade-off",
+          "meaning": "Sự đánh đổi",
+          "usage": "explain the trade-off clearly",
+          "pitfall": "Ôn từ bài dự án; phải nêu thứ phải hy sinh."
+        },
+        {
+          "term": "handoff",
+          "meaning": "Bàn giao",
+          "usage": "document the delivery handoff",
+          "pitfall": "Ôn từ bài demo; gồm cả những gì chưa được xác nhận."
+        }
+      ],
+      "checks": [
+        {
+          "question": "What did the candidate personally own?",
+          "model": "The order API and import flow."
+        },
+        {
+          "question": "How did the candidate begin investigating the issue?",
+          "model": "They compared order records with email job logs."
+        },
+        {
+          "question": "Why did the candidate not claim to have won the contract?",
+          "model": "Sales handled the commercial decision; their evidence only covered scope and demo feedback."
+        }
+      ],
+      "followups": [
+        "00–03 · Tell me about yourself. Why this role, and what relevant strength would you bring?",
+        "03–11 · Walk me through one project: users, goal, team, your ownership, constraints and result. Probe: what exactly did YOU deliver?",
+        "11–18 · Why did you choose that approach? Explain one rejected option. Probe: what would change with half the time or twice the scope?",
+        "18–26 · Tell me about a difficult issue. Probe: what was your first hypothesis, what evidence changed it, and how did you verify the fix?",
+        "26–32 · Tell me how you supported a teammate. Probe: what if they disagreed or the deadline was at risk? How did you know they improved?",
+        "32–38 · Describe your role in a proposal. Probe: discovery questions, estimate assumptions, exclusions, and a promise sales made that you could not confirm.",
+        "38–43 · Walk me through a client demo and one objection. Probe: what was simulated, what failed, what happened next, and was a contract signed?",
+        "43–45 · What would you do differently? Ask the interviewer two questions about ownership, delivery or success in the first three months."
+      ],
+      "quiz": [
+        {
+          "question": "The interviewer challenges an unsupported result. What should you do?",
+          "options": [
+            "Clarify what was observed and what was not measured.",
+            "Invent a number to sound confident."
+          ],
+          "answer": 0,
+          "explanation": "Credibility comes from accurate boundaries, even when the result is modest."
+        },
+        {
+          "question": "Your answer is becoming too long. What helps?",
+          "options": [
+            "Keep adding unrelated technical detail.",
+            "State the decision and evidence, then offer to go deeper."
+          ],
+          "answer": 1,
+          "explanation": "A concise answer leaves room for a real follow-up conversation."
+        }
+      ],
+      "sources": [],
+      "preparation": [
+        "Trước buổi mock, học buổi 13–18. Chọn 1 dự án chính và 1 câu chuyện dự phòng; giữ cùng dữ kiện xuyên suốt.",
+        "Chuẩn bị thẻ 4 từ khóa, đồng hồ và người hỏi nếu có. Tự luyện thì đọc từng câu hỏi, đóng tài liệu rồi nói; không có AI đóng vai trực tiếp.",
+        "Tính 60 phút: Warm-up 3 + Input 5 + Recall 2 + phỏng vấn 45 + Review 5. Các mốc dưới đây tính từ lúc bắt đầu phần Speak. Đọc sâu chunk và sửa bài ở lượt luyện riêng."
+      ],
+      "speakingGuide": [
+        "Phần Speak: bật đồng hồ riêng 45 phút, đi lần lượt 8 vòng có mốc thời gian.",
+        "Mỗi lượt trả lời chính 60–120 giây, dành phần còn lại cho câu hỏi đào sâu hoặc phản biện.",
+        "Người hỏi chỉ đưa một câu mỗi lần; lấy câu probe khi đáp án còn chung chung. Ghi lỗi và phản hồi sau 4–8 lượt.",
+        "Nếu hết giờ, ghi rõ câu chưa làm; hoàn thành chúng ở lượt sau trước khi lưu buổi luyện."
+      ],
+      "pitfalls": [
+        "Không ghép thành tích từ nhiều dự án thành một câu chuyện giả.",
+        "Nếu không có trải nghiệm presales, nói rõ và xử lý câu hỏi dưới dạng giả định.",
+        "Không đọc input mẫu trong 45 phút Speak; nói lại bằng dữ kiện của mình."
+      ],
+      "shadowing": "I was responsible for the order API. / My first step was to compare the records. / The next step was to confirm the workflow.",
+      "rubric": [
+        "Rõ ý: tôi trả lời đúng câu hỏi trong 60–120 giây mỗi lượt chính.",
+        "Ownership: tôi phân biệt I và we, không mâu thuẫn giữa các vòng.",
+        "Bằng chứng: có kết quả thật và thừa nhận chỗ chưa đo.",
+        "Chiều sâu: có lựa chọn, rủi ro và phản biện.",
+        "Giao tiếp: tôi hỏi làm rõ, xử lý follow-up và đặt 2 câu hỏi cho nhà tuyển dụng."
+      ],
+      "grammar": "Ôn các khung đã học: quá khứ đơn cho chuyện thật; I would cho giả định. Không thêm mẫu ngữ pháp mới trong buổi mock.",
+      "duration": "60 phút · gồm 45 phút phỏng vấn",
+      "phaseLabels": [
+        "01 · Warm-up · 3′",
+        "02 · Input · 5′",
+        "03 · Recall · 2′",
+        "04 · Interview · 45′",
+        "05 · Review · 5′"
       ]
     }
   ]
