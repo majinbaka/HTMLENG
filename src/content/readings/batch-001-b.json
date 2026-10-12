@@ -1,0 +1,997 @@
+[
+  {
+    "id": "reading-006",
+    "title": "Before You Sign: An Apartment Viewing Guide",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Đọc hướng dẫn thuê căn hộ, kiểm tra chi phí, giấy tờ và bàn giao trước khi ký.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "A listing for Green Court Apartments describes the building as a quiet place within walking distance of the station. That description may be useful, but it does not answer every question a future resident should ask. The following guide was prepared for people attending a viewing with the building's rental team. It explains the process from making an appointment to collecting keys. Visitors are encouraged to take notes and compare the written information with what they see. A friendly conversation during a viewing does not replace the terms in a signed agreement."
+      },
+      {
+        "label": "B",
+        "text": "Viewings normally take place between Tuesday and Saturday. You can request a time by email, giving your name, telephone number, and preferred moving date. The team sends a confirmation that includes the apartment number and the meeting point outside reception. A viewing lasts about thirty minutes. If you arrive late, the agent may need to shorten the visit because another appointment follows. You may bring a friend, but please mention this in your reply. The reception desk cannot arrange an immediate viewing for someone who arrives without an appointment."
+      },
+      {
+        "label": "C",
+        "text": "During the visit, check the things that will affect your normal routine. Turn on taps, look for marks around windows, and ask permission before opening cupboards. Try standing in the bedroom with the window closed to judge the noise from the road. The agent can show where washing machines are connected, but the apartment is supplied without a washing machine. Photographs are permitted inside the empty unit. Avoid photographing other residents or their belongings in shared areas. If something needs repair, ask for its condition and the planned repair date to be recorded."
+      },
+      {
+        "label": "D",
+        "text": "The advertised rent covers the apartment and access to the bicycle room. Electricity, water, and internet are paid separately by the resident. A monthly building service charge covers cleaning of shared spaces and maintenance of the lift. Ask for an example of the total monthly cost rather than comparing rent alone. Previous residents' electricity bills can indicate a possible range, although your own use may differ. Parking spaces are limited and require a separate agreement. Do not assume that an empty space seen during your visit is included or will remain available."
+      },
+      {
+        "label": "E",
+        "text": "People who wish to apply complete a short form and provide proof of identity and income. The team checks applications in the order in which complete documents arrive. Sending only the form does not reserve the apartment. Successful applicants receive a draft rental agreement by email and have two working days to review it. Read the sections about ending the tenancy, visitors, and repairs carefully. Questions can be sent to the rental team before you sign. The building does not require applicants to pay an application fee or buy a special inspection report."
+      },
+      {
+        "label": "F",
+        "text": "The security deposit is equal to one month's rent. It is paid after the agreement has been signed, together with the first rental payment. A receipt is sent when the transfer reaches the account stated in the agreement. Never rely on account details sent from an unfamiliar address without checking them with the team. The deposit is not the final month's rent. At the end of the tenancy, the apartment's condition is compared with the move-in record, and the team explains any proposed deduction in writing before returning the remaining money."
+      },
+      {
+        "label": "G",
+        "text": "On moving day, the resident and agent complete an inventory together. This record lists furniture, appliances, meter readings, and existing damage. A small scratch is easier to discuss before furniture and boxes fill the room. Residents have three days after receiving the keys to report anything missed during the inspection. Send photographs and a clear description by email so that they can be attached to the record. Keep your own copy of the completed inventory. This helps both sides distinguish earlier damage from a problem that appeared during the tenancy."
+      },
+      {
+        "label": "H",
+        "text": "After moving in, routine repair requests should be submitted through the resident portal. Describe what happened, when you noticed it, and whether the problem prevents normal use of the room. The team replies within two working days, although the actual repair may take longer if parts are needed. Urgent building problems use the telephone number displayed near reception. Residents should also read the shared-space rules, including the hours for noisy moving work. Planning a delivery within those hours makes moving easier for the new resident and for neighbours who already live there."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "viewing",
+        "meaning": "buổi xem căn hộ"
+      },
+      {
+        "term": "service charge",
+        "meaning": "phí dịch vụ tòa nhà"
+      },
+      {
+        "term": "security deposit",
+        "meaning": "tiền đặt cọc bảo đảm"
+      },
+      {
+        "term": "inventory",
+        "meaning": "biên bản kiểm kê khi bàn giao"
+      },
+      {
+        "term": "deduction",
+        "meaning": "khoản khấu trừ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the main purpose of this guide?",
+        "answer": "To explain the rental process and practical checks",
+        "explanation": "Bài hướng dẫn toàn bộ quy trình và các việc cần kiểm tra.",
+        "evidence": "It explains the process from making an appointment to collecting keys.",
+        "options": [
+          "To advertise a new railway station",
+          "To explain the rental process and practical checks",
+          "To compare local apartment prices",
+          "To teach residents how to repair a lift"
+        ]
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Which cost is included in the advertised rent?",
+        "answer": "Access to the bicycle room",
+        "explanation": "Đoạn D nói tiền thuê bao gồm quyền sử dụng phòng xe đạp.",
+        "evidence": "The advertised rent covers the apartment and access to the bicycle room.",
+        "options": [
+          "Internet",
+          "Water",
+          "Access to the bicycle room",
+          "A parking space"
+        ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should a visitor do about an item needing repair?",
+        "answer": "Ask for a written condition and repair date",
+        "explanation": "Cần ghi lại tình trạng và ngày sửa dự kiến.",
+        "evidence": "If something needs repair, ask for its condition and the planned repair date to be recorded.",
+        "options": [
+          "Repair it immediately",
+          "Ask for a written condition and repair date",
+          "Remove it from the apartment",
+          "Wait until the tenancy ends"
+        ]
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Visitors can walk in and receive an immediate viewing without booking.",
+        "answer": "False",
+        "explanation": "Đoạn B phủ định việc xem ngay khi chưa đặt lịch.",
+        "evidence": "The reception desk cannot arrange an immediate viewing for someone who arrives without an appointment.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The security deposit can replace the final month’s rent.",
+        "answer": "False",
+        "explanation": "Tiền đặt cọc không phải tiền thuê tháng cuối.",
+        "evidence": "The deposit is not the final month's rent.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The building has exactly twenty parking spaces.",
+        "answer": "Not Given",
+        "explanation": "Bài chỉ nói chỗ đỗ hạn chế, không nêu số lượng.",
+        "evidence": "Parking spaces are limited and require a separate agreement.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What appliance must residents supply themselves? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "a washing machine",
+        "explanation": "Căn hộ không cung cấp máy giặt.",
+        "evidence": "The agent can show where washing machines are connected, but the apartment is supplied without a washing machine."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long do residents have to report items missed in the move-in inspection? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "three days",
+        "explanation": "Thời hạn báo bổ sung là ba ngày sau khi nhận chìa khóa.",
+        "evidence": "Residents have three days after receiving the keys to report anything missed during the inspection."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains the order in which applications are checked?",
+        "answer": "E",
+        "explanation": "Đoạn E mô tả xét đơn theo lúc nhận đủ giấy tờ.",
+        "evidence": "The team checks applications in the order in which complete documents arrive.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes how to request routine repairs after moving in?",
+        "answer": "H",
+        "explanation": "Đoạn H hướng dẫn gửi yêu cầu qua cổng cư dân.",
+        "evidence": "After moving in, routine repair requests should be submitted through the resident portal.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reading-007",
+    "title": "A Clinic Appointment Without the Confusion",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Đọc thông báo về đặt lịch khám, giờ đến, phiên dịch và thủ tục thanh toán; tập trung vào quy trình.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Riverside Clinic has introduced a new appointment system after visitors reported confusion about booking messages and arrival times. This information sheet explains the practical arrangements for an ordinary appointment. It does not give advice about symptoms or treatment. Different services may send additional instructions, so patients should read every message connected with their booking. The clinic hopes that clearer information will reduce unnecessary journeys and help reception staff support visitors who need assistance. Anyone uncertain about an instruction can contact the booking team before the day of their visit."
+      },
+      {
+        "label": "B",
+        "text": "Appointments can be requested through the clinic website or by telephone during office hours. Online users choose a service and a preferred time, then submit their contact details. The first message confirms only that the request has been received. A second message confirms the appointment itself. Do not treat the first message as a booking confirmation. If the requested time is unavailable, the team offers another option. Patients should check that the name and telephone number in the confirmation are correct, especially when someone else has made the request on their behalf."
+      },
+      {
+        "label": "C",
+        "text": "The confirmation gives both the appointment time and the recommended arrival time. Patients should arrive fifteen minutes before their appointment. This allows time to check personal details and complete any forms requested by the service. Arriving much earlier does not move the appointment forward. Visitors who know they will be late should telephone reception rather than send a message through the booking website. The receptionist can check whether the appointment can still take place or whether another time is needed. The decision depends on the schedule for that particular service."
+      },
+      {
+        "label": "D",
+        "text": "Bring a form of identification and any documents specifically listed in the confirmation. If your address or contact number has changed, tell reception when you check in. The clinic uses these details to send follow-up booking information, so an old number can cause problems later. A patient who has completed an online form should still bring the reference number from the confirmation. Reception can use it to find the booking quickly. Printed copies are welcome, but visitors may also show the reference number on their phone at the desk."
+      },
+      {
+        "label": "E",
+        "text": "Patients who need an interpreter should request one when arranging the appointment. The booking team needs at least three working days to arrange an interpreter. Include the language required and whether you prefer telephone or in-person support. The team confirms which option is available before the appointment. Visitors should not assume that someone at reception speaks their language. A family member may accompany a patient, but the clinic asks patients to discuss interpretation needs with the booking team so that important information can be communicated clearly throughout the visit."
+      },
+      {
+        "label": "F",
+        "text": "The main entrance is on Bridge Road, next to the small public library. The entrance facing the car park is used by staff and deliveries. A ramp beside the main entrance provides access for visitors who use wheelchairs or have difficulty with steps. A bus stop is located across the road. The clinic has no visitor parking spaces, so drivers should allow time to find public parking nearby. Visitors needing help at the entrance can call the reception number in their confirmation. Staff can explain the route from the street to the waiting area."
+      },
+      {
+        "label": "G",
+        "text": "Payment arrangements vary by service and are stated in the appointment confirmation. Where a payment is required, patients receive an itemised receipt. Questions about fees should be raised with the booking team before the visit, particularly if a patient is unsure which service has been booked. Reception accepts bank cards but does not accept cash. A companion may pay on the patient's behalf. However, making a payment does not give that person access to private appointment information. The team will follow the clinic's consent process when someone requests information for another adult."
+      },
+      {
+        "label": "H",
+        "text": "If your plans change, use the cancellation link in the confirmation or telephone the booking team. Please cancel at least twenty-four hours before the appointment where possible. This gives the team time to offer the slot to someone else. Cancelling does not automatically create a new booking; you must request another appointment separately. After your visit, check any new booking message carefully. A recommendation to return on a certain date and a confirmed appointment are different things. Keeping the messages together makes it easier to know what has actually been arranged."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "confirmation",
+        "meaning": "thông báo xác nhận"
+      },
+      {
+        "term": "on behalf of",
+        "meaning": "thay mặt cho"
+      },
+      {
+        "term": "interpreter",
+        "meaning": "người phiên dịch"
+      },
+      {
+        "term": "itemised receipt",
+        "meaning": "biên lai liệt kê từng khoản"
+      },
+      {
+        "term": "cancellation link",
+        "meaning": "liên kết hủy lịch"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What does the first online message confirm?",
+        "answer": "Receipt of the request",
+        "explanation": "Tin đầu chỉ xác nhận đã nhận yêu cầu.",
+        "evidence": "The first message confirms only that the request has been received.",
+        "options": [
+          "The appointment time is guaranteed",
+          "Receipt of the request",
+          "Payment has been accepted",
+          "An interpreter is available"
+        ]
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What should a patient do when they know they will be late?",
+        "answer": "Telephone reception",
+        "explanation": "Cần gọi lễ tân để kiểm tra lịch còn thực hiện được hay không.",
+        "evidence": "Visitors who know they will be late should telephone reception rather than send a message through the booking website.",
+        "options": [
+          "Submit a second online request",
+          "Arrive early the next day",
+          "Telephone reception",
+          "Ask the library staff"
+        ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Which entrance should visitors use?",
+        "answer": "The entrance on Bridge Road",
+        "explanation": "Lối vào chính nằm trên Bridge Road.",
+        "evidence": "The main entrance is on Bridge Road, next to the small public library.",
+        "options": [
+          "The delivery entrance",
+          "The entrance on Bridge Road",
+          "The entrance inside the library",
+          "Any staff entrance"
+        ]
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Arriving much earlier makes the appointment start earlier.",
+        "answer": "False",
+        "explanation": "Bài nói đến quá sớm không làm giờ khám được đẩy lên.",
+        "evidence": "Arriving much earlier does not move the appointment forward.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Reception accepts cash payments.",
+        "answer": "False",
+        "explanation": "Lễ tân nhận thẻ ngân hàng nhưng không nhận tiền mặt.",
+        "evidence": "Reception accepts bank cards but does not accept cash.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The clinic’s bus stop is served by route 14.",
+        "answer": "Not Given",
+        "explanation": "Bài có vị trí trạm xe buýt nhưng không nêu tuyến.",
+        "evidence": "A bus stop is located across the road.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How early should patients arrive before their appointment? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "fifteen minutes",
+        "explanation": "Đến trước giờ hẹn mười lăm phút.",
+        "evidence": "Patients should arrive fifteen minutes before their appointment."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What can reception use to find an online booking quickly? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "the reference number",
+        "explanation": "Số tham chiếu giúp tìm lịch đặt.",
+        "evidence": "Reception can use it to find the booking quickly."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains the advance notice needed for language support?",
+        "answer": "E",
+        "explanation": "Đoạn E nói cần ba ngày làm việc để thu xếp phiên dịch.",
+        "evidence": "The booking team needs at least three working days to arrange an interpreter.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains that cancelling does not create a replacement booking?",
+        "answer": "H",
+        "explanation": "Đoạn H phân biệt hủy lịch với đặt lịch mới.",
+        "evidence": "Cancelling does not automatically create a new booking; you must request another appointment separately.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reading-008",
+    "title": "Your Bus Route Is Changing on Monday",
+    "topic": "daily-life",
+    "level": "B1+",
+    "summary": "Đọc thông báo đổi tuyến xe buýt để xác định trạm tạm, vé, giờ cao điểm và cách cập nhật.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "From Monday 6 April, the fictional Eastbank Transport service will change the route of bus 42 while the council replaces pipes under Market Street. The work is expected to last six weeks. This notice explains the temporary route, the stops that will close, and the options for passengers travelling to the shopping district. Other Eastbank bus routes will continue as usual unless a separate notice is published. Passengers should check their journey before travelling because familiar landmarks may no longer indicate the correct place to wait for bus 42."
+      },
+      {
+        "label": "B",
+        "text": "Between Central Station and River Park, bus 42 will use King Road instead of Market Street. The rest of the route is unchanged. The stops outside Market Hall and West Pharmacy will not be served during the work. A temporary stop will operate beside the King Road post office in both directions. Yellow signs will show where passengers should queue. Please use the signed stop even if you can see the bus passing somewhere closer. Drivers can only pick up and drop off passengers at authorised stops along the temporary route."
+      },
+      {
+        "label": "C",
+        "text": "Passengers going to Market Hall can leave the bus at the post office and follow the signed walking route through Pine Lane. The walk takes about eight minutes at an ordinary pace. The council has placed temporary lighting along the lane, but passengers should still take care at the crossing near the loading entrance. Those who prefer a shorter walk can remain on the bus until Library Square and change to route 7. That service stops near the east entrance of Market Hall, although changing buses may increase the total journey time."
+      },
+      {
+        "label": "D",
+        "text": "The first and last departures from each end of the route remain the same. However, the temporary route adds approximately ten minutes to a full journey between Central Station and River Park. During the morning peak, buses will run every twelve minutes instead of every ten minutes. Outside the morning peak, the published frequency is unchanged. A timetable marked 'temporary April service' is available on the website and at the station information desk. Passengers with a connection to a train should allow additional time rather than relying on their previous routine."
+      },
+      {
+        "label": "E",
+        "text": "Existing tickets and travel cards remain valid on bus 42. Passengers changing to route 7 at Library Square may use the same ticket if the second journey begins within sixty minutes of the first boarding. Show the original ticket to the second driver or tap the same travel card. A ticket bought for only one route must still meet the normal rules for the first journey. Anyone unsure about a particular ticket can ask at the information desk before boarding. Drivers cannot correct an earlier ticket purchase while the bus is moving."
+      },
+      {
+        "label": "F",
+        "text": "Most buses on the route have space for one wheelchair, subject to availability. The temporary post office stop has a raised kerb and a clear boarding area. However, the walking route through Pine Lane includes a narrow section that some passengers may find inconvenient. Passengers requiring step-free access to Market Hall are advised to use the connection at Library Square. The information desk can explain this journey and provide a printed route map. This advice concerns access along the route; it does not guarantee that a wheelchair space will be free on every departure."
+      },
+      {
+        "label": "G",
+        "text": "The journey planner will display the temporary route from the Sunday evening before the change. If you saved a journey earlier in the week, search again to make sure it includes the diversion. Electronic displays at closed stops may be switched off during the work. A paper notice at each closed stop will direct passengers to the nearest alternative. Eastbank will publish weekly updates on the transport website. If the construction schedule changes, the end date of the diversion will be updated there before signs are removed from the temporary stops."
+      },
+      {
+        "label": "H",
+        "text": "Transport staff will be present at Central Station and the post office stop during the first two weekday morning peaks. They can help passengers find the queue and understand the new timetable. After that period, questions can be sent through the website or raised at the station desk. When reporting a problem, include the date, approximate time, direction of travel, and stop name. This detail helps the team investigate whether the issue relates to the diversion, traffic, or a particular departure. A general comment that a bus was late is harder to check."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "diversion",
+        "meaning": "đường đi tạm do đổi tuyến"
+      },
+      {
+        "term": "boarding",
+        "meaning": "việc lên xe"
+      },
+      {
+        "term": "raised kerb",
+        "meaning": "mép vỉa hè nâng cao"
+      },
+      {
+        "term": "step-free access",
+        "meaning": "lối tiếp cận không có bậc thang"
+      },
+      {
+        "term": "departure",
+        "meaning": "chuyến khởi hành"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why is route 42 changing?",
+        "answer": "Pipes are being replaced under Market Street",
+        "explanation": "Công việc thay đường ống khiến tuyến phải đổi.",
+        "evidence": "From Monday 6 April, the fictional Eastbank Transport service will change the route of bus 42 while the council replaces pipes under Market Street.",
+        "options": [
+          "The station is closing",
+          "Pipes are being replaced under Market Street",
+          "Route 7 has been cancelled",
+          "The bus operator is changing"
+        ]
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What should passengers do with a journey saved before the change?",
+        "answer": "Search for the journey again",
+        "explanation": "Tìm lại để hành trình gồm đường vòng mới.",
+        "evidence": "If you saved a journey earlier in the week, search again to make sure it includes the diversion.",
+        "options": [
+          "Use it without checking",
+          "Delete their travel card",
+          "Search for the journey again",
+          "Wait for a driver to call"
+        ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Which detail helps staff investigate a reported problem?",
+        "answer": "Direction of travel",
+        "explanation": "Đoạn H yêu cầu nêu hướng di chuyển cùng thời điểm và trạm.",
+        "evidence": "When reporting a problem, include the date, approximate time, direction of travel, and stop name.",
+        "options": [
+          "The passenger’s favourite route",
+          "Direction of travel",
+          "The price of nearby shops",
+          "The passenger’s workplace address"
+        ]
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The first and last departure times will change.",
+        "answer": "False",
+        "explanation": "Giờ chuyến đầu và cuối giữ nguyên.",
+        "evidence": "The first and last departures from each end of the route remain the same.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "A wheelchair space is guaranteed on every departure.",
+        "answer": "False",
+        "explanation": "Bài nói rõ không bảo đảm luôn có chỗ.",
+        "evidence": "This advice concerns access along the route; it does not guarantee that a wheelchair space will be free on every departure.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The temporary stop has a shelter that seats twelve people.",
+        "answer": "Not Given",
+        "explanation": "Bài mô tả biển vàng và khu vực lên xe, không đề cập nhà chờ hay ghế.",
+        "evidence": "Yellow signs will show where passengers should queue.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Which road will bus 42 use instead of Market Street? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "King Road",
+        "explanation": "Tuyến tạm sử dụng King Road.",
+        "evidence": "Between Central Station and River Park, bus 42 will use King Road instead of Market Street."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long does the signed walk through Pine Lane take? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "about eight minutes",
+        "explanation": "Thời gian đi bộ được nêu là khoảng tám phút.",
+        "evidence": "The walk takes about eight minutes at an ordinary pace."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph gives the time limit for using a ticket on a connecting bus?",
+        "answer": "E",
+        "explanation": "Đoạn E nêu giới hạn sáu mươi phút kể từ lần lên xe đầu.",
+        "evidence": "Passengers changing to route 7 at Library Square may use the same ticket if the second journey begins within sixty minutes of the first boarding.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains the change in morning service frequency?",
+        "answer": "D",
+        "explanation": "Đoạn D nói giờ cao điểm sáng chuyển từ mười sang mười hai phút.",
+        "evidence": "During the morning peak, buses will run every twelve minutes instead of every ten minutes.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reading-009",
+    "title": "Your First Week on a Software Team",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Đọc kế hoạch hội nhập của kỹ sư mới: tài khoản, môi trường thử nghiệm, họp nhóm và thay đổi đầu tiên.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Welcome to the Harbour software team. This first-week guide is intended to help new engineers understand how work moves through the team before they take responsibility for a large task. The aim is steady progress, not completing the longest possible list of activities. Your manager will adapt the schedule if equipment or access takes longer than expected. Keep a short note of questions as they arise. A question that seems small to a new colleague may reveal an unclear instruction that has confused several people before."
+      },
+      {
+        "label": "B",
+        "text": "On Monday morning, collect your laptop from the support desk and check the equipment list before signing the receipt. The support team will help you set up your company account and multi-factor authentication. Use the password manager provided by the company for work credentials. Do not ask a colleague to share their login while you wait for access. If an account request is delayed, tell your manager and record the request number. You can spend the waiting time reading the project overview or discussing the product with your onboarding partner."
+      },
+      {
+        "label": "C",
+        "text": "Each new engineer is paired with an onboarding partner for the first month. This person helps explain team routines and shows where useful information is stored. They are not responsible for approving every decision you make. Your manager remains the contact for priorities and workload. Arrange a short meeting with your partner on each of the first three days, then agree on a schedule that works for both of you. When asking for help, explain what you tried and what happened. This makes it easier to identify the missing step."
+      },
+      {
+        "label": "D",
+        "text": "Before making a code change, set up the local development environment using the repository guide. Run the sample application and confirm that its basic checks pass. The training database contains fictional customer records. New starters should use that database for their initial experiments. Access to the live production system requires separate approval and is not part of the standard first-day setup. If an instruction appears to require real customer data, stop and ask your partner to check it. Screenshots shared in team discussions should also avoid exposing account details or private information."
+      },
+      {
+        "label": "E",
+        "text": "The team holds a fifteen-minute planning meeting at nine thirty each morning. Each person briefly explains current work, a likely next step, and anything blocking progress. You do not need to give a long report or pretend that a blocked task is going well. If an issue needs detailed discussion, arrange a separate conversation after the meeting. Written notes are available for colleagues who cannot attend. New starters may listen during their first meeting, but should prepare a short update once they have begun their first task."
+      },
+      {
+        "label": "F",
+        "text": "Your first code task should be small enough to understand and review within a few days. Common examples include correcting a confusing error message or adding a check for an already documented behaviour. Discuss the expected outcome with your manager before starting. Create a branch and open a draft change request early so that others can see your approach. Include the reason for the change, the behaviour before and after it, and the checks you ran. A short explanation grounded in a concrete example is more useful than a long list of files."
+      },
+      {
+        "label": "G",
+        "text": "A reviewer may request changes or ask why you chose a particular approach. Treat these questions as part of improving the shared code, rather than as a test of whether you belong on the team. If a comment is unclear, ask for an example. After updating the code, reply to the relevant discussion so the reviewer knows what changed. Approval alone does not mean that a change has been released to users. The team follows a separate release process, and your partner will explain how to find the status of a merged change."
+      },
+      {
+        "label": "H",
+        "text": "At the end of Friday, meet your manager for a short check-in. Discuss what you can now do independently, what still needs support, and whether the schedule was realistic. This is also the time to report missing access that has not been resolved. Keep your questions and useful links in a personal onboarding note, but move corrections to shared instructions into the team documentation. Future starters benefit when the guide improves. There is no requirement to deliver a production feature in the first week; understanding the workflow is a valuable result in itself."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "credentials",
+        "meaning": "thông tin đăng nhập"
+      },
+      {
+        "term": "onboarding partner",
+        "meaning": "đồng nghiệp hỗ trợ hội nhập"
+      },
+      {
+        "term": "blocking progress",
+        "meaning": "đang cản trở tiến độ"
+      },
+      {
+        "term": "draft change request",
+        "meaning": "đề nghị thay đổi ở trạng thái bản nháp"
+      },
+      {
+        "term": "merged change",
+        "meaning": "thay đổi đã được gộp vào mã chung"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the main goal of the first week?",
+        "answer": "To understand how work moves through the team",
+        "explanation": "Mục tiêu là nắm quy trình trước khi chịu trách nhiệm việc lớn.",
+        "evidence": "This first-week guide is intended to help new engineers understand how work moves through the team before they take responsibility for a large task.",
+        "options": [
+          "To deliver the largest feature",
+          "To understand how work moves through the team",
+          "To approve every colleague’s work",
+          "To replace the support team"
+        ]
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Who is the contact for priorities and workload?",
+        "answer": "The manager",
+        "explanation": "Đoạn C xác định quản lý chịu trách nhiệm ưu tiên và khối lượng công việc.",
+        "evidence": "Your manager remains the contact for priorities and workload.",
+        "options": [
+          "Any reviewer",
+          "The manager",
+          "The newest engineer",
+          "A customer"
+        ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should happen if a meeting topic needs detailed discussion?",
+        "answer": "Arrange a separate conversation",
+        "explanation": "Vấn đề cần trao đổi sâu được chuyển sang cuộc nói chuyện riêng.",
+        "evidence": "If an issue needs detailed discussion, arrange a separate conversation after the meeting.",
+        "options": [
+          "Extend every planning meeting",
+          "Ignore the topic",
+          "Arrange a separate conversation",
+          "Write a production feature immediately"
+        ]
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "New engineers may use a colleague’s login while waiting for access.",
+        "answer": "False",
+        "explanation": "Bài cấm nhờ đồng nghiệp chia sẻ tài khoản.",
+        "evidence": "Do not ask a colleague to share their login while you wait for access.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Approval automatically means a change has been released to users.",
+        "answer": "False",
+        "explanation": "Phê duyệt không đồng nghĩa đã phát hành.",
+        "evidence": "Approval alone does not mean that a change has been released to users.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The planning meeting takes place in a room called Harbour One.",
+        "answer": "Not Given",
+        "explanation": "Bài nêu thời lượng và giờ họp, không nêu tên phòng.",
+        "evidence": "The team holds a fifteen-minute planning meeting at nine thirty each morning.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What kind of records does the training database contain? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "fictional customer records",
+        "explanation": "Dữ liệu luyện tập là thông tin khách hàng hư cấu.",
+        "evidence": "The training database contains fictional customer records."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "When should a new engineer open a draft change request? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "early",
+        "explanation": "Mở bản nháp sớm để mọi người thấy hướng làm.",
+        "evidence": "Create a branch and open a draft change request early so that others can see your approach."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes a review of the new engineer’s progress at the end of the week?",
+        "answer": "H",
+        "explanation": "Đoạn H mô tả buổi trao đổi cuối thứ Sáu.",
+        "evidence": "At the end of Friday, meet your manager for a short check-in.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains the limited role of the onboarding partner?",
+        "answer": "C",
+        "explanation": "Người hỗ trợ không phải người phê duyệt mọi quyết định.",
+        "evidence": "They are not responsible for approving every decision you make.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reading-010",
+    "title": "Choosing a Laptop Repair Service",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Đọc hướng dẫn so sánh dịch vụ sửa laptop: phí kiểm tra, báo giá, dữ liệu, bảo hành và nhận máy.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "When a laptop stops working reliably, choosing a repair service can feel urgent, especially if the device is used for work or study. However, the fastest promise is not always the clearest offer. This fictional consumer guide explains what to compare before handing over a device. It focuses on the repair process rather than on instructions for fixing hardware yourself. A useful service should explain what it will inspect, what you may need to pay, and how it will ask for approval. Those details make different offers easier to compare."
+      },
+      {
+        "label": "B",
+        "text": "Begin by describing the problem as precisely as you can. Write down when it started, what you were doing, and whether it happens every time or only occasionally. For example, 'the screen goes dark after about twenty minutes' gives more information than 'the laptop is broken'. Mention any recent changes, such as a new charger or an operating system update, without assuming that the change caused the fault. A technician may still need to inspect the device. Your description helps the service decide which checks are relevant and explain the next steps."
+      },
+      {
+        "label": "C",
+        "text": "Ask whether the service charges an inspection fee before repairs are approved. Some shops charge for diagnosis even when the customer decides not to continue. Others include that cost in the repair price only if the repair goes ahead. An advertised free check may cover a brief external inspection rather than a full investigation. Request the conditions in writing so that you understand the difference. If the service gives a price before seeing the laptop, ask whether it is an estimate or a fixed quote and what could make the amount change."
+      },
+      {
+        "label": "D",
+        "text": "A written quote should identify the proposed work, parts, labour, and any delivery charge. It should also state whether replacement parts are new or previously used. Compare the total amount and the scope of the work, rather than choosing only the lowest headline price. Ask the service to contact you before carrying out extra work. A technician may discover a second problem during inspection, but that does not automatically give permission to repair it. Agree on the maximum amount you authorise and on the best telephone number or email address for further approval."
+      },
+      {
+        "label": "E",
+        "text": "Before handing over the laptop, ask what access the technician needs and how customer data is handled. If the device still allows it, make a backup of important files and check that the backup opens on another device. A repair service cannot promise that every repair will preserve all stored data. Avoid giving account passwords casually over an open counter. If access is necessary, ask whether a temporary account can be used. Remove accessories that are not needed for the inspection, and list any charger or other item that remains with the laptop."
+      },
+      {
+        "label": "F",
+        "text": "Completion times depend on the fault, the availability of parts, and the current queue. Ask whether a promised date means diagnosis will be complete or the repaired device will be ready for collection. Those are different stages. A shop may identify the problem quickly but then wait several days for a part. If you have an important deadline, explain it before agreeing to the repair. Ask how you will receive updates if the schedule changes. A clear update policy is more useful than a vague assurance that the job should be finished soon."
+      },
+      {
+        "label": "G",
+        "text": "Before accepting the quote, read the repair warranty. It should explain which work or parts are covered, how long the cover lasts, and how to report a problem. A warranty on a replaced keyboard does not necessarily cover an unrelated battery fault. Ask whether returning the device for a covered issue involves another inspection charge. Keep the quote, receipt, and any messages describing the work. If the same problem returns, these records help you explain what was previously reported and what the technician said had been repaired."
+      },
+      {
+        "label": "H",
+        "text": "When collecting the laptop, allow time to review the completed work. Ask the technician to show that the original fault has been checked, and test the relevant function if possible. Compare the invoice with the quote and ask about any difference before leaving. Check that the charger and other listed accessories are returned. If you cannot test something at the counter, ask how soon you should report a problem found at home. Keep a brief record of the collection date and the test you performed. This provides a clear starting point if further discussion becomes necessary."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "inspection fee",
+        "meaning": "phí kiểm tra"
+      },
+      {
+        "term": "fixed quote",
+        "meaning": "báo giá cố định"
+      },
+      {
+        "term": "labour",
+        "meaning": "chi phí công sửa chữa"
+      },
+      {
+        "term": "backup",
+        "meaning": "bản sao lưu"
+      },
+      {
+        "term": "repair warranty",
+        "meaning": "bảo hành sửa chữa"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the guide mainly helping readers compare?",
+        "answer": "Repair processes and conditions",
+        "explanation": "Bài giúp so sánh quy trình và điều kiện dịch vụ.",
+        "evidence": "It focuses on the repair process rather than on instructions for fixing hardware yourself.",
+        "options": [
+          "Laptop brands for gaming",
+          "Repair processes and conditions",
+          "Methods for opening a laptop",
+          "Programming languages"
+        ]
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why is “the screen goes dark after about twenty minutes” useful?",
+        "answer": "It describes the problem more precisely",
+        "explanation": "Ví dụ cụ thể cung cấp thời điểm xuất hiện sự cố.",
+        "evidence": "For example, 'the screen goes dark after about twenty minutes' gives more information than 'the laptop is broken'.",
+        "options": [
+          "It proves the cause of the fault",
+          "It guarantees a free repair",
+          "It describes the problem more precisely",
+          "It removes the need for inspection"
+        ]
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should a customer clarify about a promised completion date?",
+        "answer": "Which stage will be complete",
+        "explanation": "Cần biết đó là hoàn tất chẩn đoán hay sửa xong để nhận máy.",
+        "evidence": "Ask whether a promised date means diagnosis will be complete or the repaired device will be ready for collection.",
+        "options": [
+          "Which colour the laptop will be",
+          "Which stage will be complete",
+          "How many customers own laptops",
+          "Whether a new phone is available"
+        ]
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Every advertised free check includes a full investigation.",
+        "answer": "False",
+        "explanation": "Kiểm tra miễn phí có thể chỉ là xem bên ngoài nhanh.",
+        "evidence": "An advertised free check may cover a brief external inspection rather than a full investigation.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Discovering another fault automatically permits the technician to repair it.",
+        "answer": "False",
+        "explanation": "Phát hiện sự cố mới không tự tạo quyền sửa.",
+        "evidence": "A technician may discover a second problem during inspection, but that does not automatically give permission to repair it.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The average keyboard replacement costs fifty dollars.",
+        "answer": "Not Given",
+        "explanation": "Bài đề cập bảo hành bàn phím nhưng không đưa giá.",
+        "evidence": "A warranty on a replaced keyboard does not necessarily cover an unrelated battery fault.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ]
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What kind of account could be used if technician access is necessary? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "a temporary account",
+        "explanation": "Có thể hỏi dùng tài khoản tạm.",
+        "evidence": "If access is necessary, ask whether a temporary account can be used."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What document should customers compare with the quote at collection? Write NO MORE THAN THREE WORDS from the passage.",
+        "answer": "the invoice",
+        "explanation": "So sánh hóa đơn cuối với báo giá.",
+        "evidence": "Compare the invoice with the quote and ask about any difference before leaving."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains the possible differences between diagnosis charges?",
+        "answer": "C",
+        "explanation": "Đoạn C phân biệt các cách tính phí kiểm tra.",
+        "evidence": "Some shops charge for diagnosis even when the customer decides not to continue.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why records matter if a fault returns?",
+        "answer": "G",
+        "explanation": "Đoạn G nói giấy tờ giúp giải thích lần sửa trước.",
+        "evidence": "If the same problem returns, these records help you explain what was previously reported and what the technician said had been repaired.",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ]
+      }
+    ]
+  }
+]

@@ -9,7 +9,7 @@ import InstallApp from "../components/InstallApp";
 let runtimePromise;
 function loadRuntime(prefix, pageType) {
   if (runtimePromise) return runtimePromise;
-  const files = ["chunks", "collocations"].includes(pageType)
+  const files = ["chunks", "collocations", "reading"].includes(pageType)
     ? ["app.js"]
     : pageType === "lesson"
       ? ["weekly-review-data.js", "app.js"]
@@ -34,9 +34,13 @@ function loadRuntime(prefix, pageType) {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const prefix = ["lesson", "topics", "chunks", "collocations"].includes(
-    pageProps.pageType,
-  )
+  const prefix = [
+    "lesson",
+    "topics",
+    "chunks",
+    "collocations",
+    "reading",
+  ].includes(pageProps.pageType)
     ? "../"
     : "";
   useEffect(() => {

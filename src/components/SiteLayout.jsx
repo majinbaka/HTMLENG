@@ -23,6 +23,14 @@ export default function SiteLayout({ title, pageType, children }) {
           </a>
         ) : (
           <nav aria-label="Điều hướng">
+            {pageType !== "reading" && (
+              <a
+                className="btn"
+                href={`${dashboard ? "" : "../"}reading/index.html`}
+              >
+                Reading thực dụng
+              </a>
+            )}
             {pageType !== "chunks" && (
               <a
                 className="btn"

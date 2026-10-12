@@ -1,0 +1,127 @@
+{
+  "type": "object",
+  "properties": {
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "topic": {
+            "type": "string",
+            "enum": ["software", "workplace", "daily-life"]
+          },
+          "level": {
+            "type": "string",
+            "enum": ["B1", "B1+", "B2"]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "minutes": {
+            "type": "integer"
+          },
+          "paragraphs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              },
+              "required": ["label", "text"],
+              "additionalProperties": false
+            }
+          },
+          "vocabulary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "term": {
+                  "type": "string"
+                },
+                "meaning": {
+                  "type": "string"
+                }
+              },
+              "required": ["term", "meaning"],
+              "additionalProperties": false
+            }
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "multiple-choice",
+                    "true-false-not-given",
+                    "short-answer",
+                    "matching"
+                  ]
+                },
+                "prompt": {
+                  "type": "string"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "answer": {
+                  "type": "string"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "evidence": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "prompt",
+                "options",
+                "answer",
+                "explanation",
+                "evidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "topic",
+          "level",
+          "summary",
+          "minutes",
+          "paragraphs",
+          "vocabulary",
+          "questions"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["lessons"],
+  "additionalProperties": false
+}

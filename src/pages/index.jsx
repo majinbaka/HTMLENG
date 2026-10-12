@@ -67,6 +67,25 @@ export default function Dashboard() {
             Mở collocations →
           </a>
         </section>
+        <section
+          className="panel chunk-library-entry"
+          aria-labelledby="reading-library-title"
+        >
+          <div>
+            <p className="kicker coral">
+              PRACTICAL READING · SOFTWARE, WORK & LIFE
+            </p>
+            <h2 id="reading-library-title">Đọc để hiểu. Hiểu để dùng.</h2>
+            <p>
+              Bài đọc dài theo dạng IELTS, tình huống thực tế về kỹ thuật phần
+              mềm, công việc và cuộc sống. Làm bài, đối chiếu bằng chứng và lưu
+              tiến độ.
+            </p>
+          </div>
+          <a className="primary" href="reading/index.html">
+            Luyện đọc hiểu →
+          </a>
+        </section>
         <section className="topic-dashboard" aria-labelledby="topic-title">
           <div className="section-head">
             <div>

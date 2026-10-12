@@ -180,3 +180,32 @@ Mục tiêu học tham khảo: **B2: 500–1.000 cụm dùng chủ động; C1: 
 Dữ liệu ở `src/content/collocations/core.json`; tái tạo bằng `python3 scripts/collocations/build.py`. Nguồn biên soạn ở `scripts/collocations/`: giữ nguyên 60 cụm cũ trong `seed.json`; `b2-selection.txt` chọn 470 collocations nền tảng từ thư viện chunks và tái sử dụng nghĩa/ví dụ; `families.txt` liệt kê riêng các danh từ kết hợp được chọn cho C1 cùng ba ngữ cảnh mẫu mỗi nhóm, không tạo tích Descartes của từ; `nouns.txt` cung cấp nghĩa và dạng danh từ. Nhóm C1 tập trung vào lập luận, nghiên cứu, công việc, xã hội, môi trường và chính sách. Khi sửa nguồn chunks được tái sử dụng, chạy lại script rồi build.
 
 Trạng thái nằm trong trường `collocationLibrary` của bản tiến độ hiện tại, được xuất/nhập cùng các bài học và chunks. Các ID cũ được giữ nguyên; ID mới tới `coll-b2-500` và `coll-c1-1000`. Đã thuộc là tự đánh giá; chưa có lịch ôn tự động cho thư viện này. Khi tăng bộ dữ liệu, cập nhật giới hạn ID trong `public/assets/app.js` và kiểm tra nội dung.
+
+### Đọc hiểu thực dụng — Reading
+
+Mở `out/reading/index.html` (hoặc chọn **Reading** trong thanh điều hướng). Thư viện ban đầu có 10 bài tự biên soạn, mỗi bài 650–900 từ và 10 câu hỏi, về software engineering, công việc và cuộc sống. Các câu hỏi gồm multiple choice, True / False / Not Given, short answer và matching thông tin với đoạn văn. Bài làm tự lưu trong cùng tiến độ SpeakSprint; Xuất / Nhập tiến độ bao gồm bài đọc. Phải trả lời đủ câu trước khi xem đáp án, giải thích tiếng Việt và câu dẫn chứng. Đây là tài liệu luyện thực dụng lấy cảm hứng từ dạng bài IELTS, không phải đề IELTS chính thức.
+
+Nguồn bài: `src/content/readings/*.json`. Kiểm tra bằng `node scripts/reading/validate.mjs`; build bằng `npm run build`. Bộ kiểm tra yêu cầu 650–900 từ, 10 câu hỏi đủ bốn dạng, ID/title không trùng, đáp án short answer có trong bài và mọi câu dẫn chứng là nguyên văn. Người biên soạn vẫn phải kiểm tra ý nghĩa, tính hợp lý và sự khác nhau giữa False và Not Given.
+
+### Tự động thêm 10 bài mỗi 5 giờ đến 300 bài
+
+Lịch chạy trên máy Linux này bằng cron và Codex CLI đang đăng nhập, không chạy trên hosting tĩnh. Cài hoặc khôi phục lịch:
+
+```bash
+python3 scripts/reading/install-schedule.py
+python3 scripts/reading/auto-grow.py --status
+crontab -l
+```
+
+Cron kiểm tra mỗi phút; `nextDue` bảo đảm khoảng cách 5 giờ giữa các đợt thành công. Đợt đầu chạy sau khi cài lịch 5 giờ. Mỗi đợt tạo tối đa 10 bài qua Codex ở chế độ read-only, kiểm tra toàn thư viện, tạo checkout riêng, cài dependency, build static export rồi commit nguồn và `out/`. Chỉ fast-forward vào checkout đang dùng khi working tree sạch. Nếu bạn đang sửa dự án, lịch chờ đến khi thay đổi được commit; không tự commit thay đổi của bạn. Nếu kiểm tra/build lỗi thì không thêm bài hoặc commit vào checkout chính; lịch thử lại sau 5–60 phút tùy số lần lỗi. Branch đã build thành công nhưng chưa thể fast-forward được giữ lại để xử lý sau; nếu bạn commit thêm trong lúc tạo bài, đợt đó sẽ được build lại từ HEAD mới. Lịch chỉ chạy trên branch được ghi nhận khi cài, và chờ khi bạn chuyển branch.
+
+Lịch tự xóa khi đạt 300 bài. Từ 10 bài đầu cần thêm 29 đợt: khoảng 145 giờ (6 ngày 1 giờ), cộng thời gian tạo/build hoặc gián đoạn. Máy cần bật, dịch vụ cron hoạt động, có mạng và Codex còn đăng nhập/quota. Nếu máy tắt, đợt quá hạn chạy khi máy hoạt động trở lại; không chạy bù hàng loạt. Không tự push lên remote — commit được lưu tại máy.
+
+Trạng thái và lỗi gần nhất: `.reading-automation/state.json`. Log: `.reading-automation/cron.log`. Các file này không đưa vào Git. Kiểm tra lỗi:
+
+```bash
+tail -n 80 .reading-automation/cron.log
+python3 scripts/reading/auto-grow.py --status
+```
+
+Để dừng, chạy `crontab -e` và xóa dòng có `# speaksprint-reading-300`. Các cron job khác được giữ nguyên khi cài và khi tự dừng. Việc tạo bài dùng tài khoản/quota Codex hiện có.

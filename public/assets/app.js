@@ -54,16 +54,23 @@ function validChunkLibrary(value, validId = validChunkId, limit = 2500) {
   (value.practice === undefined || (!!value.practice && typeof value.practice === 'object' && !Array.isArray(value.practice) &&
    Object.keys(value.practice).length <= limit && Object.entries(value.practice).every(([id, answer]) => validId(id) && typeof answer === 'string' && answer.length <= 1000)));
 }
-function valid(x){return x&&validChunkLibrary(x.collocationLibrary, validCollocationId, 1500)&&validChunkLibrary(x.chunkLibrary)&&validTopicState(x.topicState)&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
+function validReadingId(id) {return typeof id==='string' && /^reading-\d{3}$/.test(id) && Number(id.slice(8))>=1 && Number(id.slice(8))<=300}
+function validReadingLibrary(value) {
+ if(value===undefined)return true;
+ return value && typeof value==='object' && !Array.isArray(value) && Object.keys(value).length<=300 && Object.entries(value).every(([id,s])=>validReadingId(id) && s && typeof s==='object' && !Array.isArray(s) && typeof s.submitted==='boolean' && s.answers && typeof s.answers==='object' && !Array.isArray(s.answers) && Object.entries(s.answers).every(([q,a])=>/^q\d{1,2}$/.test(q) && typeof a==='string' && a.length<=1000) && (s.completedAt===undefined || (typeof s.completedAt==='string' && Number.isFinite(Date.parse(s.completedAt)))));
+}
+function valid(x){return x&&validReadingLibrary(x.readingLibrary)&&validChunkLibrary(x.collocationLibrary, validCollocationId, 1500)&&validChunkLibrary(x.chunkLibrary)&&validTopicState(x.topicState)&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return valid(x)?x:clean()}catch{return clean()}}
 let state=load();
 function refreshLibraries() {
  // Lesson handlers hold references into state; refresh only the independent
  // library fields instead of replacing those references when another tab marks an item.
- if(['chunks', 'collocations'].includes(document.body.dataset.page)) return;
+ if(['chunks', 'collocations', 'reading'].includes(document.body.dataset.page)) return;
  try {
   const stored = JSON.parse(localStorage.getItem(KEY));
   if(valid(stored)) {
+   if(stored.readingLibrary) state.readingLibrary = stored.readingLibrary;
+   else delete state.readingLibrary;
    if(stored.chunkLibrary) state.chunkLibrary = stored.chunkLibrary;
    else delete state.chunkLibrary;
    if(stored.collocationLibrary) state.collocationLibrary = stored.collocationLibrary;
@@ -77,7 +84,7 @@ const nextDay=()=>{for(let i=1;i<=TOTAL_DAYS;i++)if(!state.completedDays[i])retu
 const available=d=>Number.isInteger(d)&&d>=1&&d<=TOTAL_DAYS;
 function toast(s){const e=document.querySelector('#toast');if(!e)return;e.textContent=s;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2600)}
 function exportData(){refreshLibraries();const b=new Blob([JSON.stringify({...state,app:'SpeakSprint',exportedAt:new Date().toISOString()},null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='speak-sprint-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}
-function bindTools(){document.querySelector('#export-progress')?.addEventListener('click',exportData);document.querySelector('#import-progress')?.addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!valid(x))throw Error();state={version:1,completedDays:x.completedDays,dayState:x.dayState,...(x.topicState?{topicState:x.topicState}:{}),...(x.chunkLibrary?{chunkLibrary:x.chunkLibrary}:{}),...(x.collocationLibrary?{collocationLibrary:x.collocationLibrary}:{}),currentStreak:x.currentStreak,longestStreak:x.longestStreak,lastNewDayCompletedDate:x.lastNewDayCompletedDate||null,updatedAt:x.updatedAt||new Date().toISOString()};save(true);location.reload()}catch{toast('File không hợp lệ. Tiến độ hiện tại vẫn được giữ.')}finally{e.target.value=''}});document.querySelector('#reset-progress')?.addEventListener('click',()=>{if(confirm('Xóa toàn bộ tiến độ và bản ghi âm SpeakSprint trong trình duyệt này?')){localStorage.removeItem(KEY);indexedDB.deleteDatabase(AUDIO_DB);location.reload()}})}
+function bindTools(){document.querySelector('#export-progress')?.addEventListener('click',exportData);document.querySelector('#import-progress')?.addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!valid(x))throw Error();state={version:1,completedDays:x.completedDays,dayState:x.dayState,...(x.topicState?{topicState:x.topicState}:{}),...(x.readingLibrary?{readingLibrary:x.readingLibrary}:{}),...(x.chunkLibrary?{chunkLibrary:x.chunkLibrary}:{}),...(x.collocationLibrary?{collocationLibrary:x.collocationLibrary}:{}),currentStreak:x.currentStreak,longestStreak:x.longestStreak,lastNewDayCompletedDate:x.lastNewDayCompletedDate||null,updatedAt:x.updatedAt||new Date().toISOString()};save(true);location.reload()}catch{toast('File không hợp lệ. Tiến độ hiện tại vẫn được giữ.')}finally{e.target.value=''}});document.querySelector('#reset-progress')?.addEventListener('click',()=>{if(confirm('Xóa toàn bộ tiến độ và bản ghi âm SpeakSprint trong trình duyệt này?')){localStorage.removeItem(KEY);indexedDB.deleteDatabase(AUDIO_DB);location.reload()}})}
 const AUDIO_DB='speakSprintAudioV1',AUDIO_STORE='recordings';
 function audioDb(){return new Promise((resolve,reject)=>{if(!('indexedDB'in window)){reject(Error('IndexedDB unavailable'));return}const req=indexedDB.open(AUDIO_DB,1);req.onupgradeneeded=()=>req.result.createObjectStore(AUDIO_STORE);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
 async function putAudio(id,blob){const db=await audioDb();return new Promise((resolve,reject)=>{const tx=db.transaction(AUDIO_STORE,'readwrite');tx.objectStore(AUDIO_STORE).put(blob,id);tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}})}
@@ -446,7 +453,27 @@ function initLibraryProgress(field = "chunkLibrary", validId = validChunkId, api
  });
  announce();
 }
+function initReadingProgress() {
+ const get=()=>JSON.parse(JSON.stringify(state.readingLibrary||{}));
+ const announce=()=>window.dispatchEvent(new CustomEvent('speaksprint:reading-progress',{detail:get()}));
+ window.SpeakSprintReadingProgress={get,update(id,patch){
+  if(!validReadingId(id))return false;
+  try {
+   const raw=localStorage.getItem(KEY),latest=raw?JSON.parse(raw):clean();
+   if(!valid(latest))return false;
+   const entry={answers:{},submitted:false,...latest.readingLibrary?.[id],...patch};
+   const library={...latest.readingLibrary,[id]:entry};
+   if(!validReadingLibrary(library))return false;
+   latest.readingLibrary=library;latest.updatedAt=new Date().toISOString();
+   localStorage.setItem(KEY,JSON.stringify(latest));state=latest;
+   announce();return true;
+  }catch {toast('Chưa lưu được bài đọc. Hãy kiểm tra bộ nhớ trình duyệt.');return false;}
+ }};
+ window.addEventListener('storage',event=>{if(event.key===KEY||event.key===null){state=load();announce()}});
+ announce();
+}
 bindTools();
+if(document.body.dataset.page==='reading')initReadingProgress();
 if(document.body.dataset.page==='chunks')initLibraryProgress();
 if(document.body.dataset.page==='collocations')initLibraryProgress('collocationLibrary', validCollocationId, 'SpeakSprintCollocationProgress', 'speaksprint:collocations-progress');
 if(document.body.dataset.page==='dashboard')dashboard();

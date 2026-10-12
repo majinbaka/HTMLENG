@@ -10,8 +10,12 @@ export default function config(phase) {
               { source: "/index.html", destination: "/" },
               { source: "/lessons/:day.html", destination: "/lessons/:day" },
               { source: "/topics/index.html", destination: "/topics" },
+              { source: "/reading/index.html", destination: "/reading" },
               { source: "/chunks/index.html", destination: "/chunks" },
-              { source: "/collocations/index.html", destination: "/collocations" },
+              {
+                source: "/collocations/index.html",
+                destination: "/collocations",
+              },
             ];
           },
         }

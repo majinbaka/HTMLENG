@@ -35,3 +35,6 @@ Thumbs.db
 # Keep out/, .nojekyll and HTML entry points in Git: deployment serves
 # the whole repository without a build step. Keep source and lockfiles
 # so the static export can be rebuilt with npm ci && npm run build.
+
+# Local reading automation state, candidate batches and logs.
+.reading-automation/
