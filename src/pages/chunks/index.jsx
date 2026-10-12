@@ -82,13 +82,187 @@ function Example({ text, chunk }) {
   );
 }
 
+function StudySession({
+  items,
+  favorites,
+  archived,
+  practice,
+  ready,
+  mark,
+  close,
+}) {
+  const [offset, setOffset] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [attempts, setAttempts] = useState(practice || {});
+  const [saveError, setSaveError] = useState(false);
+  const [revealed, setRevealed] = useState({});
+  const group = items.slice(offset, offset + 5);
+  const item = group[index];
+  const titleRef = useRef(null);
+  useEffect(() => {
+    titleRef.current?.focus({ preventScroll: true });
+  }, [offset, index]);
+  return (
+    <section className="library-study" aria-label="Luyện 5 chunk">
+      <div className="library-study-head">
+        <div>
+          <p className="kicker">NHỚ LẠI → NÓI → ĐỐI CHIẾU</p>
+          <h2 ref={titleRef} tabIndex={-1}>
+            Chunk {index + 1} / {group.length}
+          </h2>
+        </div>
+        <button type="button" onClick={close}>
+          Về danh sách
+        </button>
+      </div>
+      <div className="library-study-steps" aria-label="Tiến độ lượt học">
+        {group.map((chunk, i) => (
+          <button
+            key={chunk.id}
+            type="button"
+            aria-label={`Luyện chunk ${i + 1}`}
+            aria-current={index === i ? "step" : undefined}
+            onClick={() => setIndex(i)}
+          >
+            {revealed[chunk.id] ? "✓" : i + 1}
+          </button>
+        ))}
+      </div>
+      <article
+        className="library-card library-study-card"
+        data-study-id={item.id}
+      >
+        <div className="library-card-meta">
+          <span
+            className={`library-category category-${item.category.toLowerCase()}`}
+          >
+            {categoryNames[item.category]}
+          </span>
+          <span>{item.topic}</span>
+        </div>
+        <p className="library-study-prompt">
+          Bạn sẽ nói thế nào bằng tiếng Anh?
+        </p>
+        <p className="library-study-meaning">
+          {item.explanation.split(/\. (?:Dùng|Chủ đề:)/)[0]}
+        </p>
+        <label htmlFor="chunk-attempt">
+          Nói thành tiếng, rồi ghi lại câu bạn vừa nói
+        </label>
+        <textarea
+          id="chunk-attempt"
+          rows={3}
+          lang="en"
+          maxLength={1000}
+          placeholder="Thử viết một câu của bạn…"
+          value={attempts[item.id] || ""}
+          onChange={(event) => {
+            const answer = event.target.value;
+            setAttempts((previous) => ({
+              ...previous,
+              [item.id]: answer,
+            }));
+            setSaveError(
+              !window.SpeakSprintChunkProgress?.savePractice(item.id, answer),
+            );
+          }}
+        />
+        <p className="library-notice" role="status">
+          {saveError
+            ? "Chưa lưu được câu luyện. Giữ trang này mở và thử nhập lại khi bộ nhớ khả dụng."
+            : "Câu luyện được tự động lưu trên trình duyệt này."}
+        </p>
+        {!revealed[item.id] ? (
+          <button
+            type="button"
+            className="primary"
+            disabled={!attempts[item.id]?.trim()}
+            onClick={() =>
+              setRevealed((previous) => ({ ...previous, [item.id]: true }))
+            }
+          >
+            Xem chunk và 3 ví dụ
+          </button>
+        ) : (
+          <div className="library-study-answer">
+            <h3 lang="en">{item.chunk}</h3>
+            <p>
+              Đối chiếu cách nói, rồi nói lại một câu mới. Câu tự nhiên khác
+              cũng có thể đúng.
+            </p>
+            <ol lang="en" aria-label={`3 ví dụ: ${item.chunk}`}>
+              {item.examples.map((example, i) => (
+                <li key={i}>
+                  <Example text={example} chunk={item.chunk} />
+                </li>
+              ))}
+            </ol>
+            <div className="library-card-actions">
+              <button
+                type="button"
+                disabled={!ready}
+                aria-pressed={favorites.has(item.id)}
+                onClick={() => mark(item, "favorites")}
+              >
+                {favorites.has(item.id) ? "★ Đã yêu thích" : "☆ Yêu thích"}
+              </button>
+              <button
+                type="button"
+                disabled={!ready}
+                aria-pressed={archived.has(item.id)}
+                onClick={() => mark(item, "archived")}
+              >
+                {archived.has(item.id) ? "↩ Học lại" : "✓ Đã thuộc"}
+              </button>
+            </div>
+          </div>
+        )}
+      </article>
+      <nav className="library-study-nav" aria-label="Chuyển chunk luyện tập">
+        <button
+          type="button"
+          disabled={index === 0}
+          onClick={() => setIndex(index - 1)}
+        >
+          ← Trước
+        </button>
+        {index < group.length - 1 ? (
+          <button type="button" onClick={() => setIndex(index + 1)}>
+            Chunk tiếp →
+          </button>
+        ) : offset + group.length < items.length ? (
+          <button
+            type="button"
+            onClick={() => {
+              setOffset(offset + group.length);
+              setIndex(0);
+            }}
+          >
+            Học 5 tiếp →
+          </button>
+        ) : (
+          <button type="button" onClick={close}>
+            Kết thúc lượt học
+          </button>
+        )}
+      </nav>
+      <p className="storage-note">
+        Câu luyện, Yêu thích và Đã thuộc được lưu cùng tiến độ. ✓ ở thanh trên
+        chỉ nghĩa là đã xem ví dụ trong lượt này, không phải điểm chấm.
+      </p>
+    </section>
+  );
+}
+
 export default function ChunkLibrary() {
   const [view, setView] = useState(initialView);
   const [progress, setProgress] = useState({ favorites: [], archived: [] });
   const [ready, setReady] = useState(false);
   const [locationReady, setLocationReady] = useState(false);
   const [notice, setNotice] = useState("");
+  const [studyItems, setStudyItems] = useState(null);
   const resultsRef = useRef(null);
+  const studyRef = useRef(null);
 
   useEffect(() => {
     const sync = () => {
@@ -96,7 +270,10 @@ export default function ChunkLibrary() {
       setProgress(window.SpeakSprintChunkProgress.get());
       setReady(true);
     };
-    const navigate = () => setView(readView());
+    const navigate = () => {
+      setView(readView());
+      setStudyItems(null);
+    };
     sync();
     navigate();
     setLocationReady(true);
@@ -158,12 +335,20 @@ export default function ChunkLibrary() {
   }, [view, currentPage, locationReady, ready]);
 
   function filter(patch) {
+    setStudyItems(null);
     setView((previous) => ({ ...previous, ...patch, page: 1 }));
   }
   function changePage(page) {
+    setStudyItems(null);
     setView((previous) => ({ ...previous, page }));
     resultsRef.current?.focus({ preventScroll: true });
     resultsRef.current?.scrollIntoView({ block: "start" });
+  }
+  function startStudy() {
+    setStudyItems(filtered.slice(start));
+    requestAnimationFrame(() =>
+      studyRef.current?.scrollIntoView({ block: "start" }),
+    );
   }
   function mark(item, kind) {
     const selected = (kind === "favorites" ? favorites : archived).has(item.id);
@@ -339,12 +524,15 @@ export default function ChunkLibrary() {
               </button>
             ))}
           </div>
-          <p className="library-order-note">
-            Sắp xếp mức thường dùng từ cao xuống thấp trên toàn bộ thư viện, kể
-            cả khi lọc theo nhóm. Mức 1–5 là ước lượng biên soạn theo tình huống
-            sử dụng, không phải tần suất đo từ kho ngữ liệu. Các chunk cùng mức
-            được sắp theo mã cố định.
-          </p>
+          <details className="library-sort-details">
+            <summary>Cách sắp xếp và mức thường gặp</summary>
+            <p className="library-order-note">
+              Sắp xếp mức thường dùng từ cao xuống thấp trên toàn bộ thư viện,
+              kể cả khi lọc theo nhóm. Mức 1–5 là ước lượng biên soạn theo tình
+              huống sử dụng, không phải tần suất đo từ kho ngữ liệu. Các chunk
+              cùng mức được sắp theo mã cố định.
+            </p>
+          </details>
           <div className="library-results-head" ref={resultsRef} tabIndex={-1}>
             <p id="chunk-results-count" role="status">
               {filtered.length
@@ -357,7 +545,10 @@ export default function ChunkLibrary() {
             <button
               type="button"
               className="library-clear"
-              onClick={() => setView(initialView)}
+              onClick={() => {
+                setView(initialView);
+                setStudyItems(null);
+              }}
             >
               Xóa bộ lọc
             </button>
@@ -368,89 +559,123 @@ export default function ChunkLibrary() {
                 ? "Đánh dấu được tự động lưu trên trình duyệt này."
                 : "Đang mở dữ liệu đã lưu…")}
           </p>
-          {pagination("trên")}
-          <div className="library-grid">
-            {visible.map((item, index) => (
-              <article
-                className={`library-card${archived.has(item.id) ? " is-archived" : ""}`}
-                key={item.id}
-                data-chunk-id={item.id}
-                data-category={item.category}
-                data-frequency={item.frequency}
+          {!studyItems && (
+            <div className="library-mode-bar">
+              <p>Học ít, dùng ngay: 5 chunk mỗi lượt.</p>
+              <button
+                type="button"
+                className="primary"
+                disabled={!ready || !visible.length}
+                onClick={startStudy}
               >
-                <div className="library-card-meta">
-                  <span
-                    className={`library-category category-${item.category.toLowerCase()}`}
-                  >
-                    {categoryNames[item.category]}
-                  </span>
-                  <span title={`Mức ${item.frequency}/5 — ước lượng`}>
-                    {frequencyNames[item.frequency]}
-                  </span>
-                  <span className="library-number">
-                    {String(start + index + 1).padStart(3, "0")}
-                  </span>
-                </div>
-                <h2 lang="en">{item.chunk}</h2>
-                <p className="library-explanation">{item.explanation}</p>
-                <p className="library-topic">{item.topic}</p>
-                <ol lang="en" aria-label={`3 ví dụ: ${item.chunk}`}>
-                  {item.examples.map((example, i) => (
-                    <li key={i}>
-                      <Example text={example} chunk={item.chunk} />
-                    </li>
-                  ))}
-                </ol>
-                <div className="library-card-actions">
-                  <button
-                    type="button"
-                    disabled={!ready}
-                    data-action="favorite"
-                    aria-pressed={favorites.has(item.id)}
-                    aria-label={`${favorites.has(item.id) ? "Bỏ yêu thích" : "Yêu thích"}: ${item.chunk}`}
-                    onClick={() => mark(item, "favorites")}
-                  >
-                    <span aria-hidden="true">
-                      {favorites.has(item.id) ? "★" : "☆"}
-                    </span>{" "}
-                    {favorites.has(item.id) ? "Đã yêu thích" : "Yêu thích"}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={!ready}
-                    data-action="archive"
-                    aria-pressed={archived.has(item.id)}
-                    aria-label={`${archived.has(item.id) ? "Học lại" : "Đã thuộc"}: ${item.chunk}`}
-                    onClick={() => mark(item, "archived")}
-                  >
-                    {archived.has(item.id) ? "↩ Học lại" : "✓ Đã thuộc"}
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-          {!visible.length && (
-            <div className="library-empty">
-              <h2>
-                {view.status === "favorites"
-                  ? "Dành chỗ cho cách nói bạn thích."
-                  : view.status === "archived"
-                    ? "Những chunk đã thuộc sẽ ở đây."
-                    : "Thử một từ khóa khác nhé."}
-              </h2>
-              <p>
-                {view.status === "favorites"
-                  ? "Bấm ☆ Yêu thích ở một chunk để lưu vào bộ sưu tập."
-                  : view.status === "archived"
-                    ? "Bấm ✓ Đã thuộc sau khi bạn có thể tự dùng chunk. Bạn luôn có thể chọn Học lại."
-                    : "Đổi nhóm hoặc xóa bộ lọc để xem thêm chunk."}
-              </p>
-              <button type="button" onClick={() => setView(initialView)}>
-                Xem các chunk đang học
+                Luyện 5 chunk →
               </button>
             </div>
           )}
-          {pagination("dưới")}
+          <div ref={studyRef} className="library-study-anchor">
+            {studyItems && (
+              <StudySession
+                key={studyItems[0].id}
+                items={studyItems}
+                favorites={favorites}
+                archived={archived}
+                practice={progress.practice}
+                ready={ready}
+                mark={mark}
+                close={() => {
+                  setStudyItems(null);
+                  resultsRef.current?.focus();
+                }}
+              />
+            )}
+          </div>
+          {!studyItems && (
+            <>
+              {pagination("trên")}
+              <div className="library-grid">
+                {visible.map((item, index) => (
+                  <article
+                    className={`library-card${archived.has(item.id) ? " is-archived" : ""}`}
+                    key={item.id}
+                    data-chunk-id={item.id}
+                    data-category={item.category}
+                    data-frequency={item.frequency}
+                  >
+                    <div className="library-card-meta">
+                      <span
+                        className={`library-category category-${item.category.toLowerCase()}`}
+                      >
+                        {categoryNames[item.category]}
+                      </span>
+                      <span title={`Mức ${item.frequency}/5 — ước lượng`}>
+                        {frequencyNames[item.frequency]}
+                      </span>
+                      <span className="library-number">
+                        {String(start + index + 1).padStart(3, "0")}
+                      </span>
+                    </div>
+                    <h2 lang="en">{item.chunk}</h2>
+                    <p className="library-explanation">{item.explanation}</p>
+                    <p className="library-topic">{item.topic}</p>
+                    <ol lang="en" aria-label={`3 ví dụ: ${item.chunk}`}>
+                      {item.examples.map((example, i) => (
+                        <li key={i}>
+                          <Example text={example} chunk={item.chunk} />
+                        </li>
+                      ))}
+                    </ol>
+                    <div className="library-card-actions">
+                      <button
+                        type="button"
+                        disabled={!ready}
+                        data-action="favorite"
+                        aria-pressed={favorites.has(item.id)}
+                        aria-label={`${favorites.has(item.id) ? "Bỏ yêu thích" : "Yêu thích"}: ${item.chunk}`}
+                        onClick={() => mark(item, "favorites")}
+                      >
+                        <span aria-hidden="true">
+                          {favorites.has(item.id) ? "★" : "☆"}
+                        </span>{" "}
+                        {favorites.has(item.id) ? "Đã yêu thích" : "Yêu thích"}
+                      </button>
+                      <button
+                        type="button"
+                        disabled={!ready}
+                        data-action="archive"
+                        aria-pressed={archived.has(item.id)}
+                        aria-label={`${archived.has(item.id) ? "Học lại" : "Đã thuộc"}: ${item.chunk}`}
+                        onClick={() => mark(item, "archived")}
+                      >
+                        {archived.has(item.id) ? "↩ Học lại" : "✓ Đã thuộc"}
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              {!visible.length && (
+                <div className="library-empty">
+                  <h2>
+                    {view.status === "favorites"
+                      ? "Dành chỗ cho cách nói bạn thích."
+                      : view.status === "archived"
+                        ? "Những chunk đã thuộc sẽ ở đây."
+                        : "Thử một từ khóa khác nhé."}
+                  </h2>
+                  <p>
+                    {view.status === "favorites"
+                      ? "Bấm ☆ Yêu thích ở một chunk để lưu vào bộ sưu tập."
+                      : view.status === "archived"
+                        ? "Bấm ✓ Đã thuộc sau khi bạn có thể tự dùng chunk. Bạn luôn có thể chọn Học lại."
+                        : "Đổi nhóm hoặc xóa bộ lọc để xem thêm chunk."}
+                  </p>
+                  <button type="button" onClick={() => setView(initialView)}>
+                    Xem các chunk đang học
+                  </button>
+                </div>
+              )}
+              {pagination("dưới")}
+            </>
+          )}
         </section>
         <p className="storage-note">
           Favorite và Archive (Đã thuộc) lưu trên trình duyệt này, cùng bản Xuất

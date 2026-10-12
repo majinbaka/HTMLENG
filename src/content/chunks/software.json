@@ -1602,7 +1602,7 @@
     "id": "software-0124",
     "category": "Software",
     "chunk": "assert the value",
-    "explanation": "Khẳng định giá trị trong kiểm thử. Dùng khi viết và chạy kiểm thử phần mềm.",
+    "explanation": "Kiểm tra giá trị có đúng như mong đợi trong kiểm thử. Dùng khi viết và chạy kiểm thử phần mềm.",
     "examples": [
       "We should assert the value returned by the function.",
       "Can you assert the value after the update completes?",
@@ -5414,7 +5414,7 @@
     "explanation": "Khởi động máy giặt. Dùng khi nói về giặt, phơi và cất quần áo.",
     "examples": [
       "I plan to start the washing machine after closing the door.",
-      "I need to start the washing machine when the current cycle finishes.",
+      "I need to start the washing machine after adding the detergent.",
       "I can start the washing machine before going to the garden."
     ],
     "frequency": 4,
@@ -7572,7 +7572,7 @@
     "explanation": "Mang theo hồ sơ sức khỏe. Dùng khi mô tả tình trạng sức khỏe và trao đổi khi khám.",
     "examples": [
       "I plan to bring my medical records to the appointment.",
-      "I need to bring my medical records in the folder by the door.",
+      "I need to bring my medical records so the doctor can see my previous test results.",
       "I can bring my medical records when the clinic asks for them."
     ],
     "frequency": 4,

@@ -7,6 +7,7 @@ controlled variation. This file is the editable source for the stable IDs.
 """
 
 import json
+import re
 from pathlib import Path
 
 GROUPS = []
@@ -1530,10 +1531,9 @@ IT_CONTEXTS = [
 def examples(chunk, index, topic_index):
     # Standalone requests avoid attaching arbitrary temporal clauses to actions
     # such as revoking access after a departure or restoring permissions.
-    if "your" in chunk:
-        return [f"Could you {chunk}, please?", f"You may need to {chunk}.",
-                f"The guide explains how to {chunk}."]
     authored = {
+        "describe the steps you tried": ["Could you describe the steps you tried before the error appeared?", "Please describe the steps you tried so I can reproduce the problem.", "Can you describe the steps you tried on your laptop?"],
+        "explain what you expected": ["Can you explain what you expected when you clicked Save?", "Please explain what you expected to see on the screen.", "Could you explain what you expected before we check the settings?"],
         "contact the help desk": ["You can contact the help desk if your laptop stops working.", "Could you contact the help desk about the login error?", "I need to contact the help desk before my account expires."],
         "open a support ticket": ["Please open a support ticket for the broken printer.", "Can I open a support ticket through the portal?", "We need to open a support ticket because the problem keeps coming back."],
         "report a technical issue": ["I would like to report a technical issue with my laptop.", "Can you report a technical issue through this form?", "Please report a technical issue as soon as it affects your work."],
@@ -1543,6 +1543,9 @@ def examples(chunk, index, topic_index):
     }
     if chunk in authored:
         return authored[chunk]
+    if "your" in chunk:
+        return [f"Could you {chunk}, please?", f"You may need to {chunk}.",
+                f"The guide explains how to {chunk}."]
     sets = [
         [f"Can you {chunk}?", f"I need to {chunk}.", f"The support team can help us {chunk}."],
         [f"We should {chunk}.", f"Could you help me {chunk}?", f"The next step is to {chunk}."],
@@ -1566,12 +1569,21 @@ def everyday_examples(chunk, model):
     suffix = model.split(chunk, 1)[1].rstrip(".?!")
     if suffix.endswith(", please"):
         suffix = suffix[:-8]
-    # Reuse the authored situation to practise different grammatical forms.
-    # Avoid a first-person subject with a second-person possessive in the chunk.
-    question = f"Do you need to {chunk}{suffix}?"
-    request = f"Could you {chunk}{suffix}, please?"
-    assert question != model and request != model
-    return [model, question, request]
+    # These variations address the listener. Convert first-person references in
+    # the tail as well: "before I order" must become "before you order".
+    # A suggestion suits personal choices (travel, purchases, meals) better than
+    # mechanically asking someone to perform every action as a favour.
+    replacements = {"I": "you", "my": "your", "me": "you", "myself": "yourself"}
+    suffix = re.sub(r"\b(I|my|me|myself)\b", lambda match: replacements[match[0]], suffix)
+    suffix = suffix.replace("you am ", "you are ")
+    question = f"Would you like to {chunk}{suffix}?"
+    suggestion = f"You might want to {chunk}{suffix}."
+    if question == model:
+        question = f"Do you want to {chunk}{suffix}?"
+    if suggestion == model:
+        suggestion = f"You could {chunk}{suffix}."
+    assert question != model and suggestion != model
+    return [model, question, suggestion]
 
 
 COMMON_EVERYDAY = {

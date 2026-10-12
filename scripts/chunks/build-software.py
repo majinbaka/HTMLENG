@@ -150,7 +150,7 @@ close the bug report|đóng báo cáo lỗi|after the reporter confirms the fix|
 write a test|viết một kiểm thử|for the new helper|before changing the parser|that describes the expected behavior
 run the tests|chạy bộ kiểm thử|after saving the change|before opening a pull request|with the updated sample data
 check the expected result|kiểm tra kết quả mong đợi|in the test description|against the requirement|before changing the assertion
-assert the value|khẳng định giá trị trong kiểm thử|returned by the function|after the update completes|instead of checking only that it exists
+assert the value|kiểm tra giá trị có đúng như mong đợi trong kiểm thử|returned by the function|after the update completes|instead of checking only that it exists
 prepare the test data|chuẩn bị dữ liệu kiểm thử|for an empty cart|before starting the scenario|without using real customer records
 set up the test|thiết lập điều kiện cho kiểm thử|with two saved items|before calling the function|so it starts from a known state
 clean up after the test|dọn dữ liệu sau kiểm thử|to avoid affecting the next case|when temporary files are created|even if an assertion fails
@@ -459,7 +459,7 @@ check the pockets|kiểm tra túi quần áo|before washing these trousers|for l
 load the washing machine|cho đồ vào máy giặt|after sorting the clothes|with the towels from the basket|without filling it too much
 choose the wash cycle|chọn chế độ giặt|from the labels on the dial|after reading the care label|for this small load
 add the detergent|thêm nước hoặc bột giặt|before starting the machine|to the marked compartment|according to the product label
-start the washing machine|khởi động máy giặt|after closing the door|when the current cycle finishes|before going to the garden
+start the washing machine|khởi động máy giặt|after closing the door|after adding the detergent|before going to the garden
 hang out the washing|phơi quần áo ngoài trời|while the weather is dry|on the line in the garden|before the rain arrives
 hang the clothes indoors|phơi quần áo trong nhà|when it rains|on the folding rack|without blocking the doorway
 use a clothes peg|dùng kẹp phơi đồ|to hold the towel in place|when the wind picks up|on each corner of the sheet
@@ -633,7 +633,7 @@ tell the doctor about the pain|nói với bác sĩ về cơn đau|at the appoint
 ask for a clearer explanation|xin được giải thích rõ hơn|when a medical term is unfamiliar|during the consultation|before writing down the instructions
 check the appointment time|kiểm tra giờ hẹn khám|on the confirmation message|before leaving home|to avoid confusing the dates
 fill in the medical form|điền biểu mẫu thông tin sức khỏe|with my current details|while waiting for the appointment|after asking about an unclear question
-bring my medical records|mang theo hồ sơ sức khỏe|to the appointment|in the folder by the door|when the clinic asks for them
+bring my medical records|mang theo hồ sơ sức khỏe|to the appointment|so the doctor can see my previous test results|when the clinic asks for them
 explain my medical history|trình bày tiền sử sức khỏe|in the consultation|with the help of my records|when the doctor asks about earlier problems
 ask about the next step|hỏi bước tiếp theo trong việc khám|before leaving the clinic|after hearing the test result|when the plan is unclear
 take a day to rest|dành một ngày nghỉ ngơi|when I need a quiet day|after a tiring week|without filling it with extra chores

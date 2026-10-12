@@ -28,6 +28,16 @@ for (const item of data) {
     assert(!/\[object Object\]|\{\w+\}/.test(example), `${item.id}: ${example}`);
   }
 }
+const byId = id => data.find(item => item.id === id);
+assert.equal(byId('general-0264').examples[1], 'Would you like to ask what the dish contains before you order?');
+assert.equal(byId('general-0380').examples[1], 'Would you like to save an item for later if you are still deciding?');
+assert(data.find(item => item.chunk === 'restore your previous permissions').examples[0].startsWith('IT can restore'), 'Authored examples must take priority over the generic pronoun template');
+assert(byId('it-0019').examples.every(example => !/I need to|help us/.test(example)), 'Personal troubleshooting steps should address the person who tried them');
+for (const item of data.filter(item => item.id.startsWith('general-') && Number(item.id.slice(8)) <= 550)) {
+  for (const example of item.examples.slice(1)) {
+    assert(!/\b(?:I|my|me|myself)\b|you am\b/.test(example), `${item.id}: listener-addressed variation has a mismatched person`);
+  }
+}
 if (process.argv.includes('--data-only')) {
   console.log('Chunks data: 2,500 distinct chunks, category counts, schema and 7,500 examples passed.');
   process.exit(0);
@@ -182,13 +192,85 @@ if (process.argv.includes('--data-only')) {
     await page.locator('.library-notice').filter({ hasText:'Chưa lưu được' }).waitFor();
     assert.deepEqual(await get(), previous);
     await page.evaluate(() => { Storage.prototype.setItem = window.originalStorageSet; });
-    for (const viewport of [{width:1440,height:1000}, {width:390,height:844}]) {
+    // Recall is attempted before examples; marking never swaps out the current
+    // study card, even though it removes that chunk from the active list.
+    const beforeStudy = await get();
+    await page.getByRole('button', { name:'Luyện 5 chunk →', exact:true }).click();
+    const study = page.getByRole('region', { name:'Luyện 5 chunk', exact:true });
+    await study.waitFor();
+    assert.equal(await study.locator('li').count(), 0);
+    assert(await study.getByRole('button', { name:'Xem chunk và 3 ví dụ' }).isDisabled());
+    await study.locator('#chunk-attempt').fill('   ');
+    assert(await study.getByRole('button', { name:'Xem chunk và 3 ví dụ' }).isDisabled());
+    await study.locator('#chunk-attempt').fill('My own sentence for this situation.');
+    assert.equal((await get()).chunkLibrary.practice[firstId], 'My own sentence for this situation.');
+    await study.getByRole('button', { name:'Xem chunk và 3 ví dụ' }).click();
+    assert.equal(await study.locator('li').count(), 3);
+    assert.equal(await study.locator('[data-study-id]').getAttribute('data-study-id'), firstId);
+    await study.getByRole('button', { name:'✓ Đã thuộc', exact:true }).click();
+    assert.equal((await get()).chunkLibrary.practice[firstId], 'My own sentence for this situation.', 'Marking a chunk preserves its saved practice');
+    assert.equal(await study.locator('[data-study-id]').getAttribute('data-study-id'), firstId);
+    assert((await get()).chunkLibrary.archived.includes(firstId));
+    assert.deepEqual((await get()).dayState, beforeStudy.dayState);
+    await study.getByRole('button', { name:'Chunk tiếp →', exact:true }).click();
+    assert.equal(await study.locator('li').count(), 0);
+    assert.equal(await study.locator('#chunk-attempt').inputValue(), '');
+    await study.getByRole('button', { name:'← Trước', exact:true }).click();
+    assert.equal(await study.locator('#chunk-attempt').inputValue(), 'My own sentence for this situation.');
+    assert.equal(await study.locator('li').count(), 3);
+    await study.getByRole('button', { name:'↩ Học lại', exact:true }).click();
+    await study.getByRole('button', { name:'Luyện chunk 5', exact:true }).click();
+    await study.getByRole('button', { name:'Học 5 tiếp →', exact:true }).click();
+    assert.equal(await study.locator('[data-study-id]').getAttribute('data-study-id'), ordered[5].id);
+    await page.setViewportSize({width:320,height:740});
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await study.locator('#chunk-attempt').fill('Another sentence of my own.');
+    await study.getByRole('button', {name:'Xem chunk và 3 ví dụ'}).click();
+    const nextBounds = await study.getByRole('button', {name:'Chunk tiếp →',exact:true}).boundingBox();
+    assert(nextBounds.y >= 0 && nextBounds.y + nextBounds.height <= 740, 'Mobile study navigation stays within thumb reach');
+    await page.screenshot({path:'/tmp/speaksprint-chunks-study-320.png',fullPage:true});
+    await study.getByRole('button', { name:'Về danh sách', exact:true }).click();
+    await count('1–25 / 2500');
+    await page.getByRole('button', { name:'Luyện 5 chunk →', exact:true }).click();
+    await page.locator('#chunk-search').fill('zzz_no_possible_result_9381');
+    assert.equal(await study.count(), 0, 'Changing filters closes a stale study session');
+    await page.getByRole('button', { name:'Xóa bộ lọc', exact:true }).click();
+    await page.reload();
+    await page.getByRole('button', { name:'Luyện 5 chunk →', exact:true }).click();
+    assert.equal(await study.locator('#chunk-attempt').inputValue(), 'My own sentence for this situation.', 'Practice survives reloading and reopening the study mode');
+    assert.equal(await study.locator('li').count(), 0, 'Revisiting starts with recall, without exposing models');
+    const studyDownloadEvent = page.waitForEvent('download');
+    await page.locator('#export-progress').click();
+    const studyExport = JSON.parse(fs.readFileSync(await (await studyDownloadEvent).path(), 'utf8'));
+    assert.equal(studyExport.chunkLibrary.practice[firstId], 'My own sentence for this situation.');
+    await imp(studyExport);
+    await page.getByRole('button', { name:'Luyện 5 chunk →', exact:true }).click();
+    assert.equal(await study.locator('#chunk-attempt').inputValue(), 'My own sentence for this situation.');
+    const storedStudy = await get();
+    await page.locator('#import-progress').setInputFiles({name:'invalid-practice.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({...studyExport,chunkLibrary:{...studyExport.chunkLibrary,practice:{[firstId]:42}}}))});
+    await page.locator('#toast').filter({hasText:'File không hợp lệ'}).waitFor();
+    assert.deepEqual(await get(), storedStudy, 'Invalid practice imports do not destroy current work');
+    await page.evaluate(() => { window.originalStorageSet = Storage.prototype.setItem; Storage.prototype.setItem = () => { throw new DOMException('Quota exceeded', 'QuotaExceededError'); }; });
+    await study.locator('#chunk-attempt').fill('Keep this draft when saving fails.');
+    await study.getByRole('status').filter({hasText:'Chưa lưu được câu luyện'}).waitFor();
+    assert.deepEqual(await get(), storedStudy);
+    assert.equal(await study.locator('#chunk-attempt').inputValue(), 'Keep this draft when saving fails.');
+    await page.evaluate(() => { Storage.prototype.setItem = window.originalStorageSet; });
+    await study.locator('#chunk-attempt').fill('My own sentence for this situation.');
+    const practiceLesson = waitForRuntime(await context.newPage());
+    await practiceLesson.goto(`${base}/lessons/day-01.html`);
+    await practiceLesson.locator('[data-phase="1"]').click();
+    await practiceLesson.locator('#routine-recall').fill('Keep my chunk practice while writing in a lesson.');
+    assert.equal((await get()).chunkLibrary.practice[firstId], 'My own sentence for this situation.');
+    await practiceLesson.close();
+    await study.getByRole('button', {name:'Về danh sách',exact:true}).click();
+    for (const viewport of [{width:1440,height:1000}, {width:768,height:1024}, {width:390,height:844}, {width:320,height:740}]) {
       await page.setViewportSize(viewport);
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'No horizontal overflow');
       await page.screenshot({ path:`/tmp/speaksprint-chunks-${viewport.width}.png`, fullPage:false });
     }
     assert.deepEqual(errors, []);
     await context.close();
-    console.log('Chunks: data, sorting/search, pagination/URL, favorites/archive/restore, reload, legacy import, export, invalid import, cross-tab state, storage failure and responsive checks passed.');
+    console.log('Chunks: data, sorting/search, pagination/URL, favorites/archive/restore, reload, legacy import, export, invalid import, cross-tab state, storage failure recall sessions and responsive checks passed.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

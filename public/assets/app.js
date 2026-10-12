@@ -45,7 +45,9 @@ function validChunkLibrary(value) {
  if(value === undefined) return true;
  return !!value && typeof value === 'object' && !Array.isArray(value) &&
   ['favorites', 'archived'].every(key => Array.isArray(value[key]) && value[key].length <= 2500 &&
-   value[key].every(validChunkId) && new Set(value[key]).size === value[key].length);
+   value[key].every(validChunkId) && new Set(value[key]).size === value[key].length) &&
+  (value.practice === undefined || (!!value.practice && typeof value.practice === 'object' && !Array.isArray(value.practice) &&
+   Object.keys(value.practice).length <= 2500 && Object.entries(value.practice).every(([id, answer]) => validChunkId(id) && typeof answer === 'string' && answer.length <= 1000)));
 }
 function valid(x){return x&&validChunkLibrary(x.chunkLibrary)&&validTopicState(x.topicState)&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return valid(x)?x:clean()}catch{return clean()}}
@@ -380,14 +382,35 @@ function mark(type,ok,feedback){ds.checkpoints[type]=ok;if(feedback){feedback.te
 function submitAssessment(type,prefix){const expected=(main.dataset[prefix]||'').split('|');const actual=expected.map((_,i)=>main.querySelector(`input[name="${prefix}-${i+1}"]:checked`)?.value);const correct=expected.filter((answer,i)=>answer===actual[i]).length;const answered=actual.filter(Boolean).length;ds.assessmentV2=ds.assessmentV2||{};ds.assessmentV2[type]={correct,total:expected.length,answered};const feedback=main.querySelector(`#${prefix}-feedback`);mark(type,correct===expected.length,feedback);feedback.textContent=answered<expected.length?`Bạn đã trả lời ${answered}/${expected.length} câu. Hãy thử đủ các câu trước.`:`${correct}/${expected.length} câu đúng. ${correct===expected.length?'Checkpoint đã lưu.':'Đọc lại tình huống và dùng gợi ý để thử lại.'}`;main.dispatchEvent(new Event('assessment-updated'))}
 document.querySelector('#submit-comprehension').onclick=()=>submitAssessment('comprehension','comp');document.querySelector('#speaking-done').onclick=()=>{const t=document.querySelector('#speaking-response').value.trim();if(t.split(/\s+/).length<8){document.querySelector('#speak-feedback').textContent='Hãy nhập ít nhất 8 từ về điều bạn vừa nói.';document.querySelector('#speak-feedback').classList.add('show');return}mark('speaking',true,document.querySelector('#speak-feedback'))};document.querySelector('#submit-quiz').onclick=()=>submitAssessment('quiz','quiz');document.querySelectorAll('.hint').forEach(b=>b.onclick=()=>{const e=document.querySelector(b.dataset.target);e.classList.toggle('show')});function update(){for(const k of ['comprehension','speaking','quiz'])document.querySelector(`#status-${k}`).textContent=ds.checkpoints[k]?'✓ Đã lưu':'Chưa hoàn thành';document.querySelector('#finish-day').disabled=!Object.values(ds.checkpoints).every(Boolean)||!routine.ready()||review}update();document.querySelector('#finish-day').onclick=()=>{if(review||!Object.values(ds.checkpoints).every(Boolean)||!routine.ready())return;routine.store();const prev=state.lastNewDayCompletedDate,now=today(),y=new Date();y.setDate(y.getDate()-1);const py=`${y.getFullYear()}-${String(y.getMonth()+1).padStart(2,'0')}-${String(y.getDate()).padStart(2,'0')}`;state.currentStreak=prev===now?state.currentStreak:prev===py?state.currentStreak+1:1;state.longestStreak=Math.max(state.longestStreak,state.currentStreak);state.lastNewDayCompletedDate=now;state.completedDays[d]=now;ds.status='completed';ds.resumeSection=null;save();location.href='../index.html'};}
 function initChunkProgress() {
- const snapshot = () => ({favorites:[...(state.chunkLibrary?.favorites || [])], archived:[...(state.chunkLibrary?.archived || [])]});
+ const snapshot = () => ({favorites:[...(state.chunkLibrary?.favorites || [])], archived:[...(state.chunkLibrary?.archived || [])], ...(state.chunkLibrary?.practice ? {practice:{...state.chunkLibrary.practice}} : {})});
  const announce = () => window.dispatchEvent(new CustomEvent('speaksprint:chunks-progress', {detail:snapshot()}));
  window.SpeakSprintChunkProgress = {
   get: snapshot,
+  savePractice(id, answer) {
+   if(!validChunkId(id) || typeof answer !== 'string' || answer.length > 1000) return false;
+   let previous = state.chunkLibrary;
+   try {
+    const raw = localStorage.getItem(KEY), latest = raw ? JSON.parse(raw) : clean();
+    if(!valid(latest)) throw Error('Invalid progress');
+    state = latest;
+    previous = state.chunkLibrary;
+    const next = snapshot();
+    next.practice = {...next.practice};
+    if(answer) next.practice[id] = answer; else delete next.practice[id];
+    state.chunkLibrary = next;
+    save();
+   } catch {
+    if(previous !== undefined) state.chunkLibrary = previous;
+    else delete state.chunkLibrary;
+    return false;
+   }
+   announce();
+   return true;
+  },
   toggle(id, kind) {
    if(!validChunkId(id) || !['favorites', 'archived'].includes(kind)) return false;
    // Read the current record so another tab's lesson work is kept when marking a chunk.
-   let previous;
+   let previous = state.chunkLibrary;
    try {
     const raw = localStorage.getItem(KEY);
     const latest = raw ? JSON.parse(raw) : clean();
