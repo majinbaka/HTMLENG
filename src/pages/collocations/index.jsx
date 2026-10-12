@@ -4,6 +4,17 @@ import StudySession, { Example } from "../../components/LibraryStudy";
 import items from "../../content/collocations/core.json";
 
 const topics = [...new Set(items.map((item) => item.topic))];
+const levelCounts = Object.fromEntries(
+  ["B2", "C1"].map((level) => [
+    level,
+    items.filter((item) => item.category === level).length,
+  ]),
+);
+const exampleCount = items.reduce(
+  (total, item) => total + item.examples.length,
+  0,
+);
+const formatCount = (count) => count.toLocaleString("vi-VN");
 const statuses = [
   ["active", "Đang học"],
   ["favorites", "Yêu thích"],
@@ -48,7 +59,13 @@ function readView() {
     status: statuses.some(([status]) => status === params.get("status"))
       ? params.get("status")
       : "active",
-    page: Math.max(1, Math.min(3, Math.floor(Number(params.get("page"))) || 1)),
+    page: Math.max(
+      1,
+      Math.min(
+        Math.ceil(items.length / 25),
+        Math.floor(Number(params.get("page"))) || 1,
+      ),
+    ),
   };
 }
 
@@ -173,10 +190,13 @@ export default function Collocations() {
             </p>
           </div>
           <div className="library-hero-note">
-            <strong>{items.length}</strong>
-            <span>cụm khởi đầu · 180 ví dụ</span>
-            <p>30 B2 · 30 C1</p>
-            <small>Công việc, lập luận, công nghệ và đời sống.</small>
+            <strong>{formatCount(items.length)}</strong>
+            <span>collocations · {formatCount(exampleCount)} ví dụ</span>
+            <p>
+              {formatCount(levelCounts.B2)} B2 · {formatCount(levelCounts.C1)}{" "}
+              C1 mở rộng
+            </p>
+            <small>Công việc, lập luận, nghiên cứu và đời sống.</small>
           </div>
         </section>
         <details className="panel">
@@ -189,10 +209,12 @@ export default function Collocations() {
             đạt trình độ.
           </p>
           <p>
-            Thư viện hiện có 60 cụm khởi đầu. Nhãn B2/C1 là mức luyện do biên
-            soạn gợi ý, không phải phân loại chính thức của từng cụm. C1 còn cần
-            diễn đạt chính xác, linh hoạt và phù hợp sắc thái; chỉ thuộc danh
-            sách chưa đủ.
+            Thư viện có {formatCount(levelCounts.B2)} cụm nền tảng B2 và{" "}
+            {formatCount(levelCounts.C1)} cụm C1 mở rộng, tổng cộng{" "}
+            {formatCount(items.length)} cụm — đạt mốc đầu của mục tiêu tham
+            khảo. Nhãn B2/C1 là mức luyện do biên soạn gợi ý, không phải phân
+            loại chính thức của từng cụm. C1 còn cần diễn đạt chính xác, linh
+            hoạt và phù hợp sắc thái; chỉ thuộc danh sách chưa đủ.
           </p>
           <p>
             <a
@@ -247,8 +269,12 @@ export default function Collocations() {
                 onChange={(event) => filter({ level: event.target.value })}
               >
                 <option value="all">B2 và C1</option>
-                <option value="B2">B2 · 30 cụm</option>
-                <option value="C1">C1 · 30 cụm</option>
+                <option value="B2">
+                  B2 · {formatCount(levelCounts.B2)} cụm
+                </option>
+                <option value="C1">
+                  C1 mở rộng · {formatCount(levelCounts.C1)} cụm
+                </option>
               </select>
             </label>
             <label htmlFor="collocation-topic">

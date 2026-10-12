@@ -1,0 +1,500 @@
+absenteeism|tình trạng thường xuyên vắng mặt|u
+abuse|sự lạm dụng|u
+acceptance|sự chấp nhận|u
+access|khả năng tiếp cận|u
+account|bản tường thuật|c
+accountability|trách nhiệm giải trình|u
+accounts|bản tường thuật|p
+accuracy|độ chính xác|u
+achievement|thành tích|c
+acknowledgement|sự thừa nhận|c
+action|hành động|c
+activity|hoạt động|c
+adjustment|sự điều chỉnh|c
+adjustments|sự điều chỉnh|p
+adoption|việc áp dụng|u
+advantage|lợi thế|c
+advice|lời khuyên|u
+agenda|chương trình nghị sự|c
+agreement|thỏa thuận|c
+agriculture|nền nông nghiệp|u
+alignment|sự thống nhất định hướng|u
+allocation|sự phân bổ|c
+alternative|phương án thay thế|c
+ambiguity|sự mơ hồ|u
+amendment|sửa đổi|c
+analysis|phân tích|c
+anger|sự tức giận|u
+answer|câu trả lời|c
+anxieties|nỗi lo|p
+anxiety|sự lo âu|u
+appointment|việc bổ nhiệm|c
+approach|cách tiếp cận|c
+approval|sự chấp thuận|u
+argument|lập luận|c
+arrangement|cơ chế sắp xếp|c
+arrangements|cơ chế sắp xếp|p
+aspiration|nguyện vọng|c
+assessment|sự đánh giá|c
+assets|tài sản|p
+association|mối liên hệ|c
+assumption|giả định|c
+assurance|lời bảo đảm|c
+attention|sự chú ý|u
+audit|cuộc kiểm toán|c
+authority|thẩm quyền|u
+autonomy|quyền tự chủ|u
+balance|số dư|c
+barrier|rào cản|c
+barriers|rào cản|p
+benefit|lợi ích|c
+benefits|lợi ích|p
+bias|thiên kiến|c
+body|cơ quan|c
+breakthrough|bước đột phá|c
+burden|gánh nặng|c
+business|hoạt động kinh doanh|c
+business model|mô hình kinh doanh|c
+candidate|ứng viên|c
+capacity|khả năng|c
+case|lập luận bảo vệ quan điểm|c
+cause|nguyên nhân|c
+challenge|thách thức|c
+challenges|thách thức|p
+change|thay đổi|c
+changes|thay đổi|p
+characteristics|đặc điểm|p
+checks|bước kiểm tra|p
+chemicals|hóa chất|p
+circumstances|hoàn cảnh|p
+claim|tuyên bố|c
+claims|tuyên bố|p
+clause|điều khoản|c
+code|bộ quy tắc|c
+commitment|cam kết|c
+commitments|cam kết|p
+compensation|sự bồi thường|u
+competence|thẩm quyền|u
+complaint|lời phàn nàn|c
+complexity|sự phức tạp|u
+compliance|việc tuân thủ|u
+concentration|sự tập trung|c
+concern|mối lo ngại|c
+concerns|mối lo ngại|p
+conclusion|kết luận|c
+conditions|điều kiện|p
+conflict|xung đột|c
+confusion|sự nhầm lẫn|u
+congestion|tình trạng ùn tắc|u
+consent|sự đồng ý|u
+consequences|hậu quả|p
+consolidation|sự củng cố|u
+constraints|ràng buộc|p
+consumption|sự tiêu dùng|u
+contamination|sự nhiễm bẩn|u
+contradiction|mâu thuẫn|c
+contribution|sự đóng góp|c
+contributions|khoản đóng góp|p
+controls|biện pháp kiểm soát|p
+cooperation|sự hợp tác|u
+correlation|mối tương quan|c
+corruption|tình trạng tham nhũng|u
+cost|chi phí|c
+costs|chi phí|p
+course of action|hướng hành động|c
+coverage|phạm vi bao quát|u
+crisis|cuộc khủng hoảng|c
+criteria|tiêu chí|p
+criticism|lời phê bình|u
+critique|bài phân tích phê bình|c
+culture|văn hóa|u
+damage|thiệt hại|u
+data|dữ liệu|u
+database|cơ sở dữ liệu|c
+debate|cuộc tranh luận|c
+debt|nợ|u
+decentralisation|sự phân quyền|u
+decision|quyết định|c
+decline|sự suy giảm|c
+defeat|thất bại|c
+defence|biện pháp bảo vệ|c
+deficiency|sự thiếu sót|c
+deficit|thâm hụt|c
+definition|định nghĩa|c
+delays|sự chậm trễ|p
+demand|nhu cầu|u
+demands|đòi hỏi|p
+depiction|sự mô tả|c
+deprivation|tình trạng thiếu thốn|u
+description|mô tả|c
+design|thiết kế|c
+development|sự phát triển|u
+developments|diễn biến|p
+difference|khác biệt|c
+difficulties|khó khăn|p
+difficulty|khó khăn|c
+direction|hướng đi|c
+disadvantage|bất lợi|c
+disagreement|bất đồng|c
+discipline|kỷ luật|u
+disclosure|sự công bố thông tin|c
+discomfort|sự khó chịu|u
+discontent|sự bất mãn|u
+discrimination|sự phân biệt đối xử|u
+discussion|cuộc thảo luận|c
+discussions|thảo luận|p
+disparity|chênh lệch|c
+disruption|sự gián đoạn|u
+dissatisfaction|sự không hài lòng|u
+distinction|sự phân biệt|c
+distortions|sự méo mó|p
+distress|sự đau khổ|u
+distribution|sự phân phối|c
+distrust|sự thiếu tin tưởng|u
+donation|khoản quyên góp|c
+draft|bản thảo|c
+drafting|việc soạn thảo|u
+duty|nghĩa vụ|c
+dynamics|động lực vận hành|p
+earnings|thu nhập|p
+edge|lợi thế|c
+effect|tác động|c
+effects|tác động|p
+efficiency|hiệu quả|u
+emissions|khí thải|p
+emotions|cảm xúc|p
+employment|việc làm|u
+energy|năng lượng|u
+enhancement|sự cải tiến|c
+enterprise|doanh nghiệp|c
+entitlement|quyền lợi|c
+errors|sai sót|p
+estimate|ước tính|c
+evaluation|sự đánh giá|c
+event|sự kiện|c
+events|sự kiện|p
+evidence|bằng chứng|u
+examination|cuộc xem xét|c
+exclusion|sự loại trừ|u
+exemption|sự miễn trừ|c
+expansion|sự mở rộng|c
+expectation|kỳ vọng|c
+expectations|kỳ vọng|p
+experience|kinh nghiệm|u
+explanation|lời giải thích|c
+exposure|mức tiếp xúc|u
+factor|yếu tố|c
+failure|sự thất bại|c
+fatigue|sự mệt mỏi|u
+financing|nguồn tài chính|u
+finding|phát hiện|c
+findings|phát hiện|p
+flaw|sai sót|c
+foresight|khả năng dự báo|u
+framework|khung phương pháp|c
+freedoms|quyền tự do|p
+frustration|sự bực bội|u
+funding|nguồn tài trợ|u
+future|tương lai|c
+gains|thành quả đạt được|p
+goals|mục tiêu|p
+grievance|sự bất bình|c
+growth|sự tăng trưởng|u
+guarantee|sự bảo đảm|c
+harm|tổn hại|u
+heat|nhiệt lượng|u
+hypothesis|giả thuyết|c
+illness|bệnh tật|u
+imbalance|sự mất cân bằng|c
+impact|tác động|c
+implications|hệ quả|p
+implications for policy|hệ quả đối với chính sách|p
+improvement|sự cải thiện|c
+incentives|động lực khuyến khích|p
+income|thu nhập|u
+increase|mức tăng|c
+indicators|chỉ số|p
+inefficiency|sự kém hiệu quả|u
+inequality|sự bất bình đẳng|u
+inference|suy luận|c
+influence|ảnh hưởng|u
+information|thông tin|u
+infrastructure|cơ sở hạ tầng|u
+initiative|sáng kiến|c
+initiatives|sáng kiến|p
+innovation|sự đổi mới|c
+inquiry|cuộc tìm hiểu|c
+insecurity|sự bất an|u
+insight|hiểu biết sâu sắc|c
+instability|sự bất ổn|u
+instructions|chỉ dẫn|p
+instrument|văn bản hoặc công cụ|c
+insurance|bảo hiểm|u
+intent|ý định|u
+interest|sự quan tâm|u
+interests|lợi ích|p
+interpretation|cách diễn giải|c
+interpretations|cách diễn giải|p
+intervention|sự can thiệp|c
+investigation|cuộc điều tra|c
+investment|khoản đầu tư|c
+issue|vấn đề|c
+issues|vấn đề|p
+judgement|sự phán xét|c
+justification|lý do biện minh|c
+knowledge|kiến thức|u
+law|luật|c
+leadership|sự lãnh đạo|u
+legislation|luật được ban hành|u
+levels|mức độ|p
+liability|trách nhiệm pháp lý|c
+limit|giới hạn|c
+limitation|hạn chế|c
+link|mối liên hệ|c
+list|danh sách|c
+livelihood|sinh kế|c
+location|vị trí địa lý|c
+logic|lô-gíc|u
+loss|thiệt hại|c
+losses|thiệt hại|p
+loyalties|sự trung thành|p
+management|việc quản lý|u
+meaning|ý nghĩa|c
+measure|biện pháp|c
+measures|biện pháp|p
+mechanism|cơ chế|c
+mechanisms|cơ chế|p
+membership|tư cách thành viên|u
+memory|trí nhớ|u
+message|thông điệp|c
+messages|thông điệp|p
+method|phương pháp|c
+methodology|phương pháp luận|c
+misconception|quan niệm sai lầm|c
+misunderstanding|hiểu lầm|c
+model|mô hình|c
+moisture|độ ẩm|u
+moment|thời điểm|c
+motivation|động cơ|c
+move|bước đi|c
+narrative|câu chuyện hoặc cách diễn giải|c
+need|nhu cầu|c
+needs|nhu cầu|p
+neglect|sự bỏ bê|u
+notice|thông báo|c
+objective|mục tiêu|c
+objectives|mục tiêu|p
+obligation|nghĩa vụ|c
+obligations|nghĩa vụ|p
+observations|quan sát|p
+opinions|ý kiến|p
+opportunities|cơ hội|p
+opportunity|cơ hội|c
+opposition|sự phản đối|u
+option|phương án|c
+options|lựa chọn|p
+outcome|kết quả|c
+outcomes|kết quả|p
+outlook|triển vọng|c
+output|sản lượng|u
+overcrowding|tình trạng quá đông|u
+oversight|sự giám sát|u
+overview|tổng quan|c
+package|gói biện pháp|c
+pain|cơn đau|u
+part|vai trò hoặc phần|c
+participation|sự tham gia|u
+partnership|quan hệ đối tác|c
+path|hướng đi|c
+pattern|mô hình lặp lại|c
+penalty|hình phạt|c
+performance|hiệu quả hoạt động|u
+permission|sự cho phép|u
+perspective|góc nhìn|c
+picture|bức tranh tổng thể|c
+plan|kế hoạch|c
+planning|việc lập kế hoạch|u
+plans|kế hoạch|p
+point|điểm|c
+policy|chính sách|c
+policy option|phương án chính sách|c
+portrayal|sự khắc họa|c
+position|vị trí|c
+poverty|tình trạng nghèo đói|u
+powers|quyền hạn|p
+practices|thông lệ|p
+premise|tiền đề|c
+pressure|áp lực|u
+pressures|áp lực|p
+principle|nguyên tắc|c
+priorities|ưu tiên|p
+priority|ưu tiên|c
+problem|vấn đề|c
+problems|vấn đề|p
+procedure|quy trình|c
+process|quy trình|c
+product|sản phẩm|c
+production|việc sản xuất|u
+productivity|năng suất|u
+profit|lợi nhuận|c
+programme|chương trình|c
+progress|tiến bộ|u
+prohibition|lệnh cấm|c
+project|dự án|c
+projections|dự báo|p
+promise|lời hứa|c
+proof|bằng chứng xác thực|u
+properties|thuộc tính|p
+proposal|đề xuất|c
+proposals|đề xuất|p
+protection|sự bảo vệ|u
+provision|việc cung cấp hoặc điều khoản|c
+prudence|sự thận trọng|u
+public reaction|phản ứng của công chúng|u
+publicity|sự đưa tin|u
+punishment|hình phạt|u
+purpose|mục đích|c
+quality standards|tiêu chuẩn chất lượng|p
+question|câu hỏi|c
+questions|câu hỏi|p
+ramifications|hệ quả kéo theo|p
+rate|tỷ lệ|c
+rationale|cơ sở lý luận|c
+reaction|phản ứng|c
+reading|cách đọc và diễn giải|c
+reason|lý do|c
+reasoning|lập luận|u
+recognition|sự công nhận|u
+recommendation|khuyến nghị|c
+recommendations|khuyến nghị|p
+recovery|sự phục hồi|c
+reduction|mức giảm|c
+redundancy|việc nghỉ do cắt giảm nhân sự|c
+reference|sự đề cập|c
+refinement|sự tinh chỉnh|c
+reform|cải cách|c
+reforms|cải cách|p
+regulations|quy định|p
+regulatory requirements|yêu cầu quản lý|p
+rejection|sự bác bỏ|c
+relationship|mối quan hệ|c
+remedy|biện pháp khắc phục|c
+report|báo cáo|c
+reports|báo cáo|p
+representation|sự đại diện|u
+request|yêu cầu|c
+requirement|yêu cầu|c
+research|nghiên cứu|u
+resistance|sự phản kháng|u
+response|phản ứng hoặc biện pháp đáp ứng|c
+responsibility|trách nhiệm|c
+restraint|sự kiềm chế|u
+restrictions|hạn chế được áp đặt|p
+restructuring|việc tái cơ cấu|u
+result|kết quả|c
+results|kết quả|p
+return|lợi nhuận thu về|c
+returns|lợi nhuận|p
+revenue|doanh thu|u
+review|cuộc rà soát|c
+rights|quyền|p
+rigidity|sự cứng nhắc|u
+risk|rủi ro|c
+risks|rủi ro|p
+role|vai trò|c
+route|lộ trình|c
+rules|quy tắc|p
+safeguards|biện pháp bảo đảm|p
+safety standards|tiêu chuẩn an toàn|p
+scale|quy mô|u
+scenario|kịch bản|c
+schedule|lịch trình|c
+scope|phạm vi|u
+screening|việc sàng lọc|u
+scrutiny|sự xem xét|u
+security requirements|yêu cầu bảo mật|p
+selection|việc lựa chọn|c
+services|dịch vụ|p
+session|phiên họp|c
+set of rules|bộ quy tắc|c
+settlement|thỏa thuận giải quyết|c
+share|phần được chia|c
+sharing|việc chia sẻ|u
+shift|sự chuyển dịch|c
+shortage|sự thiếu hụt|c
+side effects|tác dụng phụ|p
+signals|tín hiệu|p
+solution|giải pháp|c
+source|nguồn|c
+space|dư địa|u
+speculation|sự suy đoán|u
+speed|tốc độ|u
+spillover|tác động lan truyền|u
+stability|sự ổn định|u
+stage|giai đoạn|c
+stance|lập trường|c
+standards|tiêu chuẩn|p
+statement|tuyên bố|c
+stimulus|biện pháp kích thích|c
+story|câu chuyện|c
+storyline|mạch truyện|c
+strategy|chiến lược|c
+strength|điểm mạnh|c
+stress|căng thẳng|u
+structure|cấu trúc|c
+study|nghiên cứu|c
+success|thành công|u
+suggestion|gợi ý|c
+support|sự hỗ trợ|u
+survey|cuộc khảo sát|c
+sustainability|tính bền vững|u
+symptoms|triệu chứng|p
+system|hệ thống|c
+talks|đàm phán|p
+target|mục tiêu|c
+targets|mục tiêu|p
+task|nhiệm vụ|c
+taxation|việc đánh thuế|u
+tension|sự căng thẳng|u
+tensions|căng thẳng|p
+testimony|lời chứng|u
+testing|việc kiểm thử|u
+theory|lý thuyết|c
+threat|mối đe dọa|c
+timetable|lịch trình|c
+topic|chủ đề|c
+tourism|ngành du lịch|u
+training|việc đào tạo|u
+transformation|sự chuyển đổi|c
+transparency|tính minh bạch|u
+transport|giao thông vận tải|u
+treatment|cách đối xử|u
+trend|xu hướng|c
+trends|xu hướng|p
+turn|bước ngoặt|c
+uncertainty|sự bất định|u
+underfunding|tình trạng thiếu tài trợ|u
+underinvestment|tình trạng đầu tư thiếu mức cần thiết|u
+understanding|sự thấu hiểu|u
+unemployment|tình trạng thất nghiệp|u
+use|việc sử dụng|u
+utility|mức hữu ích|u
+validation|sự kiểm chứng|u
+value|giá trị|u
+values|giá trị|p
+variation|sự biến thiên|u
+venture|dự án kinh doanh|c
+verification|việc xác minh|u
+version|phiên bản|c
+victory|chiến thắng|c
+view|quan điểm|c
+views|quan điểm|p
+vision|tầm nhìn|c
+vulnerabilities|điểm dễ bị tổn thương|p
+vulnerability|điểm dễ bị tổn thương|c
+warning|lời cảnh báo|c
+weakness|điểm yếu|c
+whole|tổng thể|c
+withdrawal|sự rút lui|c
+witness|nhân chứng|c
+work|công việc|u

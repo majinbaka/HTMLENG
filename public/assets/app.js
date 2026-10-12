@@ -42,7 +42,9 @@ function validChunkId(id) {
  return !!match && Number(match[2]) >= 1 && Number(match[2]) <= ({it:300, work:450, software:350, general:1400}[match[1]]);
 }
 function validCollocationId(id) {
- return typeof id === "string" && /^coll-(b2|c1)-(00[1-9]|0[12][0-9]|030)$/.test(id);
+ if(typeof id !== 'string') return false;
+ const match = /^coll-(b2|c1)-(\d{3}|1000)$/.exec(id);
+ return !!match && Number(match[2]) >= 1 && Number(match[2]) <= ({b2:500, c1:1000}[match[1]]);
 }
 function validChunkLibrary(value, validId = validChunkId, limit = 2500) {
  if(value === undefined) return true;
@@ -52,7 +54,7 @@ function validChunkLibrary(value, validId = validChunkId, limit = 2500) {
   (value.practice === undefined || (!!value.practice && typeof value.practice === 'object' && !Array.isArray(value.practice) &&
    Object.keys(value.practice).length <= limit && Object.entries(value.practice).every(([id, answer]) => validId(id) && typeof answer === 'string' && answer.length <= 1000)));
 }
-function valid(x){return x&&validChunkLibrary(x.collocationLibrary, validCollocationId, 60)&&validChunkLibrary(x.chunkLibrary)&&validTopicState(x.topicState)&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
+function valid(x){return x&&validChunkLibrary(x.collocationLibrary, validCollocationId, 1500)&&validChunkLibrary(x.chunkLibrary)&&validTopicState(x.topicState)&&x.version===1&&x.completedDays&&typeof x.completedDays==='object'&&!Array.isArray(x.completedDays)&&x.dayState&&typeof x.dayState==='object'&&!Array.isArray(x.dayState)&&Number.isInteger(x.currentStreak)&&Number.isInteger(x.longestStreak)&&Object.values(x.dayState).every(day=>day&&typeof day==='object'&&!Array.isArray(day)&&validWeeklyReview(day.weeklyReview)&&validRoutine(day.routine))}
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return valid(x)?x:clean()}catch{return clean()}}
 let state=load();
 function refreshLibraries() {

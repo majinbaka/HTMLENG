@@ -59,8 +59,8 @@ export default function Dashboard() {
             <p className="kicker coral">COLLOCATIONS · B2 & C1</p>
             <h2 id="collocation-title">Chọn đúng những từ đi cùng nhau.</h2>
             <p>
-              60 cụm khởi đầu, nghĩa tiếng Việt và 180 ví dụ. Lọc theo mức học,
-              chủ đề và luyện 5 cụm mỗi lượt.
+              1.500 cụm: 500 nền tảng B2 và 1.000 C1 mở rộng, nghĩa tiếng Việt
+              và 4.500 ví dụ. Lọc theo mức học, chủ đề và luyện 5 cụm mỗi lượt.
             </p>
           </div>
           <a className="primary" href="collocations/index.html">

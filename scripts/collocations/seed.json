@@ -1,0 +1,782 @@
+[
+  {
+    "id": "coll-b2-001",
+    "chunk": "meet a deadline",
+    "explanation": "hoàn thành đúng hạn",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "meet + a deadline",
+    "examples": [
+      "We need to meet a deadline this Friday.",
+      "A clear plan helps us meet a deadline.",
+      "Can your team meet a deadline this tight?"
+    ]
+  },
+  {
+    "id": "coll-b2-002",
+    "chunk": "make progress",
+    "explanation": "đạt tiến bộ",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "make progress + on/with something",
+    "examples": [
+      "We are starting to make progress on the project.",
+      "You can make progress with regular practice.",
+      "Small changes help us make progress."
+    ]
+  },
+  {
+    "id": "coll-b2-003",
+    "chunk": "take responsibility",
+    "explanation": "nhận trách nhiệm",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "take responsibility + for something",
+    "examples": [
+      "I will take responsibility for the final report.",
+      "Managers should take responsibility for their decisions.",
+      "Who will take responsibility for this task?"
+    ]
+  },
+  {
+    "id": "coll-b2-004",
+    "chunk": "raise concerns",
+    "explanation": "nêu những điều lo ngại",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "raise concerns + about something",
+    "examples": [
+      "Staff may raise concerns about the new schedule.",
+      "Please raise concerns before we approve the plan.",
+      "These results raise concerns about product safety."
+    ]
+  },
+  {
+    "id": "coll-b2-005",
+    "chunk": "reach an agreement",
+    "explanation": "đạt được thỏa thuận",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "reach an agreement + on/about something",
+    "examples": [
+      "We hope to reach an agreement on the price.",
+      "Both teams need to reach an agreement today.",
+      "It took weeks to reach an agreement."
+    ]
+  },
+  {
+    "id": "coll-b2-006",
+    "chunk": "heavy workload",
+    "explanation": "khối lượng công việc lớn",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "have/manage + a heavy workload",
+    "examples": [
+      "She has a heavy workload this month.",
+      "A heavy workload can affect your health.",
+      "We hired two people to share the heavy workload."
+    ]
+  },
+  {
+    "id": "coll-b2-007",
+    "chunk": "constructive feedback",
+    "explanation": "phản hồi mang tính xây dựng",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "give/receive + constructive feedback",
+    "examples": [
+      "Please give me constructive feedback on my presentation.",
+      "Constructive feedback helps people improve.",
+      "She thanked her manager for the constructive feedback."
+    ]
+  },
+  {
+    "id": "coll-b2-008",
+    "chunk": "set priorities",
+    "explanation": "xác định việc ưu tiên",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "set priorities + for something",
+    "examples": [
+      "We should set priorities for the next quarter.",
+      "It is easier to set priorities with clear goals.",
+      "How do you set priorities during a busy week?"
+    ]
+  },
+  {
+    "id": "coll-b2-009",
+    "chunk": "make a decision",
+    "explanation": "đưa ra quyết định",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "make a decision + about/on something",
+    "examples": [
+      "We need to make a decision about the supplier.",
+      "Take your time before you make a decision.",
+      "The team will make a decision tomorrow."
+    ]
+  },
+  {
+    "id": "coll-b2-010",
+    "chunk": "strong evidence",
+    "explanation": "bằng chứng có sức thuyết phục",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "strong evidence + of/for something",
+    "examples": [
+      "We have strong evidence of a system failure.",
+      "There is strong evidence for this explanation.",
+      "A claim needs strong evidence to be convincing."
+    ]
+  },
+  {
+    "id": "coll-b2-011",
+    "chunk": "major challenge",
+    "explanation": "thách thức lớn",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "face/overcome + a major challenge",
+    "examples": [
+      "Finding enough staff is a major challenge.",
+      "The team faces a major challenge this year.",
+      "We overcame a major challenge during testing."
+    ]
+  },
+  {
+    "id": "coll-b2-012",
+    "chunk": "play a role",
+    "explanation": "đóng một vai trò",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "play a role + in something",
+    "examples": [
+      "Trust can play a role in team performance.",
+      "Parents play a role in children's learning.",
+      "Cost will play a role in our decision."
+    ]
+  },
+  {
+    "id": "coll-b2-013",
+    "chunk": "highly likely",
+    "explanation": "rất có khả năng xảy ra",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "be highly likely + to do something",
+    "examples": [
+      "Prices are highly likely to rise.",
+      "It is highly likely that the meeting will finish late.",
+      "This change is highly likely to improve response times."
+    ]
+  },
+  {
+    "id": "coll-b2-014",
+    "chunk": "widely used",
+    "explanation": "được sử dụng rộng rãi",
+    "category": "B2",
+    "topic": "Công nghệ",
+    "pattern": "be widely used + in/for something",
+    "examples": [
+      "This tool is widely used in small businesses.",
+      "Email is still widely used for work.",
+      "The method is widely used in research."
+    ]
+  },
+  {
+    "id": "coll-b2-015",
+    "chunk": "protect privacy",
+    "explanation": "bảo vệ quyền riêng tư",
+    "category": "B2",
+    "topic": "Công nghệ",
+    "pattern": "protect + someone's privacy",
+    "examples": [
+      "We use encryption to protect privacy.",
+      "Clear rules help protect privacy online.",
+      "The app should protect privacy by default."
+    ]
+  },
+  {
+    "id": "coll-b2-016",
+    "chunk": "technical issue",
+    "explanation": "vấn đề kỹ thuật",
+    "category": "B2",
+    "topic": "Công nghệ",
+    "pattern": "resolve/report + a technical issue",
+    "examples": [
+      "A technical issue delayed the launch.",
+      "Please report any technical issue to support.",
+      "We resolved the technical issue this morning."
+    ]
+  },
+  {
+    "id": "coll-b2-017",
+    "chunk": "reliable source",
+    "explanation": "nguồn đáng tin cậy",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "a reliable source + of information",
+    "examples": [
+      "Check the facts with a reliable source.",
+      "The report is a reliable source of information.",
+      "Is this website a reliable source?"
+    ]
+  },
+  {
+    "id": "coll-b2-018",
+    "chunk": "balanced diet",
+    "explanation": "chế độ ăn cân bằng",
+    "category": "B2",
+    "topic": "Đời sống",
+    "pattern": "follow/maintain + a balanced diet",
+    "examples": [
+      "A balanced diet includes a variety of foods.",
+      "She tries to maintain a balanced diet.",
+      "Planning meals can help you follow a balanced diet."
+    ]
+  },
+  {
+    "id": "coll-b2-019",
+    "chunk": "regular exercise",
+    "explanation": "tập thể dục đều đặn",
+    "category": "B2",
+    "topic": "Đời sống",
+    "pattern": "do/get + regular exercise",
+    "examples": [
+      "Regular exercise is part of my routine.",
+      "I try to get regular exercise after work.",
+      "Walking is a simple way to do regular exercise."
+    ]
+  },
+  {
+    "id": "coll-b2-020",
+    "chunk": "close relationship",
+    "explanation": "mối quan hệ thân thiết",
+    "category": "B2",
+    "topic": "Đời sống",
+    "pattern": "have/build + a close relationship with someone",
+    "examples": [
+      "I have a close relationship with my sister.",
+      "They built a close relationship over several years.",
+      "A close relationship depends on trust."
+    ]
+  },
+  {
+    "id": "coll-b2-021",
+    "chunk": "deeply disappointed",
+    "explanation": "rất thất vọng",
+    "category": "B2",
+    "topic": "Đời sống",
+    "pattern": "be deeply disappointed + with/by something",
+    "examples": [
+      "I was deeply disappointed with the result.",
+      "The fans were deeply disappointed by the cancellation.",
+      "She felt deeply disappointed after the interview."
+    ]
+  },
+  {
+    "id": "coll-b2-022",
+    "chunk": "fully aware",
+    "explanation": "hoàn toàn nhận thức được",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "be fully aware + of something/that…",
+    "examples": [
+      "We are fully aware of the risks.",
+      "She is fully aware that the plan may change.",
+      "Are you fully aware of the extra costs?"
+    ]
+  },
+  {
+    "id": "coll-b2-023",
+    "chunk": "save time",
+    "explanation": "tiết kiệm thời gian",
+    "category": "B2",
+    "topic": "Đời sống",
+    "pattern": "save time + by doing something",
+    "examples": [
+      "You can save time by planning ahead.",
+      "This shortcut will save time during setup.",
+      "We use templates to save time."
+    ]
+  },
+  {
+    "id": "coll-b2-024",
+    "chunk": "reduce costs",
+    "explanation": "giảm chi phí",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "reduce costs + by doing something",
+    "examples": [
+      "We can reduce costs by sharing equipment.",
+      "The company wants to reduce costs this year.",
+      "Better planning can reduce costs without lowering quality."
+    ]
+  },
+  {
+    "id": "coll-b2-025",
+    "chunk": "steady growth",
+    "explanation": "sự tăng trưởng đều đặn",
+    "category": "B2",
+    "topic": "Công việc",
+    "pattern": "steady growth + in something",
+    "examples": [
+      "The business has seen steady growth in sales.",
+      "We expect steady growth over the next year.",
+      "Steady growth is easier to manage than sudden expansion."
+    ]
+  },
+  {
+    "id": "coll-b2-026",
+    "chunk": "raise awareness",
+    "explanation": "nâng cao nhận thức",
+    "category": "B2",
+    "topic": "Xã hội",
+    "pattern": "raise awareness + of/about something",
+    "examples": [
+      "The campaign aims to raise awareness of online fraud.",
+      "Schools can raise awareness about climate change.",
+      "We organised an event to raise awareness."
+    ]
+  },
+  {
+    "id": "coll-b2-027",
+    "chunk": "public transport",
+    "explanation": "phương tiện giao thông công cộng",
+    "category": "B2",
+    "topic": "Xã hội",
+    "pattern": "use/improve + public transport",
+    "examples": [
+      "I use public transport to get to work.",
+      "Better public transport can reduce traffic.",
+      "Public transport is limited in some rural areas."
+    ]
+  },
+  {
+    "id": "coll-b2-028",
+    "chunk": "serious consequences",
+    "explanation": "hậu quả nghiêm trọng",
+    "category": "B2",
+    "topic": "Lập luận",
+    "pattern": "have/face + serious consequences",
+    "examples": [
+      "Ignoring the warning could have serious consequences.",
+      "The delay had serious consequences for the business.",
+      "A small mistake can sometimes lead to serious consequences."
+    ]
+  },
+  {
+    "id": "coll-b2-029",
+    "chunk": "solve a problem",
+    "explanation": "giải quyết một vấn đề",
+    "category": "B2",
+    "topic": "Công nghệ",
+    "pattern": "solve a problem + by doing something",
+    "examples": [
+      "We can solve a problem by breaking it into smaller parts.",
+      "This update should solve a problem with login.",
+      "Ask for help if you cannot solve a problem alone."
+    ]
+  },
+  {
+    "id": "coll-b2-030",
+    "chunk": "keep a promise",
+    "explanation": "giữ lời hứa",
+    "category": "B2",
+    "topic": "Đời sống",
+    "pattern": "keep + a promise to someone",
+    "examples": [
+      "It is important to keep a promise.",
+      "She worked hard to keep a promise to her son.",
+      "Do not make commitments if you cannot keep a promise."
+    ]
+  },
+  {
+    "id": "coll-c1-001",
+    "chunk": "compelling evidence",
+    "explanation": "bằng chứng rất thuyết phục",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "compelling evidence + for/of something",
+    "examples": [
+      "The study provides compelling evidence for the theory.",
+      "We found compelling evidence of deliberate interference.",
+      "The committee asked for more compelling evidence."
+    ]
+  },
+  {
+    "id": "coll-c1-002",
+    "chunk": "underlying assumption",
+    "explanation": "giả định nền tảng, thường không nói rõ",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "an underlying assumption + that…",
+    "examples": [
+      "The underlying assumption is that demand will remain stable.",
+      "We need to question the underlying assumption.",
+      "An underlying assumption can shape the whole argument."
+    ]
+  },
+  {
+    "id": "coll-c1-003",
+    "chunk": "pose a threat",
+    "explanation": "gây ra mối đe dọa",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "pose a threat + to something",
+    "examples": [
+      "Extreme weather can pose a threat to food supplies.",
+      "These attacks pose a threat to public safety.",
+      "Could this policy pose a threat to small businesses?"
+    ]
+  },
+  {
+    "id": "coll-c1-004",
+    "chunk": "mitigate risk",
+    "explanation": "giảm mức độ rủi ro",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "mitigate risk + by doing something",
+    "examples": [
+      "We can mitigate risk by testing in stages.",
+      "Diversifying suppliers helps mitigate risk.",
+      "The team introduced safeguards to mitigate risk."
+    ]
+  },
+  {
+    "id": "coll-c1-005",
+    "chunk": "far-reaching implications",
+    "explanation": "những tác động sâu rộng",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "have + far-reaching implications for something",
+    "examples": [
+      "The ruling has far-reaching implications for employers.",
+      "This discovery could have far-reaching implications.",
+      "We discussed the far-reaching implications of the reform."
+    ]
+  },
+  {
+    "id": "coll-c1-006",
+    "chunk": "strike a balance",
+    "explanation": "tìm sự cân bằng",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "strike a balance + between A and B",
+    "examples": [
+      "We must strike a balance between speed and accuracy.",
+      "The policy tries to strike a balance between competing needs.",
+      "How can we strike a balance between work and rest?"
+    ]
+  },
+  {
+    "id": "coll-c1-007",
+    "chunk": "reach a consensus",
+    "explanation": "đạt sự đồng thuận chung",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "reach a consensus + on something",
+    "examples": [
+      "The panel failed to reach a consensus on funding.",
+      "We need to reach a consensus before proceeding.",
+      "It may take time to reach a consensus."
+    ]
+  },
+  {
+    "id": "coll-c1-008",
+    "chunk": "allocate resources",
+    "explanation": "phân bổ nguồn lực",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "allocate resources + to/for something",
+    "examples": [
+      "We should allocate resources to the most urgent tasks.",
+      "The council will allocate resources for flood prevention.",
+      "Managers must allocate resources carefully."
+    ]
+  },
+  {
+    "id": "coll-c1-009",
+    "chunk": "exercise discretion",
+    "explanation": "vận dụng quyền cân nhắc, quyết định theo tình huống",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "exercise discretion + in doing something",
+    "examples": [
+      "Managers may exercise discretion in approving requests.",
+      "Please exercise discretion when sharing sensitive information.",
+      "Judges exercise discretion within legal limits."
+    ]
+  },
+  {
+    "id": "coll-c1-010",
+    "chunk": "vested interest",
+    "explanation": "lợi ích riêng có thể ảnh hưởng sự khách quan",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "have a vested interest + in something",
+    "examples": [
+      "The supplier has a vested interest in the outcome.",
+      "People with a vested interest should declare it.",
+      "He has a vested interest in keeping prices high."
+    ]
+  },
+  {
+    "id": "coll-c1-011",
+    "chunk": "fundamental flaw",
+    "explanation": "sai sót cốt lõi",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "a fundamental flaw + in something",
+    "examples": [
+      "There is a fundamental flaw in the proposal.",
+      "The review exposed a fundamental flaw in our reasoning.",
+      "A fundamental flaw makes the results unreliable."
+    ]
+  },
+  {
+    "id": "coll-c1-012",
+    "chunk": "plausible explanation",
+    "explanation": "lời giải thích hợp lý, có thể đúng",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "a plausible explanation + for something",
+    "examples": [
+      "She offered a plausible explanation for the delay.",
+      "We still need evidence for this plausible explanation.",
+      "Is there another plausible explanation for the results?"
+    ]
+  },
+  {
+    "id": "coll-c1-013",
+    "chunk": "rigorous analysis",
+    "explanation": "phân tích chặt chẽ, kỹ lưỡng",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "conduct + a rigorous analysis of something",
+    "examples": [
+      "The report includes a rigorous analysis of the data.",
+      "We need a rigorous analysis before drawing conclusions.",
+      "A rigorous analysis revealed several inconsistencies."
+    ]
+  },
+  {
+    "id": "coll-c1-014",
+    "chunk": "empirical evidence",
+    "explanation": "bằng chứng từ quan sát hoặc thực nghiệm",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "empirical evidence + for/of something",
+    "examples": [
+      "There is little empirical evidence for this claim.",
+      "The researchers collected empirical evidence over ten years.",
+      "Our recommendation should be based on empirical evidence."
+    ]
+  },
+  {
+    "id": "coll-c1-015",
+    "chunk": "causal relationship",
+    "explanation": "mối quan hệ nhân quả",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "a causal relationship + between A and B",
+    "examples": [
+      "The study does not establish a causal relationship.",
+      "A correlation alone cannot prove a causal relationship.",
+      "We investigated the causal relationship between the two factors."
+    ]
+  },
+  {
+    "id": "coll-c1-016",
+    "chunk": "profound impact",
+    "explanation": "tác động sâu sắc",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "have a profound impact + on something",
+    "examples": [
+      "The closure had a profound impact on the community.",
+      "Education can have a profound impact on people's lives.",
+      "The discovery had a profound impact on modern medicine."
+    ]
+  },
+  {
+    "id": "coll-c1-017",
+    "chunk": "inadvertently disclose",
+    "explanation": "vô tình tiết lộ",
+    "category": "C1",
+    "topic": "Công nghệ",
+    "pattern": "inadvertently disclose + information",
+    "examples": [
+      "Staff could inadvertently disclose confidential information.",
+      "A public log may inadvertently disclose user details.",
+      "Be careful not to inadvertently disclose customer data."
+    ]
+  },
+  {
+    "id": "coll-c1-018",
+    "chunk": "stringent requirements",
+    "explanation": "những yêu cầu nghiêm ngặt",
+    "category": "C1",
+    "topic": "Công nghệ",
+    "pattern": "meet/comply with + stringent requirements",
+    "examples": [
+      "The system must meet stringent requirements for security.",
+      "Suppliers face stringent requirements under the contract.",
+      "These stringent requirements increase testing costs."
+    ]
+  },
+  {
+    "id": "coll-c1-019",
+    "chunk": "robust framework",
+    "explanation": "khung tổ chức hoặc phương pháp vững chắc",
+    "category": "C1",
+    "topic": "Công nghệ",
+    "pattern": "a robust framework + for something",
+    "examples": [
+      "We need a robust framework for evaluating risk.",
+      "The team developed a robust framework for testing.",
+      "A robust framework should handle unexpected conditions."
+    ]
+  },
+  {
+    "id": "coll-c1-020",
+    "chunk": "inherent limitation",
+    "explanation": "hạn chế vốn có",
+    "category": "C1",
+    "topic": "Công nghệ",
+    "pattern": "an inherent limitation + of/in something",
+    "examples": [
+      "Small sample size is an inherent limitation of the study.",
+      "Every model has an inherent limitation.",
+      "We must acknowledge the inherent limitation of this approach."
+    ]
+  },
+  {
+    "id": "coll-c1-021",
+    "chunk": "address a discrepancy",
+    "explanation": "xử lý một điểm sai lệch hoặc không khớp",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "address a discrepancy + between A and B",
+    "examples": [
+      "We need to address a discrepancy between the two reports.",
+      "Finance will address a discrepancy in the totals.",
+      "How should we address a discrepancy in the records?"
+    ]
+  },
+  {
+    "id": "coll-c1-022",
+    "chunk": "sustainable development",
+    "explanation": "phát triển bền vững",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "promote/support + sustainable development",
+    "examples": [
+      "The plan aims to promote sustainable development.",
+      "Sustainable development requires long-term thinking.",
+      "Local communities should benefit from sustainable development."
+    ]
+  },
+  {
+    "id": "coll-c1-023",
+    "chunk": "widening inequality",
+    "explanation": "tình trạng bất bình đẳng ngày càng lớn",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "address + widening inequality",
+    "examples": [
+      "The report highlights widening inequality in access to housing.",
+      "Widening inequality can weaken social trust.",
+      "The policy aims to address widening inequality."
+    ]
+  },
+  {
+    "id": "coll-c1-024",
+    "chunk": "heated debate",
+    "explanation": "cuộc tranh luận gay gắt",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "spark/lead to + a heated debate about something",
+    "examples": [
+      "The proposal sparked a heated debate.",
+      "A heated debate followed the announcement.",
+      "The issue remains the subject of heated debate."
+    ]
+  },
+  {
+    "id": "coll-c1-025",
+    "chunk": "implicit bias",
+    "explanation": "thiên kiến ngầm, thường không được ý thức rõ",
+    "category": "C1",
+    "topic": "Xã hội",
+    "pattern": "recognise/address + implicit bias",
+    "examples": [
+      "Implicit bias can influence hiring decisions.",
+      "Training encourages staff to recognise implicit bias.",
+      "The researchers studied implicit bias in assessment."
+    ]
+  },
+  {
+    "id": "coll-c1-026",
+    "chunk": "mutually beneficial",
+    "explanation": "có lợi cho cả hai bên",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "a mutually beneficial + agreement/relationship",
+    "examples": [
+      "We are looking for a mutually beneficial agreement.",
+      "The partnership has been mutually beneficial.",
+      "A mutually beneficial relationship takes effort from both sides."
+    ]
+  },
+  {
+    "id": "coll-c1-027",
+    "chunk": "highly contentious",
+    "explanation": "gây nhiều tranh cãi",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "a highly contentious + issue/proposal",
+    "examples": [
+      "The proposal remains highly contentious.",
+      "Funding is a highly contentious issue.",
+      "This highly contentious decision divided the committee."
+    ]
+  },
+  {
+    "id": "coll-c1-028",
+    "chunk": "broadly consistent",
+    "explanation": "nhìn chung phù hợp hoặc nhất quán",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "broadly consistent + with something",
+    "examples": [
+      "The findings are broadly consistent with earlier research.",
+      "Her account is broadly consistent with the records.",
+      "These results are broadly consistent across age groups."
+    ]
+  },
+  {
+    "id": "coll-c1-029",
+    "chunk": "utterly unconvincing",
+    "explanation": "hoàn toàn thiếu thuyết phục",
+    "category": "C1",
+    "topic": "Lập luận",
+    "pattern": "find something/be + utterly unconvincing",
+    "examples": [
+      "I found his explanation utterly unconvincing.",
+      "The argument was utterly unconvincing without evidence.",
+      "Her excuse sounded utterly unconvincing."
+    ]
+  },
+  {
+    "id": "coll-c1-030",
+    "chunk": "resounding success",
+    "explanation": "thành công vang dội",
+    "category": "C1",
+    "topic": "Công việc",
+    "pattern": "be/prove + a resounding success",
+    "examples": [
+      "The launch was a resounding success.",
+      "The event proved a resounding success.",
+      "Careful preparation helped make the campaign a resounding success."
+    ]
+  }
+]

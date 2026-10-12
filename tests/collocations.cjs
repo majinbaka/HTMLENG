@@ -5,12 +5,21 @@ const { waitForRuntime } = require('./static-helpers.cjs');
 const items = require('../src/content/collocations/core.json');
 const base = process.env.BASE_URL || 'http://127.0.0.1:8000/out';
 const key = 'englishTutorProgressV1';
-assert.equal(items.length, 60);
-assert.equal(new Set(items.map(item => item.chunk)).size, 60);
-assert.equal(new Set(items.map(item => item.id)).size, 60);
-for (const level of ['B2', 'C1']) assert.equal(items.filter(item => item.category === level).length, 30);
+assert.equal(items.length, 1500);
+assert.equal(new Set(items.map(item => item.chunk.toLowerCase())).size, 1500);
+assert.equal(new Set(items.map(item => item.id)).size, 1500);
+for (const [level, count] of [['B2', 500], ['C1', 1000]]) {
+  const levelItems = items.filter(item => item.category === level);
+  assert.equal(levelItems.length, count);
+  assert.deepEqual(levelItems.map(item => item.id), Array.from({length:count}, (_, index) => `coll-${level.toLowerCase()}-${String(index + 1).padStart(3, '0')}`));
+}
+for (const seed of require('../scripts/collocations/seed.json')) {
+  assert.deepEqual(items.find(item => item.id === seed.id), seed, 'Preserve legacy IDs and content');
+}
+const normalize = text => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+const evidenceCount = items.filter(item => item.category === 'C1' && normalize([item.chunk, item.explanation, item.topic, item.pattern, ...item.examples].join(' ')).includes('bang chung')).length;
 for (const item of items) {
-  assert.match(item.id, /^coll-(b2|c1)-\d{3}$/);
+  assert.match(item.id, /^coll-(b2|c1)-(\d{3}|1000)$/);
   assert(item.explanation && item.topic && item.pattern.includes('+'));
   assert.equal(item.examples.length, 3);
   assert.equal(new Set(item.examples).size, 3);
@@ -29,7 +38,7 @@ for (const item of items) {
     await page.locator('#collocation-level').selectOption('C1');
     assert.equal(await page.locator('[data-collocation-id="coll-c1-001"]').count(), 1);
     await page.locator('#collocation-search').fill('bang chung');
-    assert.equal(await page.locator('[data-collocation-id]').count(), 2);
+    assert.equal(await page.locator('[data-collocation-id]').count(), Math.min(25, evidenceCount));
     await page.reload();
     assert.equal(await page.locator('#collocation-search').inputValue(), 'bang chung');
     await page.getByRole('button', {name:'Xóa bộ lọc',exact:true}).click();
@@ -90,8 +99,51 @@ for (const item of items) {
     await study.locator('textarea').fill('I can meet a deadline with good planning.');
     await study.getByRole('button', {name:'Xem collocation và 3 ví dụ'}).click();
     await page.screenshot({path:'/tmp/speaksprint-collocations-study.png'});
+    // Deep links beyond the old three-page cap must survive reload.
+    // Use a separate storage context so the legacy preservation checks above
+    // remain independent of a completely marked library.
+    const expandedContext = await browser.newContext();
+    const expanded = waitForRuntime(await expandedContext.newPage());
+    expanded.on('pageerror', error => errors.push(error.message));
+    await expanded.goto(`${base}/collocations/index.html?level=C1&page=40`);
+    const last = expanded.locator('[data-collocation-id="coll-c1-1000"]');
+    await last.waitFor();
+    assert.equal(await expanded.locator('[data-collocation-id]').count(), 25);
+    assert.equal(new URL(expanded.url()).searchParams.get('page'), '40');
+    await expanded.reload(); await last.waitFor();
+    assert.equal(new URL(expanded.url()).searchParams.get('page'), '40');
+    await last.locator('[data-action="favorite"]').click();
+    await expanded.reload(); await last.waitFor();
+    assert.equal(await last.locator('[data-action="favorite"]').getAttribute('aria-pressed'), 'true');
+    await expanded.goto(`${base}/collocations/index.html?level=B2&page=20`);
+    const lastB2 = expanded.locator('[data-collocation-id="coll-b2-500"]');
+    await lastB2.waitFor();
+    await lastB2.locator('[data-action="favorite"]').click();
+    const edgeSaved = await expanded.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
+    assert.deepEqual(edgeSaved.collocationLibrary.favorites, ['coll-c1-1000', 'coll-b2-500']);
+    const allIds = items.map(item => item.id);
+    const fullProgress = {...exported, collocationLibrary:{favorites:allIds, archived:allIds, practice:{'coll-c1-1000':'Review the legislative measures.', 'coll-b2-500':'I can test my microphone.'}}};
+    const importExpanded = data => expanded.locator('#import-progress').setInputFiles({name:'progress.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(data))});
+    const fullLoad = expanded.waitForEvent('load');
+    await importExpanded(fullProgress); await fullLoad;
+    await expanded.locator('body[data-runtime-ready="true"]').waitFor();
+    const fullSaved = await expanded.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
+    assert.deepEqual(fullSaved.collocationLibrary, fullProgress.collocationLibrary);
+    assert.deepEqual(fullSaved.dayState, exported.dayState);
+    const fullDownload = expanded.waitForEvent('download');
+    await expanded.locator('#export-progress').click();
+    assert.deepEqual(JSON.parse(fs.readFileSync(await (await fullDownload).path(), 'utf8')).collocationLibrary, fullProgress.collocationLibrary);
+    for (const invalidId of ['coll-b2-501', 'coll-c1-1001', 'coll-c1-01000', 'coll-b2-000']) {
+      await importExpanded({...fullProgress, collocationLibrary:{favorites:[invalidId], archived:[]}});
+      await expanded.locator('#toast').filter({hasText:'File không hợp lệ'}).waitFor();
+      assert.deepEqual(await expanded.evaluate(key => JSON.parse(localStorage.getItem(key)), key), fullSaved);
+    }
+    await expanded.goto(`${base}/collocations/index.html?level=C1&page=9999&status=all`);
+    await expanded.locator('[data-collocation-id="coll-c1-1000"]').waitFor();
+    assert.equal(new URL(expanded.url()).searchParams.get('page'), '40');
+    await expandedContext.close();
     assert.deepEqual(errors, []);
     await context.close();
-    console.log('Collocations: content, filters, URL, recall, persistence, cross-library/lesson preservation, import/export, write failure and responsive checks passed.');
+    console.log('Collocations: 1,500 records, legacy content, filters, deep pagination, recall, persistence, cross-library/lesson preservation, full import/export, ID bounds, write failure and responsive checks passed.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode=1; });

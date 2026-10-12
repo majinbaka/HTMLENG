@@ -173,6 +173,10 @@ npm test                        # kiểm tra hồi quy toàn site, subdirectory 
 
 ## Collocations B2 & C1
 
-Mở từ dashboard hoặc `out/collocations/index.html`. Bộ khởi đầu gồm 60 cụm (30 B2, 30 C1), nghĩa tiếng Việt, mẫu kết hợp và 180 ví dụ tự biên soạn. Có tìm kiếm không dấu, lọc mức/chủ đề, phân trang, Yêu thích, Đã thuộc và luyện 5 cụm sau khi tự thử trả lời. Nhãn mức học là gợi ý biên soạn; CEFR không quy định số collocations để đạt trình độ.
+Mở từ dashboard hoặc `out/collocations/index.html`. Thư viện gồm **1.500 collocations: 500 nền tảng B2 + 1.000 C1 mở rộng**, nghĩa tiếng Việt, mẫu kết hợp và **4.500 câu ví dụ**. Có tìm kiếm không dấu, lọc mức/chủ đề, phân trang, Yêu thích, Đã thuộc và luyện 5 cụm sau khi tự thử trả lời. Nhãn mức học là gợi ý biên soạn; một số cụm nền tảng đã quen thuộc ở mức thấp hơn. CEFR không quy định số collocations để đạt trình độ.
 
-Dữ liệu ở `src/content/collocations/core.json`; trạng thái nằm trong trường `collocationLibrary` của bản tiến độ hiện tại, được xuất/nhập cùng các bài học và chunks. Đã thuộc là tự đánh giá; chưa có lịch ôn tự động cho thư viện này. Khi tăng bộ dữ liệu, cập nhật giới hạn ID trong `public/assets/app.js` và kiểm tra nội dung.
+Mục tiêu học tham khảo: **B2: 500–1.000 cụm dùng chủ động; C1: 1.500–2.500 cụm tổng cộng, bao gồm nền tảng B2**. Bộ hiện tại đạt ngưỡng thấp của cả hai mục tiêu về số lượng. Đánh dấu thuộc một danh sách không chứng minh trình độ; hãy luyện nhớ lại, dùng trong câu mới và nói theo ngữ cảnh.
+
+Dữ liệu ở `src/content/collocations/core.json`; tái tạo bằng `python3 scripts/collocations/build.py`. Nguồn biên soạn ở `scripts/collocations/`: giữ nguyên 60 cụm cũ trong `seed.json`; `b2-selection.txt` chọn 470 collocations nền tảng từ thư viện chunks và tái sử dụng nghĩa/ví dụ; `families.txt` liệt kê riêng các danh từ kết hợp được chọn cho C1 cùng ba ngữ cảnh mẫu mỗi nhóm, không tạo tích Descartes của từ; `nouns.txt` cung cấp nghĩa và dạng danh từ. Nhóm C1 tập trung vào lập luận, nghiên cứu, công việc, xã hội, môi trường và chính sách. Khi sửa nguồn chunks được tái sử dụng, chạy lại script rồi build.
+
+Trạng thái nằm trong trường `collocationLibrary` của bản tiến độ hiện tại, được xuất/nhập cùng các bài học và chunks. Các ID cũ được giữ nguyên; ID mới tới `coll-b2-500` và `coll-c1-1000`. Đã thuộc là tự đánh giá; chưa có lịch ôn tự động cho thư viện này. Khi tăng bộ dữ liệu, cập nhật giới hạn ID trong `public/assets/app.js` và kiểm tra nội dung.
