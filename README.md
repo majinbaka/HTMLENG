@@ -143,3 +143,30 @@ Mỗi buổi 30–40 phút có 5 chunk, hội thoại 100–200 từ, 3 câu đ�
 Bước Speak có **Đầu ra công việc**: viết recap, ticket, comment PR, status report hoặc handover bằng tiếng Anh (ít nhất 15 từ). Đây là checkpoint bổ sung khi lưu buổi Làm việc; hệ thống kiểm tra có lượt viết, không tự chấm chất lượng nội dung. Bản nháp tự lưu; mọi câu mẫu bài tập vẫn chờ người học thử trước khi mở.
 
 Nội dung nằm ở `public/assets/workplace-data.js`; `topics.js` dùng chung giao diện cho hai chủ đề. Tham số `topic` chọn lộ trình, `session` chọn buổi; URL phỏng vấn cũ không có `topic` vẫn hoạt động. Tiến độ lưu riêng dưới `topicState['workplace-communication']`, giữ chung cơ chế xuất/nhập JSON, ôn +1/+3/+7/+14 và sử dụng offline; không thay đổi tiến độ bài ngày hoặc chủ đề phỏng vấn.
+
+## Thư viện 2.500 English chunks
+
+Mở **2.500 chunks** trên thanh điều hướng hoặc **Mở thư viện chunks** ở dashboard. Trang tĩnh nằm tại `out/chunks/index.html` khi phục vụ nguyên repo, hoặc `/chunks/index.html` khi hosting phục vụ riêng `out/`.
+
+Thư viện bao gồm **2.500 chunk tiếng Anh tổng thể**, mỗi chunk có giải thích tiếng Việt và **3 câu ví dụ tiếng Anh** (7.500 ví dụ). Danh sách mặc định xếp theo **mức thường dùng giảm dần từ 5 đến 1 trên toàn bộ thư viện**. Có thể lọc các nhóm IT (300), Work (450), Software (350) và Đời sống (1.400). Mức này là ước lượng biên soạn theo phạm vi sử dụng, không phải tần suất đo từ kho ngữ liệu. Nhóm Đời sống gồm giao tiếp, sinh hoạt, đi lại, ăn uống, mua sắm, quan hệ, học tập và sở thích. Các ví dụ là ngữ cảnh luyện ngôn ngữ.
+
+- Tìm trong chunk, giải thích, chủ đề và ví dụ; tìm tiếng Việt không dấu được hỗ trợ.
+- Lọc nhóm và trạng thái **Đang học / Yêu thích / Đã thuộc / Tất cả**; chọn 25, 50 hoặc 100 chunk mỗi trang. Bộ lọc và số trang nằm trong URL để tải lại hoặc lưu bookmark.
+- **Yêu thích (Favorite)** và **Đã thuộc (Archive)** là hai đánh dấu độc lập. Archive ẩn chunk khỏi mục Đang học; mục Đã thuộc có nút **Học lại** để đưa trở lại.
+- Đánh dấu dùng `chunkLibrary` trong record `englishTutorProgressV1`, có trong **Xuất / Nhập tiến độ** hiện có và dùng offline sau khi bản PWA được lưu. JSON cũ chưa có `chunkLibrary` vẫn nhập được. Nhập JSON thay thế tiến độ như trước; không gộp hai bản.
+- Trạng thái là tự đánh giá, không tăng streak, XP hay hoàn thành bài học. Dữ liệu lưu theo trình duyệt và origin; xuất JSON trước khi đổi thiết bị.
+
+Nguồn nội dung: `src/content/chunks/{it,work,software}.json`. Ba file chia theo nhóm biên soạn; mỗi file còn có các chunk Đời sống, còn trường `category` quyết định nhóm hiển thị. Các nguồn biên soạn tái tạo được đặt trong `scripts/chunks/`; không đổi ID khi sửa câu hoặc sắp xếp vì ID liên kết các đánh dấu đã lưu. Trang React ở `src/pages/chunks/index.jsx`; dữ liệu thư viện chỉ đóng gói vào bundle của trang này. Build tĩnh và PWA đóng gói route mới cùng các trang hiện có.
+
+```sh
+# Khi chỉnh nguồn biên soạn, chạy từ thư mục gốc repo:
+python3 scripts/chunks/build-it.py
+python3 scripts/chunks/build-software.py
+python3 scripts/chunks/work-social-extra.py
+python3 scripts/chunks/build-work.py
+node tests/chunks.cjs --data-only # số lượng, nhóm, trùng lặp, schema và ví dụ
+npm run build
+./start-server.sh 8000
+node tests/chunks.cjs            # tìm kiếm, phân trang, lưu/khôi phục, nhập/xuất
+npm test                        # kiểm tra hồi quy toàn site, subdirectory và offline
+```

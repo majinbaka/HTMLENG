@@ -23,6 +23,14 @@ export default function SiteLayout({ title, pageType, children }) {
           </a>
         ) : (
           <nav aria-label="Điều hướng">
+            {pageType !== "chunks" && (
+              <a
+                className="btn"
+                href={`${dashboard ? "" : "../"}chunks/index.html`}
+              >
+                2.500 chunks
+              </a>
+            )}
             {!dashboard && (
               <a className="btn" href={home}>
                 Dashboard

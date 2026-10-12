@@ -10,6 +10,7 @@ export default function config(phase) {
               { source: "/index.html", destination: "/" },
               { source: "/lessons/:day.html", destination: "/lessons/:day" },
               { source: "/topics/index.html", destination: "/topics" },
+              { source: "/chunks/index.html", destination: "/chunks" },
             ];
           },
         }

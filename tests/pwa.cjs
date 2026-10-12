@@ -85,6 +85,11 @@ const server = http.createServer(async (req, res) => {
       assert.equal(await page.locator('#topic-cards > a').count(), 19);
       await page.goto(base + 'topics/index.html?topic=workplace-communication&session=project-kickoff');
       assert.equal(await page.locator('#work-artifact').count(), 1);
+      await page.goto(base + 'chunks/index.html?category=Everyday');
+      await page.locator('#chunk-results-count').filter({hasText:'1–25 / 1400'}).waitFor();
+      await page.locator('.library-card [data-action="favorite"]').first().click();
+      await page.reload();
+      assert.equal(await page.locator('.library-card [data-action="favorite"]').first().getAttribute('aria-pressed'), 'true');
       await page.goto(base);
       assert.equal(await page.locator('#weekly-review-list > *').count(), 4);
       assert.deepEqual(errors, []);

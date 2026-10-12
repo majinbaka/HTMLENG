@@ -33,6 +33,24 @@ export default function Dashboard() {
           </div>
         </section>
         {"\n"}
+        <section
+          className="panel chunk-library-entry"
+          aria-labelledby="chunk-library-title"
+        >
+          <div>
+            <p className="kicker coral">
+              CHUNK LIBRARY · WORK & EVERYDAY ENGLISH
+            </p>
+            <h2 id="chunk-library-title">2.500 cách nói, sẵn sàng để dùng.</h2>
+            <p>
+              Tra nghĩa tiếng Việt, luyện với 3 ví dụ mỗi chunk và lưu những cụm
+              bạn muốn dùng trong công việc và đời sống.
+            </p>
+          </div>
+          <a className="primary" href="chunks/index.html">
+            Mở thư viện chunks →
+          </a>
+        </section>
         <section className="topic-dashboard" aria-labelledby="topic-title">
           <div className="section-head">
             <div>

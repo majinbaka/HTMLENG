@@ -10,9 +10,11 @@ let runtimePromise;
 function loadRuntime(prefix, pageType) {
   if (runtimePromise) return runtimePromise;
   const files =
-    pageType === "lesson"
-      ? ["weekly-review-data.js", "app.js"]
-      : ["topics-data.js", "workplace-data.js", "topics.js", "app.js"];
+    pageType === "chunks"
+      ? ["app.js"]
+      : pageType === "lesson"
+        ? ["weekly-review-data.js", "app.js"]
+        : ["topics-data.js", "workplace-data.js", "topics.js", "app.js"];
   runtimePromise = files.reduce(
     (promise, file) =>
       promise.then(
@@ -33,7 +35,9 @@ function loadRuntime(prefix, pageType) {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const prefix = ["lesson", "topics"].includes(pageProps.pageType) ? "../" : "";
+  const prefix = ["lesson", "topics", "chunks"].includes(pageProps.pageType)
+    ? "../"
+    : "";
   useEffect(() => {
     if (!router.isReady || !pageProps.pageType) return;
     document.body.dataset.page = pageProps.pageType;

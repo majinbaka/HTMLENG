@@ -1,0 +1,2602 @@
+[
+  {
+    "id": "general-0751",
+    "category": "Everyday",
+    "chunk": "I'm glad",
+    "explanation": "Tôi vui vì. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm glad you enjoyed the meal.",
+      "I'm glad we had time to talk.",
+      "I'm glad the weather is getting better."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0752",
+    "category": "Everyday",
+    "chunk": "I'm happy for you",
+    "explanation": "Tôi vui cho bạn. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm happy for you because you passed the exam.",
+      "I'm happy for you and your family must be proud.",
+      "I'm happy for you; you worked hard for this."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0753",
+    "category": "Everyday",
+    "chunk": "I'm looking forward to",
+    "explanation": "Tôi mong chờ một việc sắp tới. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm looking forward to seeing my cousins this weekend.",
+      "I'm looking forward to a quiet evening at home.",
+      "I'm looking forward to hearing about your trip."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0754",
+    "category": "Everyday",
+    "chunk": "I can't wait to",
+    "explanation": "Tôi rất háo hức muốn. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I can't wait to see the photos you took.",
+      "I can't wait to try the new swimming pool.",
+      "I can't wait to spend a few days with my family."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0755",
+    "category": "Everyday",
+    "chunk": "I'm excited about",
+    "explanation": "Tôi hào hứng về. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm excited about my first painting class.",
+      "I'm excited about the trip we planned together.",
+      "I'm excited about having a place of my own."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0756",
+    "category": "Everyday",
+    "chunk": "I'm proud of",
+    "explanation": "Tôi tự hào về. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm proud of the progress I've made.",
+      "I'm proud of my sister for trying again.",
+      "I'm proud of you for asking for help."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0757",
+    "category": "Everyday",
+    "chunk": "I'm relieved to hear",
+    "explanation": "Tôi thấy nhẹ nhõm khi nghe. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm relieved to hear that you arrived safely.",
+      "I'm relieved to hear that your dog is back home.",
+      "I'm relieved to hear that the missing bag was found."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0758",
+    "category": "Everyday",
+    "chunk": "That's a relief",
+    "explanation": "Thật nhẹ nhõm khi biết điều đó. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "That's a relief; I thought I had lost my keys.",
+      "That's a relief because we were worried about you.",
+      "That's a relief; we still have time to get there."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0759",
+    "category": "Everyday",
+    "chunk": "I'm in a good mood",
+    "explanation": "Tôi đang có tâm trạng tốt. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm in a good mood after a walk in the park.",
+      "I'm in a good mood because I slept well last night.",
+      "I'm in a good mood and feel like cooking something special."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0760",
+    "category": "Everyday",
+    "chunk": "That made my day",
+    "explanation": "Điều đó làm tôi vui cả ngày. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "That made my day because I wasn't expecting a gift.",
+      "That made my day; your message was so kind.",
+      "That made my day after a difficult morning."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0761",
+    "category": "Everyday",
+    "chunk": "I'm worried about",
+    "explanation": "Tôi lo lắng về. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm worried about my friend's long journey.",
+      "I'm worried about how much the repair will cost.",
+      "I'm worried about leaving the cat alone overnight."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0762",
+    "category": "Everyday",
+    "chunk": "I'm a little nervous",
+    "explanation": "Tôi hơi lo hoặc hồi hộp. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm a little nervous about meeting everyone tonight.",
+      "I'm a little nervous before speaking in front of a group.",
+      "I'm a little nervous because this is my first dance class."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0763",
+    "category": "Everyday",
+    "chunk": "I'm afraid of",
+    "explanation": "Tôi sợ một điều gì. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm afraid of getting lost in a big city.",
+      "I'm afraid of heights, so I prefer the lower seats.",
+      "I'm afraid of saying the wrong thing."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0764",
+    "category": "Everyday",
+    "chunk": "I'm not comfortable with",
+    "explanation": "Tôi không thấy thoải mái với. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm not comfortable with sharing that story in public.",
+      "I'm not comfortable with being in a crowded room.",
+      "I'm not comfortable with this kind of joke."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0765",
+    "category": "Everyday",
+    "chunk": "I feel awkward",
+    "explanation": "Tôi cảm thấy ngượng ngùng. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I feel awkward when I forget someone's name.",
+      "I feel awkward about asking for another favor.",
+      "I feel awkward because I arrived much too early."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0766",
+    "category": "Everyday",
+    "chunk": "I'm feeling down",
+    "explanation": "Tôi đang buồn hoặc xuống tinh thần. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm feeling down after a difficult week.",
+      "I'm feeling down and would like some company.",
+      "I'm feeling down because I miss my old friends."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0767",
+    "category": "Everyday",
+    "chunk": "I'm disappointed that",
+    "explanation": "Tôi thất vọng vì. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm disappointed that the concert has been canceled.",
+      "I'm disappointed that we couldn't spend more time together.",
+      "I'm disappointed that my drawing didn't turn out as I hoped."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0768",
+    "category": "Everyday",
+    "chunk": "I'm upset about",
+    "explanation": "Tôi buồn hoặc khó chịu về. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm upset about what happened yesterday.",
+      "I'm upset about losing a gift from my grandmother.",
+      "I'm upset about the way he spoke to my friend."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0769",
+    "category": "Everyday",
+    "chunk": "I'm tired of",
+    "explanation": "Tôi đã chán hoặc mệt vì việc lặp lại. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm tired of arguing about the same thing.",
+      "I'm tired of waiting without knowing what's happening.",
+      "I'm tired of hearing that joke every day."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0770",
+    "category": "Everyday",
+    "chunk": "I've had enough of",
+    "explanation": "Tôi không muốn chịu đựng thêm. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I've had enough of the noise outside tonight.",
+      "I've had enough of people interrupting me.",
+      "I've had enough of this argument; let's take a break."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0771",
+    "category": "Everyday",
+    "chunk": "I'm confused about",
+    "explanation": "Tôi chưa hiểu rõ và thấy bối rối về. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm confused about which entrance we should use.",
+      "I'm confused about what you meant by that comment.",
+      "I'm confused about the rules of this game."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0772",
+    "category": "Everyday",
+    "chunk": "I'm surprised that",
+    "explanation": "Tôi ngạc nhiên vì. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I'm surprised that you remembered my favorite song.",
+      "I'm surprised that the place is so quiet today.",
+      "I'm surprised that we grew up in the same town."
+    ],
+    "frequency": 5,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0773",
+    "category": "Everyday",
+    "chunk": "I wasn't expecting",
+    "explanation": "Tôi đã không ngờ hoặc không chuẩn bị cho. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I wasn't expecting such a warm welcome.",
+      "I wasn't expecting to see you here today.",
+      "I wasn't expecting the ending to be so sad."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0774",
+    "category": "Everyday",
+    "chunk": "I don't know how to feel",
+    "explanation": "Tôi chưa biết mình nên cảm thấy thế nào. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "I don't know how to feel about moving away from home.",
+      "I don't know how to feel after hearing that news.",
+      "I don't know how to feel because everything changed so quickly."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0775",
+    "category": "Everyday",
+    "chunk": "It's hard to explain",
+    "explanation": "Thật khó giải thích. Dùng để diễn tả cảm xúc trong giao tiếp hằng ngày.",
+    "examples": [
+      "It's hard to explain why that song makes me emotional.",
+      "It's hard to explain how much this place means to me.",
+      "It's hard to explain what I felt at that moment."
+    ],
+    "frequency": 4,
+    "topic": "Cảm xúc và phản ứng"
+  },
+  {
+    "id": "general-0776",
+    "category": "Everyday",
+    "chunk": "I know how you feel",
+    "explanation": "Tôi hiểu cảm giác của bạn. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I know how you feel because I've been in a similar situation.",
+      "I know how you feel; moving away can be difficult.",
+      "I know how you feel when you say you miss home."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0777",
+    "category": "Everyday",
+    "chunk": "That must be difficult",
+    "explanation": "Chắc điều đó khó khăn với bạn. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "That must be difficult when you live so far away.",
+      "That must be difficult after such a long friendship.",
+      "That must be difficult with so many changes at once."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0778",
+    "category": "Everyday",
+    "chunk": "I'm here for you",
+    "explanation": "Tôi sẵn sàng ở bên và hỗ trợ bạn. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I'm here for you if you want to talk.",
+      "I'm here for you even if you don't know what to say.",
+      "I'm here for you while you work through this."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0779",
+    "category": "Everyday",
+    "chunk": "You don't have to explain",
+    "explanation": "Bạn không cần giải thích. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "You don't have to explain if you would rather keep it private.",
+      "You don't have to explain everything to me right now.",
+      "You don't have to explain why you need some time alone."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0780",
+    "category": "Everyday",
+    "chunk": "Take your time",
+    "explanation": "Cứ thong thả, không cần vội. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "Take your time; I'm happy to wait here.",
+      "Take your time when you tell me what happened.",
+      "Take your time and choose the words that feel right."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0781",
+    "category": "Everyday",
+    "chunk": "There's no rush",
+    "explanation": "Không có gì phải vội. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "There's no rush to make a decision tonight.",
+      "There's no rush; we can talk about it tomorrow.",
+      "There's no rush because the event doesn't start until six."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0782",
+    "category": "Everyday",
+    "chunk": "Don't be too hard on yourself",
+    "explanation": "Đừng quá khắt khe với bản thân. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "Don't be too hard on yourself for making one small mistake.",
+      "Don't be too hard on yourself when you're still learning.",
+      "Don't be too hard on yourself because everyone has difficult days."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0783",
+    "category": "Everyday",
+    "chunk": "You did your best",
+    "explanation": "Bạn đã cố gắng hết sức. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "You did your best with the time you had.",
+      "You did your best even though things didn't go as planned.",
+      "You did your best and that matters to me."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0784",
+    "category": "Everyday",
+    "chunk": "It's okay to feel",
+    "explanation": "Cảm thấy như vậy là điều có thể chấp nhận. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "It's okay to feel nervous before trying something new.",
+      "It's okay to feel sad when a good friend moves away.",
+      "It's okay to feel unsure about a big change."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0785",
+    "category": "Everyday",
+    "chunk": "That sounds frustrating",
+    "explanation": "Nghe có vẻ khiến bạn bực mình. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "That sounds frustrating after waiting for so long.",
+      "That sounds frustrating when nobody explains the delay.",
+      "That sounds frustrating especially if it happens every week."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0786",
+    "category": "Everyday",
+    "chunk": "I can see why",
+    "explanation": "Tôi hiểu vì sao. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I can see why you're excited about the news.",
+      "I can see why that comment upset you.",
+      "I can see why you wanted a little time alone."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0787",
+    "category": "Everyday",
+    "chunk": "I didn't mean to upset you",
+    "explanation": "Tôi không có ý làm bạn buồn. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I didn't mean to upset you with that question.",
+      "I didn't mean to upset you when I changed the subject.",
+      "I didn't mean to upset you; I was trying to understand."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0788",
+    "category": "Everyday",
+    "chunk": "I need a moment",
+    "explanation": "Tôi cần một chút thời gian. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I need a moment to think about what you said.",
+      "I need a moment before I can answer that.",
+      "I need a moment to calm down after the argument."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0789",
+    "category": "Everyday",
+    "chunk": "I need some space",
+    "explanation": "Tôi cần khoảng riêng để suy nghĩ. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I need some space after our conversation.",
+      "I need some space to sort out my feelings.",
+      "I need some space but I still want to talk later."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0790",
+    "category": "Everyday",
+    "chunk": "I'd rather talk about it later",
+    "explanation": "Tôi muốn nói chuyện đó vào lúc khác. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I'd rather talk about it later when we both feel calmer.",
+      "I'd rather talk about it later because I'm tired right now.",
+      "I'd rather talk about it later if that's okay with you."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0791",
+    "category": "Everyday",
+    "chunk": "Let's take a break from",
+    "explanation": "Hãy tạm nghỉ khỏi một việc. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "Let's take a break from this conversation for a while.",
+      "Let's take a break from arguing and get some fresh air.",
+      "Let's take a break from talking about the problem tonight."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0792",
+    "category": "Everyday",
+    "chunk": "I'm trying to stay calm",
+    "explanation": "Tôi đang cố giữ bình tĩnh. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I'm trying to stay calm while we wait for an answer.",
+      "I'm trying to stay calm because getting angry won't help.",
+      "I'm trying to stay calm even though I'm worried."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0793",
+    "category": "Everyday",
+    "chunk": "I feel better now",
+    "explanation": "Giờ tôi thấy dễ chịu hơn. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I feel better now that we've talked about it.",
+      "I feel better now after spending some time outside.",
+      "I feel better now but I'd still like a quiet evening."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0794",
+    "category": "Everyday",
+    "chunk": "That means a lot to me",
+    "explanation": "Điều đó rất có ý nghĩa với tôi. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "That means a lot to me because you know how hard I tried.",
+      "That means a lot to me especially coming from an old friend.",
+      "That means a lot to me after the week I've had."
+    ],
+    "frequency": 5,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0795",
+    "category": "Everyday",
+    "chunk": "It helps to talk",
+    "explanation": "Nói ra giúp tôi thấy nhẹ lòng hơn. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "It helps to talk to someone who listens.",
+      "It helps to talk when I have too much on my mind.",
+      "It helps to talk about the things I can't change."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0796",
+    "category": "Everyday",
+    "chunk": "I have mixed feelings about",
+    "explanation": "Tôi vừa có cảm xúc tích cực vừa có băn khoăn về. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I have mixed feelings about moving to a new city.",
+      "I have mixed feelings about the end of the school year.",
+      "I have mixed feelings about selling our old family home."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0797",
+    "category": "Everyday",
+    "chunk": "I don't feel like myself",
+    "explanation": "Tôi không thấy mình như thường ngày. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I don't feel like myself after so many changes.",
+      "I don't feel like myself and I'd like a quiet afternoon.",
+      "I don't feel like myself when I haven't had enough rest."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0798",
+    "category": "Everyday",
+    "chunk": "I've got a lot on my mind",
+    "explanation": "Tôi đang có nhiều điều phải suy nghĩ. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I've got a lot on my mind so I may seem a little quiet.",
+      "I've got a lot on my mind with the move coming up.",
+      "I've got a lot on my mind but I'd like to hear your news."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0799",
+    "category": "Everyday",
+    "chunk": "I didn't take it personally",
+    "explanation": "Tôi không cho rằng điều đó nhằm vào cá nhân mình. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I didn't take it personally because I knew you were upset.",
+      "I didn't take it personally when you said you needed some time.",
+      "I didn't take it personally; I understood what you meant."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0800",
+    "category": "Everyday",
+    "chunk": "I'm ready to move on",
+    "explanation": "Tôi đã sẵn sàng bước tiếp. Dùng để chia sẻ cảm xúc và động viên một cách nhẹ nhàng.",
+    "examples": [
+      "I'm ready to move on from that argument.",
+      "I'm ready to move on and try something different.",
+      "I'm ready to move on now that we've both apologized."
+    ],
+    "frequency": 4,
+    "topic": "An ủi và điều chỉnh cảm xúc"
+  },
+  {
+    "id": "general-0801",
+    "category": "Everyday",
+    "chunk": "I'd rather",
+    "explanation": "Tôi muốn chọn điều này hơn. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'd rather stay home than go out tonight.",
+      "I'd rather sit near the window.",
+      "I'd rather watch a comedy this time."
+    ],
+    "frequency": 5,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0802",
+    "category": "Everyday",
+    "chunk": "I prefer to",
+    "explanation": "Tôi thích làm theo cách này hơn. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I prefer to read before going to sleep.",
+      "I prefer to meet in a quiet place.",
+      "I prefer to make plans a few days ahead."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0803",
+    "category": "Everyday",
+    "chunk": "I prefer this to",
+    "explanation": "Tôi thích cái này hơn cái kia. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I prefer this to the one we tried yesterday.",
+      "I prefer this to waiting in a long line.",
+      "I prefer this to the louder music at the other place."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0804",
+    "category": "Everyday",
+    "chunk": "I'm really into",
+    "explanation": "Tôi rất thích hoặc quan tâm đến. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm really into old films at the moment.",
+      "I'm really into learning about local history.",
+      "I'm really into acoustic music these days."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0805",
+    "category": "Everyday",
+    "chunk": "I'm not really into",
+    "explanation": "Tôi không thích hoặc không hứng thú lắm với. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm not really into competitive games.",
+      "I'm not really into watching horror films alone.",
+      "I'm not really into very crowded events."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0806",
+    "category": "Everyday",
+    "chunk": "I'm a big fan of",
+    "explanation": "Tôi rất thích một người hoặc một thứ. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm a big fan of her early songs.",
+      "I'm a big fan of stories with a happy ending.",
+      "I'm a big fan of quiet Sunday mornings."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0807",
+    "category": "Everyday",
+    "chunk": "I'm not a fan of",
+    "explanation": "Tôi không thích lắm. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm not a fan of loud music while I'm reading.",
+      "I'm not a fan of surprise parties for myself.",
+      "I'm not a fan of getting up before sunrise."
+    ],
+    "frequency": 5,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0808",
+    "category": "Everyday",
+    "chunk": "I've always liked",
+    "explanation": "Tôi luôn thích từ trước đến nay. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I've always liked spending time near the sea.",
+      "I've always liked books with interesting characters.",
+      "I've always liked the sound of rain at night."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0809",
+    "category": "Everyday",
+    "chunk": "I've never been keen on",
+    "explanation": "Từ trước tới nay tôi không thích lắm. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I've never been keen on being the center of attention.",
+      "I've never been keen on watching very long films.",
+      "I've never been keen on making plans at the last minute."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0810",
+    "category": "Everyday",
+    "chunk": "I'd love to try",
+    "explanation": "Tôi rất muốn thử. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'd love to try a pottery class one day.",
+      "I'd love to try that game you told me about.",
+      "I'd love to try something I've never done before."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0811",
+    "category": "Everyday",
+    "chunk": "I'm willing to try",
+    "explanation": "Tôi sẵn lòng thử dù chưa chắc thích. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm willing to try a different kind of music.",
+      "I'm willing to try the activity for one afternoon.",
+      "I'm willing to try your idea before choosing another one."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0812",
+    "category": "Everyday",
+    "chunk": "I'd rather not",
+    "explanation": "Tôi muốn tránh làm việc đó. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'd rather not discuss that in front of everyone.",
+      "I'd rather not be in the photograph today.",
+      "I'd rather not stay out too late tonight."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0813",
+    "category": "Everyday",
+    "chunk": "It's not really my thing",
+    "explanation": "Điều đó không hợp sở thích của tôi lắm. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "It's not really my thing, but I hope you enjoy it.",
+      "It's not really my thing because I prefer quieter activities.",
+      "It's not really my thing, though I'm glad I tried it."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0814",
+    "category": "Everyday",
+    "chunk": "It's just what I like",
+    "explanation": "Điều đó đúng sở thích của tôi. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "It's just what I like because it's simple and comfortable.",
+      "It's just what I like in a story: warm characters and humor.",
+      "It's just what I like for a relaxed evening with friends."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0815",
+    "category": "Everyday",
+    "chunk": "I could listen to",
+    "explanation": "Tôi có thể nghe mãi một thứ mình thích. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I could listen to this song all evening.",
+      "I could listen to her stories for hours.",
+      "I could listen to the sound of the sea all day."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0816",
+    "category": "Everyday",
+    "chunk": "I never get tired of",
+    "explanation": "Tôi không bao giờ thấy chán. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I never get tired of watching that old film.",
+      "I never get tired of hearing your childhood stories.",
+      "I never get tired of walking around this neighborhood."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0817",
+    "category": "Everyday",
+    "chunk": "I can't stand",
+    "explanation": "Tôi rất không thích hoặc không chịu được. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I can't stand the sound of people shouting.",
+      "I can't stand being interrupted all the time.",
+      "I can't stand waiting without any information."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0818",
+    "category": "Everyday",
+    "chunk": "I don't mind",
+    "explanation": "Tôi không phiền hoặc không ngại. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I don't mind sitting at the back.",
+      "I don't mind waiting a few more minutes.",
+      "I don't mind if we choose a different place."
+    ],
+    "frequency": 5,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0819",
+    "category": "Everyday",
+    "chunk": "I'm happy either way",
+    "explanation": "Chọn cách nào tôi cũng thấy được. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm happy either way because both films sound good.",
+      "I'm happy either way as long as we spend time together.",
+      "I'm happy either way; you can choose this time."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0820",
+    "category": "Everyday",
+    "chunk": "Either one is fine",
+    "explanation": "Cái nào trong hai cái cũng được. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "Either one is fine because I like both colors.",
+      "Either one is fine as a gift for my brother.",
+      "Either one is fine; they both look comfortable."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0821",
+    "category": "Everyday",
+    "chunk": "I like the idea of",
+    "explanation": "Tôi thích ý tưởng về việc. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I like the idea of spending a weekend without screens.",
+      "I like the idea of learning something with a friend.",
+      "I like the idea of having a small celebration at home."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0822",
+    "category": "Everyday",
+    "chunk": "I'm curious about",
+    "explanation": "Tôi tò mò và muốn biết thêm về. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm curious about how you learned that skill.",
+      "I'm curious about the story behind this picture.",
+      "I'm curious about what life is like in your hometown."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0823",
+    "category": "Everyday",
+    "chunk": "I'd be interested in",
+    "explanation": "Tôi sẽ hứng thú với. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'd be interested in joining a beginner's class.",
+      "I'd be interested in hearing more about your experience.",
+      "I'd be interested in trying a new activity together."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0824",
+    "category": "Everyday",
+    "chunk": "I'm not sure I'd enjoy",
+    "explanation": "Tôi không chắc mình sẽ thích. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I'm not sure I'd enjoy being on a stage.",
+      "I'm not sure I'd enjoy such a long journey alone.",
+      "I'm not sure I'd enjoy a party with so many strangers."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0825",
+    "category": "Everyday",
+    "chunk": "I've changed my mind about",
+    "explanation": "Tôi đã đổi ý về. Dùng để nói điều mình thích hoặc không thích.",
+    "examples": [
+      "I've changed my mind about which film I want to see.",
+      "I've changed my mind about joining the weekend activity.",
+      "I've changed my mind about the color I liked yesterday."
+    ],
+    "frequency": 4,
+    "topic": "Sở thích và lựa chọn"
+  },
+  {
+    "id": "general-0826",
+    "category": "Everyday",
+    "chunk": "It's up to you",
+    "explanation": "Bạn có thể tự quyết định. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "It's up to you which seat you take.",
+      "It's up to you whether we invite anyone else.",
+      "It's up to you; I'm happy with either option."
+    ],
+    "frequency": 5,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0827",
+    "category": "Everyday",
+    "chunk": "The choice is yours",
+    "explanation": "Quyền lựa chọn thuộc về bạn. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "The choice is yours because it's your birthday.",
+      "The choice is yours and there's no wrong answer.",
+      "The choice is yours; you know what you enjoy."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0828",
+    "category": "Everyday",
+    "chunk": "I haven't decided yet",
+    "explanation": "Tôi vẫn chưa quyết định. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I haven't decided yet because both options look good.",
+      "I haven't decided yet whether I'll join the class.",
+      "I haven't decided yet but I'll let you know tomorrow."
+    ],
+    "frequency": 5,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0829",
+    "category": "Everyday",
+    "chunk": "I'm still thinking about",
+    "explanation": "Tôi vẫn đang cân nhắc. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'm still thinking about whether to enter the competition.",
+      "I'm still thinking about which book to read next.",
+      "I'm still thinking about the suggestion you made yesterday."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0830",
+    "category": "Everyday",
+    "chunk": "Let me think about it",
+    "explanation": "Cho tôi thời gian suy nghĩ việc đó. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "Let me think about it before I say yes.",
+      "Let me think about it for a day or two.",
+      "Let me think about it; it's a bigger decision than I expected."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0831",
+    "category": "Everyday",
+    "chunk": "I'll give it some thought",
+    "explanation": "Tôi sẽ dành thời gian cân nhắc. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'll give it some thought over the weekend.",
+      "I'll give it some thought before choosing a date.",
+      "I'll give it some thought because your suggestion sounds interesting."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0832",
+    "category": "Everyday",
+    "chunk": "I can't make up my mind",
+    "explanation": "Tôi chưa thể quyết được. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I can't make up my mind between these two colors.",
+      "I can't make up my mind about what to do this evening.",
+      "I can't make up my mind because I like both ideas."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0833",
+    "category": "Everyday",
+    "chunk": "I'm leaning toward",
+    "explanation": "Tôi đang nghiêng về lựa chọn. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'm leaning toward the smaller celebration.",
+      "I'm leaning toward staying home this weekend.",
+      "I'm leaning toward the blue one rather than the green one."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0834",
+    "category": "Everyday",
+    "chunk": "I'll go with",
+    "explanation": "Tôi sẽ chọn. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'll go with the simpler design.",
+      "I'll go with your suggestion this time.",
+      "I'll go with the earlier show so we can get home sooner."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0835",
+    "category": "Everyday",
+    "chunk": "I'll stick with",
+    "explanation": "Tôi sẽ giữ lựa chọn hiện tại. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'll stick with the book I already started.",
+      "I'll stick with my original plan for tonight.",
+      "I'll stick with the color we chose yesterday."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0836",
+    "category": "Everyday",
+    "chunk": "I'd choose this one",
+    "explanation": "Tôi sẽ chọn cái này. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'd choose this one because it feels more comfortable.",
+      "I'd choose this one if I were buying it for myself.",
+      "I'd choose this one for a small room like mine."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0837",
+    "category": "Everyday",
+    "chunk": "That would be my first choice",
+    "explanation": "Đó sẽ là lựa chọn ưu tiên của tôi. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "That would be my first choice because I know the area well.",
+      "That would be my first choice if we can find a quiet table.",
+      "That would be my first choice but I'm open to other ideas."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0838",
+    "category": "Everyday",
+    "chunk": "I'm open to suggestions",
+    "explanation": "Tôi sẵn sàng nghe các gợi ý. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'm open to suggestions for a new hobby.",
+      "I'm open to suggestions because I haven't made any plans.",
+      "I'm open to suggestions about what to read next."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0839",
+    "category": "Everyday",
+    "chunk": "I might give it a try",
+    "explanation": "Có lẽ tôi sẽ thử việc đó. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I might give it a try if there's a beginner's class.",
+      "I might give it a try the next time I have a free afternoon.",
+      "I might give it a try because you seem to enjoy it."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0840",
+    "category": "Everyday",
+    "chunk": "It's worth a try",
+    "explanation": "Điều đó đáng thử. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "It's worth a try even if it feels unfamiliar.",
+      "It's worth a try because we have nothing planned.",
+      "It's worth a try and we might discover a new interest."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0841",
+    "category": "Everyday",
+    "chunk": "It's worth thinking about",
+    "explanation": "Điều đó đáng để suy nghĩ. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "It's worth thinking about before we make a promise.",
+      "It's worth thinking about because it could change our routine.",
+      "It's worth thinking about even if we don't decide today."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0842",
+    "category": "Everyday",
+    "chunk": "There's no harm in asking",
+    "explanation": "Cứ hỏi cũng không có gì bất lợi. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "There's no harm in asking whether we can join the group.",
+      "There's no harm in asking if they have another color.",
+      "There's no harm in asking whether the time can be changed."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0843",
+    "category": "Everyday",
+    "chunk": "I'd like to keep my options open",
+    "explanation": "Tôi muốn giữ nhiều khả năng lựa chọn. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'd like to keep my options open until I know my plans.",
+      "I'd like to keep my options open for a few more days.",
+      "I'd like to keep my options open rather than deciding tonight."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0844",
+    "category": "Everyday",
+    "chunk": "I don't want to rush into",
+    "explanation": "Tôi không muốn vội vàng quyết định. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I don't want to rush into a choice I'll regret.",
+      "I don't want to rush into buying something expensive.",
+      "I don't want to rush into a new activity before trying it."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0845",
+    "category": "Everyday",
+    "chunk": "I've made up my mind",
+    "explanation": "Tôi đã quyết định rồi. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I've made up my mind to enter the competition.",
+      "I've made up my mind about which course to take.",
+      "I've made up my mind and I'd like to tell you why."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0846",
+    "category": "Everyday",
+    "chunk": "I can always change it later",
+    "explanation": "Tôi luôn có thể đổi lại sau. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I can always change it later if the color doesn't feel right.",
+      "I can always change it later because this is only a rough plan.",
+      "I can always change it later so I'm not too worried."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0847",
+    "category": "Everyday",
+    "chunk": "I'll see how I feel",
+    "explanation": "Tôi sẽ xem lúc đó mình cảm thấy thế nào. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'll see how I feel after the long journey.",
+      "I'll see how I feel before deciding whether to go out.",
+      "I'll see how I feel when I wake up tomorrow."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0848",
+    "category": "Everyday",
+    "chunk": "I'll take my chances",
+    "explanation": "Tôi chấp nhận thử dù kết quả chưa chắc. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'll take my chances with the outdoor seats.",
+      "I'll take my chances and enter the small competition.",
+      "I'll take my chances because the experience sounds fun."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0849",
+    "category": "Everyday",
+    "chunk": "I'd rather be sure",
+    "explanation": "Tôi muốn chắc chắn trước hơn. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "I'd rather be sure before I promise anything.",
+      "I'd rather be sure that I have enough time.",
+      "I'd rather be sure than make a decision too quickly."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0850",
+    "category": "Everyday",
+    "chunk": "That settles it",
+    "explanation": "Vậy là quyết định xong. Dùng để cân nhắc và lựa chọn trong đời sống.",
+    "examples": [
+      "That settles it; we'll choose the earlier show.",
+      "That settles it because everyone likes the same idea.",
+      "That settles it; a quiet evening at home it is."
+    ],
+    "frequency": 4,
+    "topic": "Quyết định cá nhân"
+  },
+  {
+    "id": "general-0851",
+    "category": "Everyday",
+    "chunk": "I think it's",
+    "explanation": "Tôi nghĩ điều đó là. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I think it's a lovely way to spend an afternoon.",
+      "I think it's better to ask her first.",
+      "I think it's too early to decide."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0852",
+    "category": "Everyday",
+    "chunk": "I don't think it's",
+    "explanation": "Tôi không nghĩ điều đó là. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I don't think it's a good idea to surprise him today.",
+      "I don't think it's as difficult as it looks.",
+      "I don't think it's fair to blame one person."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0853",
+    "category": "Everyday",
+    "chunk": "In my opinion",
+    "explanation": "Theo ý kiến của tôi. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "In my opinion, the ending was the best part.",
+      "In my opinion, a smaller group would be more comfortable.",
+      "In my opinion, both pictures have something special."
+    ],
+    "frequency": 5,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0854",
+    "category": "Everyday",
+    "chunk": "The way I see it",
+    "explanation": "Theo cách tôi nhìn nhận. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "The way I see it, we still have plenty of time.",
+      "The way I see it, the effort matters more than winning.",
+      "The way I see it, everyone should get a chance to speak."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0855",
+    "category": "Everyday",
+    "chunk": "As far as I know",
+    "explanation": "Theo những gì tôi biết. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "As far as I know, the club is open to beginners.",
+      "As far as I know, she still lives in the same town.",
+      "As far as I know, nobody has chosen a date yet."
+    ],
+    "frequency": 5,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0856",
+    "category": "Everyday",
+    "chunk": "From what I've heard",
+    "explanation": "Theo những điều tôi đã nghe. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "From what I've heard, the book is very funny.",
+      "From what I've heard, the new class is quite relaxed.",
+      "From what I've heard, they had a wonderful time together."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0857",
+    "category": "Everyday",
+    "chunk": "It seems to me that",
+    "explanation": "Tôi có cảm giác hoặc nhận thấy rằng. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "It seems to me that we both want the same thing.",
+      "It seems to me that the story is about friendship.",
+      "It seems to me that you'd prefer a quieter evening."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0858",
+    "category": "Everyday",
+    "chunk": "I get the feeling that",
+    "explanation": "Tôi có cảm giác rằng. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I get the feeling that something is bothering you.",
+      "I get the feeling that this place means a lot to her.",
+      "I get the feeling that we've met somewhere before."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0859",
+    "category": "Everyday",
+    "chunk": "I could be wrong",
+    "explanation": "Có thể tôi nhầm. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I could be wrong, but I think that's her brother.",
+      "I could be wrong about the date of the festival.",
+      "I could be wrong, so let's ask someone who knows."
+    ],
+    "frequency": 5,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0860",
+    "category": "Everyday",
+    "chunk": "I may be mistaken",
+    "explanation": "Có lẽ tôi nhớ hoặc hiểu nhầm. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I may be mistaken, but wasn't the film set in Italy?",
+      "I may be mistaken about who told me the story.",
+      "I may be mistaken, so please correct me."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0861",
+    "category": "Everyday",
+    "chunk": "I'm not completely sure",
+    "explanation": "Tôi chưa hoàn toàn chắc chắn. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I'm not completely sure which year we first met.",
+      "I'm not completely sure that I've understood your point.",
+      "I'm not completely sure but I think the blue one is yours."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0862",
+    "category": "Everyday",
+    "chunk": "I'm fairly sure",
+    "explanation": "Tôi khá chắc chắn. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I'm fairly sure I've seen this picture before.",
+      "I'm fairly sure we have a friend in common.",
+      "I'm fairly sure that she would enjoy this book."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0863",
+    "category": "Everyday",
+    "chunk": "I have no doubt that",
+    "explanation": "Tôi không nghi ngờ rằng. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I have no doubt that you care about your friends.",
+      "I have no doubt that she worked hard on that painting.",
+      "I have no doubt that this place holds many memories for you."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0864",
+    "category": "Everyday",
+    "chunk": "That makes sense to me",
+    "explanation": "Điều đó có lý với tôi. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "That makes sense to me because you know her better.",
+      "That makes sense to me now that you've explained it.",
+      "That makes sense to me as a way to avoid another argument."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0865",
+    "category": "Everyday",
+    "chunk": "I see it differently",
+    "explanation": "Tôi nhìn nhận điều đó theo cách khác. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I see it differently because my experience was different.",
+      "I see it differently but I'd like to hear your reasons.",
+      "I see it differently when I think about how she felt."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0866",
+    "category": "Everyday",
+    "chunk": "I'm not convinced that",
+    "explanation": "Tôi chưa thấy đủ thuyết phục rằng. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I'm not convinced that bigger always means better.",
+      "I'm not convinced that he meant to be unkind.",
+      "I'm not convinced that this is the only way to decide."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0867",
+    "category": "Everyday",
+    "chunk": "I wouldn't say that",
+    "explanation": "Tôi không hẳn đồng ý nhận xét đó. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I wouldn't say that the film was boring.",
+      "I wouldn't say that everyone feels the same way.",
+      "I wouldn't say that it's a waste of time."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0868",
+    "category": "Everyday",
+    "chunk": "I suppose so",
+    "explanation": "Tôi nghĩ có lẽ là vậy. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I suppose so, although I hadn't thought about it before.",
+      "I suppose so if everyone else is happy with the idea.",
+      "I suppose so, but I'd still like to ask her."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0869",
+    "category": "Everyday",
+    "chunk": "That depends on",
+    "explanation": "Điều đó còn phụ thuộc vào. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "That depends on how much time we have.",
+      "That depends on what kind of stories you enjoy.",
+      "That depends on whether you'd like some company."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0870",
+    "category": "Everyday",
+    "chunk": "It's hard to say",
+    "explanation": "Khó nói chắc được. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "It's hard to say which version I like more.",
+      "It's hard to say how she'll feel about the surprise.",
+      "It's hard to say without hearing both sides."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0871",
+    "category": "Everyday",
+    "chunk": "I can understand both sides",
+    "explanation": "Tôi có thể hiểu quan điểm của cả hai bên. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I can understand both sides of the argument.",
+      "I can understand both sides even though I have my own preference.",
+      "I can understand both sides after hearing what they each said."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0872",
+    "category": "Everyday",
+    "chunk": "There's some truth in that",
+    "explanation": "Điều đó có một phần đúng. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "There's some truth in that but it doesn't explain everything.",
+      "There's some truth in that when I think about my own experience.",
+      "There's some truth in that even if I wouldn't say it that way."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0873",
+    "category": "Everyday",
+    "chunk": "I hadn't thought of it that way",
+    "explanation": "Trước đó tôi chưa nghĩ theo hướng đó. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "I hadn't thought of it that way until you explained your reasons.",
+      "I hadn't thought of it that way but I can see your point now.",
+      "I hadn't thought of it that way when I first heard the story."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0874",
+    "category": "Everyday",
+    "chunk": "You've given me something to think about",
+    "explanation": "Bạn đã cho tôi một điều đáng suy nghĩ. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "You've given me something to think about before I make my choice.",
+      "You've given me something to think about with that question about friendship.",
+      "You've given me something to think about and I'd like to talk again later."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0875",
+    "category": "Everyday",
+    "chunk": "We don't have to agree on everything",
+    "explanation": "Chúng ta không cần đồng ý về mọi thứ. Dùng để nêu ý kiến mà không khẳng định quá mức.",
+    "examples": [
+      "We don't have to agree on everything to enjoy spending time together.",
+      "We don't have to agree on everything as long as we listen to each other.",
+      "We don't have to agree on everything because we have different experiences."
+    ],
+    "frequency": 4,
+    "topic": "Ý kiến và mức độ chắc chắn"
+  },
+  {
+    "id": "general-0876",
+    "category": "Everyday",
+    "chunk": "I'm sorry about",
+    "explanation": "Tôi xin lỗi hoặc lấy làm tiếc về. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I'm sorry about the noise we made last night.",
+      "I'm sorry about forgetting your birthday.",
+      "I'm sorry about the way I interrupted you."
+    ],
+    "frequency": 5,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0877",
+    "category": "Everyday",
+    "chunk": "I'm sorry for",
+    "explanation": "Tôi xin lỗi vì hành động của mình. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I'm sorry for keeping you waiting outside.",
+      "I'm sorry for making that unkind comment.",
+      "I'm sorry for not calling when I said I would."
+    ],
+    "frequency": 5,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0878",
+    "category": "Everyday",
+    "chunk": "I'm sorry I",
+    "explanation": "Tôi xin lỗi vì mình đã. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I'm sorry I forgot to bring your book.",
+      "I'm sorry I didn't recognize you at first.",
+      "I'm sorry I spoke before you finished."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0879",
+    "category": "Everyday",
+    "chunk": "Sorry to bother you",
+    "explanation": "Xin lỗi vì làm phiền bạn. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "Sorry to bother you, but is this seat taken?",
+      "Sorry to bother you when you're busy, but I have a quick question.",
+      "Sorry to bother you; I think I left my scarf here."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0880",
+    "category": "Everyday",
+    "chunk": "Sorry to interrupt",
+    "explanation": "Xin lỗi vì ngắt lời. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "Sorry to interrupt, but your phone is ringing.",
+      "Sorry to interrupt when you're telling your story.",
+      "Sorry to interrupt, but could I ask one thing?"
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0881",
+    "category": "Everyday",
+    "chunk": "I didn't mean to",
+    "explanation": "Tôi không cố ý làm điều đó. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I didn't mean to sound rude just now.",
+      "I didn't mean to leave you out of the conversation.",
+      "I didn't mean to make you feel uncomfortable."
+    ],
+    "frequency": 5,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0882",
+    "category": "Everyday",
+    "chunk": "That wasn't my intention",
+    "explanation": "Đó không phải ý định của tôi. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "That wasn't my intention when I asked the question.",
+      "That wasn't my intention; I wanted to include everyone.",
+      "That wasn't my intention and I'm sorry it sounded that way."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0883",
+    "category": "Everyday",
+    "chunk": "I didn't realize",
+    "explanation": "Tôi đã không nhận ra. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I didn't realize you were still speaking.",
+      "I didn't realize that the seat was already taken.",
+      "I didn't realize how much that mattered to you."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0884",
+    "category": "Everyday",
+    "chunk": "I should have asked",
+    "explanation": "Lẽ ra tôi nên hỏi trước. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I should have asked before borrowing your umbrella.",
+      "I should have asked whether you wanted to be in the photo.",
+      "I should have asked instead of making a guess."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0885",
+    "category": "Everyday",
+    "chunk": "I should have told you",
+    "explanation": "Lẽ ra tôi nên nói cho bạn biết. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I should have told you that I was running late.",
+      "I should have told you about the change of plans.",
+      "I should have told you before inviting another person."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0886",
+    "category": "Everyday",
+    "chunk": "I shouldn't have said",
+    "explanation": "Lẽ ra tôi không nên nói. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I shouldn't have said that in front of everyone.",
+      "I shouldn't have said anything about your private news.",
+      "I shouldn't have said you were being silly."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0887",
+    "category": "Everyday",
+    "chunk": "I got the wrong idea",
+    "explanation": "Tôi đã hiểu sai ý. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I got the wrong idea when I read your message.",
+      "I got the wrong idea about why you left early.",
+      "I got the wrong idea and thought you wanted to be alone."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0888",
+    "category": "Everyday",
+    "chunk": "I misunderstood what you meant",
+    "explanation": "Tôi đã hiểu sai điều bạn muốn nói. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I misunderstood what you meant about meeting another day.",
+      "I misunderstood what you meant when you said you were tired.",
+      "I misunderstood what you meant because I only heard part of the story."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0889",
+    "category": "Everyday",
+    "chunk": "I took it the wrong way",
+    "explanation": "Tôi đã hiểu theo hướng không đúng hoặc tiêu cực. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I took it the wrong way when you said I looked different.",
+      "I took it the wrong way because I was already upset.",
+      "I took it the wrong way before you explained the joke."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0890",
+    "category": "Everyday",
+    "chunk": "I wasn't thinking clearly",
+    "explanation": "Lúc đó tôi suy nghĩ chưa rõ ràng. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I wasn't thinking clearly when I answered your question.",
+      "I wasn't thinking clearly after such a stressful morning.",
+      "I wasn't thinking clearly and I spoke too quickly."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0891",
+    "category": "Everyday",
+    "chunk": "I was out of line",
+    "explanation": "Tôi đã nói hoặc làm quá giới hạn. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I was out of line when I made that personal comment.",
+      "I was out of line and I owe you an apology.",
+      "I was out of line for laughing at something important to you."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0892",
+    "category": "Everyday",
+    "chunk": "I owe you an apology",
+    "explanation": "Tôi cần phải xin lỗi bạn. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I owe you an apology for what I said yesterday.",
+      "I owe you an apology because I didn't keep my promise.",
+      "I owe you an apology after leaving without saying goodbye."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0893",
+    "category": "Everyday",
+    "chunk": "Please accept my apology",
+    "explanation": "Mong bạn nhận lời xin lỗi của tôi. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "Please accept my apology for the misunderstanding.",
+      "Please accept my apology for missing your celebration.",
+      "Please accept my apology; I know my comment was hurtful."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0894",
+    "category": "Everyday",
+    "chunk": "I hope you can forgive me",
+    "explanation": "Tôi mong bạn có thể tha lỗi. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "I hope you can forgive me for forgetting something so important.",
+      "I hope you can forgive me when you're ready to talk.",
+      "I hope you can forgive me for not being there when I promised."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0895",
+    "category": "Everyday",
+    "chunk": "How can I make it up to you",
+    "explanation": "Tôi có thể làm gì để bù lại cho bạn. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "How can I make it up to you after missing your birthday?",
+      "How can I make it up to you for breaking your favorite cup?",
+      "How can I make it up to you now that I've let you down?"
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0896",
+    "category": "Everyday",
+    "chunk": "Let me make it up to you",
+    "explanation": "Hãy để tôi bù lại cho bạn. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "Let me make it up to you by cooking dinner this weekend.",
+      "Let me make it up to you the next time we meet.",
+      "Let me make it up to you because I know you waited a long time."
+    ],
+    "frequency": 3,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0897",
+    "category": "Everyday",
+    "chunk": "It won't happen again",
+    "explanation": "Điều đó sẽ không lặp lại. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "It won't happen again; I'll ask before using your things.",
+      "It won't happen again because I'll check the time more carefully.",
+      "It won't happen again; I'll keep that story private."
+    ],
+    "frequency": 4,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0898",
+    "category": "Everyday",
+    "chunk": "No need to apologize",
+    "explanation": "Không cần phải xin lỗi đâu. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "No need to apologize; I know you were trying to help.",
+      "No need to apologize for asking a simple question.",
+      "No need to apologize because you haven't done anything wrong."
+    ],
+    "frequency": 5,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0899",
+    "category": "Everyday",
+    "chunk": "No hard feelings",
+    "explanation": "Không còn giận hoặc để bụng đâu. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "No hard feelings; we all make mistakes.",
+      "No hard feelings about what happened yesterday.",
+      "No hard feelings, and I'd still like to come along."
+    ],
+    "frequency": 3,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0900",
+    "category": "Everyday",
+    "chunk": "Let's put it behind us",
+    "explanation": "Hãy bỏ qua chuyện đã xảy ra và bước tiếp. Dùng để nhận lỗi và giải thích ý định trong giao tiếp.",
+    "examples": [
+      "Let's put it behind us now that we've talked honestly.",
+      "Let's put it behind us and enjoy the rest of the evening.",
+      "Let's put it behind us instead of arguing about it again."
+    ],
+    "frequency": 3,
+    "topic": "Xin lỗi và sửa hiểu lầm"
+  },
+  {
+    "id": "general-0901",
+    "category": "Everyday",
+    "chunk": "Thanks for listening",
+    "explanation": "Cảm ơn vì đã lắng nghe. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for listening when I needed to talk.",
+      "Thanks for listening to such a long story.",
+      "Thanks for listening without judging me."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0902",
+    "category": "Everyday",
+    "chunk": "Thanks for checking in",
+    "explanation": "Cảm ơn vì đã hỏi thăm. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for checking in while I was away.",
+      "Thanks for checking in; it was lovely to hear from you.",
+      "Thanks for checking in and remembering that today was important."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0903",
+    "category": "Everyday",
+    "chunk": "Thanks for letting me know",
+    "explanation": "Cảm ơn vì đã báo cho tôi biết. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for letting me know about the new meeting place.",
+      "Thanks for letting me know that you arrived safely.",
+      "Thanks for letting me know before I left the house."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0904",
+    "category": "Everyday",
+    "chunk": "Thanks for the heads-up",
+    "explanation": "Cảm ơn vì đã báo trước điều cần biết. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for the heads-up about the noisy road outside.",
+      "Thanks for the heads-up that the entrance has changed.",
+      "Thanks for the heads-up; I'll bring a warmer coat."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0905",
+    "category": "Everyday",
+    "chunk": "Thank you for having me",
+    "explanation": "Cảm ơn vì đã mời và đón tiếp tôi. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thank you for having me in your home this evening.",
+      "Thank you for having me; I had a lovely time.",
+      "Thank you for having me at your family celebration."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0906",
+    "category": "Everyday",
+    "chunk": "Thanks for inviting me",
+    "explanation": "Cảm ơn vì đã mời tôi. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for inviting me to join your friends.",
+      "Thanks for inviting me even though we only met recently.",
+      "Thanks for inviting me; I'm looking forward to it."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0907",
+    "category": "Everyday",
+    "chunk": "Thanks for thinking of me",
+    "explanation": "Cảm ơn vì đã nhớ hoặc quan tâm đến tôi. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for thinking of me when you saw this book.",
+      "Thanks for thinking of me for the extra concert ticket.",
+      "Thanks for thinking of me on such a busy day."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0908",
+    "category": "Everyday",
+    "chunk": "Thanks for being there",
+    "explanation": "Cảm ơn vì đã có mặt và ở bên. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for being there when I felt alone.",
+      "Thanks for being there at my first performance.",
+      "Thanks for being there even when I didn't know what to say."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0909",
+    "category": "Everyday",
+    "chunk": "Thanks for your patience",
+    "explanation": "Cảm ơn vì đã kiên nhẫn. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for your patience while I found the right words.",
+      "Thanks for your patience with my many questions.",
+      "Thanks for your patience as I learned the rules."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0910",
+    "category": "Everyday",
+    "chunk": "Thanks for understanding",
+    "explanation": "Cảm ơn vì đã thông cảm. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Thanks for understanding why I need to leave early.",
+      "Thanks for understanding that I can't come this time.",
+      "Thanks for understanding when I changed my plans."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0911",
+    "category": "Everyday",
+    "chunk": "I really appreciate it",
+    "explanation": "Tôi thực sự trân trọng sự giúp đỡ đó. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I really appreciate it because you went out of your way.",
+      "I really appreciate it when you make time for me.",
+      "I really appreciate it after such a difficult week."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0912",
+    "category": "Everyday",
+    "chunk": "I appreciate your help",
+    "explanation": "Tôi trân trọng sự giúp đỡ của bạn. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I appreciate your help with the decorations.",
+      "I appreciate your help more than I can say.",
+      "I appreciate your help in finding my missing dog."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0913",
+    "category": "Everyday",
+    "chunk": "I appreciate you taking the time",
+    "explanation": "Tôi trân trọng việc bạn dành thời gian. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I appreciate you taking the time to explain that to me.",
+      "I appreciate you taking the time to come and see my painting.",
+      "I appreciate you taking the time to listen when you're so busy."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0914",
+    "category": "Everyday",
+    "chunk": "That's very kind of you",
+    "explanation": "Bạn thật tốt khi làm như vậy. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "That's very kind of you to bring something for everyone.",
+      "That's very kind of you but you really don't have to.",
+      "That's very kind of you when we've only just met."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0915",
+    "category": "Everyday",
+    "chunk": "That's so thoughtful",
+    "explanation": "Điều đó thật chu đáo. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "That's so thoughtful of you to remember my favorite color.",
+      "That's so thoughtful; you knew exactly what I needed.",
+      "That's so thoughtful because you noticed I was feeling quiet."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0916",
+    "category": "Everyday",
+    "chunk": "You shouldn't have",
+    "explanation": "Bạn thật chu đáo, không cần tặng nhiều như vậy đâu. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "You shouldn't have bought me such a lovely gift.",
+      "You shouldn't have gone to so much trouble for my birthday.",
+      "You shouldn't have spent so much, but thank you."
+    ],
+    "frequency": 3,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0917",
+    "category": "Everyday",
+    "chunk": "You really helped me out",
+    "explanation": "Bạn đã giúp tôi rất nhiều trong lúc cần. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "You really helped me out when I lost my keys.",
+      "You really helped me out by looking after the cat.",
+      "You really helped me out and I won't forget it."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0918",
+    "category": "Everyday",
+    "chunk": "I couldn't have done it without you",
+    "explanation": "Tôi không thể làm được nếu thiếu bạn. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I couldn't have done it without you helping me practice.",
+      "I couldn't have done it without you there to encourage me.",
+      "I couldn't have done it without you because I was ready to give up."
+    ],
+    "frequency": 3,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0919",
+    "category": "Everyday",
+    "chunk": "I'm grateful for",
+    "explanation": "Tôi biết ơn vì. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I'm grateful for the time we've spent together.",
+      "I'm grateful for all the support from my friends.",
+      "I'm grateful for having someone I can talk to."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0920",
+    "category": "Everyday",
+    "chunk": "I don't know how to thank you",
+    "explanation": "Tôi không biết phải cảm ơn thế nào cho đủ. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I don't know how to thank you for finding my old photo album.",
+      "I don't know how to thank you after everything you've done.",
+      "I don't know how to thank you for making this day so special."
+    ],
+    "frequency": 3,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0921",
+    "category": "Everyday",
+    "chunk": "You're very welcome",
+    "explanation": "Rất sẵn lòng, không có gì đâu. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "You're very welcome; I'm glad I could help.",
+      "You're very welcome and I hope you enjoy the book.",
+      "You're very welcome; it was lovely to have you here."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0922",
+    "category": "Everyday",
+    "chunk": "I'm glad I could help",
+    "explanation": "Tôi vui vì đã có thể giúp. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "I'm glad I could help you find the right place.",
+      "I'm glad I could help even in a small way.",
+      "I'm glad I could help with something that mattered to you."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0923",
+    "category": "Everyday",
+    "chunk": "It was the least I could do",
+    "explanation": "Đó là điều tối thiểu tôi có thể làm để giúp. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "It was the least I could do after all your kindness.",
+      "It was the least I could do when you needed a little support.",
+      "It was the least I could do because you've helped me so often."
+    ],
+    "frequency": 3,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0924",
+    "category": "Everyday",
+    "chunk": "You'd do the same for me",
+    "explanation": "Bạn cũng sẽ giúp tôi như vậy thôi. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "You'd do the same for me if I needed a hand.",
+      "You'd do the same for me and that's what friends are for.",
+      "You'd do the same for me so there's no need to thank me again."
+    ],
+    "frequency": 4,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0925",
+    "category": "Everyday",
+    "chunk": "Happy to help",
+    "explanation": "Tôi rất sẵn lòng giúp. Dùng để bày tỏ sự biết ơn một cách tự nhiên.",
+    "examples": [
+      "Happy to help whenever you need another listener.",
+      "Happy to help with the preparations next time.",
+      "Happy to help; just let me know what you need."
+    ],
+    "frequency": 5,
+    "topic": "Cảm ơn và đáp lại"
+  },
+  {
+    "id": "general-0926",
+    "category": "Everyday",
+    "chunk": "Could you say that again",
+    "explanation": "Bạn có thể nói lại điều đó không. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Could you say that again a little more slowly?",
+      "Could you say that again so I can write the name down?",
+      "Could you say that again because I didn't hear the last part?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0927",
+    "category": "Everyday",
+    "chunk": "Could you speak a little slower",
+    "explanation": "Bạn có thể nói chậm hơn một chút không. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Could you speak a little slower so I can follow the story?",
+      "Could you speak a little slower when you say the address?",
+      "Could you speak a little slower because I'm still learning English?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0928",
+    "category": "Everyday",
+    "chunk": "I didn't catch",
+    "explanation": "Tôi nghe chưa rõ một phần lời nói. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "I didn't catch your name the first time.",
+      "I didn't catch the last word you said.",
+      "I didn't catch what you said about the time."
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0929",
+    "category": "Everyday",
+    "chunk": "I didn't quite hear",
+    "explanation": "Tôi chưa nghe rõ. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "I didn't quite hear which street you mentioned.",
+      "I didn't quite hear the beginning of your question.",
+      "I didn't quite hear what she said over the noise."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0930",
+    "category": "Everyday",
+    "chunk": "What does that mean",
+    "explanation": "Điều đó có nghĩa là gì. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "What does that mean in everyday English?",
+      "What does that mean when someone says it to a friend?",
+      "What does that mean in the story you just told?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0931",
+    "category": "Everyday",
+    "chunk": "Could you be more specific",
+    "explanation": "Bạn có thể nói cụ thể hơn không. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Could you be more specific about which entrance we should use?",
+      "Could you be more specific when you describe the problem?",
+      "Could you be more specific about what you would like to change?"
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0932",
+    "category": "Everyday",
+    "chunk": "Could you give me an example",
+    "explanation": "Bạn có thể cho tôi một ví dụ không. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Could you give me an example of how you use that phrase?",
+      "Could you give me an example so I can understand the difference?",
+      "Could you give me an example from your own experience?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0933",
+    "category": "Everyday",
+    "chunk": "Let me put it another way",
+    "explanation": "Để tôi diễn đạt theo cách khác. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Let me put it another way so my meaning is clearer.",
+      "Let me put it another way: I'd like a little more time.",
+      "Let me put it another way because that sounded confusing."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0934",
+    "category": "Everyday",
+    "chunk": "What I'm trying to say is",
+    "explanation": "Điều tôi đang muốn nói là. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "What I'm trying to say is that I miss spending time with you.",
+      "What I'm trying to say is that everyone should feel welcome.",
+      "What I'm trying to say is that I'm grateful for your advice."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0935",
+    "category": "Everyday",
+    "chunk": "What I meant was",
+    "explanation": "Ý tôi vừa muốn nói là. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "What I meant was that we could meet another day.",
+      "What I meant was that the color looked different in the photo.",
+      "What I meant was that I needed a short break."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0936",
+    "category": "Everyday",
+    "chunk": "That's not quite what I meant",
+    "explanation": "Đó chưa đúng ý tôi muốn nói. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "That's not quite what I meant when I said I was busy.",
+      "That's not quite what I meant so let me try again.",
+      "That's not quite what I meant about making a smaller plan."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0937",
+    "category": "Everyday",
+    "chunk": "Let me explain",
+    "explanation": "Để tôi giải thích. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Let me explain why I felt uncomfortable.",
+      "Let me explain what happened before you arrived.",
+      "Let me explain how I know your cousin."
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0938",
+    "category": "Everyday",
+    "chunk": "Just to be clear",
+    "explanation": "Để nói cho rõ hoặc kiểm tra lại cách hiểu. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Just to be clear, are we meeting at your place?",
+      "Just to be clear, I enjoyed the evening very much.",
+      "Just to be clear, you don't need to bring anything."
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0939",
+    "category": "Everyday",
+    "chunk": "If I understand correctly",
+    "explanation": "Nếu tôi hiểu đúng. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "If I understand correctly, you'd like some time to think.",
+      "If I understand correctly, the invitation is for both of us.",
+      "If I understand correctly, we can choose either day."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0940",
+    "category": "Everyday",
+    "chunk": "Do you mean that",
+    "explanation": "Ý bạn có phải là. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Do you mean that you've already seen the film?",
+      "Do you mean that we should wait outside?",
+      "Do you mean that you'd like to invite everyone?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0941",
+    "category": "Everyday",
+    "chunk": "Am I saying that right",
+    "explanation": "Tôi nói hoặc phát âm như vậy có đúng không. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Am I saying that right when I pronounce your name?",
+      "Am I saying that right for this situation?",
+      "Am I saying that right or is there a more natural phrase?"
+    ],
+    "frequency": 3,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0942",
+    "category": "Everyday",
+    "chunk": "Could you spell that out",
+    "explanation": "Bạn có thể đánh vần rõ từng chữ không. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Could you spell that out so I can write your surname correctly?",
+      "Could you spell that out for me before I enter the address?",
+      "Could you spell that out because I missed the last two letters?"
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0943",
+    "category": "Everyday",
+    "chunk": "What's the word for",
+    "explanation": "Từ chỉ thứ này là gì. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "What's the word for this kind of feeling in English?",
+      "What's the word for someone who always arrives early?",
+      "What's the word for the small room beside the kitchen?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0944",
+    "category": "Everyday",
+    "chunk": "I can't remember the word",
+    "explanation": "Tôi chưa nhớ ra từ cần dùng. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "I can't remember the word but I can describe the idea.",
+      "I can't remember the word for the thing I'm pointing at.",
+      "I can't remember the word even though I used it yesterday."
+    ],
+    "frequency": 4,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0945",
+    "category": "Everyday",
+    "chunk": "How can I put this",
+    "explanation": "Tôi nên diễn đạt chuyện này thế nào nhỉ. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "How can I put this without sounding unkind?",
+      "How can I put this in a simpler way?",
+      "How can I put this so you understand how I feel?"
+    ],
+    "frequency": 3,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0946",
+    "category": "Everyday",
+    "chunk": "I don't know the exact word",
+    "explanation": "Tôi không biết từ chính xác. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "I don't know the exact word but it means feeling happy and sad together.",
+      "I don't know the exact word for this part of the picture.",
+      "I don't know the exact word so I'll try to explain it differently."
+    ],
+    "frequency": 3,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0947",
+    "category": "Everyday",
+    "chunk": "Please correct me if I'm wrong",
+    "explanation": "Hãy sửa giúp nếu tôi nói sai. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Please correct me if I'm wrong about how your name is pronounced.",
+      "Please correct me if I'm wrong, but I think we met last summer.",
+      "Please correct me if I'm wrong when I describe what happened."
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0948",
+    "category": "Everyday",
+    "chunk": "Does that answer your question",
+    "explanation": "Điều đó đã trả lời câu hỏi của bạn chưa. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Does that answer your question about where I grew up?",
+      "Does that answer your question or would you like another example?",
+      "Does that answer your question about how we first met?"
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0949",
+    "category": "Everyday",
+    "chunk": "Have I understood you correctly",
+    "explanation": "Tôi đã hiểu đúng ý bạn chưa. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Have I understood you correctly about the change of plans?",
+      "Have I understood you correctly or have I missed something?",
+      "Have I understood you correctly when you say you'd prefer to stay home?"
+    ],
+    "frequency": 3,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  },
+  {
+    "id": "general-0950",
+    "category": "Everyday",
+    "chunk": "Now I understand",
+    "explanation": "Bây giờ tôi đã hiểu. Dùng để hỏi lại hoặc nói rõ ý khi giao tiếp.",
+    "examples": [
+      "Now I understand why that was important to you.",
+      "Now I understand what you meant by a small gathering.",
+      "Now I understand after hearing your example."
+    ],
+    "frequency": 5,
+    "topic": "Làm rõ và lịch sự trong hội thoại"
+  }
+]
