@@ -11,6 +11,7 @@ export default function config(phase) {
               { source: "/lessons/:day.html", destination: "/lessons/:day" },
               { source: "/topics/index.html", destination: "/topics" },
               { source: "/chunks/index.html", destination: "/chunks" },
+              { source: "/collocations/index.html", destination: "/collocations" },
             ];
           },
         }

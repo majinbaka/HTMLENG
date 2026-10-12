@@ -31,6 +31,14 @@ export default function SiteLayout({ title, pageType, children }) {
                 2.500 chunks
               </a>
             )}
+            {pageType !== "collocations" && (
+              <a
+                className="btn"
+                href={`${dashboard ? "" : "../"}collocations/index.html`}
+              >
+                Collocations B2 · C1
+              </a>
+            )}
             {!dashboard && (
               <a className="btn" href={home}>
                 Dashboard

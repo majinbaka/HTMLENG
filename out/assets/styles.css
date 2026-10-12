@@ -326,10 +326,10 @@ main{padding:12px 15px 60px}
 .library-study-nav button:last-child{background:var(--ink);color:white;border-color:var(--ink)}
 body[data-page="chunks"] button:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
 @media(max-width:650px){
- body[data-page="chunks"] header{padding:12px 16px;gap:10px;align-items:flex-start}
- body[data-page="chunks"] header .brand{font-size:16px;white-space:nowrap}
- body[data-page="chunks"] header nav{justify-content:flex-end;gap:6px}
- body[data-page="chunks"] header nav button,body[data-page="chunks"] header nav label,body[data-page="chunks"] header nav .btn{font-size:11px;padding:8px 10px;min-height:44px}
+ body:is([data-page="chunks"], [data-page="collocations"]) header{padding:12px 16px;gap:10px;align-items:flex-start}
+ body:is([data-page="chunks"], [data-page="collocations"]) header .brand{font-size:16px;white-space:nowrap}
+ body:is([data-page="chunks"], [data-page="collocations"]) header nav{justify-content:flex-end;gap:6px}
+ body:is([data-page="chunks"], [data-page="collocations"]) header nav button,body:is([data-page="chunks"], [data-page="collocations"]) header nav label,body:is([data-page="chunks"], [data-page="collocations"]) header nav .btn{font-size:11px;padding:8px 10px;min-height:44px}
  .library-main{padding:8px 16px 40px}
  .library-hero{padding:22px;border-radius:20px}
  .library-hero .kicker{font-size:10px;margin:0}
@@ -355,4 +355,4 @@ body[data-page="chunks"] button:focus-visible{outline:3px solid var(--coral);out
  .library-study-head .kicker{max-width:190px;line-height:1.5}
  .library-study-meaning{font-size:20px}
 }
-@media(max-width:360px){body[data-page="chunks"] header{flex-direction:column}body[data-page="chunks"] header nav{justify-content:flex-start}.library-study-head .kicker{max-width:150px}}
+@media(max-width:360px){body:is([data-page="chunks"], [data-page="collocations"]) header{flex-direction:column}body:is([data-page="chunks"], [data-page="collocations"]) header nav{justify-content:flex-start}.library-study-head .kicker{max-width:150px}}

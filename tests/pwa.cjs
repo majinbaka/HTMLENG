@@ -90,6 +90,11 @@ const server = http.createServer(async (req, res) => {
       await page.locator('.library-card [data-action="favorite"]').first().click();
       await page.reload();
       assert.equal(await page.locator('.library-card [data-action="favorite"]').first().getAttribute('aria-pressed'), 'true');
+      await page.goto(base + 'collocations/index.html?level=C1');
+      assert.equal(await page.locator('[data-collocation-id="coll-c1-001"]').count(), 1);
+      await page.locator('[data-action="favorite"]').first().click();
+      await page.reload();
+      assert.equal(await page.locator('[data-action="favorite"]').first().getAttribute('aria-pressed'), 'true');
       await page.goto(base);
       assert.equal(await page.locator('#weekly-review-list > *').count(), 4);
       assert.deepEqual(errors, []);

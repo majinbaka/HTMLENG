@@ -51,6 +51,22 @@ export default function Dashboard() {
             Mở thư viện chunks →
           </a>
         </section>
+        <section
+          className="panel chunk-library-entry"
+          aria-labelledby="collocation-title"
+        >
+          <div>
+            <p className="kicker coral">COLLOCATIONS · B2 & C1</p>
+            <h2 id="collocation-title">Chọn đúng những từ đi cùng nhau.</h2>
+            <p>
+              60 cụm khởi đầu, nghĩa tiếng Việt và 180 ví dụ. Lọc theo mức học,
+              chủ đề và luyện 5 cụm mỗi lượt.
+            </p>
+          </div>
+          <a className="primary" href="collocations/index.html">
+            Mở collocations →
+          </a>
+        </section>
         <section className="topic-dashboard" aria-labelledby="topic-title">
           <div className="section-head">
             <div>

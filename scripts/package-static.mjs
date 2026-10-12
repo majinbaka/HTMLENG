@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 const root = process.cwd();
 const out = path.join(root, "out");
 // Preserve the established .html URLs inside the exported site.
-for (const section of ["topics", "chunks"]) {
+for (const section of ["topics", "chunks", "collocations"]) {
   await fs.mkdir(path.join(out, section), { recursive: true });
   await fs.rename(
     path.join(out, `${section}.html`),

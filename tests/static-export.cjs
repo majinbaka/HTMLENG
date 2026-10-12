@@ -67,6 +67,9 @@ const server = http.createServer(async (req, res) => {
       await page.goto(`${base}/out/chunks/index.html?category=Work&page=2`);
       await page.locator('#chunk-results-count').filter({hasText:'26–50 / 450'}).waitFor();
       assert.equal(await page.locator('.library-card').count(), 25);
+      await page.goto(`${base}/out/collocations/index.html?level=C1`);
+      assert.equal(await page.locator('#collocation-level').inputValue(), 'C1');
+      assert.equal(await page.locator('[data-collocation-id="coll-c1-001"]').count(), 1);
       // A nested path on the same origin keeps the original storage and drafts.
       await page.goto(`${base}/out/lessons/day-01.html`);
       assert.equal(await page.locator('#routine-recall').inputValue(), marker);

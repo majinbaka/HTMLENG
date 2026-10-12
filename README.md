@@ -170,3 +170,9 @@ npm run build
 node tests/chunks.cjs            # tìm kiếm, phân trang, lưu/khôi phục, nhập/xuất
 npm test                        # kiểm tra hồi quy toàn site, subdirectory và offline
 ```
+
+## Collocations B2 & C1
+
+Mở từ dashboard hoặc `out/collocations/index.html`. Bộ khởi đầu gồm 60 cụm (30 B2, 30 C1), nghĩa tiếng Việt, mẫu kết hợp và 180 ví dụ tự biên soạn. Có tìm kiếm không dấu, lọc mức/chủ đề, phân trang, Yêu thích, Đã thuộc và luyện 5 cụm sau khi tự thử trả lời. Nhãn mức học là gợi ý biên soạn; CEFR không quy định số collocations để đạt trình độ.
+
+Dữ liệu ở `src/content/collocations/core.json`; trạng thái nằm trong trường `collocationLibrary` của bản tiến độ hiện tại, được xuất/nhập cùng các bài học và chunks. Đã thuộc là tự đánh giá; chưa có lịch ôn tự động cho thư viện này. Khi tăng bộ dữ liệu, cập nhật giới hạn ID trong `public/assets/app.js` và kiểm tra nội dung.
