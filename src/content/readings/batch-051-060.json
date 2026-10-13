@@ -1,0 +1,2012 @@
+[
+  {
+    "id": "reading-051",
+    "title": "Incident review: yesterday's totals on a live dashboard",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Báo cáo phân tích việc bảng điều khiển hiển thị số liệu cũ dù quy trình xử lý dữ liệu đã hoàn tất. Nhóm xác định vấn đề nằm ở bước làm mới dữ liệu hiển thị, khắc phục trước mắt và thay đổi cách kiểm tra thành công.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "At 8:40 on Tuesday morning, the operations team opened its daily dashboard and saw Monday's delivery totals. The date selector showed Tuesday, so two supervisors initially believed that the morning shift had processed unusually few packages. They asked warehouse staff to check the paper records before changing any staffing plans. Those records showed normal activity. This report explains why a dashboard with a current date displayed old figures, how the engineering team restored the correct view, and what checks will be added before the incident is considered fully resolved."
+      },
+      {
+        "label": "B",
+        "text": "The dashboard receives a prepared summary rather than reading every delivery record whenever someone opens the page. A scheduled job builds that summary at 8:15 each morning. After the job finishes, a separate step tells the dashboard service to replace its stored copy. On Tuesday, the summary job completed successfully, but the replacement step did not run. The service therefore continued showing its previous copy. The date selector was controlled separately and still moved forward, creating a misleading combination of today's label and yesterday's numbers for everyone who used the main page."
+      },
+      {
+        "label": "C",
+        "text": "The engineer on support duty first compared three things: the warehouse records, the new summary file, and the dashboard response. The first two agreed, while the response contained Monday's totals. This narrowed the investigation to the path between the summary and the display. A recent configuration change had moved the replacement instruction into a section that the scheduled process no longer read. The change had been tested by running the summary job manually. That test confirmed file creation, but it did not exercise the complete morning sequence used in normal operation."
+      },
+      {
+        "label": "D",
+        "text": "At 9:05, the team placed a short warning above the dashboard and asked supervisors to use the warehouse report temporarily. An engineer then ran the missing replacement step and compared the result with the new summary. The correct figures appeared at 9:18. The warning stayed visible for another fifteen minutes while a second engineer checked several delivery categories. No delivery records were changed during the recovery. The team chose this approach because correcting the displayed summary was quicker and easier to verify than rebuilding data that was already accurate."
+      },
+      {
+        "label": "E",
+        "text": "The incident exposed a weakness in the team's definition of success. Its monitoring recorded whether the summary job finished, but not whether users could see the resulting figures. A green job status therefore gave support staff more confidence than it should have. The revised check will compare the date inside the displayed summary with the date expected for that morning. If they differ after 8:30, the support channel will receive an alert. The dashboard will also show the summary's own preparation time beside the totals, where supervisors can notice it."
+      },
+      {
+        "label": "F",
+        "text": "One proposal was to remove the stored copy and calculate every dashboard view directly from delivery records. That would avoid this particular replacement step, but the team had not measured its effect during busy periods. Another proposal was to combine summary creation and replacement into one controlled sequence. The team selected the second option for the next release because it fits the existing design and can be tested with a realistic morning run. Direct calculation remains a possible later improvement, provided that a separate trial demonstrates acceptable response times and predictable operating costs."
+      },
+      {
+        "label": "G",
+        "text": "The new sequence will first run in the test environment with a deliberately failed replacement step. Engineers must confirm that the job is reported as incomplete and that the dashboard warning appears. They will then repeat the test with a successful replacement and compare the visible totals with the source summary. Linh will prepare these checks, while Omar will review the alert wording with operations staff. The release is planned for Thursday afternoon, outside the morning reporting period. A manual replacement instruction will remain available during the first week after release."
+      },
+      {
+        "label": "H",
+        "text": "Operations staff requested one further change: incident messages should explain what remains trustworthy. Tuesday's first warning said only that the dashboard had a problem, which led some people to question individual delivery records as well. Future messages will identify the affected view and point to the temporary report. The incident will close after five consecutive morning runs display the expected summary without manual help. Until then, support staff will record the preparation time and displayed date each day. This small record should show whether the repair works under ordinary working conditions."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "stored copy",
+        "meaning": "bản sao được lưu lại"
+      },
+      {
+        "term": "misleading",
+        "meaning": "gây hiểu lầm"
+      },
+      {
+        "term": "narrow the investigation",
+        "meaning": "thu hẹp phạm vi điều tra"
+      },
+      {
+        "term": "source summary",
+        "meaning": "bản tổng hợp nguồn"
+      },
+      {
+        "term": "consecutive",
+        "meaning": "liên tiếp"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What was the central problem on Tuesday morning?",
+        "options": [
+          "A. Warehouse staff had lost the paper records.",
+          "B. The dashboard showed old totals under a current date.",
+          "C. Supervisors selected the wrong delivery category.",
+          "D. The summary contained duplicate delivery records."
+        ],
+        "answer": "B. The dashboard showed old totals under a current date.",
+        "explanation": "Ngày trên giao diện là ngày hiện tại nhưng số liệu vẫn thuộc ngày hôm trước.",
+        "evidence": "The date selector was controlled separately and still moved forward, creating a misleading combination of today's label and yesterday's numbers for everyone who used the main page."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why had the earlier manual test failed to reveal the problem?",
+        "options": [
+          "A. It used warehouse records from a different month.",
+          "B. It checked only the dashboard warning.",
+          "C. It did not test the full normal morning sequence.",
+          "D. It was interrupted before any file was created."
+        ],
+        "answer": "C. It did not test the full normal morning sequence.",
+        "explanation": "Bài kiểm tra xác nhận việc tạo tệp nhưng bỏ qua chuỗi xử lý hoàn chỉnh vào buổi sáng.",
+        "evidence": "That test confirmed file creation, but it did not exercise the complete morning sequence used in normal operation."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why did the team choose to combine summary creation and replacement?",
+        "options": [
+          "A. It suited the current design and allowed realistic testing.",
+          "B. It eliminated the need for delivery records.",
+          "C. It had already proved cheaper than all alternatives.",
+          "D. It required no release work."
+        ],
+        "answer": "A. It suited the current design and allowed realistic testing.",
+        "explanation": "Phương án này phù hợp thiết kế hiện có và có thể kiểm tra bằng quy trình buổi sáng thực tế.",
+        "evidence": "The team selected the second option for the next release because it fits the existing design and can be tested with a realistic morning run."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The existing monitoring checked job completion but did not check whether users could see the new figures.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Đoạn E nêu rõ giới hạn này của hệ thống giám sát.",
+        "evidence": "Its monitoring recorded whether the summary job finished, but not whether users could see the resulting figures."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Engineers changed individual delivery records during recovery.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài đọc nói rõ không có bản ghi giao hàng nào bị thay đổi.",
+        "evidence": "No delivery records were changed during the recovery."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Omar has worked in the operations department for three years.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài chỉ nêu nhiệm vụ của Omar trong đợt kiểm tra, không cho biết bộ phận làm việc hay thâm niên.",
+        "evidence": "Linh will prepare these checks, while Omar will review the alert wording with operations staff."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What temporary information source were supervisors asked to use? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the warehouse report",
+        "explanation": "Đây là báo cáo thay thế được chỉ định khi bảng điều khiển có cảnh báo.",
+        "evidence": "At 9:05, the team placed a short warning above the dashboard and asked supervisors to use the warehouse report temporarily."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How many successful morning runs are required before the incident closes? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "five",
+        "explanation": "Sự cố chỉ đóng sau năm lần chạy buổi sáng liên tiếp thành công.",
+        "evidence": "The incident will close after five consecutive morning runs display the expected summary without manual help."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes comparing three information sources to locate the problem?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C mô tả việc so sánh dữ liệu kho, tệp tổng hợp mới và phản hồi từ bảng điều khiển.",
+        "evidence": "The engineer on support duty first compared three things: the warehouse records, the new summary file, and the dashboard response."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes deliberately testing an unsuccessful replacement?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G yêu cầu chủ động làm bước thay thế thất bại trong môi trường thử nghiệm.",
+        "evidence": "The new sequence will first run in the test environment with a deliberately failed replacement step."
+      }
+    ]
+  },
+  {
+    "id": "reading-052",
+    "title": "Purchasing memo: comparing two office chair quotations",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Bản ghi nhớ so sánh hai báo giá ghế văn phòng theo tổng chi phí, thời gian giao hàng, khả năng thử ghế và điều kiện hỗ trợ. Nhóm lựa chọn một đơn hàng thử nhỏ trước khi mua số lượng lớn.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The administration team needs eighteen chairs for a new project room that opens next month. Several chairs already in storage can be used temporarily, but they have different adjustment controls and are difficult to distribute fairly between teams. This memo compares quotations from North Furniture and Green Seat. Both suppliers offer chairs within the planned budget, yet their prices include different services. The purchasing decision should therefore consider the complete order, the delivery arrangements, and what happens if a chair needs attention after it reaches the office, rather than the advertised price alone."
+      },
+      {
+        "label": "B",
+        "text": "North Furniture lists a lower price for each chair and can deliver the full order within seven working days. However, its quotation adds separate charges for delivery and assembly. The supplier will leave unopened boxes at the loading entrance unless the assembly service is purchased. Green Seat's unit price is higher, but delivery and assembly are included. Once the additional charges are counted, Green Seat's total is only slightly above North Furniture's. Neither quotation includes removal of the old chairs, so that task will need its own arrangement and a small amount of storage space."
+      },
+      {
+        "label": "C",
+        "text": "The project room will be used by people with different preferences, so photographs alone are not enough to judge the chairs. North Furniture has a showroom across the city and offers appointments during office hours. Green Seat can lend two sample chairs for three working days. The administration team recommends trying the samples in the actual room, where users can check the controls and see whether the chairs fit under the desks. Staff comments should describe specific features, such as arm height or seat adjustment, rather than simply saying that one chair feels better."
+      },
+      {
+        "label": "D",
+        "text": "Delivery timing also needs careful attention. Green Seat estimates twelve working days after written acceptance, which leaves a narrow gap before the room opens. Its driver requires a reserved loading slot and access to the goods lift. The building team can provide both on Tuesday and Thursday mornings. North Furniture offers a shorter delivery period, but it will not promise a particular arrival hour. That uncertainty would require someone to remain near reception for much of the day. The lower delivery time therefore does not automatically make North Furniture easier for the office to manage."
+      },
+      {
+        "label": "E",
+        "text": "The quotations describe different ways to handle faults. North Furniture asks customers to send photographs and then bring an affected chair to its service centre if an inspection is required. Green Seat offers an office visit for faults covered by its stated support arrangement. Neither supplier promises an immediate replacement chair. Before ordering, administration will ask both companies to explain response times and list the parts included in their support. These details matter because a low purchase price can become less attractive when staff must arrange transport or repeatedly follow up on an unresolved problem."
+      },
+      {
+        "label": "F",
+        "text": "There is a practical reason to avoid ordering all eighteen chairs immediately. The new room's desk arrangement has not yet been tested with a full group, and the aisle near the whiteboard may be narrower than expected. Administration proposes an initial order of six chairs from Green Seat if the sample trial is satisfactory. The remaining twelve would be ordered after one week of normal use. This staged purchase reduces the risk of repeating an unsuitable choice, although it could create a second delivery charge if the supplier does not extend the original offer."
+      },
+      {
+        "label": "G",
+        "text": "To keep the comparison fair, Mai will record both complete prices in the same worksheet and attach the suppliers' written answers. The room coordinator will collect sample feedback by Friday afternoon. Finance will check that the proposed initial order fits the approved allocation, and administration will ask Green Seat to hold the price for the later order. No one should treat a telephone comment as a confirmed term. Any change to delivery, assembly, or support must appear in the final written quotation before the purchase request is sent for approval by the department manager."
+      },
+      {
+        "label": "H",
+        "text": "The recommendation is to continue with Green Seat's sample trial, not to declare it the final supplier today. Its included assembly and office support visits appear useful, but the samples and written clarifications still need review. If the trial reveals a clear problem, the team will arrange a showroom visit with North Furniture instead. The old storage chairs will cover the opening week if delivery is delayed. This gives the office a workable fallback and allows the purchasing decision to depend on evidence gathered from real use, rather than pressure from the room's opening date."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "quotation",
+        "meaning": "báo giá"
+      },
+      {
+        "term": "assembly",
+        "meaning": "việc lắp ráp"
+      },
+      {
+        "term": "loading slot",
+        "meaning": "khung giờ dành cho việc giao nhận hàng"
+      },
+      {
+        "term": "staged purchase",
+        "meaning": "việc mua hàng theo từng giai đoạn"
+      },
+      {
+        "term": "fallback",
+        "meaning": "phương án dự phòng"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What does the memo say should guide the purchasing decision?",
+        "options": [
+          "A. The lowest advertised unit price alone",
+          "B. The supplier with the largest showroom",
+          "C. The full order, delivery arrangements, and later support",
+          "D. The colour preferred by the department manager"
+        ],
+        "answer": "C. The full order, delivery arrangements, and later support",
+        "explanation": "Bản ghi nhớ yêu cầu xem xét toàn bộ đơn hàng, giao hàng và hỗ trợ sau khi nhận ghế.",
+        "evidence": "The purchasing decision should therefore consider the complete order, the delivery arrangements, and what happens if a chair needs attention after it reaches the office, rather than the advertised price alone."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why is trying Green Seat's samples in the project room useful?",
+        "options": [
+          "A. It lets staff check controls and desk clearance in the actual setting.",
+          "B. It guarantees that delivery will happen before opening.",
+          "C. It removes the need for a written quotation.",
+          "D. It allows staff to sell the old chairs immediately."
+        ],
+        "answer": "A. It lets staff check controls and desk clearance in the actual setting.",
+        "explanation": "Thử tại phòng thực tế giúp kiểm tra thao tác điều chỉnh và việc đặt ghế dưới bàn.",
+        "evidence": "The administration team recommends trying the samples in the actual room, where users can check the controls and see whether the chairs fit under the desks."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What possible disadvantage does the staged purchase have?",
+        "options": [
+          "A. It requires eighteen sample chairs.",
+          "B. It prevents a later supplier change.",
+          "C. It cancels the approved budget.",
+          "D. It may lead to another delivery charge."
+        ],
+        "answer": "D. It may lead to another delivery charge.",
+        "explanation": "Mua hai đợt có thể phát sinh phí giao hàng thứ hai nếu ưu đãi ban đầu không được gia hạn.",
+        "evidence": "This staged purchase reduces the risk of repeating an unsuitable choice, although it could create a second delivery charge if the supplier does not extend the original offer."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Both quotations leave removal of the old chairs to be arranged separately.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Cả hai báo giá đều không bao gồm việc chuyển ghế cũ đi.",
+        "evidence": "Neither quotation includes removal of the old chairs, so that task will need its own arrangement and a small amount of storage space."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Green Seat has already been selected as the final supplier.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Khuyến nghị hiện tại chỉ là tiếp tục thử ghế mẫu, chưa chọn nhà cung cấp cuối cùng.",
+        "evidence": "The recommendation is to continue with Green Seat's sample trial, not to declare it the final supplier today."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Mai has previously purchased chairs from both suppliers.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu nhiệm vụ ghi nhận giá của Mai nhưng không nói về lịch sử mua hàng của cô.",
+        "evidence": "To keep the comparison fair, Mai will record both complete prices in the same worksheet and attach the suppliers' written answers."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How many chairs are proposed for the initial order? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "six",
+        "explanation": "Đợt mua ban đầu được đề xuất gồm sáu ghế nếu thử mẫu đạt yêu cầu.",
+        "evidence": "Administration proposes an initial order of six chairs from Green Seat if the sample trial is satisfactory."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "When should the room coordinator finish collecting sample feedback? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Friday afternoon",
+        "explanation": "Hạn thu thập phản hồi là chiều thứ Sáu.",
+        "evidence": "The room coordinator will collect sample feedback by Friday afternoon."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph contrasts taking a faulty chair to a service centre with receiving an office visit?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E so sánh cách hai nhà cung cấp xử lý ghế lỗi.",
+        "evidence": "North Furniture asks customers to send photographs and then bring an affected chair to its service centre if an inspection is required."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why a shorter delivery period may still be inconvenient?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D nêu việc không cam kết giờ đến khiến nhân viên phải chờ ở lễ tân lâu.",
+        "evidence": "That uncertainty would require someone to remain near reception for much of the day."
+      }
+    ]
+  },
+  {
+    "id": "reading-053",
+    "title": "Installation notice: preparing for a home internet visit",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Thông báo hướng dẫn cư dân chuẩn bị cho buổi lắp internet tại nhà, từ xác nhận người có mặt đến chọn vị trí thiết bị. Nội dung làm rõ giới hạn công việc, các lựa chọn đi dây và cách kiểm tra trước khi kỹ thuật viên rời đi.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Your home internet installation is booked for Saturday between nine in the morning and noon. The technician will call when leaving the previous address, but the exact arrival time may change if that visit takes longer than expected. Please keep the contact phone available throughout the appointment window. This notice explains how to prepare your apartment and what the visit includes. A little preparation should help the technician spend the appointment installing and checking the connection, instead of waiting for access or moving belongings while you decide where the equipment should go."
+      },
+      {
+        "label": "B",
+        "text": "Someone who can make decisions about equipment placement must remain in the apartment during the visit. If you cannot attend, tell the booking team who will be there and provide that person's contact number. The building reception also needs the technician's name before granting access to the service cupboard. We will send that name on Friday afternoon. Please forward it to reception rather than assuming they have received it separately. A successful appointment depends on access to both the apartment and the shared building equipment, so confirming only your own availability is not enough."
+      },
+      {
+        "label": "C",
+        "text": "Before the visit, choose two possible places for the router. Each should have a nearby power socket and enough open space for the equipment to stand without being covered by bags or books. The technician will discuss the options after checking where the cable enters the apartment. A convenient shelf is not always the easiest place to reach with the included cable. Think about the room where you work most often, but also explain any other important uses, such as video calls from a second room or television viewing in the evening."
+      },
+      {
+        "label": "D",
+        "text": "The standard appointment includes connecting the service, placing one router, and testing the connection on one available device. It does not include setting up every television, printer, or game console in the home. If you want help with several devices, ask the booking team about a longer appointment before Saturday. The technician may be able to answer a simple question during the standard visit, but extra work should not be assumed. Clear expectations help you prepare the right device for testing and prevent the next customer from waiting because the visit unexpectedly becomes much longer."
+      },
+      {
+        "label": "E",
+        "text": "Cable placement may require a choice between appearance and convenience. Running the cable along the edge of a room can keep it less noticeable, but that route may need more cable than the standard package contains. A shorter route may be visible near the entrance. The technician will show you the proposed route before attaching anything. If your preferred route involves additional materials or work, ask for the price and a description before agreeing. You can keep the basic arrangement for now and book a separate improvement later if you need time to decide."
+      },
+      {
+        "label": "F",
+        "text": "Please clear a small working area around the cable entry point and the possible router locations. Move fragile decorations yourself before the appointment, and keep pets away from the work area while tools are in use. The technician will bring installation tools, but will not move heavy furniture. If a large cabinet blocks the cable entry, contact the booking team in advance so the visit can be planned appropriately. It is better to discover an access problem on Friday than after the technician arrives with another customer already scheduled for the following appointment."
+      },
+      {
+        "label": "G",
+        "text": "Before the technician leaves, use your chosen device to open a webpage and complete the connection check together. Ask where the network name and password are written, and keep the installation card somewhere you can find it again. If one room is especially important, mention it during the check rather than waiting until the evening to try it. The technician will record the test result and any work still needed. The purpose is to confirm the agreed installation, not to promise that every device and every corner of the apartment will perform identically."
+      },
+      {
+        "label": "H",
+        "text": "If you need to change the appointment, contact the booking team by four on Friday afternoon. That gives them time to offer the slot to another household and suggest an alternative for you. After installation, report connection problems using the number printed on the installation card. Include the time of the problem, the room where it happened, and whether another device had the same difficulty. These details give the support team a useful starting point. Keep the card even if everything works well on Saturday, since the booking message may be harder to find several months later."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "appointment window",
+        "meaning": "khoảng thời gian dự kiến cho cuộc hẹn"
+      },
+      {
+        "term": "service cupboard",
+        "meaning": "tủ chứa thiết bị kỹ thuật của tòa nhà"
+      },
+      {
+        "term": "power socket",
+        "meaning": "ổ cắm điện"
+      },
+      {
+        "term": "fragile",
+        "meaning": "dễ vỡ"
+      },
+      {
+        "term": "installation card",
+        "meaning": "phiếu thông tin lắp đặt"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the main purpose of the notice?",
+        "options": [
+          "A. To compare several internet companies",
+          "B. To help the household prepare for an installation visit",
+          "C. To teach residents how to repair a router",
+          "D. To announce free internet for the whole building"
+        ],
+        "answer": "B. To help the household prepare for an installation visit",
+        "explanation": "Thông báo giải thích cách chuẩn bị căn hộ và phạm vi buổi lắp đặt.",
+        "evidence": "This notice explains how to prepare your apartment and what the visit includes."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What should the resident do with the technician's name?",
+        "options": [
+          "A. Print it on the router.",
+          "B. Send it to every neighbour.",
+          "C. Forward it to building reception.",
+          "D. Use it as the network password."
+        ],
+        "answer": "C. Forward it to building reception.",
+        "explanation": "Cư dân cần chuyển tên kỹ thuật viên cho lễ tân để hỗ trợ cấp quyền vào khu thiết bị.",
+        "evidence": "Please forward it to reception rather than assuming they have received it separately."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should a resident do before accepting a cable route that needs extra work?",
+        "options": [
+          "A. Ask for its price and a description.",
+          "B. Remove the building equipment.",
+          "C. Cancel the basic connection permanently.",
+          "D. Pay before seeing the proposed route."
+        ],
+        "answer": "A. Ask for its price and a description.",
+        "explanation": "Thông báo yêu cầu làm rõ giá và mô tả công việc trước khi đồng ý.",
+        "evidence": "If your preferred route involves additional materials or work, ask for the price and a description before agreeing."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The person present during the visit must be able to decide where equipment will go.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Người có mặt cần có khả năng quyết định vị trí đặt thiết bị.",
+        "evidence": "Someone who can make decisions about equipment placement must remain in the apartment during the visit."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The standard appointment includes setting up every game console in the apartment.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Thông báo loại trừ việc thiết lập tất cả thiết bị này khỏi buổi hẹn tiêu chuẩn.",
+        "evidence": "It does not include setting up every television, printer, or game console in the home."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The installation card is printed on blue paper.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài đề cập việc giữ phiếu thông tin nhưng không mô tả màu giấy.",
+        "evidence": "Ask where the network name and password are written, and keep the installation card somewhere you can find it again."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "When will the technician's name be sent? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Friday afternoon",
+        "explanation": "Tên kỹ thuật viên sẽ được gửi vào chiều thứ Sáu.",
+        "evidence": "We will send that name on Friday afternoon."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What should the resident open during the final connection check? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "a webpage",
+        "explanation": "Cư dân được yêu cầu mở một trang web trên thiết bị đã chọn.",
+        "evidence": "Before the technician leaves, use your chosen device to open a webpage and complete the connection check together."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains what to do if a large cabinet blocks the cable entry?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F yêu cầu liên hệ trước nếu tủ lớn cản vị trí dây đi vào.",
+        "evidence": "If a large cabinet blocks the cable entry, contact the booking team in advance so the visit can be planned appropriately."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph lists details to provide when reporting a later connection problem?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H liệt kê thời điểm, phòng xảy ra lỗi và tình trạng trên thiết bị khác.",
+        "evidence": "Include the time of the problem, the room where it happened, and whether another device had the same difficulty."
+      }
+    ]
+  },
+  {
+    "id": "reading-054",
+    "title": "Maintenance proposal: updating dependencies in smaller groups",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Đề xuất thay cách cập nhật nhiều thư viện cùng lúc bằng các nhóm thay đổi nhỏ, có mục đích và kiểm tra riêng. Nhóm cân nhắc tốc độ, khả năng tìm nguyên nhân lỗi và công sức duy trì các nhánh cập nhật.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Last month's maintenance branch updated fourteen dependencies in the customer portal at once. The branch passed the usual automated checks, but a later manual review found that a document preview no longer opened correctly. Because several packages had changed together, engineers spent two days narrowing down the cause. The portal release was delayed while the team separated the updates and repeated its checks. This proposal recommends smaller update groups so reviewers can understand each change, connect a failure to a limited set of possibilities, and make a release decision without investigating an unnecessarily broad collection of changes."
+      },
+      {
+        "label": "B",
+        "text": "The present process begins when an engineer collects available updates during the final week of each month. Updates are placed in one branch, and the engineer adjusts the application until it builds successfully. This approach reduces the number of review requests, which was useful when the team had fewer reviewers. However, the resulting request can contain unrelated changes to testing tools, interface components, and document handling. A reviewer may understand one part well while lacking enough context for another. Passing checks then become a substitute for explaining the effect of each individual update on the application."
+      },
+      {
+        "label": "C",
+        "text": "Under the proposed process, every update request will state its purpose before work begins. The purpose might be fixing a problem the team has observed, keeping a supported package version, or preparing for a planned feature. Updates with no clear current purpose can remain on the maintenance list until someone investigates them. This is not a promise to keep old versions indefinitely. It is a way to make the reason for each change visible and to distinguish an urgent need from routine housekeeping. The maintainer will review the waiting list during the weekly engineering meeting."
+      },
+      {
+        "label": "D",
+        "text": "The default will be one dependency per request, although closely connected packages may be grouped when separating them would prevent meaningful testing. For example, a component package and its required companion package could be reviewed together if the update notes explain the relationship. Testing tools should normally be updated separately from features that users interact with. The description must identify the main screens or workflows to check, as well as the automated checks that were run. A small request is useful only when its scope is understandable; a short list of changed files does not provide that explanation by itself."
+      },
+      {
+        "label": "E",
+        "text": "Smaller requests also create costs. Reviewers may receive more notifications, and several update branches can become difficult to keep current while feature work continues. To limit this, the team will allow no more than two active maintenance requests at a time. An engineer must finish, close, or deliberately pause one before opening another. The maintenance board will show who owns each request and what blocks it. A paused request will include a short note so another engineer does not repeat the same investigation or assume that the update has already been accepted for the next release."
+      },
+      {
+        "label": "F",
+        "text": "The trial will begin with the document preview package because last month's failure showed that its existing checks were incomplete. The engineer will test opening a document, moving between pages, and closing the preview before returning to the customer record. These are specific workflows in this portal, not a general claim about all preview tools. The request will also include the exact package version and a link to the supplier's update notes. If the checks reveal a problem, the team will keep the current version while recording the result and deciding whether further investigation is worthwhile."
+      },
+      {
+        "label": "G",
+        "text": "Review responsibility will be shared between the maintainer and an engineer familiar with the affected workflow. The maintainer checks the reason, scope, and update notes, while the workflow reviewer checks the visible behaviour. Either reviewer can request a clearer test record before approval. For the trial, An will maintain the board and Priya will review the preview workflow. They will record review time and any repeated work, since easier diagnosis alone does not prove that the new process is efficient. The team needs to understand whether the smaller groups improve clarity without consuming an unreasonable share of its week."
+      },
+      {
+        "label": "H",
+        "text": "After four weeks, the team will compare the trial with the previous monthly approach. Useful evidence will include time spent reviewing, time spent diagnosing failures, and the number of updates that waited without a stated reason. A faster release is desirable, but it is not the only measure of improvement. The process should also leave a record that another engineer can follow later. If notifications become excessive, the team may collect review summaries in one scheduled message while keeping the changes separate. The final decision will depend on the trial's results rather than the appeal of smaller requests alone."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "dependency",
+        "meaning": "thư viện hoặc thành phần mà phần mềm phụ thuộc vào"
+      },
+      {
+        "term": "routine housekeeping",
+        "meaning": "công việc bảo trì thường kỳ"
+      },
+      {
+        "term": "scope",
+        "meaning": "phạm vi"
+      },
+      {
+        "term": "companion package",
+        "meaning": "gói đi kèm"
+      },
+      {
+        "term": "diagnosing failures",
+        "meaning": "xác định nguyên nhân các lỗi"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What advantage is expected from smaller update groups?",
+        "options": [
+          "A. They guarantee that manual testing is unnecessary.",
+          "B. They remove the need for package versions.",
+          "C. They make changes easier to understand and failures easier to narrow down.",
+          "D. They allow all maintenance work to stop."
+        ],
+        "answer": "C. They make changes easier to understand and failures easier to narrow down.",
+        "explanation": "Mục tiêu là làm rõ từng thay đổi và giới hạn số khả năng cần điều tra khi có lỗi.",
+        "evidence": "This proposal recommends smaller update groups so reviewers can understand each change, connect a failure to a limited set of possibilities, and make a release decision without investigating an unnecessarily broad collection of changes."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "When may closely connected packages be included in one request?",
+        "options": [
+          "A. When separating them would stop useful testing",
+          "B. Whenever the engineer wants fewer notifications",
+          "C. Only when they affect unrelated screens",
+          "D. Whenever their names begin with the same letter"
+        ],
+        "answer": "A. When separating them would stop useful testing",
+        "explanation": "Có thể nhóm các gói liên quan nếu tách chúng khiến việc kiểm tra không còn ý nghĩa.",
+        "evidence": "The default will be one dependency per request, although closely connected packages may be grouped when separating them would prevent meaningful testing."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will An and Priya record review time and repeated work?",
+        "options": [
+          "A. To rank every engineer by speed",
+          "B. To replace all workflow checks",
+          "C. To prove that monthly updates are always better",
+          "D. To assess efficiency as well as easier diagnosis"
+        ],
+        "answer": "D. To assess efficiency as well as easier diagnosis",
+        "explanation": "Việc tìm nguyên nhân dễ hơn chưa đủ chứng minh quy trình hiệu quả, nên cần đo thêm công sức thực tế.",
+        "evidence": "They will record review time and any repeated work, since easier diagnosis alone does not prove that the new process is efficient."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Every proposed update request must explain its purpose before work starts.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Đoạn C yêu cầu nêu mục đích trước khi bắt đầu.",
+        "evidence": "Under the proposed process, every update request will state its purpose before work begins."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The previous maintenance branch failed the usual automated checks.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Nhánh đó vượt qua kiểm tra tự động; lỗi được phát hiện trong lần kiểm tra thủ công sau đó.",
+        "evidence": "The branch passed the usual automated checks, but a later manual review found that a document preview no longer opened correctly."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Priya wrote the original document preview package.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài chỉ giao Priya kiểm tra luồng xem trước, không cho biết ai viết gói ban đầu.",
+        "evidence": "For the trial, An will maintain the board and Priya will review the preview workflow."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What is the maximum number of active maintenance requests allowed at once? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "two",
+        "explanation": "Giới hạn là hai yêu cầu bảo trì đang hoạt động.",
+        "evidence": "To limit this, the team will allow no more than two active maintenance requests at a time."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long will the trial run before the comparison is made? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "four weeks",
+        "explanation": "Nhóm sẽ so sánh sau bốn tuần thử nghiệm.",
+        "evidence": "After four weeks, the team will compare the trial with the previous monthly approach."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes the specific preview actions engineers will test?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F liệt kê mở tài liệu, chuyển trang và đóng phần xem trước.",
+        "evidence": "The engineer will test opening a document, moving between pages, and closing the preview before returning to the customer record."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why one large monthly request was useful in the past?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "B",
+        "explanation": "Đoạn B nói cách làm cũ giảm số yêu cầu cần duyệt khi nhóm có ít người duyệt hơn.",
+        "evidence": "This approach reduces the number of review requests, which was useful when the team had fewer reviewers."
+      }
+    ]
+  },
+  {
+    "id": "reading-055",
+    "title": "Shift handover: keeping the packing board accurate",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Ghi chú bàn giao hướng dẫn hai ca đóng gói cập nhật trạng thái đơn hàng và ghi rõ phần việc còn lại. Tài liệu ưu tiên chất lượng bàn giao, quy định xử lý đơn gấp và thử một quy trình mới trong năm ngày.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The packing team uses a shared board to track customer orders from preparation to collection. During the past week, the afternoon shift found several orders marked ready even though their final checks were unfinished. Nobody deliberately recorded incorrect information. Staff had different ideas about what ready meant, and the morning shift often updated the board before taking its last break. These handover notes introduce a clearer routine for the overlap between shifts. The aim is to help incoming staff see what can leave immediately, what still needs work, and who can answer a question about it."
+      },
+      {
+        "label": "B",
+        "text": "From Monday, an order should be marked ready only after its contents have been checked, its label attached, and its collection shelf recorded. An order that is packed but waiting for a label should remain in progress. The board will include a short waiting note so staff do not open the package again simply to discover what is missing. The note should describe the remaining action, not the whole history of the order. For example, waiting for address confirmation is useful because it tells the next shift what must happen before the label can be completed."
+      },
+      {
+        "label": "C",
+        "text": "The morning coordinator will review the board at 1:45, fifteen minutes before the afternoon team begins. During this review, each packer will confirm the status of their open orders and identify any unusual materials or customer requests. The coordinator will not try to finish every order during the overlap. Instead, the priority is an accurate record that allows work to continue smoothly. A partially packed order with a clear note is easier to hand over than a hurried package that appears complete but needs someone else to check the contents again after the morning team leaves."
+      },
+      {
+        "label": "D",
+        "text": "Orders needing extra attention should have a named contact in the waiting note. This person may be from customer service rather than the packing team, especially when the missing information comes from a customer. Incoming staff should contact that person before making assumptions about an unclear instruction. If the contact is unavailable, the afternoon coordinator will choose the next step and add it to the board. The order should not disappear from view while someone investigates. Keeping it visible allows both shifts to understand why it has not moved and prevents two people from making the same enquiry."
+      },
+      {
+        "label": "E",
+        "text": "Urgent collections need a separate check because drivers sometimes arrive during the shift overlap. The morning coordinator will identify these orders before the board review and confirm their actual condition at the shelf. A red marker will indicate an agreed collection within the next hour, but it will not mean that the order is ready. Staff must still read the written status. This distinction matters: urgency describes the time pressure, while readiness describes completed work. A driver who arrives early should be given a realistic update rather than a package whose checks were skipped to avoid an awkward conversation."
+      },
+      {
+        "label": "F",
+        "text": "The team considered requiring both coordinators to sign every order at handover. That would create a stronger record, but it would also take time away from checking exceptions and answering questions. The trial will therefore require a joint check only for urgent orders and orders with unclear instructions. Ordinary orders will rely on the packer's status update and the coordinator's board review. If the trial shows that mistakes continue across ordinary orders, the team can reconsider broader checks. For now, the process should focus attention where uncertainty is greatest rather than add the same step to every package."
+      },
+      {
+        "label": "G",
+        "text": "Huy will explain the new board fields at Monday's morning briefing and leave a completed example beside the board. Sara will collect comments from the afternoon team after each shift. The trial will last five working days. Coordinators should record occasions when a note prevented repeated work, as well as occasions when information was still missing. Staff should report confusing wording without waiting for a serious mistake. A routine that looks clear to its designer may be difficult to follow while a driver is waiting or several orders are being packed at the same table."
+      },
+      {
+        "label": "H",
+        "text": "At the end of the trial, both shifts will review the notes together. Success will mean fewer unexpected checks after handover and a board that agrees with the packages on the shelves. It will not be measured simply by how many orders are marked ready before two o'clock. If the new routine takes too long, the team will simplify repeated fields while keeping the remaining action and contact visible. The final version should support an honest handover: incoming staff need enough information to continue confidently, and outgoing staff need a practical way to leave unfinished work without hiding it."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "shift overlap",
+        "meaning": "khoảng thời gian hai ca làm việc giao nhau"
+      },
+      {
+        "term": "in progress",
+        "meaning": "đang được xử lý"
+      },
+      {
+        "term": "named contact",
+        "meaning": "người liên hệ được ghi rõ tên"
+      },
+      {
+        "term": "readiness",
+        "meaning": "trạng thái sẵn sàng"
+      },
+      {
+        "term": "remaining action",
+        "meaning": "việc còn cần thực hiện"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What caused the misleading ready statuses?",
+        "options": [
+          "A. Drivers changed the board without permission.",
+          "B. Staff disagreed about what ready meant and updated the board early.",
+          "C. Customer service removed all waiting notes.",
+          "D. The afternoon shift stopped using the board."
+        ],
+        "answer": "B. Staff disagreed about what ready meant and updated the board early.",
+        "explanation": "Nhân viên hiểu khác nhau về trạng thái ready và ca sáng thường cập nhật trước giờ nghỉ cuối.",
+        "evidence": "Staff had different ideas about what ready meant, and the morning shift often updated the board before taking its last break."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What does the red marker indicate?",
+        "options": [
+          "A. An agreed collection within the next hour",
+          "B. A package whose final checks are complete",
+          "C. An order that has been cancelled",
+          "D. A package that requires no written status"
+        ],
+        "answer": "A. An agreed collection within the next hour",
+        "explanation": "Dấu đỏ thể hiện thời gian lấy hàng sắp tới, không xác nhận đơn đã sẵn sàng.",
+        "evidence": "A red marker will indicate an agreed collection within the next hour, but it will not mean that the order is ready."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will both coordinators jointly check only selected orders during the trial?",
+        "options": [
+          "A. Ordinary orders will no longer appear on the board.",
+          "B. The afternoon coordinator cannot inspect packages.",
+          "C. Customer service has already checked every ordinary order.",
+          "D. Signing every order would reduce time for exceptions and questions."
+        ],
+        "answer": "D. Signing every order would reduce time for exceptions and questions.",
+        "explanation": "Kiểm tra và ký mọi đơn sẽ lấy mất thời gian dành cho trường hợp ngoại lệ và giải đáp.",
+        "evidence": "That would create a stronger record, but it would also take time away from checking exceptions and answering questions."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "An order that is packed but has no label should remain in progress.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Đoạn B quy định rõ trạng thái này.",
+        "evidence": "An order that is packed but waiting for a label should remain in progress."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The morning coordinator must complete every open order during the shift overlap.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Ưu tiên là ghi nhận chính xác, không phải hoàn thành mọi đơn trong thời gian giao ca.",
+        "evidence": "The coordinator will not try to finish every order during the overlap."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Sara works on the afternoon shift every Saturday.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu Sara thu thập ý kiến nhưng không cho biết lịch làm việc thứ Bảy.",
+        "evidence": "Sara will collect comments from the afternoon team after each shift."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "At what time will the morning coordinator review the board? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "1:45",
+        "explanation": "Buổi rà soát bắt đầu lúc 1:45.",
+        "evidence": "The morning coordinator will review the board at 1:45, fifteen minutes before the afternoon team begins."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long will the trial last? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "five working days",
+        "explanation": "Thời gian thử nghiệm là năm ngày làm việc.",
+        "evidence": "The trial will last five working days."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains who decides the next step when the named contact cannot be reached?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D giao điều phối viên ca chiều quyết định và cập nhật bước tiếp theo.",
+        "evidence": "If the contact is unavailable, the afternoon coordinator will choose the next step and add it to the board."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains that success should reflect agreement between the board and the actual packages?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H xác định thành công dựa trên số lần kiểm tra bất ngờ giảm và thông tin khớp thực tế.",
+        "evidence": "Success will mean fewer unexpected checks after handover and a board that agrees with the packages on the shelves."
+      }
+    ]
+  },
+  {
+    "id": "reading-056",
+    "title": "Repair estimate: replacing the soles on a favourite pair of shoes",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Báo giá sửa giày giải thích tình trạng đế, hai mức sửa chữa và giới hạn kết quả thẩm mỹ. Khách hàng cân nhắc thời gian, chi phí và quyết định thay toàn bộ phần đế ngoài sau khi xem mẫu vật liệu.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Thank you for bringing your brown everyday shoes to our workshop on Tuesday. You explained that the shoes are comfortable and that you would prefer to repair them if the cost is reasonable. Our inspection found uneven wear on both heels and a split near the front edge of the left sole. The upper material is still in usable condition, although several surface marks will remain after cleaning. This estimate describes two repair options, the expected appearance, and the collection arrangements. We have not started work, so you can review the choices before deciding how much to spend."
+      },
+      {
+        "label": "B",
+        "text": "The basic option replaces the worn heel sections and repairs the split at the front. It costs 280,000 dong and should take three working days after approval. This is the cheaper choice if you want to continue using the shoes while spending as little as possible. However, the remaining sole would stay in place, including the thinner area under the right shoe. We cannot say how long that area will last because future wear depends on use. The basic repair addresses the damage identified today without renewing all the material that touches the ground."
+      },
+      {
+        "label": "C",
+        "text": "The fuller option replaces both outer soles and includes new heel sections. Its price is 520,000 dong, with five working days needed after approval. The replacement material is available in dark brown, but it is not an exact colour match for the original edge. We can show you a sample beside your shoes before you decide. This option costs more because it involves removing the old outer material and fitting new pieces to both shoes. It provides a more complete renewal of the worn parts, while keeping the existing uppers and the marks already visible on them."
+      },
+      {
+        "label": "D",
+        "text": "Appearance is an important part of the decision because you mentioned wearing these shoes at work. Cleaning is included in either option, but the estimate does not include recolouring the uppers. Cleaning may make the marks less noticeable, yet it will not make the shoes look new. We also expect a small difference between the original stitching and the repaired front edge. If a nearly original appearance matters more than continued use, please look at our recent repair photographs before accepting. They show ordinary workshop results rather than carefully chosen pictures of unusually successful repairs."
+      },
+      {
+        "label": "E",
+        "text": "On Wednesday, you asked whether only the left shoe could receive a new outer sole. We would prefer to use the same replacement material on both shoes so their finished height and appearance can be checked together. A mixed repair would require a separate assessment and is not covered by either price above. You also asked about making the shoes waterproof. Neither option is offered as a waterproofing service. Our recommendation is based on repairing the visible wear, and we do not want that description to create an expectation about performance that this work has not been designed to provide."
+      },
+      {
+        "label": "F",
+        "text": "Your reply said that the fuller repair seemed worthwhile because you use the shoes several days each week. You would still like to see the colour sample before giving final approval. We have therefore reserved a short appointment for Thursday after work. Please bring the collection slip so we can find the shoes quickly and record the chosen material correctly. The completion period begins when you approve the repair, not when the shoes first arrive at the workshop. Until approval is recorded, the shoes will remain on the inspection shelf and no repair charge will be added."
+      },
+      {
+        "label": "G",
+        "text": "When the repair is complete, we will send a message with the collection time and the final amount. If we discover additional damage while removing the old soles, we will pause and contact you before carrying out extra work. The estimate will not increase without a new agreement. At collection, please inspect both shoes and try them on in the shop. This gives us a chance to discuss any immediate concern about the finish or fit while the repair details are available. Keep the collection slip afterward, since it identifies the job if you need to contact us again."
+      },
+      {
+        "label": "H",
+        "text": "You mentioned needing the shoes for a Friday meeting next week. The five-day repair period should fit that plan if approval is given on Thursday, but we suggest keeping another pair available in case the inspection during repair reveals a delay. We will confirm the expected collection day at your appointment rather than promise it from this message alone. If the colour sample is unsuitable, you may choose the basic option or collect the shoes without repair. Our aim is to help you make a practical choice with a clear understanding of the cost, finish, and time involved."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "uneven wear",
+        "meaning": "tình trạng mòn không đều"
+      },
+      {
+        "term": "outer sole",
+        "meaning": "đế ngoài của giày"
+      },
+      {
+        "term": "upper",
+        "meaning": "phần thân trên của giày"
+      },
+      {
+        "term": "colour match",
+        "meaning": "sự phù hợp về màu sắc"
+      },
+      {
+        "term": "collection slip",
+        "meaning": "phiếu nhận lại đồ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What work is included in the basic option?",
+        "options": [
+          "A. Replacing both uppers and recolouring them",
+          "B. Replacing both entire outer soles",
+          "C. Replacing worn heel sections and repairing the front split",
+          "D. Waterproofing the shoes without repairing the heels"
+        ],
+        "answer": "C. Replacing worn heel sections and repairing the front split",
+        "explanation": "Phương án cơ bản thay phần gót mòn và sửa vết nứt phía trước.",
+        "evidence": "The basic option replaces the worn heel sections and repairs the split at the front."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why does the fuller option cost more?",
+        "options": [
+          "A. It includes removing old outer material and fitting new pieces to both shoes.",
+          "B. It guarantees a completely original appearance.",
+          "C. It adds an express delivery service.",
+          "D. It replaces the collection slip with a new one."
+        ],
+        "answer": "A. It includes removing old outer material and fitting new pieces to both shoes.",
+        "explanation": "Chi phí cao hơn vì cần tháo vật liệu đế cũ và lắp phần mới cho cả hai chiếc.",
+        "evidence": "This option costs more because it involves removing the old outer material and fitting new pieces to both shoes."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What will the workshop do if it finds more damage during repair?",
+        "options": [
+          "A. Complete all additional work and explain afterward.",
+          "B. Discard the shoes immediately.",
+          "C. Increase the price without contacting the customer.",
+          "D. Pause and contact the customer before doing extra work."
+        ],
+        "answer": "D. Pause and contact the customer before doing extra work.",
+        "explanation": "Cửa hàng sẽ dừng và liên hệ trước khi làm thêm.",
+        "evidence": "If we discover additional damage while removing the old soles, we will pause and contact you before carrying out extra work."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Both repair options include cleaning.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Việc làm sạch có trong cả hai phương án.",
+        "evidence": "Cleaning is included in either option, but the estimate does not include recolouring the uppers."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The completion period starts when the workshop first receives the shoes.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Thời gian hoàn thành bắt đầu khi khách duyệt sửa, không phải khi mang giày đến.",
+        "evidence": "The completion period begins when you approve the repair, not when the shoes first arrive at the workshop."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The customer originally bought the shoes for 900,000 dong.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu khách muốn sửa nếu chi phí hợp lý nhưng không cho biết giá mua ban đầu.",
+        "evidence": "You explained that the shoes are comfortable and that you would prefer to repair them if the cost is reasonable."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What colour is the replacement material for the fuller option? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "dark brown",
+        "explanation": "Vật liệu thay thế có màu nâu đậm.",
+        "evidence": "The replacement material is available in dark brown, but it is not an exact colour match for the original edge."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What service is neither repair option offered as? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "a waterproofing service",
+        "explanation": "Cả hai phương án đều không được giới thiệu là dịch vụ chống thấm.",
+        "evidence": "Neither option is offered as a waterproofing service."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph advises keeping another pair available for an important event?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H đề nghị chuẩn bị đôi khác nếu phát hiện vấn đề làm chậm tiến độ.",
+        "evidence": "The five-day repair period should fit that plan if approval is given on Thursday, but we suggest keeping another pair available in case the inspection during repair reveals a delay."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes the customer's interest in the fuller repair while withholding final approval?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F ghi khách thấy phương án đầy đủ đáng cân nhắc nhưng vẫn muốn xem mẫu trước khi duyệt.",
+        "evidence": "You would still like to see the colour sample before giving final approval."
+      }
+    ]
+  },
+  {
+    "id": "reading-057",
+    "title": "Release plan: completing an expense claim with a keyboard",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Kế hoạch phát hành cải thiện thao tác bàn phím cho biểu mẫu yêu cầu hoàn chi. Nhóm sửa thứ tự di chuyển, khả năng nhận biết vị trí đang chọn và hành vi hộp thoại, đồng thời kiểm tra toàn bộ quy trình và phát hành theo nhóm nhỏ.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The next expense application release will improve the process for employees who complete claims using a keyboard. During an internal session, testers could enter an amount and a description, but several became stuck when adding a receipt or correcting an error. These difficulties were easy to miss in demonstrations where the presenter used a mouse. The release will focus on completing one whole claim rather than changing isolated controls without checking how they work together. This plan describes the problems observed in our application, the intended behaviour, and the evidence required before the changes reach all employees."
+      },
+      {
+        "label": "B",
+        "text": "The first problem was an unexpected movement order. After the description field, pressing Tab moved to a link in the page footer before reaching the receipt button. Testers had to travel through several unrelated links to continue their claim. The revised order will follow the visible form: date, category, amount, description, receipt, and submission controls. This sequence matches the arrangement already used on the page. The team will check it at the standard window size and at a narrower size, since the visible arrangement changes when the form is displayed in a smaller browser window."
+      },
+      {
+        "label": "C",
+        "text": "A second problem concerned the visible indicator showing which control would respond to the next action. On two buttons, that indicator was difficult to distinguish from the surrounding border. The new design adds a clearer outline that remains visible on the application's light and dark backgrounds. Designers will review it with the actual form rather than judge it from a single button image. An outline that looks clear by itself can become confusing beside another highlighted element. The aim is to help users follow their place through the claim without having to guess which button is currently selected."
+      },
+      {
+        "label": "D",
+        "text": "The receipt dialog needs a more predictable way to open and close. In the revised version, opening it will move keyboard focus to its first useful control. Closing it without adding a file will return focus to the receipt button. After a successful upload, focus will move to the receipt summary so the employee can review the file name. These are decisions for this particular workflow and will be checked with testers. The dialog must also allow employees to cancel without submitting the entire claim, because choosing the wrong receipt should not force them to restart their other entries."
+      },
+      {
+        "label": "E",
+        "text": "Error handling will be reviewed as part of the same journey. At present, a missing category produces a message near the top of the form, but the selected control remains on the submission button. Some testers submitted again because they had not noticed the message. The new behaviour will direct attention to an error summary that identifies the missing field and provides a route back to it. The team will test both a single error and several errors together. Correcting one problem should not hide another or remove information that the employee has already entered in a valid field."
+      },
+      {
+        "label": "F",
+        "text": "The team considered releasing only the clearer outlines first, since those changes are smaller and could be ready sooner. However, outlines alone would leave testers unable to complete the receipt step reliably. The selected release therefore includes movement order, visible indicators, dialog behaviour, and error handling together. To keep the scope manageable, changes to the claim history page will wait for a separate review. This decision trades a slightly later release for a complete path through the main form. It also gives support staff a simple description of what has improved and what remains outside this release."
+      },
+      {
+        "label": "G",
+        "text": "Testing will use three prepared claims: one with no receipt, one with a receipt, and one containing deliberate input errors. Testers must complete each claim without using a mouse and record any point where the next action is unclear. They will also check that ordinary mouse use still works. Minh will prepare the test accounts, and Elena will collect the observations in a shared document. The release will first reach the finance pilot group on Tuesday. If that group encounters a blocker, the previous form will remain available while engineers investigate and repeat the affected workflow."
+      },
+      {
+        "label": "H",
+        "text": "The wider release depends on successful completion of the prepared claims and review of the pilot feedback. Counting changed controls will not be enough to demonstrate success. Employees must be able to move through the form, recover from an error, and understand whether their receipt was added. The team will describe the release as an improvement to keyboard use in the expense form, without claiming that every accessibility concern in the application has been solved. Questions about other pages will be recorded for later work, while urgent problems in the new claim journey will return to the current release team."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "keyboard focus",
+        "meaning": "vị trí hiện tại nhận thao tác bàn phím"
+      },
+      {
+        "term": "outline",
+        "meaning": "đường viền bao quanh"
+      },
+      {
+        "term": "error summary",
+        "meaning": "phần tổng hợp lỗi"
+      },
+      {
+        "term": "blocker",
+        "meaning": "vấn đề ngăn việc tiếp tục hoặc hoàn thành"
+      },
+      {
+        "term": "pilot group",
+        "meaning": "nhóm dùng thử ban đầu"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the release's main testing focus?",
+        "options": [
+          "A. Changing as many controls as possible",
+          "B. Completing a whole expense claim using the keyboard",
+          "C. Replacing every mouse in the finance department",
+          "D. Redesigning the claim history page first"
+        ],
+        "answer": "B. Completing a whole expense claim using the keyboard",
+        "explanation": "Kế hoạch ưu tiên hoàn thành toàn bộ yêu cầu hoàn chi, thay vì sửa các điều khiển rời rạc.",
+        "evidence": "The release will focus on completing one whole claim rather than changing isolated controls without checking how they work together."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why will designers review the outline within the actual form?",
+        "options": [
+          "A. An outline may become confusing beside other highlighted elements.",
+          "B. The form has no buttons that can be viewed separately.",
+          "C. Testers requested the removal of all borders.",
+          "D. Only the page footer uses a dark background."
+        ],
+        "answer": "A. An outline may become confusing beside other highlighted elements.",
+        "explanation": "Đường viền rõ khi xem riêng vẫn có thể gây nhầm khi nằm cạnh phần tử khác được làm nổi bật.",
+        "evidence": "An outline that looks clear by itself can become confusing beside another highlighted element."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why did the team reject releasing only the clearer outlines first?",
+        "options": [
+          "A. The outlines had already been removed from the design.",
+          "B. Finance refused to test any visual changes.",
+          "C. That change would not solve the receipt step's completion problem.",
+          "D. The claim history page needed to launch on the same day."
+        ],
+        "answer": "C. That change would not solve the receipt step's completion problem.",
+        "explanation": "Chỉ sửa đường viền vẫn không giúp người thử hoàn thành bước thêm biên nhận một cách tin cậy.",
+        "evidence": "However, outlines alone would leave testers unable to complete the receipt step reliably."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Testing includes checking that normal mouse use still works.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Kế hoạch kiểm tra cả thao tác chuột thông thường.",
+        "evidence": "They will also check that ordinary mouse use still works."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Changes to the claim history page are included in this release.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Trang lịch sử yêu cầu hoàn chi được để lại cho một đợt xem xét riêng.",
+        "evidence": "To keep the scope manageable, changes to the claim history page will wait for a separate review."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The finance pilot group contains exactly twelve employees.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu nhóm nhận bản phát hành và thời điểm, nhưng không cho biết số thành viên.",
+        "evidence": "The release will first reach the finance pilot group on Tuesday."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Which key caused an unexpected jump to the footer? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Tab",
+        "explanation": "Phím Tab đưa vị trí chọn từ trường mô tả xuống liên kết cuối trang.",
+        "evidence": "After the description field, pressing Tab moved to a link in the page footer before reaching the receipt button."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Who will prepare the test accounts? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Minh",
+        "explanation": "Minh chịu trách nhiệm chuẩn bị tài khoản thử nghiệm.",
+        "evidence": "Minh will prepare the test accounts, and Elena will collect the observations in a shared document."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains where focus should go after a successful receipt upload?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D đưa vị trí chọn đến phần tóm tắt biên nhận sau khi tải lên thành công.",
+        "evidence": "After a successful upload, focus will move to the receipt summary so the employee can review the file name."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes testing both one input error and multiple input errors?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E yêu cầu kiểm tra một lỗi riêng lẻ và nhiều lỗi cùng lúc.",
+        "evidence": "The team will test both a single error and several errors together."
+      }
+    ]
+  },
+  {
+    "id": "reading-058",
+    "title": "Meeting procedure: recording a decision that people can act on",
+    "topic": "workplace",
+    "level": "B2",
+    "summary": "Quy trình họp mới giúp phân biệt đề xuất, quyết định và công việc được giao. Ví dụ về lựa chọn nhà cung cấp cho thấy cách ghi điều kiện, ý kiến khác nhau và thời điểm xem xét lại để người vắng mặt cũng có thể hành động đúng.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "A recent project meeting ended with most participants believing that a new supplier had been approved. Two days later, the purchasing coordinator asked for the approval record and discovered that the meeting notes said only that the supplier was a promising option. Some attendees remembered an agreement to proceed, while others remembered a request for more information. This procedure introduces a short decision record for meetings where people must act afterward. Its purpose is to make the outcome clear enough for an absent colleague to understand, without requiring that person to reconstruct the entire conversation from scattered messages."
+      },
+      {
+        "label": "B",
+        "text": "Before the meeting, the organiser should identify which agenda items need a decision and which are only updates. A decision item should include the question to be answered, the available options, and any important limits such as budget or timing. If essential information is missing, the organiser should say so instead of presenting the item as ready for approval. Participants can still discuss it, but they will know that the expected outcome may be a request for evidence. This preparation reduces the chance that a useful conversation is later mistaken for permission to begin work."
+      },
+      {
+        "label": "C",
+        "text": "During discussion, the note taker should separate suggestions from agreed actions. A suggestion becomes an action only when the group confirms what will be done and who will own it. The chair should pause before moving to the next item and read back the proposed outcome in plain language. This pause may feel slow at first, but it gives participants an immediate chance to correct a misunderstanding. Silence should not be used to fill a gap in the record. If the group has not reached a decision, the notes should state that clearly and identify the next step."
+      },
+      {
+        "label": "D",
+        "text": "Each decision record will contain the decision itself, a brief reason, the owner, and the next review point. Conditions should appear beside the decision rather than in a distant paragraph. For example, a team might agree to test a supplier for one small order, provided that delivery charges are confirmed in writing. Recording only test the supplier would hide an important limit. The brief reason should explain the main consideration, not list every comment made during the meeting. This keeps the record usable while preserving enough context to understand why the chosen option was preferred at that time."
+      },
+      {
+        "label": "E",
+        "text": "Different opinions should also be recorded when they affect the plan. In the supplier example, the warehouse lead supported a trial but warned that a late delivery could disrupt the Friday packing schedule. The record should include that concern and the agreed response, such as keeping the current supplier available for urgent orders. It does not need to describe the warning as personal disagreement or attach blame to a participant. The useful information is the risk and how the team plans to handle it. This allows a later reviewer to see that the concern was considered rather than overlooked."
+      },
+      {
+        "label": "F",
+        "text": "The note taker will send the decision record by the end of the next working day. Participants should check whether it represents the confirmed outcome, especially their own actions and any conditions. Corrections should refer to a specific part of the record and explain the proposed change. A correction about what was agreed is different from a new preference that developed after the meeting. If someone now wants a different decision, the chair will arrange a fresh discussion rather than silently rewrite the earlier outcome. This protects the usefulness of the record as a shared reference."
+      },
+      {
+        "label": "G",
+        "text": "For the first month, the project office will use a simple table instead of introducing another application. The table will sit at the top of the ordinary meeting notes so employees can find decisions before reading the detailed discussion. Teams may link supporting documents, but the decision must remain understandable without opening every attachment. Ngan will provide a completed example, and team coordinators will collect questions after their first two meetings. The project office will look for repeated gaps, such as missing owners or unclear conditions, and revise the guidance where a small explanation could prevent confusion."
+      },
+      {
+        "label": "H",
+        "text": "A decision record is useful only if it remains connected to the work. At the next review point, the owner should report whether the action happened and whether its conditions were met. If circumstances have changed, the team can make a new decision and link it to the earlier record. The previous entry should remain visible. This creates a trace of how the plan developed without pretending that the first choice was permanent. After one month, the project office will assess whether colleagues can find decisions quickly and begin assigned work without requesting another explanation of the meeting."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "approval record",
+        "meaning": "bản ghi xác nhận phê duyệt"
+      },
+      {
+        "term": "read back",
+        "meaning": "đọc lại để xác nhận"
+      },
+      {
+        "term": "review point",
+        "meaning": "thời điểm xem xét lại"
+      },
+      {
+        "term": "condition",
+        "meaning": "điều kiện đi kèm"
+      },
+      {
+        "term": "shared reference",
+        "meaning": "nguồn thông tin tham chiếu chung"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What problem is the procedure intended to solve?",
+        "options": [
+          "A. Meetings contain too many supplier advertisements.",
+          "B. Participants cannot reserve meeting rooms.",
+          "C. People leave meetings with different understandings of the outcome.",
+          "D. Purchasing staff refuse to read any notes."
+        ],
+        "answer": "C. People leave meetings with different understandings of the outcome.",
+        "explanation": "Ví dụ mở đầu cho thấy người tham dự nhớ khác nhau về việc đã đồng ý hay còn cần thông tin.",
+        "evidence": "Some attendees remembered an agreement to proceed, while others remembered a request for more information."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why should the chair read back the outcome before continuing?",
+        "options": [
+          "A. To let participants correct misunderstandings immediately",
+          "B. To avoid assigning an action owner",
+          "C. To replace all supporting documents",
+          "D. To prevent anyone from discussing conditions"
+        ],
+        "answer": "A. To let participants correct misunderstandings immediately",
+        "explanation": "Khoảng dừng giúp người tham dự sửa hiểu lầm ngay tại cuộc họp.",
+        "evidence": "This pause may feel slow at first, but it gives participants an immediate chance to correct a misunderstanding."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "How should a new preference that appears after the meeting be handled?",
+        "options": [
+          "A. By deleting the old notes immediately",
+          "B. By changing the earlier outcome without telling anyone",
+          "C. By asking the note taker to ignore all corrections",
+          "D. By arranging a new discussion about the desired change"
+        ],
+        "answer": "D. By arranging a new discussion about the desired change",
+        "explanation": "Mong muốn có quyết định mới cần được thảo luận lại, không được âm thầm sửa kết quả cũ.",
+        "evidence": "If someone now wants a different decision, the chair will arrange a fresh discussion rather than silently rewrite the earlier outcome."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Conditions should be recorded next to the decision they affect.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Quy trình yêu cầu đặt điều kiện bên cạnh quyết định.",
+        "evidence": "Conditions should appear beside the decision rather than in a distant paragraph."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The project office will introduce a new application for the first month.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Tháng đầu dùng bảng đơn giản thay vì ứng dụng mới.",
+        "evidence": "For the first month, the project office will use a simple table instead of introducing another application."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Ngan attended the supplier meeting described at the beginning.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu Ngan cung cấp mẫu hoàn chỉnh nhưng không cho biết cô có dự cuộc họp ban đầu hay không.",
+        "evidence": "Ngan will provide a completed example, and team coordinators will collect questions after their first two meetings."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Who should send the decision record? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "The note taker",
+        "explanation": "Người ghi chép chịu trách nhiệm gửi bản ghi quyết định.",
+        "evidence": "The note taker will send the decision record by the end of the next working day."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "In the supplier example, what charges must be confirmed in writing? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "delivery charges",
+        "explanation": "Điều kiện của đơn hàng thử là xác nhận phí giao hàng bằng văn bản.",
+        "evidence": "For example, a team might agree to test a supplier for one small order, provided that delivery charges are confirmed in writing."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains how to prepare agenda items when essential information is missing?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "B",
+        "explanation": "Đoạn B yêu cầu nói rõ thông tin còn thiếu thay vì coi mục đó đã sẵn sàng phê duyệt.",
+        "evidence": "If essential information is missing, the organiser should say so instead of presenting the item as ready for approval."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains that changed circumstances can lead to a linked new decision?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H cho phép quyết định mới và liên kết với bản ghi trước để giữ quá trình thay đổi.",
+        "evidence": "If circumstances have changed, the team can make a new decision and link it to the earlier record."
+      }
+    ]
+  },
+  {
+    "id": "reading-059",
+    "title": "Community hall notice: booking time for a family celebration",
+    "topic": "daily-life",
+    "level": "B1+",
+    "summary": "Thông báo của hội trường cộng đồng giải thích cách đặt chỗ cho tiệc gia đình, tính cả thời gian chuẩn bị và dọn dẹp. Người đặt cần xác nhận thiết bị, số khách và kế hoạch trả phòng để tránh ảnh hưởng nhóm dùng tiếp theo.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The neighbourhood hall is available for small family celebrations on weekends when no community activity is scheduled. Recent bookings have shown that families often allow enough time for the event but forget preparation and clearing afterward. This can leave the next group waiting outside while tables are still being moved. The updated booking notice explains how to reserve a complete visit, choose the equipment you need, and return the room in a usable condition. It applies to new bookings from November and will be reviewed after the first month of use."
+      },
+      {
+        "label": "B",
+        "text": "A booking must include all the time your group needs inside the hall. If guests arrive at three and leave at five, you may still need access from two until six to arrange chairs and clear the room. Please give the coordinator your preparation, event, and clearing times separately. The public calendar will show the whole reserved period rather than only the celebration itself. This allows another family to understand when the room is genuinely available. The coordinator can help estimate a suitable period, but the person booking remains responsible for choosing time that matches the planned activities."
+      },
+      {
+        "label": "C",
+        "text": "The hall contains twelve folding tables and sixty chairs, although using every table leaves less open space for moving around. The coordinator can show two standard room arrangements at the viewing appointment. One suits a seated meal, while the other keeps more space for children to play or for guests to stand and talk. Please choose an arrangement before the booking is confirmed. Changing it on the day is possible only within your reserved preparation time. Hall volunteers will explain where equipment is stored, but they are not available to arrange the room for each private event."
+      },
+      {
+        "label": "D",
+        "text": "A small kitchen area is included, with a sink, a refrigerator, and a counter for serving food. There is no cooker, so families should plan food that arrives ready to serve. The refrigerator is shared with community activities, and only the shelf labelled for private bookings will be available. If you expect to bring several large trays, mention this at the viewing rather than discovering a space problem on the day. Any food left after your event must leave with your group. Volunteers should not have to identify unmarked containers or contact families about forgotten dishes after closing."
+      },
+      {
+        "label": "E",
+        "text": "The booking coordinator will hold a requested slot for two working days while you confirm the details. A held slot is not a completed booking. Confirmation requires the contact person's name, the expected number of guests, the chosen room arrangement, and payment of the booking fee. We will then send a message showing the full reserved period and the equipment included. Check that message carefully, especially if someone else made the initial enquiry. A misunderstanding about the finish time is much easier to correct before invitations are sent than when the next group arrives at the entrance."
+      },
+      {
+        "label": "F",
+        "text": "At the end of the visit, wipe the tables, return chairs to their marked storage positions, and remove your decorations. Rubbish should be separated into the labelled bins beside the kitchen door. If those bins are full, take the remaining bags home rather than leaving them in the corridor. The coordinator will provide a simple closing checklist when you collect the key. One named person should use that checklist before returning the key, even if several relatives help with clearing. Shared effort is useful, but a final check prevents everyone from assuming that somebody else inspected the room."
+      },
+      {
+        "label": "G",
+        "text": "The hall committee considered leaving an extra hour between every booking. That would reduce pressure when clearing takes longer, but it would also make fewer weekend slots available. The committee has instead decided to keep the calendar flexible and require realistic preparation and clearing periods. Families with complicated decorations or a large meal should reserve more time. If you realise before the event that your plan has grown, contact the coordinator to ask whether the booking can be extended. Extra time cannot be assumed on the day, particularly when another confirmed group is due to use the room."
+      },
+      {
+        "label": "H",
+        "text": "To request a viewing, contact the coordinator on Wednesday evening, when the office is open for booking enquiries. Bring a rough schedule and a list of the equipment you expect to use. You do not need a finished guest list at that stage, but a reasonable estimate will help the coordinator suggest a room arrangement. After the first month, the committee will review whether groups leave on time and whether the closing checklist is clear. The aim is a shared hall that families can enjoy and that the next group can enter without beginning its visit by clearing someone else's celebration."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "reserved period",
+        "meaning": "toàn bộ khoảng thời gian đã đặt"
+      },
+      {
+        "term": "room arrangement",
+        "meaning": "cách bố trí phòng"
+      },
+      {
+        "term": "held slot",
+        "meaning": "khung giờ được giữ tạm"
+      },
+      {
+        "term": "closing checklist",
+        "meaning": "danh sách kiểm tra trước khi trả phòng"
+      },
+      {
+        "term": "rough schedule",
+        "meaning": "lịch trình sơ bộ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why was the booking notice updated?",
+        "options": [
+          "A. Families sometimes failed to allow time for preparation and clearing.",
+          "B. The hall no longer permits family celebrations.",
+          "C. Volunteers wanted every event to use all twelve tables.",
+          "D. The calendar had stopped showing weekend dates."
+        ],
+        "answer": "A. Families sometimes failed to allow time for preparation and clearing.",
+        "explanation": "Các gia đình thường tính thời gian sự kiện nhưng quên thời gian chuẩn bị và dọn dẹp.",
+        "evidence": "Recent bookings have shown that families often allow enough time for the event but forget preparation and clearing afterward."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What must happen before a held slot becomes a confirmed booking?",
+        "options": [
+          "A. Every guest must attend a viewing.",
+          "B. Invitations must already be sent.",
+          "C. Required details must be provided and the booking fee paid.",
+          "D. The family must bring its own refrigerator."
+        ],
+        "answer": "C. Required details must be provided and the booking fee paid.",
+        "explanation": "Cần thông tin người liên hệ, số khách dự kiến, cách bố trí phòng và phí đặt chỗ.",
+        "evidence": "Confirmation requires the contact person's name, the expected number of guests, the chosen room arrangement, and payment of the booking fee."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why did the committee reject a fixed extra hour between all bookings?",
+        "options": [
+          "A. It would remove all need for clearing.",
+          "B. It would reduce the number of available weekend slots.",
+          "C. It would require replacing the kitchen.",
+          "D. It would prevent families from choosing an arrangement."
+        ],
+        "answer": "B. It would reduce the number of available weekend slots.",
+        "explanation": "Khoảng đệm cố định giúp giảm áp lực nhưng làm ít khung giờ cuối tuần hơn.",
+        "evidence": "That would reduce pressure when clearing takes longer, but it would also make fewer weekend slots available."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The public calendar will include the whole reserved period.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Lịch công khai hiển thị cả thời gian đặt, không chỉ thời gian buổi tiệc.",
+        "evidence": "The public calendar will show the whole reserved period rather than only the celebration itself."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Hall volunteers will arrange the room for every private event.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Tình nguyện viên chỉ chỉ nơi cất thiết bị, không bố trí phòng cho từng sự kiện riêng.",
+        "evidence": "Hall volunteers will explain where equipment is stored, but they are not available to arrange the room for each private event."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The hall has hosted exactly twenty family celebrations this year.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài xác nhận hội trường có thể tổ chức tiệc gia đình nhưng không thống kê số buổi trong năm.",
+        "evidence": "The neighbourhood hall is available for small family celebrations on weekends when no community activity is scheduled."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How long will the coordinator hold a requested slot? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "two working days",
+        "explanation": "Khung giờ được giữ tạm trong hai ngày làm việc.",
+        "evidence": "The booking coordinator will hold a requested slot for two working days while you confirm the details."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "When is the office open for booking enquiries? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Wednesday evening",
+        "explanation": "Văn phòng tiếp nhận hỏi đặt chỗ vào tối thứ Tư.",
+        "evidence": "To request a viewing, contact the coordinator on Wednesday evening, when the office is open for booking enquiries."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why food should arrive ready to serve?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D cho biết khu bếp không có bếp nấu.",
+        "evidence": "There is no cooker, so families should plan food that arrives ready to serve."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph gives instructions for rubbish when the provided bins are full?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F yêu cầu mang các túi rác còn lại về nhà thay vì để ngoài hành lang.",
+        "evidence": "If those bins are full, take the remaining bags home rather than leaving them in the corridor."
+      }
+    ]
+  },
+  {
+    "id": "reading-060",
+    "title": "Support investigation: a download prepared from an earlier document",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Cuộc trao đổi hỗ trợ giải thích vì sao bản PDF tải xuống chứa nội dung trước lần chỉnh sửa gần nhất. Nhóm làm rõ cơ chế tạo tệp nền, giúp người dùng tạo bản mới và đề xuất hiển thị phiên bản để tránh nhầm lẫn.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Customer message, Monday at 10:12: I edited our project brief this morning and then downloaded the PDF for a client meeting. The online document shows the revised delivery date, but the PDF still has the earlier date. I tried downloading again from the notification and received the same result. I am worried that other parts of the brief may also be missing. Could you check whether the download service is ignoring saved changes? We need a reliable copy by this afternoon, and I would like to understand what happened before I send another version to the client."
+      },
+      {
+        "label": "B",
+        "text": "Support reply, 10:24: Please send the document name, the approximate time you requested the PDF, and the time of your last saved edit. You do not need to send the client's private details. The download notification points to a prepared file, so we need to compare that file with the document version used when preparation began. Downloading through the same notification normally retrieves the same prepared file. While we investigate, please avoid deleting the notification because its reference helps us locate the request. We will also explain how to prepare a new copy once we confirm the sequence."
+      },
+      {
+        "label": "C",
+        "text": "Customer reply, 10:31: The document is called Harbour Project Brief. I requested the PDF at about 9:50, then noticed the wrong delivery date while the preparation message was still on screen. I changed the date and saved at 9:53. The notification arrived at 9:55, so I assumed the PDF would contain the correction. I did not make any other changes after that. The old date is the only difference I have found so far, but I have not compared every page. The notification's wording made it sound as if the document was ready at the time it appeared."
+      },
+      {
+        "label": "D",
+        "text": "Support investigation, 10:48: The request record shows that preparation used the saved version available at 9:50. The edit at 9:53 created a newer document version, but it did not change the request already being processed. The notification at 9:55 announced that the earlier request had finished. It did not start a new preparation step. This explains the date difference without suggesting that the saved edit was lost. We compared the prepared file with its recorded source version and found that they agreed. We have not yet compared the customer's entire current document with the earlier version."
+      },
+      {
+        "label": "E",
+        "text": "Support instructions, 10:55: Open the current online document and confirm that the revised date is visible. Then choose Prepare PDF again from the document menu. This creates a new request using the version saved when that request begins. When the new notification arrives, check the delivery date before sharing the file. Keep the earlier PDF in a separate folder if you need a record, but give it a name that identifies it as an older copy. The same notification should not be used as a permanent link to whatever happens to be the newest online document."
+      },
+      {
+        "label": "F",
+        "text": "Customer confirmation, 11:18: The new PDF has the correct date, and I have checked the headings and the final page as well. I can use this copy for the meeting. However, I would have understood the first result more easily if the notification had shown which document version it used. The preparation took several minutes, and I continued working during that time. I do not expect the system to guess which edits I want, but I do need a clear difference between a file made from an earlier version and a fresh download of the current document."
+      },
+      {
+        "label": "G",
+        "text": "Engineering follow-up: The team considered changing active preparation requests whenever a document is edited. That could produce uncertainty about which version a request represents, especially if several edits happen before it finishes. For this application, the team will keep each request connected to the version selected at its start. The proposed improvement is to show that version's saved time in the preparation panel and notification. A separate message will appear if a newer saved version exists, with an option to prepare it. The wording will be tested with support staff before the change enters the release plan."
+      },
+      {
+        "label": "H",
+        "text": "Case closure, Tuesday morning: The immediate request is resolved because the customer has prepared and checked a PDF containing the revised date. The product improvement remains open and will be tracked separately, so closing this support case does not imply that the interface has already changed. Future support replies should distinguish the time a file is requested from the time it becomes available. They should also ask which notification the customer used rather than simply advising another download. This case shows how a technically consistent process can still create confusion when the interface leaves its version choices unexplained."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "prepared file",
+        "meaning": "tệp đã được tạo sẵn"
+      },
+      {
+        "term": "saved version",
+        "meaning": "phiên bản đã lưu"
+      },
+      {
+        "term": "source version",
+        "meaning": "phiên bản nguồn dùng để tạo tệp"
+      },
+      {
+        "term": "case closure",
+        "meaning": "việc đóng yêu cầu hỗ trợ"
+      },
+      {
+        "term": "technically consistent",
+        "meaning": "nhất quán về mặt kỹ thuật"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why did the first PDF show the earlier delivery date?",
+        "options": [
+          "A. The customer's saved edit had been deleted.",
+          "B. Preparation used the version saved before the date was corrected.",
+          "C. Support manually changed the PDF back.",
+          "D. The notification requested a new file at 9:55."
+        ],
+        "answer": "B. Preparation used the version saved before the date was corrected.",
+        "explanation": "Yêu cầu tạo PDF dùng phiên bản lúc 9:50, trước khi khách lưu sửa đổi lúc 9:53.",
+        "evidence": "The edit at 9:53 created a newer document version, but it did not change the request already being processed."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What did the 9:55 notification actually mean?",
+        "options": [
+          "A. The earlier preparation request had finished.",
+          "B. The document could no longer be edited.",
+          "C. Every current change had been compared manually.",
+          "D. The client had opened the PDF."
+        ],
+        "answer": "A. The earlier preparation request had finished.",
+        "explanation": "Thông báo xác nhận yêu cầu trước đó hoàn tất, không tạo yêu cầu mới.",
+        "evidence": "The notification at 9:55 announced that the earlier request had finished."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why does engineering prefer to keep each request tied to its starting version?",
+        "options": [
+          "A. It prevents employees from editing online documents.",
+          "B. It makes every preparation finish instantly.",
+          "C. Changing an active request could make its version unclear.",
+          "D. It removes the need for support notifications."
+        ],
+        "answer": "C. Changing an active request could make its version unclear.",
+        "explanation": "Thay đổi yêu cầu đang chạy có thể gây khó xác định nó đại diện cho phiên bản nào.",
+        "evidence": "That could produce uncertainty about which version a request represents, especially if several edits happen before it finishes."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Using the same notification normally retrieves the same prepared file.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Đây là hành vi được nhân viên hỗ trợ giải thích rõ.",
+        "evidence": "Downloading through the same notification normally retrieves the same prepared file."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Support asked the customer to delete the original notification.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Hỗ trợ yêu cầu giữ thông báo vì mã tham chiếu giúp tìm yêu cầu.",
+        "evidence": "While we investigate, please avoid deleting the notification because its reference helps us locate the request."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The client meeting was scheduled to last forty-five minutes.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Khách xác nhận có thể dùng tệp cho cuộc họp nhưng không nêu thời lượng cuộc họp.",
+        "evidence": "I can use this copy for the meeting."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What is the document called? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Harbour Project Brief",
+        "explanation": "Tên tài liệu gồm đúng ba từ này.",
+        "evidence": "The document is called Harbour Project Brief."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Which menu option should the customer choose to create a new request? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Prepare PDF",
+        "explanation": "Khách cần chọn lại Prepare PDF để tạo yêu cầu mới.",
+        "evidence": "Then choose Prepare PDF again from the document menu."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph records the customer's suggestion that notifications identify the version used?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F ghi đề xuất của khách về việc hiển thị phiên bản tài liệu trong thông báo.",
+        "evidence": "However, I would have understood the first result more easily if the notification had shown which document version it used."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph distinguishes resolving the customer's immediate problem from completing the interface improvement?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nói yêu cầu hỗ trợ được đóng nhưng cải tiến sản phẩm vẫn đang mở và theo dõi riêng.",
+        "evidence": "The product improvement remains open and will be tracked separately, so closing this support case does not imply that the interface has already changed."
+      }
+    ]
+  }
+]
