@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cron entry point: one validated, built and committed batch every five hours."""
+"""Cron entry point: one validated, built and committed batch every 30 minutes."""
 import fcntl
 import json
 import os
@@ -15,7 +15,7 @@ STATE_DIR = ROOT / '.reading-automation'
 STATE_DIR.mkdir(exist_ok=True)
 STATE_FILE = STATE_DIR / 'state.json'
 MARKER = '# speaksprint-reading-300'
-INTERVAL = 5 * 60 * 60
+INTERVAL = 30 * 60
 
 def run(args, cwd=ROOT, **kwargs):
     return subprocess.run(args, cwd=cwd, check=True, text=True, **kwargs)

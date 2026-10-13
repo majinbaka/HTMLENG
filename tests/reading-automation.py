@@ -50,10 +50,10 @@ else: p.write_text(sys.stdin.read())
     for command in (['git','init','-b','main'], ['git','config','user.name','Scheduler Test'], ['git','config','user.email','test@example.invalid'], ['git','add','.'], ['git','commit','-m','fixture']):run(command,root,env)
     state_dir = root / '.reading-automation'; state_dir.mkdir()
     state_file = state_dir / 'state.json'
-    state = {'targetBranch':'main','nextDue':int(time.time())+18000,'codexBinary':'unused'}
+    state = {'targetBranch':'main','nextDue':int(time.time())+1800,'codexBinary':'unused'}
     state_file.write_text(json.dumps(state))
     run(['python3','scripts/reading/auto-grow.py'],root,env)
-    assert len(list(content.glob('*.json'))) == 1, 'No generation before five-hour due time'
+    assert len(list(content.glob('*.json'))) == 1, 'No generation before 30-minute due time'
     state['nextDue'] = 0; state['targetBranch']='another-branch'; state_file.write_text(json.dumps(state))
     run(['python3','scripts/reading/auto-grow.py'],root,env)
     assert len(list(content.glob('*.json'))) == 1, 'Wrong checkout branch must wait'
@@ -72,7 +72,7 @@ else: p.write_text(sys.stdin.read())
     assert len([l for f in content.glob('*.json') for l in json.loads(f.read_text())])==20
     assert (root/'user-note.txt').read_text()=='user change must survive'
     assert not run(['git','status','--porcelain'],root,env).stdout.strip(), 'Merged checkout remains clean'
-    assert state['nextDue']-state['lastSuccess']==18000, 'Next success interval is five hours'
+    assert state['nextDue']-state['lastSuccess']==1800, 'Next success interval is 30 minutes'
     # Threshold stop should preserve unrelated cron jobs.
     expanded=[]
     for i in range(1,301):
@@ -83,4 +83,4 @@ else: p.write_text(sys.stdin.read())
     run(['python3','scripts/reading/auto-grow.py'],root,env)
     assert json.loads(state_file.read_text())['complete']
     assert (state_dir/'crontab.txt').read_text()=='0 1 * * * unrelated-job\n'
-    print('Scheduler: five-hour gating, branch isolation, concurrent commit recovery, safe merge, and automatic stop at 300 passed.')
+    print('Scheduler: 30-minute gating, branch isolation, concurrent commit recovery, safe merge, and automatic stop at 300 passed.')

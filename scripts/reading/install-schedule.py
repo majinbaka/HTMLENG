@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Install an idempotent local cron schedule, preserving existing cron jobs."""
 import json
+import fcntl
 from pathlib import Path
 import shlex
 import shutil
@@ -14,22 +15,30 @@ codex = shutil.which('codex')
 if not codex:
     raise SystemExit('Codex CLI is not installed.')
 subprocess.run([codex, 'login', 'status'], check=True)
-state = json.loads(state_file.read_text()) if state_file.exists() else {'nextDue': int(time.time()) + 18000}
-branch = subprocess.run(['git', 'branch', '--show-current'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
-if not branch:
-    raise SystemExit('Check out a named branch before installing the schedule.')
-state.setdefault('targetBranch', branch)
-state['codexBinary'] = codex
-state_file.write_text(json.dumps(state, indent=2) + '\n')
-marker = '# speaksprint-reading-300'
-existing = subprocess.run(['crontab', '-l'], capture_output=True, text=True)
-if existing.returncode and 'no crontab' not in existing.stderr:
-    raise SystemExit(existing.stderr)
-lines = [line for line in existing.stdout.splitlines() if marker not in line]
-# Cron checks once a minute; nextDue enforces a full 5-hour interval, including midnight.
-# A */5 hour cron expression would leave a four-hour gap across midnight.
-node_binary = subprocess.run(['node', '-p', 'process.execPath'], text=True, capture_output=True, check=True).stdout.strip()
-cron_path = ':'.join([str(Path(node_binary).parent), str(Path(codex).parent), '/usr/local/bin', '/usr/bin', '/bin'])
-job = '* * * * * PATH=' + shlex.quote(cron_path) + ' /usr/bin/python3 ' + shlex.quote(str(ROOT / 'scripts/reading/auto-grow.py')) + ' >> ' + shlex.quote(str(STATE / 'cron.log')) + ' 2>&1 ' + marker
-subprocess.run(['crontab', '-'], input='\n'.join(lines + [job]) + '\n', text=True, check=True)
-print('Installed: next batch at', time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime(state['nextDue'])))
+with (STATE / 'run.lock').open('w') as schedule_lock:
+    try:
+        fcntl.flock(schedule_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        raise SystemExit('A reading batch is running. Retry installation after it finishes.')
+    state = json.loads(state_file.read_text()) if state_file.exists() else {'nextDue': int(time.time()) + 1800}
+    branch = subprocess.run(['git', 'branch', '--show-current'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    if not branch:
+        raise SystemExit('Check out a named branch before installing the schedule.')
+    state.setdefault('targetBranch', branch)
+    # Apply a new interval immediately without retaining a due time from the old cadence.
+    if state.get('intervalSeconds') != 1800:
+        state['nextDue'] = int(time.time()) + 1800
+        state['intervalSeconds'] = 1800
+    state['codexBinary'] = codex
+    state_file.write_text(json.dumps(state, indent=2) + '\n')
+    marker = '# speaksprint-reading-300'
+    existing = subprocess.run(['crontab', '-l'], capture_output=True, text=True)
+    if existing.returncode and 'no crontab' not in existing.stderr:
+        raise SystemExit(existing.stderr)
+    lines = [line for line in existing.stdout.splitlines() if marker not in line]
+    # Cron checks once a minute; nextDue enforces 30 minutes between successful batches.
+    node_binary = subprocess.run(['node', '-p', 'process.execPath'], text=True, capture_output=True, check=True).stdout.strip()
+    cron_path = ':'.join([str(Path(node_binary).parent), str(Path(codex).parent), '/usr/local/bin', '/usr/bin', '/bin'])
+    job = '* * * * * PATH=' + shlex.quote(cron_path) + ' /usr/bin/python3 ' + shlex.quote(str(ROOT / 'scripts/reading/auto-grow.py')) + ' >> ' + shlex.quote(str(STATE / 'cron.log')) + ' 2>&1 ' + marker
+    subprocess.run(['crontab', '-'], input='\n'.join(lines + [job]) + '\n', text=True, check=True)
+    print('Installed: next batch at', time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime(state['nextDue'])))
