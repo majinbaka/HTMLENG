@@ -98,6 +98,7 @@ export function validateLessons(lessons) {
           Array.isArray(q.options) &&
             q.options.includes(q.answer) &&
             new Set(q.options).size === q.options.length,
+          `${l.id}/${q.id}: answer must equal one complete, unique option string`,
         );
       }
       if (q.type === "true-false-not-given")

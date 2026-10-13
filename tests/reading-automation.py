@@ -18,12 +18,12 @@ def run(args, root, env):
 with tempfile.TemporaryDirectory(prefix='reading-scheduler-test-') as directory:
     root = Path(directory) / 'repo'; root.mkdir()
     scripts = root / 'scripts/reading'; scripts.mkdir(parents=True)
-    for name in ('auto-grow.py', 'validate.mjs'):
+    for name in ('auto-grow.py', 'validate.mjs', 'normalize.py'):
         shutil.copy(SOURCE / 'scripts/reading' / name, scripts / name)
     content = root / 'src/content/readings'; content.mkdir(parents=True)
     lessons = [l for f in sorted((SOURCE / 'src/content/readings').glob('*.json')) for l in json.loads(f.read_text())][:10]
     (content / 'initial.json').write_text(json.dumps(lessons))
-    (root / '.gitignore').write_text('.reading-automation/\nnode_modules/\n')
+    (root / '.gitignore').write_text('.reading-automation/\nnode_modules/\n__pycache__/\n')
     binaries = Path(directory) / 'bin'; binaries.mkdir()
     fake_npm = binaries / 'npm'
     fake_npm.write_text('''#!/usr/bin/env python3
@@ -62,6 +62,11 @@ else: p.write_text(sys.stdin.read())
     for i,l in enumerate(generated,11):
         l['id']=f'reading-{i:03}';l['title']+=' — second scenario'
         l['paragraphs'][-1]['text']+=' The next review will cover another practical situation.'
+        for q in l['questions']:
+            if q['type']=='multiple-choice':
+                answer_index=q['options'].index(q['answer'])
+                q['options']=[f'{chr(65+n)}. {value}' for n,value in enumerate(q['options'])]
+                q['answer']=chr(65+answer_index)
     (state_dir / 'batch-011-020.json').write_text(json.dumps({'lessons':generated}))
     (state_dir / 'advance-once').touch()
     run(['python3','scripts/reading/auto-grow.py'],root,env)
@@ -70,6 +75,8 @@ else: p.write_text(sys.stdin.read())
     state=json.loads(state_file.read_text())
     assert 'pendingBranch' not in state, 'Diverged checkout must rebuild and finish'
     assert len([l for f in content.glob('*.json') for l in json.loads(f.read_text())])==20
+    published=json.loads((content/'batch-011-020.json').read_text())
+    assert all(q['answer'] in q['options'] for l in published for q in l['questions'] if q['type']=='multiple-choice'), 'Letter-only MCQ keys must resolve to their explicit option before validation and publishing'
     assert (root/'user-note.txt').read_text()=='user change must survive'
     assert not run(['git','status','--porcelain'],root,env).stdout.strip(), 'Merged checkout remains clean'
     assert state['nextDue']-state['lastSuccess']==1800, 'Next success interval is 30 minutes'
@@ -83,4 +90,4 @@ else: p.write_text(sys.stdin.read())
     run(['python3','scripts/reading/auto-grow.py'],root,env)
     assert json.loads(state_file.read_text())['complete']
     assert (state_dir/'crontab.txt').read_text()=='0 1 * * * unrelated-job\n'
-    print('Scheduler: 30-minute gating, branch isolation, concurrent commit recovery, safe merge, and automatic stop at 300 passed.')
+    print('Scheduler: 30-minute gating, branch isolation, labeled answer recovery, concurrent commit recovery, safe merge, and automatic stop at 300 passed.')

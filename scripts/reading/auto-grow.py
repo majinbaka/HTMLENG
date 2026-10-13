@@ -3,6 +3,7 @@
 import fcntl
 import json
 import os
+from normalize import normalize_answers
 from pathlib import Path
 import shutil
 import subprocess
@@ -96,9 +97,14 @@ with (STATE_DIR / 'run.lock').open('w') as lock:
             prompt += '\nCreate exactly these IDs: ' + ', '.join(expected)
             prompt += '\nExisting titles to avoid: ' + json.dumps([l['title'] for l in lessons], ensure_ascii=False)
             binary = state['codexBinary']
-            run([binary, 'exec', '--sandbox', 'read-only', '--ephemeral', '--output-schema', str(ROOT / 'scripts/reading/schema.json'), '-o', str(candidate), '-'], input=prompt, timeout=5400)
+            run([binary, 'exec', '--sandbox', 'read-only', '--ephemeral', '--output-schema', str(ROOT / 'scripts/reading/schema.json'), '-o', str(candidate), '-'], input=prompt, timeout=5400, stdout=subprocess.DEVNULL)
         try:
-            generated = json.loads(candidate.read_text())['lessons']
+            document = json.loads(candidate.read_text())
+            generated = document['lessons']
+            changes = normalize_answers(generated)
+            if changes:
+                candidate.write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n')
+                log(f'Resolved {changes} explicitly labeled answer keys before validation.')
             if [l['id'] for l in generated] != expected:
                 raise ValueError('Generated batch has incorrect lesson IDs/count')
             run(['node', 'scripts/reading/validate.mjs', str(candidate)])
