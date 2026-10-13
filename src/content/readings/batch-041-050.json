@@ -1,0 +1,2012 @@
+[
+  {
+    "id": "reading-041",
+    "title": "Incident report: the missing attachment in the Monday report",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Nhóm kỹ thuật điều tra vì sao email báo cáo thứ Hai thiếu tệp đính kèm, khắc phục điều kiện kiểm tra tên tệp và cải thiện cách xác nhận báo cáo trước khi gửi.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "At 8:20 on Monday morning, Mai received a message from the operations manager at Northbridge Supplies. The weekly delivery report had arrived, but there was no spreadsheet attached. Its email summary showed the total number of deliveries, so the manager initially thought the attachment was simply slow to appear. After opening the message on another computer, she contacted the software team. The report was needed for a meeting at nine, where staff would compare delayed deliveries across three warehouses and decide which customers needed an update."
+      },
+      {
+        "label": "B",
+        "text": "Mai first checked whether the report itself had been created. The spreadsheet was present in the report folder and contained the expected warehouse rows. She opened a copy and compared its totals with the email summary. They agreed, which made a data calculation problem less likely. She then checked the record of the email task. It showed that the message had been sent successfully, but the attachment list was empty. The delivery service had therefore received a message without a file, rather than losing a file during transmission."
+      },
+      {
+        "label": "C",
+        "text": "The previous Friday, the team had changed the report name to include the week-ending date. This helped warehouse staff distinguish downloaded copies without opening them. However, the email task still searched for a file called weekly-deliveries.xlsx. The new report was called weekly-deliveries-18-june.xlsx. When the old name was not found, the task continued and sent the summary alone. That behaviour had originally been introduced for optional charts, but the same rule was now being applied to the main spreadsheet, which the operations team considered essential."
+      },
+      {
+        "label": "D",
+        "text": "The team sent the existing spreadsheet manually at 8:42, leaving the manager eighteen minutes to prepare. Mai asked her to confirm that the warehouse names and delayed-delivery columns were visible before the meeting began. The manager confirmed that the file was usable, although she had to shorten her preparation. No replacement figures were calculated during this recovery. Keeping the original spreadsheet avoided a second version with slightly different totals, which might have created more confusion than the missing attachment had already caused."
+      },
+      {
+        "label": "E",
+        "text": "For the permanent change, the developers considered two approaches. One would search the report folder and attach the newest spreadsheet. That was quick to build, but an unrelated test file could become the newest item. The other would pass the exact report location from the creation task to the email task. The team chose to pass the exact report location to the email task. This required a small change to both tasks, but it made the relationship between the report and its message easier to follow."
+      },
+      {
+        "label": "F",
+        "text": "The team also changed what happened when the required file was unavailable. The email task would stop and notify the person responsible for the report, rather than sending an apparently complete message. Optional charts could still be omitted, provided the email clearly said so. In the review meeting, Mai demonstrated three cases: a normal report, a missing spreadsheet, and a report without its optional chart. The operations manager accepted these cases because they reflected the decisions her team would need to make on an ordinary Monday."
+      },
+      {
+        "label": "G",
+        "text": "Before the next scheduled run, a developer and an operations assistant carried out a joint check. They used a report marked as a practice copy and sent it to an internal address. The assistant checked the visible email, while the developer checked the task records. A technical success message alone was no longer enough for this check. They also added the report name to the review notes for future changes. A change that looked cosmetic to one team could affect a file selection rule maintained by another."
+      },
+      {
+        "label": "H",
+        "text": "The following Monday, the report arrived with its spreadsheet, and the operations assistant confirmed receipt before the planning meeting. Mai closed the incident after that confirmation and recorded the remaining limitation: the process still depended on the spreadsheet being created on time. A delay in report creation would now be visible, but it would still need attention. The review did not blame the person who renamed the file. Instead, it assigned clear ownership of required attachments and added a check whenever report names or locations changed."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "attachment",
+        "meaning": "tệp đính kèm"
+      },
+      {
+        "term": "transmission",
+        "meaning": "việc truyền hoặc gửi dữ liệu"
+      },
+      {
+        "term": "optional",
+        "meaning": "không bắt buộc"
+      },
+      {
+        "term": "omit",
+        "meaning": "bỏ đi, không đưa vào"
+      },
+      {
+        "term": "ownership",
+        "meaning": "trách nhiệm phụ trách"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why did the operations manager need the spreadsheet that morning?",
+        "options": [
+          "To compare delayed deliveries at a meeting",
+          "To approve a new email service",
+          "To train a new software developer",
+          "To change the warehouse names"
+        ],
+        "answer": "To compare delayed deliveries at a meeting",
+        "explanation": "Báo cáo được dùng trong cuộc họp để so sánh các chuyến giao hàng bị chậm.",
+        "evidence": "The report was needed for a meeting at nine, where staff would compare delayed deliveries across three warehouses and decide which customers needed an update."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What directly prevented the spreadsheet from being selected?",
+        "options": [
+          "The email task searched for the old filename",
+          "The report folder had been deleted",
+          "The spreadsheet contained no warehouse rows",
+          "The manager used the wrong computer"
+        ],
+        "answer": "The email task searched for the old filename",
+        "explanation": "Tác vụ gửi email vẫn tìm tên cũ sau khi tên báo cáo đã thay đổi.",
+        "evidence": "However, the email task still searched for a file called weekly-deliveries.xlsx."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why was selecting the newest spreadsheet considered risky?",
+        "options": [
+          "It might select an unrelated test file",
+          "It would remove all optional charts",
+          "It would change the delivery totals",
+          "It required the manager to rename every file"
+        ],
+        "answer": "It might select an unrelated test file",
+        "explanation": "Tệp mới nhất có thể là tệp thử nghiệm không liên quan.",
+        "evidence": "That was quick to build, but an unrelated test file could become the newest item."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The spreadsheet totals agreed with the email summary.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Mai đã so sánh và thấy hai phần có tổng số khớp nhau.",
+        "evidence": "They agreed, which made a data calculation problem less likely."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The team calculated new figures before manually sending the spreadsheet.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài nói rõ không có số liệu thay thế nào được tính trong quá trình khắc phục.",
+        "evidence": "No replacement figures were calculated during this recovery."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The internal practice email was sent to exactly five people.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài chỉ nêu một địa chỉ nội bộ, không cho biết có bao nhiêu người nhận hoặc đọc email.",
+        "evidence": "They used a report marked as a practice copy and sent it to an internal address."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What did the team choose to pass to the email task? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "exact report location",
+        "explanation": "Nhóm chọn truyền vị trí chính xác của báo cáo; đáp án gồm ba từ.",
+        "evidence": "The team chose to pass the exact report location to the email task."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What did the developer check during the joint practice? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the task records",
+        "explanation": "Nhà phát triển kiểm tra các bản ghi của tác vụ; đáp án gồm ba từ.",
+        "evidence": "The assistant checked the visible email, while the developer checked the task records."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes sending the existing spreadsheet as an immediate recovery action?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D mô tả việc gửi thủ công tệp hiện có trước cuộc họp.",
+        "evidence": "The team sent the existing spreadsheet manually at 8:42, leaving the manager eighteen minutes to prepare."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph identifies a dependency that remains after the fix?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nêu giới hạn còn lại: báo cáo vẫn phải được tạo đúng giờ.",
+        "evidence": "Mai closed the incident after that confirmation and recorded the remaining limitation: the process still depended on the spreadsheet being created on time."
+      }
+    ]
+  },
+  {
+    "id": "reading-042",
+    "title": "Workplace procedure: requesting a translated customer guide",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Quy trình mới giúp nhân viên yêu cầu bản dịch tài liệu khách hàng với thời hạn rõ ràng, nội dung ổn định và trách nhiệm kiểm tra được phân công cụ thể.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Cedar Office Products sells the same equipment in several countries, but its customer guides are prepared by a small central team. Last month, a sales representative requested a Vietnamese version of a setup guide two days before a demonstration. The translation arrived on time, yet several screenshots showed an older control panel. The representative explained the differences during the visit, which took time away from the customer's questions. After reviewing the request, the company introduced a clearer procedure for translated guides, beginning with the next round of demonstrations."
+      },
+      {
+        "label": "B",
+        "text": "Under the new procedure, the person requesting a translation must submit the current guide, the intended audience, and the date on which the document will be used. A request such as 'Vietnamese guide needed urgently' is no longer enough to enter the schedule. The coordinator needs to know whether readers are new users, experienced technicians, or purchasing staff. Those groups may need different explanations even when they use the same product. Requesters must also identify one colleague who can answer questions about the original content during the translation period."
+      },
+      {
+        "label": "C",
+        "text": "Standard requests should arrive at least seven working days before the planned use. This gives the translator time to prepare a draft and allows a product specialist to check it. The coordinator can accept a shorter request when there is room in the schedule, but cannot promise immediate delivery. An urgent request may receive a one-page summary instead of the full guide. The requester must confirm that this smaller document meets the customer's needs. The full guide can then follow later, without pretending that both documents serve exactly the same purpose."
+      },
+      {
+        "label": "D",
+        "text": "Once a request is accepted, the original guide is marked as the agreed version for that translation. Staff can still report errors, but they should not quietly replace paragraphs in the shared file. A change to a product instruction may require the translator to revise several related sections. Small corrections to spelling are usually easier to handle. The coordinator records each proposed change and discusses its effect on the delivery date. If important content remains uncertain, the work may pause until the product owner provides a clear answer."
+      },
+      {
+        "label": "E",
+        "text": "The translator sends questions through a shared question list rather than several private messages. This lets the product specialist see earlier answers and avoids asking the same thing twice. For example, the word 'release' might refer to opening a physical catch or publishing a new product version. The specialist should explain the intended action in plain language, preferably with a picture when the action is physical. The translator then chooses wording that fits the customer's task. The aim is a usable guide, not a sentence-by-sentence copy of the original structure."
+      },
+      {
+        "label": "F",
+        "text": "Review has two separate parts. The product specialist checks that instructions, button names, and pictures agree with the equipment being demonstrated. A colleague who uses Vietnamese at work checks whether the language is clear for the intended audience. This colleague does not approve technical details unless qualified to do so. Review comments must name the page and explain the problem. A comment such as 'sounds strange' gives the translator little help, while 'this sentence does not explain which cover to open' points to a specific decision that needs attention."
+      },
+      {
+        "label": "G",
+        "text": "Before delivery, the coordinator checks that the translated file has a version date and that the agreed reviewer has completed the review. The finished guide is placed in the customer document library. Sales staff receive a link to that copy, rather than an attachment they might continue using after a later update. For a visit without reliable internet access, they may download the guide beforehand. They should check the version date again before travelling, especially if the product team has announced changes since the demonstration was booked."
+      },
+      {
+        "label": "H",
+        "text": "The procedure will be reviewed after six weeks. The coordinator will compare requested dates with actual delivery dates and ask sales staff whether customers could follow the guides. A fast delivery will not count as a complete success if readers still need repeated explanations. The team also wants to learn whether one-page summaries are useful for early conversations. If they are, those summaries may become planned documents rather than emergency substitutes. For now, staff should allow enough time for questions and review, and tell the coordinator when a customer's needs change."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "intended audience",
+        "meaning": "nhóm người đọc mục tiêu"
+      },
+      {
+        "term": "requester",
+        "meaning": "người đưa ra yêu cầu"
+      },
+      {
+        "term": "draft",
+        "meaning": "bản nháp"
+      },
+      {
+        "term": "qualified",
+        "meaning": "có đủ chuyên môn hoặc năng lực"
+      },
+      {
+        "term": "substitute",
+        "meaning": "thứ dùng để thay thế"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What problem affected the recent Vietnamese guide?",
+        "options": [
+          "Some screenshots showed an older control panel",
+          "The guide arrived after the demonstration",
+          "The customer requested a different language",
+          "The representative could not open the file"
+        ],
+        "answer": "Some screenshots showed an older control panel",
+        "explanation": "Bản dịch đến đúng giờ nhưng một số ảnh chụp hiển thị bảng điều khiển cũ.",
+        "evidence": "The translation arrived on time, yet several screenshots showed an older control panel."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why does the coordinator need information about the audience?",
+        "options": [
+          "Different readers may need different explanations",
+          "Only technicians are allowed to receive guides",
+          "Purchasing staff always need shorter documents",
+          "The audience chooses the translator's working hours"
+        ],
+        "answer": "Different readers may need different explanations",
+        "explanation": "Các nhóm người đọc có thể cần cách giải thích khác nhau dù dùng cùng sản phẩm.",
+        "evidence": "Those groups may need different explanations even when they use the same product."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should a useful review comment do?",
+        "options": [
+          "Identify the page and explain the problem",
+          "Replace the translator's whole draft",
+          "Focus only on how quickly the work was done",
+          "Avoid mentioning specific instructions"
+        ],
+        "answer": "Identify the page and explain the problem",
+        "explanation": "Nhận xét phải chỉ rõ trang và giải thích vấn đề để người dịch xử lý.",
+        "evidence": "Review comments must name the page and explain the problem."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Staff may report errors after the original guide becomes the agreed translation version.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Nhân viên vẫn được báo lỗi nhưng không nên tự thay nội dung một cách âm thầm.",
+        "evidence": "Staff can still report errors, but they should not quietly replace paragraphs in the shared file."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The coordinator guarantees immediate delivery for shorter requests.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài nói rõ điều phối viên không thể hứa giao ngay.",
+        "evidence": "The coordinator can accept a shorter request when there is room in the schedule, but cannot promise immediate delivery."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The company pays its translators by the page.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Câu liên quan mô tả cách người dịch gửi câu hỏi; bài không nêu cách tính tiền công.",
+        "evidence": "The translator sends questions through a shared question list rather than several private messages."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What smaller document might be provided for an urgent request? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "a one-page summary",
+        "explanation": "Yêu cầu gấp có thể nhận một bản tóm tắt một trang; đáp án gồm ba từ.",
+        "evidence": "An urgent request may receive a one-page summary instead of the full guide."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What should staff check again before travelling? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the version date",
+        "explanation": "Nhân viên cần kiểm tra lại ngày phiên bản; đáp án gồm ba từ.",
+        "evidence": "They should check the version date again before travelling, especially if the product team has announced changes since the demonstration was booked."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains how to manage changes to the original guide after acceptance?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D mô tả việc ghi nhận thay đổi và xem xét ảnh hưởng đến ngày giao.",
+        "evidence": "The coordinator records each proposed change and discusses its effect on the delivery date."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why speed alone will not prove that the procedure works?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H cho biết giao nhanh chưa đủ nếu người đọc vẫn cần giải thích nhiều lần.",
+        "evidence": "A fast delivery will not count as a complete success if readers still need repeated explanations."
+      }
+    ]
+  },
+  {
+    "id": "reading-043",
+    "title": "Building notice: arranging access for window replacement",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Thông báo của tòa nhà giải thích lịch thay cửa sổ, cách xác nhận người mở cửa, việc chuẩn bị không gian và phương án xử lý khi thời tiết hoặc lịch cá nhân thay đổi.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The windows facing the courtyard at Willow Court will be replaced over two weeks next month. Several residents have reported that the frames are difficult to close, and the maintenance team has found worn parts during its checks. The work will begin with the second floor because it has the largest number of reported problems. This notice explains how appointments will be arranged and what residents should prepare. The project covers courtyard windows only; windows facing the street are outside the current work schedule."
+      },
+      {
+        "label": "B",
+        "text": "Each flat will receive a proposed appointment by email and on a paper card. Residents should reply by Friday to confirm the time or request another available appointment. Morning appointments begin between eight and nine, while afternoon appointments begin between one and two. These are arrival windows, not promises that the work will be finished within an hour. The team expects most flats to take about three hours, but an old frame that is harder to remove may take longer. Please consider this when arranging work or other commitments."
+      },
+      {
+        "label": "C",
+        "text": "Someone must be present to let the workers in and discuss the planned work. This can be the resident or a trusted person chosen by the resident. The building office will not collect spare keys for this project. If another person will attend, send their name to the coordinator before the appointment. Workers will carry company identification and will check the flat number against their daily list. Residents who receive an unexpected visit should contact the building office before allowing work to begin."
+      },
+      {
+        "label": "D",
+        "text": "Please clear a space of roughly one metre in front of each courtyard window. Move plants, small tables, and personal items away from that area, and take down curtains where practical. Large furniture does not need to leave the flat, but the coordinator should be told if it cannot be moved enough to create access. The workers will bring floor covers for the area where they are working. Residents should keep pets in another room so that workers can carry frames through the flat without an animal reaching the open window."
+      },
+      {
+        "label": "E",
+        "text": "There will be some noise while the old frames are removed and the new ones are fitted. Residents working from home may prefer to arrange calls elsewhere during their appointment. The team will keep the shared corridor clear between deliveries, although brief movement of materials is unavoidable. Old frames will be taken directly to the collection vehicle. They should not be left beside household rubbish bins. Please do not ask the workers to repair other items during the visit, as this could delay the next flat's appointment."
+      },
+      {
+        "label": "F",
+        "text": "Heavy rain or strong wind may change the daily schedule. The coordinator will send an update by seven in the morning if appointments need to move. A cancelled appointment will be offered a new time before extra work is added to the programme. Residents should not assume that light rain means cancellation; the team will assess conditions and confirm the decision. If no update arrives, the appointment remains planned. Anyone who needs to leave early should contact the coordinator instead of waiting and hoping the workers will arrive first."
+      },
+      {
+        "label": "G",
+        "text": "At the end of the visit, the worker will show the attending person how to open, close, and secure the new window. Please try the handle yourself before signing the visit record. The record confirms that the demonstration took place and lists any unfinished practical items, such as a piece of trim that still needs fitting. A copy will be emailed to the resident. If the window later becomes difficult to operate, report the flat number, the window location, and a short description to the building office."
+      },
+      {
+        "label": "H",
+        "text": "Residents who cannot use either proposed appointment should contact the coordinator as soon as possible. The team has kept a small number of appointments free near the end of the project, but these may fill quickly. The office can discuss an alternative arrangement if a resident needs extra help moving belongings. Please make that request before the work day, not when the workers are already waiting outside. A confirmed appointment, a clear work area, and an available contact person will help the project move steadily through the building."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "courtyard",
+        "meaning": "sân trong của tòa nhà"
+      },
+      {
+        "term": "frame",
+        "meaning": "khung"
+      },
+      {
+        "term": "arrival window",
+        "meaning": "khoảng thời gian dự kiến đến"
+      },
+      {
+        "term": "trim",
+        "meaning": "nẹp hoặc chi tiết hoàn thiện"
+      },
+      {
+        "term": "belongings",
+        "meaning": "đồ đạc cá nhân"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why will work start on the second floor?",
+        "options": [
+          "It has the most reported window problems",
+          "It has the smallest flats",
+          "Its residents are all available in the morning",
+          "It is closest to the collection vehicle"
+        ],
+        "answer": "It has the most reported window problems",
+        "explanation": "Tầng hai có số vấn đề được báo cáo nhiều nhất.",
+        "evidence": "The work will begin with the second floor because it has the largest number of reported problems."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What do the morning and afternoon time ranges describe?",
+        "options": [
+          "When workers are expected to arrive",
+          "When all work must be completed",
+          "When residents must leave the building",
+          "When the office accepts telephone calls"
+        ],
+        "answer": "When workers are expected to arrive",
+        "explanation": "Đây là khoảng giờ đến, không phải thời gian hoàn tất công việc.",
+        "evidence": "These are arrival windows, not promises that the work will be finished within an hour."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should residents do if large furniture prevents access?",
+        "options": [
+          "Tell the coordinator",
+          "Leave the furniture in the corridor",
+          "Cancel the whole project",
+          "Ask the workers to dispose of it"
+        ],
+        "answer": "Tell the coordinator",
+        "explanation": "Cần báo điều phối viên nếu không thể di chuyển đồ đủ để tạo lối tiếp cận.",
+        "evidence": "Large furniture does not need to leave the flat, but the coordinator should be told if it cannot be moved enough to create access."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "A resident may choose a trusted person to attend the appointment.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Người có mặt có thể là cư dân hoặc người đáng tin do cư dân chọn.",
+        "evidence": "This can be the resident or a trusted person chosen by the resident."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The building office will hold residents' spare keys during the project.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Văn phòng nêu rõ sẽ không nhận chìa khóa dự phòng cho dự án này.",
+        "evidence": "The building office will not collect spare keys for this project."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The replacement windows will have white frames.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài có đề cập lắp khung mới nhưng không cho biết màu của chúng.",
+        "evidence": "There will be some noise while the old frames are removed and the new ones are fitted."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What will workers bring to protect the work area? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "floor covers",
+        "explanation": "Thợ sẽ mang tấm phủ sàn; đáp án gồm hai từ.",
+        "evidence": "The workers will bring floor covers for the area where they are working."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What should the attending person try before signing the visit record? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the handle",
+        "explanation": "Người có mặt cần thử tay nắm; đáp án gồm hai từ.",
+        "evidence": "Please try the handle yourself before signing the visit record."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains how residents will learn about weather-related schedule changes?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F nêu thời điểm điều phối viên gửi cập nhật nếu cần đổi lịch.",
+        "evidence": "The coordinator will send an update by seven in the morning if appointments need to move."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph asks residents to arrange help with belongings before the work day?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H yêu cầu gửi yêu cầu hỗ trợ trước ngày thi công.",
+        "evidence": "Please make that request before the work day, not when the workers are already waiting outside."
+      }
+    ]
+  },
+  {
+    "id": "reading-044",
+    "title": "Migration proposal: reviewing label settings before they go live",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Đề xuất chuyển cấu hình nhãn kho từ bảng tính được đọc trực tiếp sang các tệp có lịch sử thay đổi, đồng thời giữ bản nháp dễ dùng cho nhân viên vận hành.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The packing application at Harbour Goods reads label settings from a shared spreadsheet. Each row describes a shipping service, the wording printed below its barcode, and the position of a small handling symbol. This arrangement was convenient when the company used only two services. It is now harder to manage because six people edit the sheet and twelve services are listed. Last week, a draft change to the wording appeared on live labels before the warehouse supervisor had reviewed it. The proposal below aims to make approval more visible."
+      },
+      {
+        "label": "B",
+        "text": "The problem is not that spreadsheets are always unsuitable for settings. In this application, however, saving the shared sheet also makes its contents available to the next label request. There is no separate approval step between editing and use. Staff sometimes create a temporary row to compare two layouts, then forget that the application can read it. The current sheet also contains notes intended for people rather than the application. These notes are helpful during discussions, but their position beside active settings makes the boundary between a draft and an approved value unclear."
+      },
+      {
+        "label": "C",
+        "text": "The proposed arrangement keeps a spreadsheet for drafting, while approved settings move into small text files stored with a history of changes. Each shipping service will have its own file. A developer will prepare a proposed change, and the warehouse supervisor will check sample labels before it is accepted. The application will read only the approved files included in a release. Editing the draft sheet will therefore stop affecting live labels immediately. This creates an extra step, but it also gives staff a clear point at which a change becomes active."
+      },
+      {
+        "label": "D",
+        "text": "The team considered giving warehouse staff direct access to edit the approved files. That could reduce waiting time, particularly when a shipping partner changes its required wording. However, the staff involved said they preferred reviewing visible labels to learning a new editing process. The initial plan therefore leaves file preparation with the software team. Warehouse staff will still own the meaning of the wording and symbols. If routine requests begin to wait too long, the team will review this division of work instead of assuming that the first arrangement must remain permanent."
+      },
+      {
+        "label": "E",
+        "text": "Migration will begin with two low-volume shipping services. Their current rows will be copied into files, and a set of sample labels will be printed from each source. The supervisor will compare the wording, symbol placement, and spacing. The team will not use live parcels for the comparison. Practice sheets can be marked and discussed without interrupting packing work. Once the samples agree, the two services will move to the new source for one working week. The remaining services will continue using the spreadsheet during this limited trial."
+      },
+      {
+        "label": "F",
+        "text": "During the trial, the application will record which settings source was used for each label request. This will help the team investigate a reported difference without relying on someone's memory of the migration date. The record will include the service name and the approved settings version, but not the customer's address. If the trial creates an unresolved printing problem, the two services can return to their previous spreadsheet rows. Those rows will be kept unchanged throughout the trial so that returning to them does not introduce another uncertain change."
+      },
+      {
+        "label": "G",
+        "text": "The main cost is the additional coordination required for small changes. A supervisor who previously edited a cell in a minute will now submit a request and review a sample. To keep that process reasonable, the software team proposes two regular review periods each week. Urgent requests can be discussed separately, but urgency must include the date on which the current label becomes unusable. A preference for different wording is not automatically urgent. The request form will ask for the service name, the desired result, and an example label where possible."
+      },
+      {
+        "label": "H",
+        "text": "The proposal will be judged by both reliability and effort. The team will count approved changes, unexpected differences, and the time between a complete request and its release. A process with fewer mistakes could still need adjustment if ordinary updates become too slow. After the trial, warehouse staff and developers will decide whether to migrate the other services, change the review schedule, or extend the trial. The expected benefit is a visible connection between a request, a checked sample, and the settings used in production, rather than simply a different place to store data."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "approved",
+        "meaning": "đã được phê duyệt"
+      },
+      {
+        "term": "boundary",
+        "meaning": "ranh giới"
+      },
+      {
+        "term": "low-volume",
+        "meaning": "có số lượng sử dụng thấp"
+      },
+      {
+        "term": "unresolved",
+        "meaning": "chưa được giải quyết"
+      },
+      {
+        "term": "coordination",
+        "meaning": "sự phối hợp"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What event prompted the proposal?",
+        "options": [
+          "Draft wording reached live labels before review",
+          "A shipping service stopped accepting parcels",
+          "The spreadsheet lost every settings row",
+          "Warehouse staff requested fewer handling symbols"
+        ],
+        "answer": "Draft wording reached live labels before review",
+        "explanation": "Một thay đổi còn ở dạng nháp đã xuất hiện trên nhãn thật trước khi được kiểm tra.",
+        "evidence": "Last week, a draft change to the wording appeared on live labels before the warehouse supervisor had reviewed it."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "How will the application obtain settings under the proposal?",
+        "options": [
+          "From approved files included in a release",
+          "From every saved draft spreadsheet",
+          "From customer addresses in the trial record",
+          "From photographs of practice labels"
+        ],
+        "answer": "From approved files included in a release",
+        "explanation": "Ứng dụng chỉ đọc các tệp được duyệt và đưa vào bản phát hành.",
+        "evidence": "The application will read only the approved files included in a release."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will developers initially prepare the approved files?",
+        "options": [
+          "Warehouse staff prefer reviewing labels to learning a new editing process",
+          "Warehouse staff do not understand shipping wording",
+          "The files cannot be changed after creation",
+          "Shipping partners require developers to print every label"
+        ],
+        "answer": "Warehouse staff prefer reviewing labels to learning a new editing process",
+        "explanation": "Nhân viên kho muốn kiểm tra nhãn trực quan hơn là học quy trình chỉnh sửa mới.",
+        "evidence": "However, the staff involved said they preferred reviewing visible labels to learning a new editing process."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The existing application has no separate approval step between editing and use.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Đây chính là điểm thiếu trong quy trình hiện tại.",
+        "evidence": "There is no separate approval step between editing and use."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The team will compare old and new settings by printing labels for live parcels.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài nói rõ không dùng kiện hàng thật cho việc so sánh.",
+        "evidence": "The team will not use live parcels for the comparison."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The company will hire an additional developer for the migration.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nói nhóm phần mềm phụ trách chuẩn bị tệp nhưng không đề cập tuyển thêm người.",
+        "evidence": "The initial plan therefore leaves file preparation with the software team."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What customer information will be excluded from the trial record? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the customer's address",
+        "explanation": "Bản ghi không chứa địa chỉ khách hàng; đáp án gồm ba từ.",
+        "evidence": "The record will include the service name and the approved settings version, but not the customer's address."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What printed item should requesters provide where possible? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "an example label",
+        "explanation": "Biểu mẫu yêu cầu một nhãn mẫu nếu có thể; đáp án gồm ba từ.",
+        "evidence": "The request form will ask for the service name, the desired result, and an example label where possible."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes keeping the previous settings unchanged so services can return to them?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F giải thích cách giữ nguyên các dòng cũ để có thể quay lại khi gặp lỗi.",
+        "evidence": "Those rows will be kept unchanged throughout the trial so that returning to them does not introduce another uncertain change."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains that fewer mistakes may still be insufficient if updates take too long?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H cân nhắc cả độ tin cậy và thời gian xử lý thay đổi.",
+        "evidence": "A process with fewer mistakes could still need adjustment if ordinary updates become too slow."
+      }
+    ]
+  },
+  {
+    "id": "reading-045",
+    "title": "Reception handover: preparing temporary passes for new starters",
+    "topic": "workplace",
+    "level": "B1",
+    "summary": "Ghi chú bàn giao hướng dẫn lễ tân chuẩn bị thẻ tạm cho nhân viên mới, xác minh thông tin, xử lý người đến sớm và theo dõi việc hoàn trả thẻ.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Next Tuesday, nine new employees will arrive at the Riverside office for their first day. The usual reception supervisor, Lena, will be away, so these notes are for Tomas, who will cover the morning desk. Most new starters are expected between eight thirty and nine, but two will arrive after lunch because they are travelling from another city. The aim is to welcome people without creating a long queue or issuing a pass to the wrong person. Team managers remain responsible for meeting their own new colleagues."
+      },
+      {
+        "label": "B",
+        "text": "On Monday afternoon, the people team will send the confirmed arrival list to the reception inbox. Use that list when preparing the temporary passes. An older list in the desk drawer includes someone whose start date has changed, so it should not be used for Tuesday. Each prepared pass should be placed in a separate envelope with the person's name and team. Leave the envelope unsealed until the details have been checked. This makes it easier to correct a spelling error without wasting an envelope or confusing two similar names."
+      },
+      {
+        "label": "C",
+        "text": "When a new employee arrives, ask for their name and check it against the confirmed list. Follow the office's normal identity check before handing over the pass. Do not display the full arrival list on the public side of the desk. If the person is missing from the list, call the people team rather than adding a name from memory. A manager may know that someone is expected, but reception still needs the confirmed details. Keep the conversation friendly and explain that you are checking the right arrangement for their first day."
+      },
+      {
+        "label": "D",
+        "text": "The temporary passes open the main entrance and the shared office areas assigned for induction. They do not open the equipment storage room. New employees who need equipment from that room should go with their manager. Permanent passes will be prepared after the morning induction session, once the people team has checked the required details. Reception should not promise a permanent pass at a particular hour. If someone needs to leave and return before their permanent pass is ready, explain how to use the temporary pass and where to ask for help."
+      },
+      {
+        "label": "E",
+        "text": "Call the named manager after the pass has been issued. If the manager does not answer, try the backup contact shown on the arrival list. New employees can wait in the seating area beside reception, where there is enough room for bags. Offer them the printed first-day schedule so they know what happens next. Avoid sending them upstairs alone simply because the desk is busy. Several teams share the same floor, and a person who has never visited the office may not know which meeting area or entrance to use."
+      },
+      {
+        "label": "F",
+        "text": "If several people arrive together, complete one person's check before starting the next. You can ask the others to sit down while they wait, but keep their pass envelopes behind the desk. For an early arrival, contact the manager and explain that induction does not begin until nine fifteen. The seating area is available, although the training room may still be occupied. The two afternoon starters should receive the separate afternoon schedule. Their managers have arranged shorter introductions and will help them catch up with the material covered that morning."
+      },
+      {
+        "label": "G",
+        "text": "Record the pass number beside each person's name immediately after issue. This is more reliable than trying to remember several numbers at the end of a busy period. When a permanent pass is collected, the temporary pass should be returned to reception and marked as returned in the same record. If a person says they have left it at their desk, note that it is still outstanding and contact their manager later. Do not mark it as returned until it is physically back at reception, even if everyone expects it to arrive soon."
+      },
+      {
+        "label": "H",
+        "text": "At one o'clock, give the afternoon receptionist a short update. Include the number of people who have arrived, the names of anyone still expected, and any temporary passes that remain outstanding. Leave unfinished questions in the reception inbox with a clear subject line. Lena will review the record when she returns on Wednesday, but problems affecting Tuesday's arrivals should be handled that day. The handover should help the next person continue the work without repeating checks or asking a new employee to explain the same difficulty several times."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "new starter",
+        "meaning": "nhân viên mới bắt đầu làm việc"
+      },
+      {
+        "term": "temporary pass",
+        "meaning": "thẻ ra vào tạm thời"
+      },
+      {
+        "term": "induction",
+        "meaning": "buổi giới thiệu và hướng dẫn ban đầu"
+      },
+      {
+        "term": "backup contact",
+        "meaning": "người liên hệ dự phòng"
+      },
+      {
+        "term": "outstanding",
+        "meaning": "chưa hoàn tất hoặc chưa được trả"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why will Tomas cover reception on Tuesday morning?",
+        "options": [
+          "Lena will be away",
+          "All team managers will be travelling",
+          "The office will close after lunch",
+          "The people team will move upstairs"
+        ],
+        "answer": "Lena will be away",
+        "explanation": "Tomas trực thay vì người phụ trách thường lệ vắng mặt.",
+        "evidence": "The usual reception supervisor, Lena, will be away, so these notes are for Tomas, who will cover the morning desk."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why should the list in the desk drawer be avoided?",
+        "options": [
+          "It includes someone with a changed start date",
+          "It contains only manager telephone numbers",
+          "It belongs to another office",
+          "It has already been given to every new employee"
+        ],
+        "answer": "It includes someone with a changed start date",
+        "explanation": "Danh sách cũ có một người đã đổi ngày bắt đầu.",
+        "evidence": "An older list in the desk drawer includes someone whose start date has changed, so it should not be used for Tuesday."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should reception do if an arriving person's name is missing?",
+        "options": [
+          "Call the people team",
+          "Add the name from memory",
+          "Give them any unused pass",
+          "Ask another new employee to confirm their details"
+        ],
+        "answer": "Call the people team",
+        "explanation": "Lễ tân cần gọi bộ phận nhân sự để xác nhận thay vì tự thêm tên.",
+        "evidence": "If the person is missing from the list, call the people team rather than adding a name from memory."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The pass number should be recorded immediately after the pass is issued.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Hướng dẫn yêu cầu ghi số thẻ ngay sau khi giao.",
+        "evidence": "Record the pass number beside each person's name immediately after issue."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Temporary passes allow new employees to enter the equipment storage room.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Thẻ tạm không mở được phòng chứa thiết bị.",
+        "evidence": "They do not open the equipment storage room."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The nine new employees will all work in the same department.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài cho biết có chín nhân viên mới nhưng không nêu họ có cùng phòng ban hay không.",
+        "evidence": "Next Tuesday, nine new employees will arrive at the Riverside office for their first day."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What should reception offer while new employees wait for their manager? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "printed first-day schedule",
+        "explanation": "Lễ tân cung cấp lịch ngày đầu đã in; đáp án gồm ba từ.",
+        "evidence": "Offer them the printed first-day schedule so they know what happens next."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Where should unfinished questions be left for the next receptionist? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the reception inbox",
+        "explanation": "Các câu hỏi chưa xử lý được để trong hộp thư lễ tân; đáp án gồm ba từ.",
+        "evidence": "Leave unfinished questions in the reception inbox with a clear subject line."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes a different introduction arrangement for afternoon arrivals?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F nêu buổi giới thiệu ngắn hơn và hỗ trợ học lại nội dung buổi sáng.",
+        "evidence": "Their managers have arranged shorter introductions and will help them catch up with the material covered that morning."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains when a temporary pass may be marked as returned?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G yêu cầu phải nhận lại thẻ thực tế rồi mới đánh dấu đã trả.",
+        "evidence": "Do not mark it as returned until it is physically back at reception, even if everyone expects it to arrive soon."
+      }
+    ]
+  },
+  {
+    "id": "reading-046",
+    "title": "Repair estimate: a vacuum cleaner that stops after ten minutes",
+    "topic": "daily-life",
+    "level": "B1+",
+    "summary": "Một bản báo giá sửa máy hút bụi giải thích kết quả kiểm tra, lựa chọn sửa chữa theo giai đoạn, thời gian dự kiến và giới hạn của chi phí đã ước tính.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Thank you for bringing your vacuum cleaner to Green Lane Repairs on Saturday. You reported that it starts normally but stops after about ten minutes of use. After a rest, it starts again, which has made cleaning your flat take much longer than usual. You also mentioned that the machine seems less effective on the hallway rug. This estimate describes what we found during inspection and the work we recommend first. We have not replaced any parts, because you asked us to explain the cost before beginning repairs."
+      },
+      {
+        "label": "B",
+        "text": "During our workshop check, the cleaner stopped after eleven minutes while being used on our test surface. We found a heavily blocked filter and a small piece of cloth caught in the hose connection. The dust container itself was not full. After removing the cloth and fitting a workshop filter, we ran the cleaner for twenty minutes without another stop. This result suggests that the restricted airflow contributed to the problem in this machine. It does not establish how every similar model would behave, or rule out a fault that appears only after longer use."
+      },
+      {
+        "label": "C",
+        "text": "Our recommended first step is to fit a new filter and clean the hose connection and surrounding seals. The estimated total for this work is forty-eight pounds, including the filter and labour. We can order the correct filter from our parts supplier, who currently expects delivery in three working days. Once it arrives, we will fit it and repeat the operating check. If the cleaner completes that check, we will call you to arrange collection. We suggest this limited repair before considering more expensive work on internal components."
+      },
+      {
+        "label": "D",
+        "text": "The floor head has a separate problem. Its front wheel is stiff, which makes it harder to move across the rug, and the brush strip is worn. A replacement floor head would cost thirty-six pounds in addition to the first repair. This item is optional at this stage. The cleaner can still be used with the existing head, although movement and pickup on the rug may remain disappointing. If you mainly clean hard floors, you may prefer to try the repaired machine first and decide about the head after using it at home."
+      },
+      {
+        "label": "E",
+        "text": "You asked whether the motor should be replaced while the cleaner is here. We do not recommend ordering a motor on the evidence currently available. The machine completed the longer check after the airflow restriction was removed, so a motor replacement would add cost without a confirmed reason. If it stops again during the final check, we will contact you with our findings and a separate estimate. We will not carry out that additional work without your agreement. You can then compare the new total with the cost of replacing the whole cleaner."
+      },
+      {
+        "label": "F",
+        "text": "To approve the first repair, reply to this estimate and state whether you also want the optional floor head. If you approve only the filter and cleaning work, the expected total remains forty-eight pounds. The supplier's delivery time is an estimate, and we will update you if the filter is delayed. There is no need to visit the shop until we confirm that the cleaner is ready. Please keep your collection receipt, as its job number helps us find the machine quickly when you telephone or arrive at the counter."
+      },
+      {
+        "label": "G",
+        "text": "When you collect the cleaner, we will show you how to remove the filter and check the hose connection on this model. We will also point out the cleaning instructions printed inside the dust-container cover. Different filter types require different care, so please follow the instructions supplied with the replacement rather than advice for another model. Before its next use, make sure the container and covers are fitted as shown in the demonstration. If performance changes again, note how long the cleaner ran and which surface you were cleaning."
+      },
+      {
+        "label": "H",
+        "text": "This estimate is available for acceptance until the end of next week, because the supplier may change the part price after that date. If you decide against repair, tell us so we can arrange collection of the machine in its current condition. The inspection charge you already paid will be included in the forty-eight-pound repair total if you proceed. We recognise that a modest repair is useful only if the cleaner suits your needs afterwards, so the optional head and any further investigation remain separate decisions rather than automatic additions to the bill."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "blocked",
+        "meaning": "bị tắc"
+      },
+      {
+        "term": "airflow",
+        "meaning": "luồng không khí"
+      },
+      {
+        "term": "labour",
+        "meaning": "công sửa chữa"
+      },
+      {
+        "term": "stiff",
+        "meaning": "khó chuyển động, bị cứng"
+      },
+      {
+        "term": "proceed",
+        "meaning": "tiếp tục thực hiện"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Which action allowed the cleaner to complete the twenty-minute workshop check?",
+        "options": [
+          "Removing the cloth and fitting a workshop filter",
+          "Replacing the motor and dust container",
+          "Changing the front wheel only",
+          "Using the customer's hallway rug"
+        ],
+        "answer": "Removing the cloth and fitting a workshop filter",
+        "explanation": "Máy chạy được hai mươi phút sau khi lấy mảnh vải ra và lắp bộ lọc thử.",
+        "evidence": "After removing the cloth and fitting a workshop filter, we ran the cleaner for twenty minutes without another stop."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why is a motor replacement not currently recommended?",
+        "options": [
+          "There is no confirmed reason after the longer check succeeded",
+          "The supplier no longer sells motors",
+          "The customer has already bought a new cleaner",
+          "The motor replacement is included in the first repair"
+        ],
+        "answer": "There is no confirmed reason after the longer check succeeded",
+        "explanation": "Kết quả kiểm tra chưa cho thấy lý do xác nhận cần thay động cơ.",
+        "evidence": "The machine completed the longer check after the airflow restriction was removed, so a motor replacement would add cost without a confirmed reason."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should the customer do if the cleaner's performance changes again?",
+        "options": [
+          "Record the running time and cleaning surface",
+          "Order a motor immediately",
+          "Discard the collection receipt",
+          "Clean the replacement filter using another model's instructions"
+        ],
+        "answer": "Record the running time and cleaning surface",
+        "explanation": "Thông tin thời gian chạy và bề mặt đang làm sạch sẽ giúp mô tả vấn đề.",
+        "evidence": "If performance changes again, note how long the cleaner ran and which surface you were cleaning."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The original dust container was not full during inspection.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài xác nhận hộp chứa bụi không đầy.",
+        "evidence": "The dust container itself was not full."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The thirty-six-pound floor head is included in the forty-eight-pound first repair.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Chi phí đầu hút là khoản cộng thêm, không nằm trong sửa chữa đầu tiên.",
+        "evidence": "A replacement floor head would cost thirty-six pounds in addition to the first repair."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The customer bought the vacuum cleaner four years ago.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu ngày mang máy đến cửa hàng nhưng không cho biết ngày mua hoặc tuổi máy.",
+        "evidence": "Thank you for bringing your vacuum cleaner to Green Lane Repairs on Saturday."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How long does the supplier currently expect filter delivery to take? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "three working days",
+        "explanation": "Thời gian dự kiến là ba ngày làm việc; đáp án gồm ba từ.",
+        "evidence": "We can order the correct filter from our parts supplier, who currently expects delivery in three working days."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Which number helps the shop find the machine quickly? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "job number",
+        "explanation": "Mã công việc trên biên nhận giúp tìm máy; đáp án gồm hai từ.",
+        "evidence": "Please keep your collection receipt, as its job number helps us find the machine quickly when you telephone or arrive at the counter."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why the replacement floor head can be postponed?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D cho biết khách có thể thử máy đã sửa trước rồi quyết định về đầu hút.",
+        "evidence": "If you mainly clean hard floors, you may prefer to try the repaired machine first and decide about the head after using it at home."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains how the inspection charge affects the repair total?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nêu phí kiểm tra đã trả sẽ được tính trong tổng sửa chữa.",
+        "evidence": "The inspection charge you already paid will be included in the forty-eight-pound repair total if you proceed."
+      }
+    ]
+  },
+  {
+    "id": "reading-047",
+    "title": "Release plan: showing when a meeting-room hold expires",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Kế hoạch phát hành cải thiện việc giữ chỗ phòng họp tạm thời bằng thông báo hết hạn rõ ràng, đồng hồ đếm ngược và quy trình kiểm tra lại trước khi xác nhận.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The meeting-room booking application lets staff hold a room while they finish entering meeting details. A hold lasts five minutes, after which the room becomes available to others unless the booking has been confirmed. Several users have reported losing a room while checking attendee names in another window. They returned to a form that still looked ready to submit, only to receive an unavailable-room message. The proposed release will make the temporary nature of a hold clearer and explain what users can do when it expires."
+      },
+      {
+        "label": "B",
+        "text": "The current system already checks room availability when a user confirms a booking. That check will remain the final decision point. The change will not promise that a room belongs to someone simply because an old form is still open. Instead, the form will show a visible countdown beside the room name and a short explanation of the five-minute limit. The design team wants users to understand the limit before it becomes a problem, rather than learning about it through an error after spending time completing the form."
+      },
+      {
+        "label": "C",
+        "text": "One minute before the hold expires, the form will show a reminder within the page. It will not open a separate window or play a sound. Users may be working in a shared office, and the team does not want a routine booking reminder to interrupt everyone nearby. The reminder will explain that confirming the booking completes the reservation. It will also advise users who are not ready to save their meeting details as a draft. A draft preserves the entered details, but it does not reserve a room."
+      },
+      {
+        "label": "D",
+        "text": "When a hold expires, the form will keep the meeting title, attendee list, and notes. The room section will change to show that availability must be checked again. Users can select a button to look for the same room at the same time, or choose another room from the results. The team decided against automatically creating another hold. Repeated automatic holds could keep a room unavailable while someone was away from their desk. Requiring a fresh action makes it clearer that the user is still actively trying to complete the booking."
+      },
+      {
+        "label": "E",
+        "text": "The countdown is intended as a guide, while the booking service remains responsible for the actual hold. If a browser has been left inactive or a connection has been interrupted, the displayed time may need to be updated when the page is used again. The application will request the current hold status at that point. It will not calculate a new five-minute period from the user's return. This distinction will be explained in the support notes so staff do not treat the visible countdown as a separate reservation system."
+      },
+      {
+        "label": "F",
+        "text": "Testing will cover a normal confirmation, an expired hold, and a return to the form after a connection interruption. The team will also check two people trying to confirm the same room after the original hold has ended. Only the booking accepted by the service should appear as confirmed. The other user should retain their meeting details and receive an explanation with the option to choose again. A usability session will ask participants to describe whether they have a confirmed booking, a temporary hold, or a saved draft at different points."
+      },
+      {
+        "label": "G",
+        "text": "The release will first be available to staff on the fourth floor for one week. That floor has several rooms of different sizes and enough regular bookings to provide useful feedback. Support staff will record reports of confusing countdowns, lost details, and unclear confirmation messages. They will also ask what action the person expected to take next. A lower number of error messages would not necessarily prove improvement if users simply abandoned the form. The review will therefore consider completed bookings and feedback about the process together."
+      },
+      {
+        "label": "H",
+        "text": "If the trial is successful, the feature will be offered to the rest of the office the following week. A short announcement will explain the hold limit and the difference between saving a draft and confirming a room. If the countdown creates significant confusion, the team can remove that display while keeping the clearer expiry message and preserved meeting details. These changes can be assessed separately. The purpose of the release is to help users make informed choices about an unfinished booking, not to pressure them into confirming a meeting before they are ready."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "hold",
+        "meaning": "việc giữ chỗ tạm thời"
+      },
+      {
+        "term": "expire",
+        "meaning": "hết hạn"
+      },
+      {
+        "term": "countdown",
+        "meaning": "đồng hồ đếm ngược"
+      },
+      {
+        "term": "reservation",
+        "meaning": "việc đặt hoặc giữ chỗ"
+      },
+      {
+        "term": "abandon",
+        "meaning": "bỏ dở"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What difficulty have users experienced?",
+        "options": [
+          "Their form still looked ready after the room hold had expired",
+          "Their attendee names were sent to another office",
+          "Every saved draft became a confirmed booking",
+          "The application refused all five-minute meetings"
+        ],
+        "answer": "Their form still looked ready after the room hold had expired",
+        "explanation": "Biểu mẫu vẫn có vẻ sẵn sàng gửi dù phòng đã không còn được giữ.",
+        "evidence": "They returned to a form that still looked ready to submit, only to receive an unavailable-room message."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why did the team reject automatically creating another hold?",
+        "options": [
+          "It could keep a room unavailable while the user was away",
+          "It would delete the meeting title",
+          "It would prevent anyone from saving a draft",
+          "It would require every reminder to play a sound"
+        ],
+        "answer": "It could keep a room unavailable while the user was away",
+        "explanation": "Giữ chỗ tự động lặp lại có thể chiếm phòng khi người dùng đã rời bàn.",
+        "evidence": "Repeated automatic holds could keep a room unavailable while someone was away from their desk."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will the trial review consider more than the number of error messages?",
+        "options": [
+          "Fewer errors could result from users abandoning the form",
+          "Support staff cannot read error messages",
+          "All room bookings have the same outcome",
+          "The countdown will be hidden during the trial"
+        ],
+        "answer": "Fewer errors could result from users abandoning the form",
+        "explanation": "Số lỗi giảm có thể do người dùng bỏ dở chứ chưa chắc quy trình đã tốt hơn.",
+        "evidence": "A lower number of error messages would not necessarily prove improvement if users simply abandoned the form."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The final availability check will still happen when a booking is confirmed.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bước kiểm tra khi xác nhận vẫn là điểm quyết định cuối cùng.",
+        "evidence": "That check will remain the final decision point."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Saving a draft reserves the selected meeting room.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bản nháp giữ dữ liệu đã nhập nhưng không giữ phòng.",
+        "evidence": "A draft preserves the entered details, but it does not reserve a room."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Exactly twenty staff members will take part in the usability session.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài mô tả nhiệm vụ của người tham gia nhưng không nêu số lượng.",
+        "evidence": "A usability session will ask participants to describe whether they have a confirmed booking, a temporary hold, or a saved draft at different points."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "When will the within-page reminder appear before expiry? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "One minute",
+        "explanation": "Thông báo xuất hiện trước khi hết hạn một phút; đáp án gồm hai từ.",
+        "evidence": "One minute before the hold expires, the form will show a reminder within the page."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "On which floor will the release first be available? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the fourth floor",
+        "explanation": "Đợt thử đầu tiên dành cho tầng bốn; đáp án gồm ba từ.",
+        "evidence": "The release will first be available to staff on the fourth floor for one week."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains how the application handles hold status after interrupted use?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E nói ứng dụng sẽ yêu cầu trạng thái giữ chỗ hiện tại khi trang được dùng lại.",
+        "evidence": "The application will request the current hold status at that point."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes removing the countdown while retaining other improvements?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nêu phương án bỏ bộ đếm nhưng giữ thông báo rõ hơn và dữ liệu cuộc họp.",
+        "evidence": "If the countdown creates significant confusion, the team can remove that display while keeping the clearer expiry message and preserved meeting details."
+      }
+    ]
+  },
+  {
+    "id": "reading-048",
+    "title": "Training procedure: allocating places on a shared evening course",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Quy trình phân bổ chỗ học buổi tối giúp nhân viên hiểu điều kiện đăng ký, cách chọn người tham gia, danh sách chờ và trách nhiệm chia sẻ kiến thức sau khóa học.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Brightside Services has purchased twelve places on an evening course about presenting project information clearly. The course is open to employees from all departments and runs on four Thursdays next month. Interest is already higher than the number of available places, so the learning team has prepared this procedure. Its purpose is to make selection understandable and help the places go to people who can use the learning soon. Applying does not guarantee a place, but employees who are not selected will be told what other options are available."
+      },
+      {
+        "label": "B",
+        "text": "Before applying, check all four dates and discuss attendance with your manager. The sessions begin at six and finish at eight, so travel and personal commitments may affect whether the course is practical for you. The company will pay the course fee, but participation is voluntary. Managers should not nominate someone without first discussing the schedule with them. Employees who already know they will miss two sessions should consider a later course rather than apply for a place they cannot fully use. The provider builds later activities on practice completed in earlier sessions."
+      },
+      {
+        "label": "C",
+        "text": "The application form asks for one example of a presentation task you expect to handle in the next three months. This might be explaining a project delay, reporting survey results, or proposing a change to a team process. Applicants do not need to write an impressive personal statement. A clear description of the task and the skill they want to improve is more useful. The learning team will use this information to understand practical need, rather than assuming that employees with senior job titles automatically have the strongest reason to attend."
+      },
+      {
+        "label": "D",
+        "text": "Applications close at noon on Friday. The learning team will review them together, looking at upcoming use, availability for the full course, and a reasonable spread across departments. It will not allocate all places simply in the order applications arrive. Someone on a customer visit may have less opportunity to complete the form immediately than a colleague working at a desk. If two applicants have equally strong needs and availability, the team will use a random draw for the final place and explain that decision in the outcome message."
+      },
+      {
+        "label": "E",
+        "text": "Selected employees will receive an offer on Tuesday and must confirm by Thursday afternoon. Unconfirmed places will be offered to people on the waiting list. The waiting list is not a judgement that someone's development is unimportant; it reflects the limited number of places in this particular course. If you accept and later discover that you cannot attend, tell the learning team promptly. Do not give your place directly to a colleague. The provider needs the final participant list, and the learning team must keep the waiting-list process consistent."
+      },
+      {
+        "label": "F",
+        "text": "Participants should bring a short example of project information to the first session. Use material that can be shared appropriately in the course group, and remove customer names or private business figures where necessary. An invented example based on a familiar task is acceptable. The course is about how information is organised and explained, so a realistic practice example does not need to contain actual company data. If you are unsure whether a document is suitable, ask your manager before sending it to the provider or displaying it during an activity."
+      },
+      {
+        "label": "G",
+        "text": "After the course, each participant will arrange a brief practice presentation with a colleague or manager. This should happen within two weeks of the final session. The colleague will give feedback on whether the main point, supporting details, and requested action are clear. Participants will also add one useful technique to a shared learning note. They are not expected to reproduce the provider's whole course for everyone else. A small example of something they have tried successfully will be more useful than a long list of ideas that they have not yet used."
+      },
+      {
+        "label": "H",
+        "text": "The learning team will review demand after the first course ends. If many suitable applicants remain on the waiting list, it will discuss another group with the provider. Employees who cannot attend evenings can register interest in a daytime option, although no date has been agreed. The review will consider both attendance and whether participants used the skills in their work. Filling every seat is only one part of success. The longer-term aim is clearer project communication, with learning opportunities that fit different roles and realistic personal schedules."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "allocate",
+        "meaning": "phân bổ"
+      },
+      {
+        "term": "voluntary",
+        "meaning": "tự nguyện"
+      },
+      {
+        "term": "nominate",
+        "meaning": "đề cử"
+      },
+      {
+        "term": "random draw",
+        "meaning": "bốc thăm ngẫu nhiên"
+      },
+      {
+        "term": "waiting list",
+        "meaning": "danh sách chờ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why has the learning team created a selection procedure?",
+        "options": [
+          "More employees are interested than there are available places",
+          "The provider has cancelled the evening sessions",
+          "Only senior employees are allowed to apply",
+          "Managers must attend before other staff"
+        ],
+        "answer": "More employees are interested than there are available places",
+        "explanation": "Số người quan tâm vượt quá số chỗ được mua.",
+        "evidence": "Interest is already higher than the number of available places, so the learning team has prepared this procedure."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What information is most useful in an application?",
+        "options": [
+          "A clear task example and the skill the applicant wants to improve",
+          "A long description of every previous job",
+          "The applicant's preferred course provider",
+          "A promise to teach the entire course afterwards"
+        ],
+        "answer": "A clear task example and the skill the applicant wants to improve",
+        "explanation": "Mô tả rõ nhiệm vụ và kỹ năng cần cải thiện hữu ích hơn lời giới thiệu gây ấn tượng.",
+        "evidence": "A clear description of the task and the skill they want to improve is more useful."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why are places not assigned purely by application order?",
+        "options": [
+          "Employees may have unequal opportunities to apply immediately",
+          "The application form cannot record submission time",
+          "The provider selects only late applicants",
+          "Every department must receive exactly two places"
+        ],
+        "answer": "Employees may have unequal opportunities to apply immediately",
+        "explanation": "Người đang đi gặp khách có thể khó nộp ngay hơn người làm tại bàn.",
+        "evidence": "Someone on a customer visit may have less opportunity to complete the form immediately than a colleague working at a desk."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The company pays the fee, but employees choose whether to participate.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Công ty trả phí nhưng việc tham gia là tự nguyện.",
+        "evidence": "The company will pay the course fee, but participation is voluntary."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "An employee who cannot attend may transfer their place directly to a colleague.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Quy trình cấm tự chuyển chỗ trực tiếp cho đồng nghiệp.",
+        "evidence": "Do not give your place directly to a colleague."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The course instructor has worked at Brightside Services before.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu chủ đề và số chỗ học nhưng không cho biết lịch sử làm việc của giảng viên.",
+        "evidence": "Brightside Services has purchased twelve places on an evening course about presenting project information clearly."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What method will decide the final place between equally suitable applicants? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "a random draw",
+        "explanation": "Nhóm sẽ bốc thăm nếu hai người có nhu cầu và khả năng tham gia ngang nhau; đáp án gồm ba từ.",
+        "evidence": "If two applicants have equally strong needs and availability, the team will use a random draw for the final place and explain that decision in the outcome message."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Where will participants add a useful technique after the course? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "shared learning note",
+        "explanation": "Kỹ thuật được thêm vào ghi chú học tập chung; đáp án gồm ba từ.",
+        "evidence": "Participants will also add one useful technique to a shared learning note."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph allows participants to use an invented example instead of actual company data?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F cho phép dùng ví dụ tự tạo dựa trên nhiệm vụ quen thuộc.",
+        "evidence": "An invented example based on a familiar task is acceptable."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph mentions a possible alternative for employees who cannot attend evenings?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H cho phép đăng ký quan tâm đến khóa ban ngày, dù chưa có lịch.",
+        "evidence": "Employees who cannot attend evenings can register interest in a daytime option, although no date has been agreed."
+      }
+    ]
+  },
+  {
+    "id": "reading-049",
+    "title": "Library notice: collecting reserved books during a room move",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Thư viện chuyển quầy nhận sách đặt trước sang phòng tạm, giải thích cách tìm sách, điều kiện nhờ người khác nhận và những thay đổi về thông báo trong thời gian chuyển phòng.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Eastbank Library is moving its reserved-book collection area while the front reading room is redecorated. From Monday, books that readers have requested will be available in the small room beside the garden entrance. The main entrance will remain open, and the lending desk will stay in its usual position. This temporary arrangement is expected to last three weeks. The library has prepared this notice because the new collection room is less visible from the entrance, and readers may otherwise assume that their requested books have not arrived."
+      },
+      {
+        "label": "B",
+        "text": "Please wait for a ready-to-collect message before visiting for a reserved book. A request confirmation only means that your request has entered the queue; it does not mean that a copy is already waiting for you. The ready message will include the collection deadline and the location of the temporary room. Readers who receive paper notices will receive the same information by post. If you have recently changed your email or postal address, ask the lending desk to update your account so that collection information reaches the right place."
+      },
+      {
+        "label": "C",
+        "text": "In the temporary room, books will be arranged by collection code rather than by readers' full names. Your code appears in the ready message and remains the same for all books collected during that visit. Bring the message on your phone or write the code down before coming. If you cannot find the code, staff can look it up after checking your library card. Please do not search through other readers' books. The room is small, and keeping the shelves in order will help everyone find the correct items without a long wait."
+      },
+      {
+        "label": "D",
+        "text": "After finding your books, take them to the lending desk or a self-service machine to complete the loan. Picking up a book from the reservation shelf does not check it out. The usual loan period begins when the loan is recorded, not when the ready message was sent. If a self-service machine cannot read an item, take it to the desk rather than trying several machines. Some items need staff assistance, and repeated attempts may simply make your visit longer without solving the reason for the message."
+      },
+      {
+        "label": "E",
+        "text": "Reserved books will normally be held for seven calendar days after the ready message. If you cannot visit before the deadline, contact the library before that period ends. Staff may be able to extend collection by two days if no other reader is waiting for the same copy. An extension is not automatic. During the room move, shelf space is limited, so books that are not collected or extended will return to general circulation. You may request them again, but there could be another wait if someone else has already asked for them."
+      },
+      {
+        "label": "F",
+        "text": "A friend or family member may collect on your behalf if they bring your library card and collection code. They should tell the lending desk that they are collecting for someone else. Please consider whether you are comfortable giving them your card before choosing this option. Staff will not hand over reserved books based only on a photograph of a ready message. If you cannot provide the card, contact the library to discuss another arrangement. Large-print books and ordinary editions follow the same collection procedure during the temporary move."
+      },
+      {
+        "label": "G",
+        "text": "The garden entrance has a short outdoor path, but readers do not have to use it to reach the temporary room. There is also an indoor route from the main entrance, marked with yellow signs. Ask at the lending desk if you need help carrying several books or reaching a shelf. Staff can bring reserved items to the desk when needed. The library has chosen this room because it can be reached from inside the building, even though the collection shelves cannot be seen immediately when readers enter."
+      },
+      {
+        "label": "H",
+        "text": "On the day the collection area moves back, there may be a brief delay in ready messages while staff transfer books and check their locations. Books already marked as ready will still be available, and their collection deadlines will not be shortened. The library will announce the return date on its website and on the entrance noticeboard. Until then, use the location stated in your latest ready message. If anything is unclear, telephone before making a special journey, especially if you are travelling only to collect one requested item."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "reserved book",
+        "meaning": "sách đã được đặt trước"
+      },
+      {
+        "term": "collection deadline",
+        "meaning": "hạn cuối đến nhận"
+      },
+      {
+        "term": "check out",
+        "meaning": "làm thủ tục mượn sách"
+      },
+      {
+        "term": "extension",
+        "meaning": "việc gia hạn"
+      },
+      {
+        "term": "on your behalf",
+        "meaning": "thay mặt bạn"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Where will reserved books be collected from Monday?",
+        "options": [
+          "The small room beside the garden entrance",
+          "The front reading room",
+          "The outdoor path",
+          "The staff office behind the lending desk"
+        ],
+        "answer": "The small room beside the garden entrance",
+        "explanation": "Sách đặt trước được chuyển sang phòng nhỏ cạnh lối vào phía vườn.",
+        "evidence": "From Monday, books that readers have requested will be available in the small room beside the garden entrance."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What does a request confirmation mean?",
+        "options": [
+          "The request has entered the queue",
+          "The book has been checked out",
+          "The collection deadline has passed",
+          "A copy is definitely on the collection shelf"
+        ],
+        "answer": "The request has entered the queue",
+        "explanation": "Xác nhận yêu cầu chỉ cho biết yêu cầu đã vào hàng chờ.",
+        "evidence": "A request confirmation only means that your request has entered the queue; it does not mean that a copy is already waiting for you."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "When may staff extend the collection period by two days?",
+        "options": [
+          "When no other reader is waiting for that copy",
+          "Whenever the reader makes a new request",
+          "Only after the book returns to general circulation",
+          "When the reader tries several self-service machines"
+        ],
+        "answer": "When no other reader is waiting for that copy",
+        "explanation": "Việc gia hạn có thể được chấp nhận nếu không có người khác chờ cùng bản sách.",
+        "evidence": "Staff may be able to extend collection by two days if no other reader is waiting for the same copy."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Readers can reach the temporary collection room from inside the building.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Có lối đi trong nhà từ cửa chính đến phòng tạm.",
+        "evidence": "There is also an indoor route from the main entrance, marked with yellow signs."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Taking a book from the reservation shelf completes the loan.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Lấy sách khỏi kệ chưa hoàn thành thủ tục mượn.",
+        "evidence": "Picking up a book from the reservation shelf does not check it out."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The front reading room will be painted blue.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu việc trang trí lại phòng đọc nhưng không cho biết màu sơn.",
+        "evidence": "Eastbank Library is moving its reserved-book collection area while the front reading room is redecorated."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How long will reserved books normally be held after the ready message? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "seven calendar days",
+        "explanation": "Thời gian giữ thông thường là bảy ngày theo lịch; đáp án gồm ba từ.",
+        "evidence": "Reserved books will normally be held for seven calendar days after the ready message."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What kind of signs mark the indoor route? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "yellow signs",
+        "explanation": "Lối đi được đánh dấu bằng biển màu vàng; đáp án gồm hai từ.",
+        "evidence": "There is also an indoor route from the main entrance, marked with yellow signs."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains what another person must bring to collect books for a reader?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F yêu cầu người nhận thay mang thẻ thư viện và mã nhận.",
+        "evidence": "A friend or family member may collect on your behalf if they bring your library card and collection code."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes a possible notification delay when the collection area returns?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nói thông báo có thể chậm trong lúc chuyển và kiểm tra vị trí sách.",
+        "evidence": "On the day the collection area moves back, there may be a brief delay in ready messages while staff transfer books and check their locations."
+      }
+    ]
+  },
+  {
+    "id": "reading-050",
+    "title": "Support conversation: receiving alerts after leaving a project",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Cuộc trao đổi hỗ trợ làm rõ vì sao người dùng vẫn nhận thông báo sau khi rời dự án: họ còn theo dõi một số công việc riêng lẻ và cần điều chỉnh phạm vi đăng ký.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "On Wednesday, Daniel contacted support for the project application used by his design company. He had left the Market Refresh project the previous week, but email alerts about its tasks were still arriving. Daniel was now working on another account and wanted fewer interruptions. He had already opened his profile and confirmed that his general email setting was 'daily summary'. Because several messages had arrived separately that morning, he wondered whether the setting had failed. He attached one example message and asked support to explain what he should change."
+      },
+      {
+        "label": "B",
+        "text": "Support specialist Hanh checked the example and found that it was a direct task-following alert, rather than part of the project summary. In this application, project membership and following an individual task are separate choices. Leaving a project removes its general updates, but does not automatically remove tasks that the user has chosen to follow. Daniel had followed three tasks while helping their owners prepare design files. Those task subscriptions remained active after he left the project, which explained why some messages continued despite the change to his membership."
+      },
+      {
+        "label": "C",
+        "text": "Hanh also explained the scope of the profile setting. The daily-summary preference applies to general project activity, while direct task alerts use the delivery preference saved with each followed task. Daniel's three tasks were set to send immediate email. This arrangement allowed users to keep important task alerts separate from routine updates, but the account page did not explain the distinction clearly. Hanh acknowledged that Daniel's interpretation was reasonable. She sent him a link to his followed-task list so that he could review the remaining subscriptions in one place."
+      },
+      {
+        "label": "D",
+        "text": "Daniel did not want to stop every alert immediately. One of the three tasks concerned a final image that he still needed to approve, although he no longer attended the project's regular meetings. Hanh suggested removing the other two subscriptions and changing the remaining task to a daily task summary. Daniel accepted that approach. It reduced the interruptions while preserving information about his last unfinished responsibility. Hanh asked him to make the changes himself so he could recognise the controls later, and stayed in the conversation while he checked the list."
+      },
+      {
+        "label": "E",
+        "text": "After Daniel saved the new preferences, Hanh explained that an email already waiting to be sent might still arrive. The preference change affected future alert creation, but the application did not remove messages already prepared for delivery. She advised him to compare the time of any later message with the time of the change. If a new immediate alert was created afterwards, support would investigate it. This gave Daniel a practical way to distinguish an expected final message from evidence that the setting was still not being applied."
+      },
+      {
+        "label": "F",
+        "text": "Daniel then asked whether he would lose access to the final image if he stopped following its task. Hanh clarified that following controls notifications, while access depends on the permissions assigned to the task and project. Removing a subscription does not itself decide whether a person can open the task. However, she did not promise that Daniel would retain access indefinitely after leaving the project. She recommended asking the project owner to confirm the arrangement for the remaining approval. The support team could explain the controls, but could not decide who should continue seeing the work."
+      },
+      {
+        "label": "G",
+        "text": "The next day, Daniel reported that no new immediate alerts had appeared after the change. He had received one daily task summary containing the image-approval update, which was what he wanted. The project owner also confirmed that Daniel could complete that approval before his access was reviewed. Hanh closed the support request with a short record of the two removed subscriptions and the one changed preference. She included the distinction between project updates and task alerts so another support specialist could understand the outcome without reading the entire conversation."
+      },
+      {
+        "label": "H",
+        "text": "Hanh also sent a product note to the application team. It proposed showing the number of followed tasks when someone leaves a project, together with a link to review them. The note did not recommend removing all subscriptions automatically, because Daniel's remaining approval showed why some users might need them. A designer planned to test a short explanation with several colleagues before choosing final wording. The immediate issue was resolved through existing controls, while the proposed improvement aimed to make those controls easier to understand at the moment users needed them."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "subscription",
+        "meaning": "đăng ký theo dõi"
+      },
+      {
+        "term": "scope",
+        "meaning": "phạm vi áp dụng"
+      },
+      {
+        "term": "preference",
+        "meaning": "tùy chọn cá nhân"
+      },
+      {
+        "term": "indefinitely",
+        "meaning": "không có thời hạn xác định"
+      },
+      {
+        "term": "permission",
+        "meaning": "quyền truy cập hoặc quyền thực hiện"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why did Daniel continue receiving some alerts after leaving the project?",
+        "options": [
+          "His individual task subscriptions were still active",
+          "His project membership had never been removed",
+          "The daily summary had been deleted",
+          "Another account was using his email address"
+        ],
+        "answer": "His individual task subscriptions were still active",
+        "explanation": "Việc rời dự án không tự xóa những đăng ký theo dõi công việc riêng lẻ.",
+        "evidence": "Those task subscriptions remained active after he left the project, which explained why some messages continued despite the change to his membership."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why did Daniel keep one task subscription?",
+        "options": [
+          "He still needed to approve a final image",
+          "He wanted to return to all regular meetings",
+          "Support required him to keep three subscriptions",
+          "The task could not be removed from his list"
+        ],
+        "answer": "He still needed to approve a final image",
+        "explanation": "Daniel còn trách nhiệm duyệt một hình ảnh cuối cùng.",
+        "evidence": "One of the three tasks concerned a final image that he still needed to approve, although he no longer attended the project's regular meetings."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What product improvement did Hanh propose?",
+        "options": [
+          "Show followed-task information when a user leaves a project",
+          "Automatically remove every subscription from every account",
+          "Combine access permissions with email settings",
+          "Require users to contact support before leaving any project"
+        ],
+        "answer": "Show followed-task information when a user leaves a project",
+        "explanation": "Đề xuất hiển thị số công việc đang theo dõi và liên kết kiểm tra khi rời dự án.",
+        "evidence": "It proposed showing the number of followed tasks when someone leaves a project, together with a link to review them."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Direct task alerts use a preference saved with each followed task.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Tùy chọn của từng công việc quyết định cách gửi thông báo trực tiếp.",
+        "evidence": "The daily-summary preference applies to general project activity, while direct task alerts use the delivery preference saved with each followed task."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The application removes all prepared emails when a user changes an alert preference.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài nói các email đã chuẩn bị để gửi không bị xóa bởi thay đổi này.",
+        "evidence": "The preference change affected future alert creation, but the application did not remove messages already prepared for delivery."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Daniel contacted support through a mobile phone.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu thời điểm và mục đích liên hệ nhưng không cho biết thiết bị Daniel sử dụng.",
+        "evidence": "On Wednesday, Daniel contacted support for the project application used by his design company."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What list did Hanh link to so Daniel could review his subscriptions? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "followed-task list",
+        "explanation": "Liên kết dẫn đến danh sách công việc đang theo dõi; đáp án gồm hai từ.",
+        "evidence": "She sent him a link to his followed-task list so that he could review the remaining subscriptions in one place."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Who should confirm Daniel's arrangement for the remaining approval? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the project owner",
+        "explanation": "Chủ dự án cần xác nhận việc duyệt còn lại; đáp án gồm ba từ.",
+        "evidence": "She recommended asking the project owner to confirm the arrangement for the remaining approval."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains the difference between notification controls and access permissions?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F phân biệt việc theo dõi để nhận thông báo với quyền mở công việc.",
+        "evidence": "Hanh clarified that following controls notifications, while access depends on the permissions assigned to the task and project."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph confirms that the revised alert arrangement produced the result Daniel wanted?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G ghi nhận Daniel nhận bản tổng hợp đúng như mong muốn.",
+        "evidence": "He had received one daily task summary containing the image-approval update, which was what he wanted."
+      }
+    ]
+  }
+]
