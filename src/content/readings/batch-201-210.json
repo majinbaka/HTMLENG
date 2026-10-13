@@ -1,0 +1,2012 @@
+[
+  {
+    "id": "reading-201",
+    "title": "Incident review: a large export blocked smaller requests",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Một yêu cầu xuất dữ liệu lớn làm các yêu cầu nhỏ phải chờ lâu. Nhóm phân tích cách xếp hàng, chọn giải pháp chia công việc thành từng phần và kiểm tra tính công bằng trước khi triển khai.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "On Tuesday morning, the customer operations team reported that several small exports were taking much longer than usual. One customer wanted a list of twelve recent deliveries, but the download was still unavailable after twenty minutes. At the same time, a regional manager had requested a full year of delivery records. Both requests showed the status “Preparing,” which gave users no clear explanation of the difference. Support initially suspected a general slowdown because the complaints came from different accounts. The engineers opened an incident review and compared the waiting requests before changing anything."
+      },
+      {
+        "label": "B",
+        "text": "The export service used a single waiting line, with requests processed in the order they arrived. This arrangement had worked reasonably well when most exports covered a week or a month. However, the yearly export had reached the front of the line just before the smaller requests arrived. The yearly export occupied the only available worker for forty-seven minutes. During that period, the other requests remained waiting even though some would normally finish in seconds. The service was still accepting requests, so the ordinary availability check did not identify the customer problem."
+      },
+      {
+        "label": "C",
+        "text": "The engineer on duty considered cancelling the large export to clear the line. Support advised against this immediate action because the regional manager needed the file for a meeting that afternoon and had already waited a long time. Instead, the team contacted the manager, explained the delay, and allowed the export to finish. Support also told affected customers that their smaller files had not been lost. Nobody was asked to submit the same request again. Repeated submissions would have added more work to the line without improving anyone's position."
+      },
+      {
+        "label": "D",
+        "text": "The review compared two possible changes. One was to reserve a separate worker for exports estimated to be small. That could improve waiting times quickly, but the team did not trust the current size estimate for every account. The other was to divide large exports into sections and allow another request to run between sections. This would require more development because the service would need to remember its progress. The team selected the second approach because it could share processing time without depending entirely on an early estimate of export size."
+      },
+      {
+        "label": "E",
+        "text": "Under the proposed design, a large request would prepare one section, save its progress, and then return to the waiting line. Its sections would remain parts of one final file, rather than becoming separate downloads for the customer. The exported records would come from a fixed snapshot created when the request began. This decision mattered because delivery records could change while the file was being prepared. Without a consistent source, a later section might describe a different moment from an earlier one. The proposal required checking this behaviour before introducing the new scheduling rules."
+      },
+      {
+        "label": "F",
+        "text": "The test plan included a mixture of large and small requests from several accounts. Engineers would measure total completion time as well as the time before each request first received processing. A successful result would not simply make the smallest files faster while leaving a large request waiting indefinitely. The large export still needed regular progress. The team also planned to interrupt a test worker after a completed section and check that processing continued from the saved point. An interrupted request should not add the same records twice to its final file."
+      },
+      {
+        "label": "G",
+        "text": "Support asked for a clearer message while the engineering change was being prepared. The existing status would remain, but a short explanation would say whether a request was waiting or actively building its file. The message would avoid giving a precise finish time because the team did not yet have a reliable way to calculate one. Customers could leave the page and return later without losing their request. Support would receive a temporary view of waiting times so that staff could distinguish a normal wait from a request that needed investigation."
+      },
+      {
+        "label": "H",
+        "text": "The incident ended when the delayed files became available, but the improvement work remained open. The team assigned the scheduling change to Minh and the customer message to Clara. They agreed to review test results on Friday before choosing a release date. For future incidents, the service dashboard would include the age of the oldest waiting request, alongside its usual availability information. The review concluded that accepting new work was only part of providing a useful service. Customers also needed reasonable progress after their requests had been accepted into the line."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "waiting line",
+        "meaning": "hàng đợi các yêu cầu cần được xử lý"
+      },
+      {
+        "term": "occupied",
+        "meaning": "chiếm dụng"
+      },
+      {
+        "term": "snapshot",
+        "meaning": "bản ghi dữ liệu tại một thời điểm cố định"
+      },
+      {
+        "term": "indefinitely",
+        "meaning": "vô thời hạn, không biết khi nào kết thúc"
+      },
+      {
+        "term": "availability",
+        "meaning": "khả năng hoạt động và tiếp nhận yêu cầu của dịch vụ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What directly prevented the small exports from being processed?",
+        "options": [
+          "A. Customers had submitted invalid delivery dates.",
+          "B. A yearly export was using the only worker.",
+          "C. Support had stopped accepting new requests.",
+          "D. The download page had lost the requests."
+        ],
+        "answer": "B. A yearly export was using the only worker.",
+        "explanation": "Yêu cầu xuất dữ liệu cả năm chiếm worker duy nhất trong 47 phút.",
+        "evidence": "The yearly export occupied the only available worker for forty-seven minutes."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why did the team choose to divide large exports into sections?",
+        "options": [
+          "A. It would remove the need to save progress.",
+          "B. It would produce a different download for each section.",
+          "C. It could share processing time without relying entirely on a size estimate.",
+          "D. It would guarantee that every export finished in seconds."
+        ],
+        "answer": "C. It could share processing time without relying entirely on a size estimate.",
+        "explanation": "Phương án này cho phép chia sẻ thời gian xử lý mà không phụ thuộc hoàn toàn vào ước lượng kích thước ban đầu.",
+        "evidence": "The team selected the second approach because it could share processing time without depending entirely on an early estimate of export size."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What would the revised dashboard help the team observe?",
+        "options": [
+          "A. How long the oldest request had been waiting.",
+          "B. Which customers had the fastest computers.",
+          "C. How many meetings customers attended.",
+          "D. Which downloaded files customers had opened."
+        ],
+        "answer": "A. How long the oldest request had been waiting.",
+        "explanation": "Dashboard sẽ hiển thị thời gian chờ của yêu cầu đang chờ lâu nhất.",
+        "evidence": "For future incidents, the service dashboard would include the age of the oldest waiting request, alongside its usual availability information."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Support told customers to submit their delayed requests again.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài nói rõ không ai được yêu cầu gửi lại cùng một yêu cầu.",
+        "evidence": "Nobody was asked to submit the same request again."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Customers could leave the page without losing their export request.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Khách hàng có thể rời trang rồi quay lại mà yêu cầu vẫn được giữ.",
+        "evidence": "Customers could leave the page and return later without losing their request."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Minh had previously developed the original export service.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Câu này chỉ giao thay đổi cho Minh; không cho biết ai phát triển dịch vụ ban đầu.",
+        "evidence": "The team assigned the scheduling change to Minh and the customer message to Clara."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What fixed source would the exported records use? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "a fixed snapshot",
+        "explanation": "Bản snapshot cố định giúp các phần của tệp phản ánh cùng một thời điểm.",
+        "evidence": "The exported records would come from a fixed snapshot created when the request began."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "On which day would the team review test results? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Friday",
+        "explanation": "Nhóm sẽ xem kết quả kiểm thử vào thứ Sáu trước khi chọn ngày phát hành.",
+        "evidence": "They agreed to review test results on Friday before choosing a release date."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes checking recovery after a worker is interrupted?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F mô tả việc ngắt worker rồi kiểm tra khả năng tiếp tục từ điểm đã lưu.",
+        "evidence": "The team also planned to interrupt a test worker after a completed section and check that processing continued from the saved point."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why an ordinary availability check missed the problem?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "B",
+        "explanation": "Đoạn B cho biết dịch vụ vẫn nhận yêu cầu nên kiểm tra khả năng hoạt động không phát hiện vấn đề chờ lâu.",
+        "evidence": "The service was still accepting requests, so the ordinary availability check did not identify the customer problem."
+      }
+    ]
+  },
+  {
+    "id": "reading-202",
+    "title": "Workshop procedure: agreeing access to a recorded session",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Một nhóm tổ chức workshop thống nhất nội dung nào được ghi hình, ai được xem và cách xử lý câu hỏi thực tế. Quy trình cân bằng nhu cầu học lại với việc tránh chia sẻ thông tin ngoài phạm vi đã thống nhất.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The learning team is arranging a workshop for staff who write instructions for customers. Several colleagues work different shifts and cannot attend the live session, so the organiser, Mai, has agreed to provide a recording. During an earlier workshop, however, a useful recording included an unexpected discussion about a particular customer's difficulties. Editing that section delayed publication for a week. This procedure sets out a clearer plan for the next event. It gives the presenter, participants, and editor the same understanding of what will be recorded and where the finished video will be available."
+      },
+      {
+        "label": "B",
+        "text": "The workshop will have two parts, separated by a short break. The first part will contain prepared examples and a demonstration of the writing checklist. The prepared demonstration will be recorded, but the open discussion will not. This arrangement allows participants to bring real questions to the second part without expecting every comment to appear in a video. Mai will explain the arrangement in the invitation and repeat it at the beginning. A notice beside the meeting link will also identify the recorded section, so late arrivals can understand the situation."
+      },
+      {
+        "label": "C",
+        "text": "The presenter should send the demonstration materials to Mai three working days before the workshop. Mai will check that the examples use invented company names and contain no contact details from actual customer messages. The aim is to keep the teaching point clear while making the examples suitable for later viewing. If replacing a detail makes an example difficult to understand, the presenter should explain the underlying problem in a separate sentence. Simply covering a name with a coloured box is not enough if another part of the slide still identifies the customer."
+      },
+      {
+        "label": "D",
+        "text": "Questions during the recorded demonstration should focus on the prepared material. The moderator will collect questions through the chat panel and choose those that help explain the example on screen. A question about a live customer case will be held for the open discussion. The moderator should tell the participant when that question will be considered, rather than silently ignoring it. If an unexpected customer detail is spoken aloud, Mai will note the time for the editor. The presenter can then continue, unless the detail needs an immediate correction to prevent confusion."
+      },
+      {
+        "label": "E",
+        "text": "After the demonstration, Mai will stop the recording and confirm that it has stopped before inviting wider discussion. Participants may then describe difficult writing situations, although they should still avoid unnecessary personal details. The presenter will keep a short list of general lessons from this conversation. These lessons may become a written follow-up, using new examples instead of repeating individual cases. Staff who missed the live event will therefore receive the main practical advice. They will not receive a complete account of everything colleagues said during the discussion."
+      },
+      {
+        "label": "F",
+        "text": "The editor will prepare a draft video with captions and send it to the presenter for a factual check. The presenter should check whether the spoken explanation still makes sense after any section has been removed. Mai will review the captions, particularly names of tools and steps in the checklist. Captions that sound natural but name the wrong command can mislead someone following the demonstration. The draft is not ready for general viewing at this stage. Both reviewers must record their comments in the review document so the editor has one clear list of changes."
+      },
+      {
+        "label": "G",
+        "text": "The finished recording will be available to staff through the internal learning page for six months. The learning page will include the recording date and a link to the current writing checklist. This matters because the checklist may change while the video remains useful as an example. Staff should use the linked checklist for current work. External trainers will receive the written summary instead of access to the video. If someone requests wider sharing, Mai will review the request separately with the presenter; staff should not forward the viewing link on their own."
+      },
+      {
+        "label": "H",
+        "text": "One week after publication, Mai will ask viewers whether the recording helped them complete a real writing task. The feedback form will ask which explanation was useful and where another example would help. It will not treat the number of video views as proof that everyone understood the material. If several viewers identify the same unclear step, the team will add a short note beside the recording rather than immediately organise another full workshop. Mai will also record how long editing took, so the next organiser can plan a realistic publication date."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "moderator",
+        "meaning": "người điều phối buổi trao đổi"
+      },
+      {
+        "term": "underlying problem",
+        "meaning": "vấn đề cốt lõi phía sau một tình huống"
+      },
+      {
+        "term": "captions",
+        "meaning": "phụ đề hiển thị nội dung lời nói"
+      },
+      {
+        "term": "factual check",
+        "meaning": "việc kiểm tra tính chính xác của thông tin"
+      },
+      {
+        "term": "forward",
+        "meaning": "chuyển tiếp cho người khác"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why was an earlier recording published late?",
+        "options": [
+          "A. The presenter had forgotten the meeting link.",
+          "B. A customer discussion needed editing.",
+          "C. Staff requested a longer demonstration.",
+          "D. The learning page was unavailable."
+        ],
+        "answer": "B. A customer discussion needed editing.",
+        "explanation": "Phần trao đổi ngoài dự kiến về khách hàng khiến video phải chỉnh sửa và chậm một tuần.",
+        "evidence": "Editing that section delayed publication for a week."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What should happen to a question about a live customer case?",
+        "options": [
+          "A. It should be saved for the open discussion.",
+          "B. It should be removed without explanation.",
+          "C. It should replace the prepared demonstration.",
+          "D. It should be sent to all video viewers."
+        ],
+        "answer": "A. It should be saved for the open discussion.",
+        "explanation": "Câu hỏi về trường hợp khách hàng đang diễn ra được giữ lại cho phần trao đổi không ghi hình.",
+        "evidence": "A question about a live customer case will be held for the open discussion."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What will the team do if several viewers find the same step unclear?",
+        "options": [
+          "A. Delete the entire learning page.",
+          "B. Require everyone to attend another workshop.",
+          "C. Remove the current checklist.",
+          "D. Add a short note beside the recording."
+        ],
+        "answer": "D. Add a short note beside the recording.",
+        "explanation": "Nhóm sẽ bổ sung ghi chú ngắn cạnh video để làm rõ bước đó.",
+        "evidence": "If several viewers identify the same unclear step, the team will add a short note beside the recording rather than immediately organise another full workshop."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The open discussion will be included in the recording.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Chỉ phần trình bày đã chuẩn bị được ghi hình; phần thảo luận mở không được ghi.",
+        "evidence": "The prepared demonstration will be recorded, but the open discussion will not."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Staff should use the linked checklist when doing current work.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài trực tiếp yêu cầu dùng checklist được liên kết cho công việc hiện tại.",
+        "evidence": "Staff should use the linked checklist for current work."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The editor is a permanent member of the learning team.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu nhiệm vụ của người biên tập nhưng không nói người đó là nhân viên cố định của nhóm.",
+        "evidence": "The editor will prepare a draft video with captions and send it to the presenter for a factual check."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How long will staff have access to the finished recording? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "six months",
+        "explanation": "Video được cung cấp trên trang học nội bộ trong sáu tháng.",
+        "evidence": "The finished recording will be available to staff through the internal learning page for six months."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What will external trainers receive? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the written summary",
+        "explanation": "Giảng viên bên ngoài nhận bản tóm tắt bằng văn bản thay vì quyền xem video.",
+        "evidence": "External trainers will receive the written summary instead of access to the video."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why hiding a customer's name may be insufficient?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C cảnh báo rằng chi tiết khác trên slide vẫn có thể nhận diện khách hàng.",
+        "evidence": "Simply covering a name with a coloured box is not enough if another part of the slide still identifies the customer."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains how general advice from the unrecorded discussion can reach absent staff?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E mô tả việc chuyển bài học chung thành tài liệu sau buổi học bằng các ví dụ mới.",
+        "evidence": "These lessons may become a written follow-up, using new examples instead of repeating individual cases."
+      }
+    ]
+  },
+  {
+    "id": "reading-203",
+    "title": "Alteration estimate: fitting old curtains to a different room",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Một khách hàng muốn dùng lại rèm cũ trong phòng mới. Cửa hàng kiểm tra kích thước, giải thích các lựa chọn về chiều rộng và lớp lót, rồi đề nghị thử treo trước khi cắt.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Dear Ms Linh, thank you for bringing your blue curtains to our alteration counter on Saturday. You explained that you recently moved and would like to use them in the sitting room of your new flat. We have examined both panels and compared them with the measurements you supplied. The fabric is generally in good condition, and the colour difference between the panels is small. This estimate explains what we can change, what will remain visible, and which measurements we need you to confirm before we begin the work."
+      },
+      {
+        "label": "B",
+        "text": "Your new curtain rail is wider than the old one, while the distance from the rail to the floor is shorter. Shortening the panels is straightforward, but making them wider involves a choice. The existing curtains can cover the window when pulled flat, although they will have fewer folds than before. If you prefer a fuller appearance, we could add a narrow strip of contrasting fabric along the inside edge of each panel. We cannot supply an exact match for the original blue material, so any added strip would be visible."
+      },
+      {
+        "label": "C",
+        "text": "Before choosing either option, we suggest hanging the curtains temporarily in the new room. Stand back from the window and check both their appearance and how easily they close. A curtain can look wide enough when open but leave a gap when someone pulls it across quickly. Please also check whether the ends catch on the furniture beside the window. The shop can lend you a set of temporary clips for this trial. Return the clips with the curtains, and tell us whether you want the existing width or the contrasting strips."
+      },
+      {
+        "label": "D",
+        "text": "The final length should be measured from the point where the curtain hangs, not from the top of the rail. Different hooks can change that point by several centimetres. Measure the left side, centre, and right side because the floor may not be completely level. For your room, we suggest leaving a small space below the curtains so they move freely during cleaning. Please write down all three measurements rather than sending only the shortest one. We will discuss any difference before marking the new lower edge on the fabric."
+      },
+      {
+        "label": "E",
+        "text": "The lining has two small tears near the bottom, where it appears to have caught on something. One option is to repair those areas and shorten the lining with the outer fabric. The repaired areas would normally face the window and would not be obvious from inside the room. Replacing both linings would give a more even appearance from outside, but it would cost more and take longer. The outer fabric does not need replacing. We recommend repairing the existing lining if your main aim is to reuse the curtains at a modest cost."
+      },
+      {
+        "label": "F",
+        "text": "Shortening both panels and repairing the lining will cost 680,000 dong, including new thread and pressing. Adding the contrasting strips would increase the total to 980,000 dong. Replacing the lining would be quoted separately after you choose the replacement material. The basic work will take four working days after we receive the confirmed measurements. The strip option will take two additional working days because we must prepare and attach the new edges. These times do not include the period when you are trying the curtains at home or choosing materials."
+      },
+      {
+        "label": "G",
+        "text": "We will keep the cut fabric until you collect the finished curtains. If you would like it for a cushion cover or another small project, please tell us at collection. We cannot promise that the pieces will be large enough for a particular item because the amount removed depends on the final length. Before payment, you can inspect the seams and compare the two panels on our display rail. This check shows whether the panels hang evenly together, although it cannot reproduce the exact shape of your window or floor."
+      },
+      {
+        "label": "H",
+        "text": "To proceed, please return the curtains with your three length measurements and your choice about the width. We will write the agreed work on the collection slip and ask you to check it before leaving the panels with us. No cutting will begin until the measurements and options have been confirmed. If the temporary hanging test shows that the curtains do not suit the room, you may collect them without ordering alterations. The inspection itself is free. We would rather help you make a useful decision than shorten fabric you later decide not to use."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "panel",
+        "meaning": "một tấm rèm"
+      },
+      {
+        "term": "contrasting",
+        "meaning": "có màu hoặc kiểu khác rõ rệt để tạo điểm nhấn"
+      },
+      {
+        "term": "lining",
+        "meaning": "lớp vải lót"
+      },
+      {
+        "term": "seam",
+        "meaning": "đường may nối vải"
+      },
+      {
+        "term": "alterations",
+        "meaning": "các chỉnh sửa về kích thước hoặc kiểu dáng"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is different about the new curtain rail?",
+        "options": [
+          "A. It is wider than the previous rail.",
+          "B. It is made from blue material.",
+          "C. It is closer to the ceiling.",
+          "D. It is too weak for the curtains."
+        ],
+        "answer": "A. It is wider than the previous rail.",
+        "explanation": "Thanh treo mới rộng hơn thanh cũ.",
+        "evidence": "Your new curtain rail is wider than the old one, while the distance from the rail to the floor is shorter."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Which lining option does the shop recommend for keeping the cost modest?",
+        "options": [
+          "A. Remove the lining completely.",
+          "B. Replace the outer fabric.",
+          "C. Repair the existing lining.",
+          "D. Add a third curtain panel."
+        ],
+        "answer": "C. Repair the existing lining.",
+        "explanation": "Cửa hàng khuyên sửa lớp lót hiện có nếu muốn tái sử dụng rèm với chi phí vừa phải.",
+        "evidence": "We recommend repairing the existing lining if your main aim is to reuse the curtains at a modest cost."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What can the shop's display rail help the customer check?",
+        "options": [
+          "A. Whether the room receives enough daylight.",
+          "B. Whether the panels hang evenly together.",
+          "C. Whether the window closes properly.",
+          "D. Whether the floor is completely level."
+        ],
+        "answer": "B. Whether the panels hang evenly together.",
+        "explanation": "Thanh trưng bày giúp kiểm tra hai tấm rèm có treo đều nhau hay không.",
+        "evidence": "This check shows whether the panels hang evenly together, although it cannot reproduce the exact shape of your window or floor."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The shop can provide added fabric that exactly matches the original blue material.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Cửa hàng nói rõ không có vải khớp hoàn toàn với chất liệu xanh ban đầu.",
+        "evidence": "We cannot supply an exact match for the original blue material, so any added strip would be visible."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The customer can decide against alterations after trying the curtains at home.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Nếu thử treo cho thấy rèm không phù hợp, khách có thể lấy rèm về mà không đặt sửa.",
+        "evidence": "If the temporary hanging test shows that the curtains do not suit the room, you may collect them without ordering alterations."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The customer bought the curtains from this shop originally.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài chỉ nói khách mang rèm đến quầy; không cho biết nơi mua rèm ban đầu.",
+        "evidence": "Dear Ms Linh, thank you for bringing your blue curtains to our alteration counter on Saturday."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What can the shop lend for the home trial? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "temporary clips",
+        "explanation": "Cửa hàng có thể cho mượn kẹp tạm để thử treo rèm.",
+        "evidence": "The shop can lend you a set of temporary clips for this trial."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long will the basic work take after confirmed measurements arrive? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "four working days",
+        "explanation": "Công việc cơ bản mất bốn ngày làm việc sau khi nhận kích thước đã xác nhận.",
+        "evidence": "The basic work will take four working days after we receive the confirmed measurements."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains how different hooks can affect the length measurement?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D giải thích rằng móc khác nhau có thể thay đổi điểm treo vài centimet.",
+        "evidence": "Different hooks can change that point by several centimetres."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph says removed fabric will be kept for the customer?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G nói cửa hàng giữ phần vải đã cắt cho đến khi khách nhận rèm.",
+        "evidence": "We will keep the cut fabric until you collect the finished curtains."
+      }
+    ]
+  },
+  {
+    "id": "reading-204",
+    "title": "Migration proposal: ordering inspection events after offline work",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Nhóm đề xuất lưu riêng thời điểm sự kiện xảy ra và thời điểm máy chủ nhận sự kiện. Cách mới giúp bản ghi kiểm tra ngoại tuyến có trình tự dễ hiểu hơn mà vẫn giữ thông tin cần thiết cho điều tra kỹ thuật.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The inspection application allows staff to record observations while working in buildings with an unreliable connection. Their devices send the saved events when a connection becomes available again. Last month, a supervisor opened a completed inspection and found that its history appeared to show a correction before the original observation. The records themselves were present, but their order was confusing. This proposal addresses how the history is displayed and stored. It does not attempt to make every device clock perfectly accurate or remove the need to investigate unusual sequences."
+      },
+      {
+        "label": "B",
+        "text": "At present, the server gives each incoming event one time value, representing when it receives the event. The history screen uses that value to arrange the inspection. This is convenient for checking server activity, but it can produce a misleading account of offline work. A device may send an older observation after a newer correction if separate uploads complete in a different order. The current record cannot clearly distinguish the time reported by the device from the time of arrival. Support therefore has to compare additional logs to explain some apparently impossible histories."
+      },
+      {
+        "label": "C",
+        "text": "The proposed record will contain both the device's event time and the server's receipt time. It will also include a sequence number assigned within each inspection on the device. For events created on one device, this number will preserve their local order even if uploads arrive differently. The history screen will use the event time for its main display and show the receipt time in the details panel. This gives supervisors a clearer account of the work while allowing support to inspect when the service actually received each piece of information."
+      },
+      {
+        "label": "D",
+        "text": "A sequence number from one device cannot settle the order of changes made on another device. The team considered sorting all events only by their reported times, but a wrongly set clock could make that approach misleading. Where two devices report conflicting changes and the order is uncertain, the history will show a warning instead of presenting a confident sequence. The supervisor can review the changes and add a clarification. This choice creates an extra review step in some cases, but the team prefers visible uncertainty to an explanation that the stored evidence cannot support."
+      },
+      {
+        "label": "E",
+        "text": "Older records require a different treatment because they do not contain all the proposed information. Existing receipt times will remain available, and the migration will not invent missing event times. The history will identify these entries as older records with limited timing detail. Some customers may find that label less tidy than a normal timestamp, but it accurately describes what the system knows. The team will keep the previous ordering for those records unless a supervisor has already added a written explanation. That explanation will remain attached after the migration."
+      },
+      {
+        "label": "F",
+        "text": "The first trial will involve the maintenance team at the West Depot, where inspectors regularly move between connected and disconnected areas. The trial devices will record the extra fields while the existing screen remains available for comparison. Engineers will test interrupted uploads, repeated delivery of the same event, and a device with a deliberately incorrect clock. They will also check that a local sequence number continues correctly after the application is closed and reopened. The purpose is to examine realistic problems, rather than demonstrate only a smooth upload with every device online."
+      },
+      {
+        "label": "G",
+        "text": "Before the trial begins, support will receive examples of the new history and its warning messages. Staff should explain that the two times answer different questions: when the device reports the event happened, and when the server received it. They should not describe receipt time as proof of when the inspection activity occurred. Supervisors will receive a short guide to adding a clarification when changes conflict. The guide will ask them to describe the decision and its reason, rather than delete an inconvenient event to make the history look simpler."
+      },
+      {
+        "label": "H",
+        "text": "After two weeks, the team will compare support questions from the trial with questions from the previous month. It will also ask supervisors whether the additional detail helped them understand completed inspections. The change will proceed only if event delivery remains reliable and the warning messages are understandable to users. If the trial reveals frequent confusion, the team will revise the screen before expanding the migration. The proposal's aim is a history that explains the available evidence honestly, with enough detail for investigation and a readable main view for ordinary work."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "receipt time",
+        "meaning": "thời điểm máy chủ nhận dữ liệu"
+      },
+      {
+        "term": "sequence number",
+        "meaning": "số thứ tự của một sự kiện trong chuỗi"
+      },
+      {
+        "term": "conflicting",
+        "meaning": "mâu thuẫn hoặc không tương thích với nhau"
+      },
+      {
+        "term": "clarification",
+        "meaning": "lời giải thích bổ sung để làm rõ"
+      },
+      {
+        "term": "timestamp",
+        "meaning": "dấu thời gian gắn với một bản ghi"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What problem prompted the proposal?",
+        "options": [
+          "A. An inspection history appeared to place a correction before its observation.",
+          "B. All inspection records had been deleted.",
+          "C. Supervisors could no longer open the application.",
+          "D. Devices were unable to store observations offline."
+        ],
+        "answer": "A. An inspection history appeared to place a correction before its observation.",
+        "explanation": "Lịch sử hiển thị thứ tự khó hiểu: phần sửa xuất hiện trước quan sát ban đầu.",
+        "evidence": "Last month, a supervisor opened a completed inspection and found that its history appeared to show a correction before the original observation."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What will preserve the local order of events created on one device?",
+        "options": [
+          "A. The supervisor's account name.",
+          "B. The size of each upload.",
+          "C. A sequence number within the inspection.",
+          "D. The order in which support opens the logs."
+        ],
+        "answer": "C. A sequence number within the inspection.",
+        "explanation": "Số thứ tự trong từng cuộc kiểm tra sẽ giữ trình tự cục bộ trên cùng một thiết bị.",
+        "evidence": "For events created on one device, this number will preserve their local order even if uploads arrive differently."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "How will the screen handle conflicting changes whose order is uncertain?",
+        "options": [
+          "A. Remove both changes.",
+          "B. Display a warning.",
+          "C. Always place the newest upload first.",
+          "D. Hide the receipt times permanently."
+        ],
+        "answer": "B. Display a warning.",
+        "explanation": "Màn hình sẽ hiện cảnh báo thay vì khẳng định một thứ tự chưa chắc chắn.",
+        "evidence": "Where two devices report conflicting changes and the order is uncertain, the history will show a warning instead of presenting a confident sequence."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The migration will create estimated event times for older records that lack them.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Nhóm sẽ không tự tạo thời điểm sự kiện bị thiếu.",
+        "evidence": "Existing receipt times will remain available, and the migration will not invent missing event times."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The existing screen will remain available during the trial.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Màn hình cũ được giữ lại để so sánh trong giai đoạn thử nghiệm.",
+        "evidence": "The trial devices will record the extra fields while the existing screen remains available for comparison."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The West Depot maintenance team has twenty inspectors.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài xác định nhóm thử nghiệm nhưng không nêu số lượng nhân viên kiểm tra.",
+        "evidence": "The first trial will involve the maintenance team at the West Depot, where inspectors regularly move between connected and disconnected areas."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Where will the history screen show the receipt time? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the details panel",
+        "explanation": "Thời điểm nhận sẽ được hiển thị trong bảng chi tiết.",
+        "evidence": "The history screen will use the event time for its main display and show the receipt time in the details panel."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "After how long will the team compare trial support questions? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "two weeks",
+        "explanation": "Nhóm sẽ đánh giá các câu hỏi hỗ trợ sau hai tuần.",
+        "evidence": "After two weeks, the team will compare support questions from the trial with questions from the previous month."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes testing whether numbering survives closing and reopening the application?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F có kiểm thử đóng rồi mở lại ứng dụng và kiểm tra số thứ tự tiếp tục đúng.",
+        "evidence": "They will also check that a local sequence number continues correctly after the application is closed and reopened."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph warns support against treating receipt time as proof of activity time?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G hướng dẫn hỗ trợ không đồng nhất thời điểm nhận với thời điểm hoạt động diễn ra.",
+        "evidence": "They should not describe receipt time as proof of when the inspection activity occurred."
+      }
+    ]
+  },
+  {
+    "id": "reading-205",
+    "title": "Survey procedure: turning staff comments into a useful report",
+    "topic": "workplace",
+    "level": "B2",
+    "summary": "Quy trình khảo sát nhân viên tập trung vào cách thu thập, tóm tắt và phản hồi ý kiến. Nhóm tránh công bố những nhóm quá nhỏ, giữ các ý kiến trái chiều và không coi một bình luận riêng lẻ là kết luận chung.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The operations department will run a short staff survey about its new weekly planning process. The process has been used for six weeks, and managers want to know whether it helps colleagues understand priorities before work begins. In an earlier survey, the report listed many comments but did not explain which changes would follow. Staff then questioned the value of answering again. This procedure is intended to connect feedback with decisions. It also explains how the report will handle comments from small teams, where a detailed example could reveal who wrote it."
+      },
+      {
+        "label": "B",
+        "text": "The survey will remain open from Monday morning until Friday afternoon. Staff can answer during working time, and managers should provide a quiet opportunity for people who share a computer. Completing the survey is optional. The introduction will explain the purpose, the expected completion time, and who will prepare the report. It will also ask respondents to describe the planning process rather than name individual colleagues. Questions will cover clarity of priorities, time spent preparing the weekly plan, and situations in which the process did not help."
+      },
+      {
+        "label": "C",
+        "text": "The form will ask respondents to select their department but will not ask for their name. Nevertheless, the team cannot promise that every written example will be impossible to recognise. A description of a unique project or a very specific conversation may identify its writer. The introduction will make this limitation clear in ordinary language. Staff who want to discuss a personal concern can request a separate conversation with the feedback coordinator. That conversation will not be presented as an anonymous survey response, and the coordinator will explain how its notes will be used."
+      },
+      {
+        "label": "D",
+        "text": "Only the two feedback coordinators will read the original written responses. Before preparing the wider report, they will remove names that respondents have included and generalise details that are unnecessary to understand the point. They will not publish separate numerical results for any department with fewer than six responses. Those responses will still contribute to the overall results, so a small team is not excluded from the survey. The report will state how many people answered each question because some respondents may complete the rating questions but leave the written sections empty."
+      },
+      {
+        "label": "E",
+        "text": "The coordinators will group comments by the issue they describe, such as unclear deadlines or duplicated preparation. A single strong complaint should not automatically become the main conclusion, and a popular opinion should not erase a different useful observation. The report will distinguish repeated patterns from individual examples. Where views differ, it will describe the difference rather than force the comments into one positive or negative message. For instance, experienced staff may find the plan quick to complete while new starters need more explanation of the terms used."
+      },
+      {
+        "label": "F",
+        "text": "Managers will review the draft report before deciding which actions are practical. They may check factual details, such as whether a step is already included in the written procedure. They must not remove a critical theme simply because it is uncomfortable. If a comment describes a misunderstanding, the report should identify the need for a clearer explanation rather than dismiss the response. Proposed actions must name an owner and a review date. Suggestions that cannot be taken forward immediately will receive a brief reason, such as limited capacity or a need for further information."
+      },
+      {
+        "label": "G",
+        "text": "Within ten working days of the survey closing, staff will receive a summary of the results and the selected actions. The summary will include one change that can be tried quickly and any larger issue requiring further investigation. It will avoid copying long comments directly, even when their wording is interesting. The coordinators will provide a contact route for staff who think the summary has missed an important distinction. This does not reopen every decision, but it allows an inaccurate account of the feedback to be corrected before the trial changes begin."
+      },
+      {
+        "label": "H",
+        "text": "Four weeks after the first change is introduced, the department will ask a short follow-up question about that change. It will not repeat the entire survey simply to produce another report. Managers will compare the answers with practical observations, including whether weekly plans arrive on time and whether priorities need fewer corrections. A better survey rating alone will not prove that every problem has been solved. The final update will explain what the department learned, which change it will keep, and which issue remains open for the next planning review."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "respondent",
+        "meaning": "người trả lời khảo sát"
+      },
+      {
+        "term": "generalise",
+        "meaning": "diễn đạt khái quát hơn, bỏ chi tiết nhận diện không cần thiết"
+      },
+      {
+        "term": "critical theme",
+        "meaning": "chủ đề phản ánh nhận xét phê bình"
+      },
+      {
+        "term": "distinction",
+        "meaning": "sự khác biệt cần được phân biệt rõ"
+      },
+      {
+        "term": "capacity",
+        "meaning": "khả năng hoặc nguồn lực có thể sử dụng"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why did staff question the value of an earlier survey?",
+        "options": [
+          "A. It was available only outside working hours.",
+          "B. Its report did not explain what changes would follow.",
+          "C. It contained no written comments.",
+          "D. It asked only new starters to respond."
+        ],
+        "answer": "B. Its report did not explain what changes would follow.",
+        "explanation": "Báo cáo trước liệt kê ý kiến nhưng không nêu thay đổi tiếp theo, nên nhân viên nghi ngờ ích lợi của khảo sát.",
+        "evidence": "In an earlier survey, the report listed many comments but did not explain which changes would follow."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What will happen to responses from a department with fewer than six responses?",
+        "options": [
+          "A. They will be deleted immediately.",
+          "B. They will be published with individual names.",
+          "C. They will contribute to the overall results.",
+          "D. They will be replaced with managers' answers."
+        ],
+        "answer": "C. They will contribute to the overall results.",
+        "explanation": "Các câu trả lời vẫn được tính vào kết quả chung dù không có kết quả số riêng cho nhóm nhỏ.",
+        "evidence": "Those responses will still contribute to the overall results, so a small team is not excluded from the survey."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "How should the report handle a comment based on a misunderstanding?",
+        "options": [
+          "A. Identify where a clearer explanation is needed.",
+          "B. Remove all comments on the same topic.",
+          "C. Treat it as proof that the respondent did not work carefully.",
+          "D. Publish the respondent's project details."
+        ],
+        "answer": "A. Identify where a clearer explanation is needed.",
+        "explanation": "Hiểu lầm cho thấy cần giải thích rõ hơn, chứ không phải lý do để loại bỏ phản hồi.",
+        "evidence": "If a comment describes a misunderstanding, the report should identify the need for a clearer explanation rather than dismiss the response."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Every staff member is required to complete the survey.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Việc hoàn thành khảo sát là tự nguyện.",
+        "evidence": "Completing the survey is optional."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Proposed actions must include a responsible person and a review date.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Mỗi hành động đề xuất phải có người phụ trách và ngày xem xét.",
+        "evidence": "Proposed actions must name an owner and a review date."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Both feedback coordinators have professional research qualifications.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu hai điều phối viên được đọc phản hồi gốc nhưng không đề cập bằng cấp của họ.",
+        "evidence": "Only the two feedback coordinators will read the original written responses."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What organisational category will respondents select? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "their department",
+        "explanation": "Biểu mẫu yêu cầu chọn phòng ban, không yêu cầu tên.",
+        "evidence": "The form will ask respondents to select their department but will not ask for their name."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long after the first change will the department ask a follow-up question? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Four weeks",
+        "explanation": "Câu hỏi theo dõi được gửi sau bốn tuần kể từ khi áp dụng thay đổi đầu tiên.",
+        "evidence": "Four weeks after the first change is introduced, the department will ask a short follow-up question about that change."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains how the report will preserve differences between opinions?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E yêu cầu mô tả sự khác biệt thay vì ép mọi ý kiến thành một thông điệp.",
+        "evidence": "Where views differ, it will describe the difference rather than force the comments into one positive or negative message."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph provides a route for correcting an inaccurate summary?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G cung cấp cách liên hệ nếu bản tóm tắt bỏ sót khác biệt quan trọng.",
+        "evidence": "The coordinators will provide a contact route for staff who think the summary has missed an important distinction."
+      }
+    ]
+  },
+  {
+    "id": "reading-206",
+    "title": "Community notice: bringing useful things to the Saturday swap",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Thông báo hướng dẫn người dân tham gia buổi đổi đồ nhỏ trong khu dân cư. Quy định về tình trạng đồ, nhãn mô tả, cách nhận đồ và xử lý đồ còn lại giúp sự kiện dễ quản lý và tránh hiểu lầm.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The Riverside Community Room will hold a small household swap on Saturday, 18 October, from ten in the morning until one in the afternoon. Residents can bring useful items they no longer need and look for something another household has offered. The event grew from a conversation about cupboards full of spare mugs, unused storage boxes, and books that had already been read. It is intended to give these things another home. Please read the arrangements below before packing a bag, as the room has limited table space and no storage area for large objects."
+      },
+      {
+        "label": "B",
+        "text": "Suitable items include clean kitchen tools, complete board games, books, small plant pots, and ordinary household decorations. Each household may bring up to eight items. A matching set of four cups will count as one item if it is kept together. Please leave furniture, electrical appliances, opened food, and broken objects at home. The volunteers will not test or repair items during the event. A damaged object that might interest a repair enthusiast can be offered through the neighbourhood message board separately, with a clear description of its condition."
+      },
+      {
+        "label": "C",
+        "text": "Please check each item before bringing it. A board game should include its playing pieces and instructions, and a storage box should have its lid if it was designed with one. Write a short label describing any detail that a new owner should know. For example, a book may contain pencil notes, or a plant pot may have a small mark on the outside. Ordinary signs of use are acceptable when clearly described. The aim is not to make every object look new, but to help another person decide whether it will be useful."
+      },
+      {
+        "label": "D",
+        "text": "Items can be dropped off between nine and half past nine, before visitors begin browsing. A volunteer will check the items and give you a numbered receipt. Please keep this receipt until the event ends because it helps us identify anything you want to take home again. If an item is unsuitable, you will need to take it away immediately. Volunteers will arrange accepted items by category rather than by household. This makes it easier to find a particular kind of object and avoids turning the room into a collection of personal sales tables."
+      },
+      {
+        "label": "E",
+        "text": "No money will change hands, and you do not need to agree on an exchange with the person who brought an item. During the first hour, each visitor may choose no more than two items. This gives people arriving near the opening time a reasonable chance to browse without the first few visitors taking everything. After eleven, visitors may choose additional items if plenty remain. Bringing eight objects does not guarantee that you will find eight things you want. You are also welcome to bring items without taking anything home."
+      },
+      {
+        "label": "F",
+        "text": "The room will have a separate table for complete board games, with space to look inside the boxes. Please return all pieces to the correct box after checking a game. Children are welcome with an adult, but the event is not a supervised play session. Volunteers need the table clear enough for other visitors to inspect the contents. Bags should remain close to their owners rather than in the main walking route. If the room becomes crowded, the door volunteer may ask new arrivals to wait briefly in the covered entrance."
+      },
+      {
+        "label": "G",
+        "text": "At a quarter to one, we will announce that browsing is ending and begin checking the remaining items against the receipts. Owners should collect anything they want back before one. With the owner's agreement, suitable items left over will be offered to the community room's regular reuse shelf. We cannot promise that every item will be accepted for that shelf. Anything without an agreed destination must go home with its owner. Please do not assume that leaving an object behind automatically makes it a donation that the volunteers can manage."
+      },
+      {
+        "label": "H",
+        "text": "There is no booking fee, but we ask households planning to bring items to send a short message by Thursday evening. Tell us roughly what you are bringing so we can prepare enough space for each category. You do not need to send photographs or provide a detailed list. People who only want to browse can come without registering. After the event, the organisers will record which categories attracted interest and whether the collection period worked smoothly. Those observations will help us decide whether another swap is practical in the same small room."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "swap",
+        "meaning": "buổi trao đổi hoặc đổi đồ"
+      },
+      {
+        "term": "browse",
+        "meaning": "xem qua các món đồ để lựa chọn"
+      },
+      {
+        "term": "receipt",
+        "meaning": "phiếu xác nhận đồ đã gửi"
+      },
+      {
+        "term": "left over",
+        "meaning": "còn lại sau khi sự kiện kết thúc"
+      },
+      {
+        "term": "roughly",
+        "meaning": "ước chừng, khái quát"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "How will a matching set of four cups be counted?",
+        "options": [
+          "A. As four items in every case.",
+          "B. As one item if kept together.",
+          "C. As an unsuitable donation.",
+          "D. As two items if labelled."
+        ],
+        "answer": "B. As one item if kept together.",
+        "explanation": "Bốn cốc cùng bộ được tính là một món nếu để cùng nhau.",
+        "evidence": "A matching set of four cups will count as one item if it is kept together."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why is selection limited during the first hour?",
+        "options": [
+          "A. To leave all books for the volunteers.",
+          "B. To give opening-time visitors a fair chance to browse.",
+          "C. To require equal exchanges between households.",
+          "D. To allow volunteers to repair objects."
+        ],
+        "answer": "B. To give opening-time visitors a fair chance to browse.",
+        "explanation": "Giới hạn ban đầu tránh việc vài người đầu tiên lấy hết và tạo cơ hội xem đồ cho nhiều người.",
+        "evidence": "This gives people arriving near the opening time a reasonable chance to browse without the first few visitors taking everything."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What must happen to an item with no agreed destination at the end?",
+        "options": [
+          "A. It must be taken home by its owner.",
+          "B. It must be left beside the entrance.",
+          "C. It must be sold to another visitor.",
+          "D. It must be added to the reuse shelf automatically."
+        ],
+        "answer": "A. It must be taken home by its owner.",
+        "explanation": "Đồ chưa có nơi nhận được thống nhất phải theo chủ về nhà.",
+        "evidence": "Anything without an agreed destination must go home with its owner."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Volunteers will repair broken objects during the swap.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Tình nguyện viên không kiểm tra hoạt động hoặc sửa đồ trong sự kiện.",
+        "evidence": "The volunteers will not test or repair items during the event."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Visitors who only want to browse do not have to register.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Người chỉ muốn xem đồ có thể đến mà không đăng ký.",
+        "evidence": "People who only want to browse can come without registering."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Tea and coffee will be provided in the covered entrance.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Lối vào có mái che được nhắc đến như nơi chờ; không có thông tin về đồ uống.",
+        "evidence": "If the room becomes crowded, the door volunteer may ask new arrivals to wait briefly in the covered entrance."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What numbered document will a volunteer give someone dropping off items? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "a numbered receipt",
+        "explanation": "Người gửi đồ nhận một phiếu có số để nhận diện đồ còn lại.",
+        "evidence": "A volunteer will check the items and give you a numbered receipt."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "By when should households send a message if they plan to bring items? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Thursday evening",
+        "explanation": "Hạn nhắn thông tin là tối thứ Năm.",
+        "evidence": "There is no booking fee, but we ask households planning to bring items to send a short message by Thursday evening."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains that visible signs of use are acceptable if described clearly?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C cho phép dấu vết sử dụng thông thường khi được mô tả rõ.",
+        "evidence": "Ordinary signs of use are acceptable when clearly described."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains how accepted items will be organised on the tables?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D nói đồ được xếp theo loại, không theo hộ gia đình.",
+        "evidence": "Volunteers will arrange accepted items by category rather than by household."
+      }
+    ]
+  },
+  {
+    "id": "reading-207",
+    "title": "Release plan: undoing a batch label change with a clear preview",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Một tính năng mới cho phép hoàn tác thay đổi nhãn hàng loạt. Nhóm thiết kế bản xem trước, bảo vệ các chỉnh sửa xảy ra sau đó và kiểm tra trường hợp hoàn tác chỉ thành công một phần.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The task management team plans to add an undo option for batch label changes. At present, a coordinator can select many tasks and add or remove a label in one action. If the wrong tasks are selected, correcting the mistake requires finding them again and changing each relevant label. Last week, a coordinator accidentally marked forty training tasks as ready for customer review. The team corrected the labels, but the manual work took most of the afternoon. The proposed release will make this kind of correction easier while showing exactly what an undo can restore."
+      },
+      {
+        "label": "B",
+        "text": "The new option will appear in the activity entry for a completed batch label change. It will be available for twenty-four hours after the original action. Selecting it will open a preview rather than immediately alter the tasks. The preview will list the tasks that can be restored and those that require separate attention. Users can inspect the list before confirming the undo. This extra step is intentional: a simple button that silently reverses a large action could create another mistake, especially if other colleagues have worked on the tasks since the original change."
+      },
+      {
+        "label": "C",
+        "text": "For each affected task, the service will store the label state before and immediately after the batch action. When preparing an undo, it will compare the current state with those recorded values. If nobody has changed the relevant label since the batch action, the previous state can be restored. Other labels on the task will remain as they are. The feature is limited to the particular label change recorded in that activity entry. It will not return the entire task to an earlier condition or reverse later changes to its description, owner, or due date."
+      },
+      {
+        "label": "D",
+        "text": "A task will be excluded from automatic restoration if the relevant label has been changed again. The preview will explain that a later edit needs review, without suggesting that the later editor did anything wrong. The coordinator may contact that colleague or inspect the task's history before deciding what to do separately. The team considered allowing the undo to overwrite every later edit, but rejected the idea. A later change may represent a deliberate decision based on new information, and an earlier mistake should not automatically erase that decision."
+      },
+      {
+        "label": "E",
+        "text": "Confirmation will apply the eligible changes and create a new activity entry describing the result. If only some tasks can be restored, the result will give separate counts for restored and skipped tasks. The original batch entry will remain visible, so users can understand why the corrective action occurred. A user cannot undo the same batch twice through this option. If another correction is needed later, it must be made through the ordinary editing controls. This restriction keeps the feature's purpose clear and avoids a chain of repeated reversals that becomes difficult to follow."
+      },
+      {
+        "label": "F",
+        "text": "The test cases will include an unchanged batch, a batch with one later label edit, and a batch containing tasks the coordinator can no longer access. The preview must not expose details of tasks outside the user's current access. Engineers will also test what happens if a colleague edits a label after the preview opens but before confirmation. The service must check eligibility again when the user confirms. Otherwise, a preview that was accurate a minute earlier could permit an undo that overwrites a newly made decision."
+      },
+      {
+        "label": "G",
+        "text": "The release will begin with three internal project teams that regularly use batch labels. They will receive a short demonstration using practice tasks and a guide explaining skipped changes. Support will have examples of both a complete undo and a partial undo, because the second result is likely to raise more questions. During the first week, the team will review reports of confusing previews and unexpected skipped tasks. It will also watch whether coordinators use the preview to catch an error before confirming, which is one of the intended benefits of the design."
+      },
+      {
+        "label": "H",
+        "text": "The wider release will depend on those observations and the technical checks. The team will not judge success only by how many people press the undo button. A useful feature should reduce correction work without hiding later decisions or making the activity history harder to understand. If users consistently mistake a partial undo for a complete restoration, the result message will be revised before expansion. The first version will cover labels only. Requests to undo owner changes will be collected separately because they may involve different consequences and need their own design review."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "batch action",
+        "meaning": "thao tác áp dụng cho nhiều mục cùng lúc"
+      },
+      {
+        "term": "restore",
+        "meaning": "khôi phục trạng thái trước đó"
+      },
+      {
+        "term": "eligible",
+        "meaning": "đủ điều kiện để được xử lý"
+      },
+      {
+        "term": "overwrite",
+        "meaning": "ghi đè lên dữ liệu hoặc thay đổi hiện có"
+      },
+      {
+        "term": "partial",
+        "meaning": "chỉ một phần, không toàn bộ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What happens first when a user selects the new undo option?",
+        "options": [
+          "A. Every selected task is deleted.",
+          "B. The application opens a preview.",
+          "C. All later edits are removed.",
+          "D. A support request is created automatically."
+        ],
+        "answer": "B. The application opens a preview.",
+        "explanation": "Chọn hoàn tác sẽ mở bản xem trước, chưa thay đổi nhiệm vụ ngay.",
+        "evidence": "Selecting it will open a preview rather than immediately alter the tasks."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why did the team reject overwriting every later label edit?",
+        "options": [
+          "A. Later edits might be deliberate decisions based on new information.",
+          "B. Users never check task histories.",
+          "C. All later edits are necessarily errors.",
+          "D. The activity entry cannot display text."
+        ],
+        "answer": "A. Later edits might be deliberate decisions based on new information.",
+        "explanation": "Chỉnh sửa sau có thể là quyết định có chủ ý dựa trên thông tin mới và cần được giữ.",
+        "evidence": "A later change may represent a deliberate decision based on new information, and an earlier mistake should not automatically erase that decision."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What must the service do at confirmation?",
+        "options": [
+          "A. Remove access checks for all tasks.",
+          "B. Ask support to approve every task.",
+          "C. Check eligibility again.",
+          "D. Restore every label on each task."
+        ],
+        "answer": "C. Check eligibility again.",
+        "explanation": "Điều kiện cần được kiểm tra lại khi xác nhận vì dữ liệu có thể thay đổi sau lúc mở preview.",
+        "evidence": "The service must check eligibility again when the user confirms."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The undo feature restores the whole task to an earlier state.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Tính năng chỉ hoàn tác thay đổi nhãn liên quan, không khôi phục toàn bộ nhiệm vụ.",
+        "evidence": "It will not return the entire task to an earlier condition or reverse later changes to its description, owner, or due date."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The original batch activity entry remains visible after an undo.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bản ghi thao tác ban đầu vẫn hiển thị để người dùng hiểu lý do sửa.",
+        "evidence": "The original batch entry will remain visible, so users can understand why the corrective action occurred."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The three internal project teams are all based in the same office.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu ba nhóm nội bộ nhưng không nói họ làm việc ở văn phòng nào.",
+        "evidence": "The release will begin with three internal project teams that regularly use batch labels."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How long after the original action will the undo option be available? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "twenty-four hours",
+        "explanation": "Tùy chọn hoàn tác tồn tại trong 24 giờ sau thao tác ban đầu.",
+        "evidence": "It will be available for twenty-four hours after the original action."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What will teams use during the short demonstration? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "practice tasks",
+        "explanation": "Phần minh họa sử dụng nhiệm vụ thực hành.",
+        "evidence": "They will receive a short demonstration using practice tasks and a guide explaining skipped changes."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes separate result counts when restoration is incomplete?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E yêu cầu báo riêng số nhiệm vụ đã khôi phục và bị bỏ qua.",
+        "evidence": "If only some tasks can be restored, the result will give separate counts for restored and skipped tasks."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains when a confusing result message must be revised before wider release?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nói phải sửa thông báo nếu người dùng thường hiểu hoàn tác một phần là khôi phục toàn bộ.",
+        "evidence": "If users consistently mistake a partial undo for a complete restoration, the result message will be revised before expansion."
+      }
+    ]
+  },
+  {
+    "id": "reading-208",
+    "title": "Demonstration handover: rotating product units between customer visits",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Bản bàn giao hướng dẫn chuẩn bị và luân chuyển thiết bị mẫu cho các buổi giới thiệu với khách hàng. Nhóm theo dõi từng bộ, phân biệt tính năng thật với nội dung mô phỏng và xử lý phụ kiện thiếu trước lịch trình tiếp theo.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "I will be away next week, so these notes explain how to prepare the portable label printers for customer demonstrations. We have four demonstration units, but one is currently being checked after a paper-feed problem. Three units are therefore available for visits. Sales staff sometimes assume that any printer in the cupboard is ready to leave, which has caused missing cables and incorrect sample settings. Please use the booking sheet and the preparation checklist together. The booking sheet reserves a unit, while the checklist confirms that the particular kit is complete and ready."
+      },
+      {
+        "label": "B",
+        "text": "Each available unit has a letter on its case and a matching accessory bag. Keep the unit and its bag together, even when two identical cables appear interchangeable. This helps us notice when something is missing instead of spreading incomplete kits across several visits. The booking sheet should record the unit letter, the person taking it, the customer visit date, and the expected return time. A kit is not available for another visit until its return check is complete. Please allow time for that check rather than booking every minute between two appointments."
+      },
+      {
+        "label": "C",
+        "text": "The standard kit contains the printer, its power cable, a connection cable, two sample rolls, and a printed quick guide. Before packing, connect the printer to the demonstration laptop and print the three sample labels listed on the checklist. Check that the text is readable and that the labels feed without stopping. The first sample uses a short product name, the second a longer description, and the third a simple code. These examples show different layouts without requiring the salesperson to create new content while the customer is waiting for the demonstration."
+      },
+      {
+        "label": "D",
+        "text": "Use only the demonstration product list already saved on the laptop. It contains invented products and prices chosen to make the examples easy to follow. Do not load a customer's live list merely to make the visit feel more realistic. If the customer wants to explore a particular layout, the salesperson can describe the requirement and arrange a separate follow-up. One screen includes a picture of a planned reporting feature. That screen is a mock-up, so it must be described as a proposed feature rather than something included in the current product."
+      },
+      {
+        "label": "E",
+        "text": "A salesperson who needs a special demonstration should send the request two working days before departure. Ask which customer question the special example should answer; a general request to make the presentation more impressive is not enough to prepare useful material. Check with the product specialist before promising that a requested function will be shown. If preparation cannot be completed in time, use the standard examples and explain what will be covered later. Please record that follow-up in the visit notes, with a responsible person, so it does not disappear after the kit comes back."
+      },
+      {
+        "label": "F",
+        "text": "When a kit returns, open the case with the salesperson if possible and compare the contents with the checklist. Record how many sample rolls remain and whether any problem occurred during the visit. A fault should be described with the action that triggered it, not simply as “printer bad.” If an accessory is missing, place the kit on the incomplete shelf and update its status in the booking sheet. Do not quietly borrow an accessory from another complete kit. Contact the next person with a booking if the incomplete kit affects their preparation."
+      },
+      {
+        "label": "G",
+        "text": "On Wednesday, two customer visits finish late and a third visit begins early on Thursday. I have reserved unit C for the Thursday visit so it does not depend on either late return. Please leave that reservation in place unless the visit is cancelled. Unit A will be checked on Thursday morning, and unit B on Thursday afternoon. The fourth printer may return from the product team during the week, but it should not be added to the available list until we receive a note confirming what was checked and print the standard samples ourselves."
+      },
+      {
+        "label": "H",
+        "text": "At the end of each day, review the next two working days on the booking sheet. Contact sales staff about unclear return times before they leave the office, since a missing detail is harder to resolve during a customer visit. Put preparation questions in the shared demonstration notes so my temporary replacement can see the same information. I will review those notes when I return and update the checklist if a repeated difficulty appears. The aim is to make the kits predictable, allowing salespeople to focus on the customer's questions rather than search for cables."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "demonstration unit",
+        "meaning": "thiết bị dùng để trình diễn sản phẩm"
+      },
+      {
+        "term": "interchangeable",
+        "meaning": "có thể dùng thay thế cho nhau"
+      },
+      {
+        "term": "mock-up",
+        "meaning": "bản mô phỏng để minh họa ý tưởng"
+      },
+      {
+        "term": "trigger",
+        "meaning": "gây ra hoặc kích hoạt một sự việc"
+      },
+      {
+        "term": "predictable",
+        "meaning": "ổn định và có thể biết trước tình trạng"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the difference between the booking sheet and the checklist?",
+        "options": [
+          "A. Both only record customer prices.",
+          "B. The sheet reserves a unit; the checklist confirms readiness.",
+          "C. The sheet replaces all return checks.",
+          "D. The checklist records only sales targets."
+        ],
+        "answer": "B. The sheet reserves a unit; the checklist confirms readiness.",
+        "explanation": "Bảng đặt lịch giữ thiết bị, còn checklist xác nhận bộ thiết bị đầy đủ và sẵn sàng.",
+        "evidence": "The booking sheet reserves a unit, while the checklist confirms that the particular kit is complete and ready."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "How should the planned reporting screen be presented?",
+        "options": [
+          "A. As a feature already included in the product.",
+          "B. As a customer's live report.",
+          "C. As a proposed feature shown in a mock-up.",
+          "D. As a fault that will be repaired during the visit."
+        ],
+        "answer": "C. As a proposed feature shown in a mock-up.",
+        "explanation": "Màn hình đó là bản mô phỏng tính năng đề xuất, chưa có trong sản phẩm hiện tại.",
+        "evidence": "That screen is a mock-up, so it must be described as a proposed feature rather than something included in the current product."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why is unit C reserved for Thursday?",
+        "options": [
+          "A. To avoid depending on two late Wednesday returns.",
+          "B. To replace the customer's existing printer permanently.",
+          "C. To allow unit C to be repaired on Thursday.",
+          "D. To prevent any standard samples from being printed."
+        ],
+        "answer": "A. To avoid depending on two late Wednesday returns.",
+        "explanation": "Thiết bị C được giữ riêng để buổi sáng thứ Năm không phụ thuộc hai bộ về muộn.",
+        "evidence": "I have reserved unit C for the Thursday visit so it does not depend on either late return."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "A missing accessory should be borrowed quietly from another complete kit.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bản bàn giao cấm lấy phụ kiện từ bộ hoàn chỉnh khác mà không ghi nhận.",
+        "evidence": "Do not quietly borrow an accessory from another complete kit."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "A kit becomes available for another visit only after its return check.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Phải hoàn tất kiểm tra khi trả trước khi bộ thiết bị có thể dùng cho buổi khác.",
+        "evidence": "A kit is not available for another visit until its return check is complete."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The printer being checked is covered by a two-year warranty.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu máy đang được kiểm tra do lỗi cấp giấy nhưng không có thông tin bảo hành.",
+        "evidence": "We have four demonstration units, but one is currently being checked after a paper-feed problem."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Where should a kit with a missing accessory be placed? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the incomplete shelf",
+        "explanation": "Bộ thiếu phụ kiện được đặt trên kệ dành cho bộ chưa đầy đủ.",
+        "evidence": "If an accessory is missing, place the kit on the incomplete shelf and update its status in the booking sheet."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How far ahead should a special demonstration request be sent? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "two working days",
+        "explanation": "Yêu cầu đặc biệt cần gửi trước hai ngày làm việc.",
+        "evidence": "A salesperson who needs a special demonstration should send the request two working days before departure."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes printing three different sample labels before packing?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C hướng dẫn in ba nhãn mẫu bằng laptop trình diễn trước khi đóng bộ.",
+        "evidence": "Before packing, connect the printer to the demonstration laptop and print the three sample labels listed on the checklist."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph instructs the replacement to review upcoming bookings daily?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H yêu cầu xem lịch hai ngày làm việc tới vào cuối mỗi ngày.",
+        "evidence": "At the end of each day, review the next two working days on the booking sheet."
+      }
+    ]
+  },
+  {
+    "id": "reading-209",
+    "title": "Museum notice: adding a timed exhibition to your annual pass",
+    "topic": "daily-life",
+    "level": "B1+",
+    "summary": "Bảo tàng giải thích cách đặt giờ xem triển lãm đặc biệt bằng thẻ năm. Thông báo phân biệt quyền vào khu trưng bày thường xuyên với chỗ đặt theo giờ, đồng thời hướng dẫn đổi lịch và đến muộn.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The City Design Museum will open its temporary exhibition, Everyday Objects, next month. The exhibition explores how ordinary items such as kettles, chairs, and street signs have changed over time. Because the temporary gallery is smaller than the main museum rooms, visitors must reserve an entry time. Annual pass holders can attend without paying an additional exhibition fee, but the pass alone does not reserve a place. This notice explains how to add the exhibition to a visit, whether you normally book online or prefer to arrange tickets at the reception desk."
+      },
+      {
+        "label": "B",
+        "text": "The permanent galleries will continue to operate under the usual annual pass arrangements. You may visit those galleries before or after your temporary exhibition slot during normal opening hours. A reservation for Everyday Objects applies only to entry into that exhibition. It is not a separate booking for the whole museum, and it does not reserve a seat in the café. Please check the date and time carefully if you are planning to meet friends, as each person needs an exhibition reservation even when everyone intends to arrive at the museum together."
+      },
+      {
+        "label": "C",
+        "text": "To book online, choose the exhibition, select an available time, and enter the number printed below the photograph on your annual pass. The booking system will then show the available pass-holder places for that slot. After confirmation, you will receive a booking code by email. Bring that code and your annual pass to the exhibition entrance. A printed email is acceptable, so there is no need to display it on a phone. If the email does not arrive, contact reception with your pass number rather than making several identical bookings."
+      },
+      {
+        "label": "D",
+        "text": "Pass holders who do not use online booking can reserve at reception or by telephone. Staff can check available times, but they cannot hold a place while someone considers several possible dates. Choose a definite slot before asking for confirmation. Reservations open fourteen days before each visit date, and a limited number of places will be kept for same-day booking. These places may fill quickly at weekends. If you are travelling a long distance, we recommend arranging your exhibition reservation in advance rather than relying on a place being available when you arrive."
+      },
+      {
+        "label": "E",
+        "text": "Each entry slot covers a twenty-minute arrival window. Once admitted, you may explore the exhibition at your own pace until the gallery closes. The arrival window controls how many people enter together; it is not a limit of twenty minutes inside. Please arrive at the exhibition door within your booked window, allowing time to enter the building and leave a large bag in the cloakroom. If you reach the museum early, you can visit the permanent galleries while waiting. The exhibition entrance will not admit you ahead of your reserved window."
+      },
+      {
+        "label": "F",
+        "text": "If your plans change, use the cancellation link in the confirmation email or contact reception. Cancelling an unused place allows another visitor to book it. To move your visit, staff will check availability at the new time before cancelling the existing reservation. A different slot cannot be guaranteed, especially on Saturday afternoons. If you arrive after your window has ended, the entrance team will check whether space remains in a later slot. Late admission is therefore possible in some circumstances, but your original reservation does not give priority over people already booked for that later time."
+      },
+      {
+        "label": "G",
+        "text": "Visitors coming as a group should agree on a time before making individual reservations. An annual pass cannot be used to obtain a pass-holder place for a friend who does not have their own pass. Friends without passes can purchase ordinary exhibition tickets through the same booking page. The museum will not combine different entry times automatically because the visitors know one another. For a group of more than eight people, contact the visits coordinator before booking. A group arrangement may help keep everyone together without removing too many places from an ordinary public slot."
+      },
+      {
+        "label": "H",
+        "text": "Reception will have a printed guide to the booking process during the first two weeks of the exhibition. Staff can help pass holders make a reservation, but please have your pass ready so they can check the correct number. The museum will review the timed-entry arrangement after the first month, using visitor comments and observations from the gallery entrance. If waiting outside the exhibition becomes a repeated problem, the team may adjust the number of places offered in each slot. Any change will be explained on the booking page before it affects new reservations."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "annual pass",
+        "meaning": "thẻ vào cửa có hiệu lực trong một năm"
+      },
+      {
+        "term": "entry slot",
+        "meaning": "khung giờ được đặt để vào cửa"
+      },
+      {
+        "term": "permanent galleries",
+        "meaning": "các phòng trưng bày thường xuyên"
+      },
+      {
+        "term": "cloakroom",
+        "meaning": "khu gửi áo khoác và hành lý"
+      },
+      {
+        "term": "priority",
+        "meaning": "quyền được ưu tiên"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why does the temporary exhibition require reservations?",
+        "options": [
+          "A. Its gallery is smaller than the main museum rooms.",
+          "B. Annual passes have stopped working.",
+          "C. The permanent galleries are closed.",
+          "D. Visitors must purchase café seats."
+        ],
+        "answer": "A. Its gallery is smaller than the main museum rooms.",
+        "explanation": "Phòng triển lãm tạm thời nhỏ hơn nên bảo tàng yêu cầu đặt giờ.",
+        "evidence": "Because the temporary gallery is smaller than the main museum rooms, visitors must reserve an entry time."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What should a pass holder do if the confirmation email does not arrive?",
+        "options": [
+          "A. Make several identical bookings.",
+          "B. Contact reception with the pass number.",
+          "C. Buy a replacement annual pass.",
+          "D. Arrive without checking the reservation."
+        ],
+        "answer": "B. Contact reception with the pass number.",
+        "explanation": "Người giữ thẻ nên liên hệ lễ tân bằng số thẻ thay vì đặt lặp lại.",
+        "evidence": "If the email does not arrive, contact reception with your pass number rather than making several identical bookings."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What happens if a visitor arrives after the booked window?",
+        "options": [
+          "A. Admission to every later slot is guaranteed.",
+          "B. The visitor automatically goes ahead of later bookings.",
+          "C. Staff check whether a later slot has space.",
+          "D. The annual pass is cancelled."
+        ],
+        "answer": "C. Staff check whether a later slot has space.",
+        "explanation": "Đội cửa vào kiểm tra chỗ còn lại trong khung giờ sau; không đảm bảo được vào.",
+        "evidence": "If you arrive after your window has ended, the entrance team will check whether space remains in a later slot."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Visitors must leave the exhibition twenty minutes after they enter.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Hai mươi phút là khoảng thời gian đến cửa, không phải giới hạn thời gian tham quan bên trong.",
+        "evidence": "The arrival window controls how many people enter together; it is not a limit of twenty minutes inside."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Pass holders may visit the permanent galleries before their exhibition slot.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Có thể xem các phòng thường xuyên trước hoặc sau giờ triển lãm trong thời gian mở cửa.",
+        "evidence": "You may visit those galleries before or after your temporary exhibition slot during normal opening hours."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The printed booking guide will be available in Vietnamese.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nói có hướng dẫn in nhưng không nêu ngôn ngữ.",
+        "evidence": "Reception will have a printed guide to the booking process during the first two weeks of the exhibition."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "How far ahead of each visit date do reservations open? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "fourteen days",
+        "explanation": "Đặt chỗ mở trước ngày tham quan 14 ngày.",
+        "evidence": "Reservations open fourteen days before each visit date, and a limited number of places will be kept for same-day booking."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Who should groups of more than eight people contact? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the visits coordinator",
+        "explanation": "Nhóm hơn tám người cần liên hệ điều phối viên tham quan.",
+        "evidence": "For a group of more than eight people, contact the visits coordinator before booking."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains that printed confirmation can replace showing an email on a phone?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C cho phép dùng email in ra giấy.",
+        "evidence": "A printed email is acceptable, so there is no need to display it on a phone."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains the benefit of cancelling a place you will not use?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F nói việc hủy chỗ giúp khách khác có thể đặt.",
+        "evidence": "Cancelling an unused place allows another visitor to book it."
+      }
+    ]
+  },
+  {
+    "id": "reading-210",
+    "title": "Support investigation: an estimate that excluded time spent waiting",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Một khách hàng hiểu thời gian xử lý ước tính là tổng thời gian chờ kết quả. Nhóm hỗ trợ và kỹ thuật phân tích cách hiển thị, bổ sung trạng thái chờ riêng và giữ giới hạn rõ ràng cho các con số ước tính.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Customer message, Monday, 09:20: I submitted a video conversion at nine this morning. The page said “Estimated time: four minutes,” so I told my colleague the file would be ready before our call. Twenty minutes later, it still says “Waiting.” I understand that an estimate may not be exact, but this difference seems too large. I have left the browser open because I do not know whether closing it will stop the job. Could you check whether the conversion has started and explain what the four-minute figure actually means?"
+      },
+      {
+        "label": "B",
+        "text": "Support reply, 09:28: Thank you for including the submission time. We have located your request and confirmed that it is still in the processing queue. Your source file has arrived successfully, and you do not need to upload it again. Closing the browser will not cancel the conversion. We are checking the meaning of the estimate with the engineering team because the page does not explain it clearly. For now, please use the status shown beside the request to see whether it is waiting, processing, or ready for download."
+      },
+      {
+        "label": "C",
+        "text": "Engineering note, 09:45: The four-minute estimate describes expected conversion time after a worker starts the job. It does not include time spent waiting for a worker. The estimate uses results from similar files processed by our service, but it is not a promise of an exact duration. On this morning's queue, several longer jobs were already ahead of the customer's request. The request had not failed or lost its place. The main problem is that the label “Estimated time” can reasonably be understood as the total time before the result becomes available."
+      },
+      {
+        "label": "D",
+        "text": "Support follow-up, 09:52: We have confirmed that the displayed estimate covers processing only. Your request is still waiting for processing to begin, so that estimate has not yet started to describe its progress. We cannot give a reliable start time from the current page. We will send a further update when the status changes. The customer replied that knowing the difference would have helped them plan the call, even if no precise finish time was available. They also asked whether an urgent option could move the request ahead of the other jobs."
+      },
+      {
+        "label": "E",
+        "text": "Product discussion, 10:10: The team considered adding one number that combined expected waiting and processing time. However, the current queue information did not support a dependable waiting estimate, especially when new jobs arrived or a worker became unavailable. The team chose to separate the two stages instead. While a request waits, the page will show its submission time and explain that processing has not begun. Once processing starts, it will display “Estimated processing time” with a note that actual duration may differ. This change gives useful context without suggesting more certainty than the system has."
+      },
+      {
+        "label": "F",
+        "text": "Operations note, 10:25: There is no urgent queue in the present service, and support should not promise to move individual requests ahead. Doing so informally would make the order difficult to explain to other customers. The team may consider a separate priority service in a future planning discussion, but that is outside this correction. Support can help customers check the file requirements before submission, since an unsuitable source file may need another upload. That advice does not change a valid request's position in the queue or guarantee a shorter wait."
+      },
+      {
+        "label": "G",
+        "text": "Engineering check, 11:05: The customer's conversion began at 10:31 and finished at 10:36. The actual processing time was five minutes, while the longer delay occurred before processing began. Engineers used this request and several practice jobs to check the revised messages. They also tested a page opened after processing had already started, so returning users would see the current stage rather than an old waiting message. The test included a failed conversion, which must show a separate error explanation instead of continuing to display an estimate for work that is no longer running."
+      },
+      {
+        "label": "H",
+        "text": "Closing reply, 11:20: Your converted file is now available, and we have explained the difference between waiting time and processing time in the help page. The application wording will be updated after the message checks are complete. The customer downloaded the file and said the clearer explanation would help with future planning. Support closed the individual request but kept a linked improvement item open for the wording change. Next week, the team will review new questions about conversion timing to see whether users can distinguish the two stages without needing a support conversation."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "processing queue",
+        "meaning": "hàng đợi các công việc cần xử lý"
+      },
+      {
+        "term": "duration",
+        "meaning": "khoảng thời gian một việc kéo dài"
+      },
+      {
+        "term": "dependable",
+        "meaning": "đáng tin cậy"
+      },
+      {
+        "term": "submission time",
+        "meaning": "thời điểm gửi yêu cầu"
+      },
+      {
+        "term": "source file",
+        "meaning": "tệp gốc được đưa vào để xử lý"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What did the four-minute estimate describe?",
+        "options": [
+          "A. The total time from submission to download.",
+          "B. The expected conversion time after a worker starts.",
+          "C. The time needed to upload every source file.",
+          "D. The customer's remaining browser session."
+        ],
+        "answer": "B. The expected conversion time after a worker starts.",
+        "explanation": "Con số bốn phút chỉ dự tính thời gian chuyển đổi sau khi worker bắt đầu.",
+        "evidence": "The four-minute estimate describes expected conversion time after a worker starts the job."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why did the team avoid displaying a combined waiting-and-processing estimate?",
+        "options": [
+          "A. Customers had requested that all numbers be removed.",
+          "B. The service no longer accepted video files.",
+          "C. Current queue information could not support a dependable waiting estimate.",
+          "D. Every waiting request always took exactly four minutes."
+        ],
+        "answer": "C. Current queue information could not support a dependable waiting estimate.",
+        "explanation": "Thông tin hàng đợi hiện tại chưa đủ để ước tính thời gian chờ đáng tin cậy.",
+        "evidence": "However, the current queue information did not support a dependable waiting estimate, especially when new jobs arrived or a worker became unavailable."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What remained open after support closed the customer's request?",
+        "options": [
+          "A. An improvement item for the wording change.",
+          "B. A request to upload the same file again.",
+          "C. A reservation for the customer's call.",
+          "D. A failed download investigation."
+        ],
+        "answer": "A. An improvement item for the wording change.",
+        "explanation": "Yêu cầu riêng đã đóng nhưng hạng mục cải thiện cách diễn đạt vẫn mở.",
+        "evidence": "Support closed the individual request but kept a linked improvement item open for the wording change."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Closing the browser would cancel the customer's conversion.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Hỗ trợ xác nhận đóng trình duyệt không hủy chuyển đổi.",
+        "evidence": "Closing the browser will not cancel the conversion."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The customer's actual processing time was five minutes.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài ghi rõ thời gian xử lý thực tế là năm phút.",
+        "evidence": "The actual processing time was five minutes, while the longer delay occurred before processing began."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The customer was converting a video recorded at a company conference.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài chỉ nói khách gửi video để chuyển đổi; không nêu nội dung hoặc nơi quay video.",
+        "evidence": "I submitted a video conversion at nine this morning."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What label will appear once processing begins? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Estimated processing time",
+        "explanation": "Nhãn mới làm rõ đây là thời gian xử lý ước tính.",
+        "evidence": "Once processing starts, it will display “Estimated processing time” with a note that actual duration may differ."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Where had the difference between waiting and processing time been explained by the closing reply? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "the help page",
+        "explanation": "Phần giải thích đã được thêm vào trang trợ giúp.",
+        "evidence": "Your converted file is now available, and we have explained the difference between waiting time and processing time in the help page."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why support should not informally move individual requests ahead?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F nói việc ưu tiên không chính thức sẽ khiến thứ tự khó giải thích với khách khác.",
+        "evidence": "Doing so informally would make the order difficult to explain to other customers."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes testing the message shown to users who return after processing starts?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G kiểm tra trang mở sau khi xử lý bắt đầu để người quay lại thấy trạng thái hiện tại.",
+        "evidence": "They also tested a page opened after processing had already started, so returning users would see the current stage rather than an old waiting message."
+      }
+    ]
+  }
+]
