@@ -1,0 +1,2012 @@
+[
+  {
+    "id": "reading-071",
+    "title": "Incident report: access requests waiting for a former manager",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Báo cáo giải thích vì sao một số yêu cầu cấp quyền bị chuyển đến quản lý cũ, cách nhóm xử lý yêu cầu đang chờ và những cải tiến để phát hiện vấn đề sớm hơn.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "On Tuesday morning, three new employees told the support desk that their requests for access to the planning system were still waiting. They had submitted the requests on Friday, and their current manager, Lan, had received nothing to approve. The employees could attend meetings, but they could not open the project schedules discussed there. Support initially treated the reports as separate problems because the employees belonged to different project groups. By lunchtime, however, a fourth request showed the same pattern. All four employees had recently moved into a department that Lan had started managing."
+      },
+      {
+        "label": "B",
+        "text": "The investigation found that each request contained a manager name copied from the employee directory when the request was created. This made the approval record easy to understand later: it showed who had been responsible at that moment. However, the request did not automatically change when the directory changed. The directory had been updated on Thursday, but a separate list used by the request form still named the former manager. The form therefore sent Friday's requests to someone who no longer managed the department. That person was away and did not open the approval messages."
+      },
+      {
+        "label": "C",
+        "text": "The team checked the request history before making any changes. Nine requests had used the old manager name, but five had already been completed before the department changed managers. Those completed records were accurate for their original dates and needed no correction. Four requests remained open. No access had been granted without approval, and the employees' existing permissions were unaffected. The problem was a delay in granting additional access, rather than a loss of current access. Support recorded this distinction because several employees were worried that the investigation might remove permissions they already used."
+      },
+      {
+        "label": "D",
+        "text": "Support considered cancelling the four open requests and asking the employees to submit them again. That would have been simple for the system, but it would also have erased the connection between the original requests and their waiting time. Instead, the team used an existing transfer function. Lan confirmed that she was responsible for all four employees before support transferred the requests to her approval queue. Each request kept its original submission date. A note recorded the reason for the transfer, and the employees received a message explaining that they did not need to take further action."
+      },
+      {
+        "label": "E",
+        "text": "For the immediate repair, the team refreshed the manager list used by the form and submitted a sample request from a training account. The request reached Lan's queue as expected. They then checked two unrelated departments to make sure the repair had not changed their approval routes. A broader redesign was postponed because it would require decisions about requests made during temporary management arrangements. For example, a manager might cover a department for only three days. Automatically moving every open request whenever the directory changed could create confusion in that situation, especially for requests already being reviewed."
+      },
+      {
+        "label": "F",
+        "text": "The proposed improvement focuses on making uncertainty visible. Before submission, the form will display the manager who will receive the request. Employees can report an incorrect name without completing the form, although they cannot choose their own approver. Open requests will also be checked against the current manager list once each working day. If the names differ, support will receive a review task rather than an automatic transfer. This gives the team a chance to confirm responsibility. The designers accepted an extra review step because an incorrect approval route could be more serious than a short delay."
+      },
+      {
+        "label": "G",
+        "text": "The incident also revealed a weakness in the support desk's daily checks. Staff monitored failed requests, but these requests had not failed: they were simply waiting in a valid queue. A new report will show requests that have been waiting for more than two working days. Support will review the oldest requests first and contact the relevant manager when necessary. The report will include the department and submission date, but not the employee's reason for needing access. Those details will remain inside the request, where only people handling the approval can read them."
+      },
+      {
+        "label": "H",
+        "text": "By Wednesday afternoon, Lan had approved three requests and asked for clarification on the fourth. The incident was closed once all four employees could see the current status of their requests. The team did not describe the final clarification as another system failure, because managers still needed to decide whether the requested access was appropriate. At the next department meeting, support explained how to check the displayed manager name and report a mistake. The main lesson was that a request can look technically successful while still failing to reach the person who can move it forward."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "approval queue",
+        "meaning": "danh sách các yêu cầu đang chờ được phê duyệt"
+      },
+      {
+        "term": "permissions",
+        "meaning": "các quyền truy cập hoặc thao tác trong hệ thống"
+      },
+      {
+        "term": "transfer",
+        "meaning": "chuyển yêu cầu sang người hoặc nơi xử lý khác"
+      },
+      {
+        "term": "temporary",
+        "meaning": "tạm thời"
+      },
+      {
+        "term": "clarification",
+        "meaning": "thông tin giải thích thêm để làm rõ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why did support initially handle the reports separately?",
+        "options": [
+          "A. The employees requested different software.",
+          "B. The employees belonged to different project groups.",
+          "C. Lan asked support to separate them.",
+          "D. The requests had different managers."
+        ],
+        "answer": "B. The employees belonged to different project groups.",
+        "explanation": "Ban đầu, bộ phận hỗ trợ chưa nhận ra mối liên hệ vì các nhân viên thuộc những nhóm dự án khác nhau.",
+        "evidence": "Support initially treated the reports as separate problems because the employees belonged to different project groups."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why did support avoid cancelling the open requests?",
+        "options": [
+          "A. Cancellation was unavailable.",
+          "B. Lan had already approved them.",
+          "C. It would lose the connection to their original waiting time.",
+          "D. Employees could not submit another request."
+        ],
+        "answer": "C. It would lose the connection to their original waiting time.",
+        "explanation": "Việc hủy và gửi lại sẽ làm mất liên hệ với thời điểm yêu cầu ban đầu và khoảng thời gian đã chờ.",
+        "evidence": "That would have been simple for the system, but it would also have erased the connection between the original requests and their waiting time."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What will happen when an open request names a different manager from the current list?",
+        "options": [
+          "A. The employee will choose a new approver.",
+          "B. The request will be deleted.",
+          "C. Access will be granted immediately.",
+          "D. Support will receive a task to review it."
+        ],
+        "answer": "D. Support will receive a task to review it.",
+        "explanation": "Sự khác biệt về tên quản lý sẽ tạo nhiệm vụ kiểm tra cho bộ phận hỗ trợ, chưa tự động chuyển yêu cầu.",
+        "evidence": "If the names differ, support will receive a review task rather than an automatic transfer."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The incident did not affect the employees' existing permissions.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài xác nhận rõ rằng các quyền hiện có của nhân viên không bị ảnh hưởng.",
+        "evidence": "No access had been granted without approval, and the employees' existing permissions were unaffected."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Employees will be able to choose their own approver in the improved form.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Nhân viên có thể báo tên sai, nhưng bài nói rõ họ không được tự chọn người phê duyệt.",
+        "evidence": "Employees can report an incorrect name without completing the form, although they cannot choose their own approver."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The former manager was away on an overseas business trip.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài chỉ nói quản lý cũ vắng mặt; không cho biết lý do hay địa điểm chuyến đi.",
+        "evidence": "That person was away and did not open the approval messages."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What date did each transferred request retain? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "original submission date",
+        "explanation": "Yêu cầu được chuyển vẫn giữ ngày gửi ban đầu. Cụm đáp án có ba từ.",
+        "evidence": "Each request kept its original submission date."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What kind of account was used for the sample request? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "training account",
+        "explanation": "Nhóm dùng tài khoản đào tạo để gửi yêu cầu thử. Cụm đáp án có hai từ.",
+        "evidence": "For the immediate repair, the team refreshed the manager list used by the form and submitted a sample request from a training account."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why a request could wait without appearing as a failure?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G phân biệt yêu cầu bị lỗi với yêu cầu vẫn nằm trong hàng đợi hợp lệ.",
+        "evidence": "Staff monitored failed requests, but these requests had not failed: they were simply waiting in a valid queue."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains how the outdated manager name reached the request form?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "B",
+        "explanation": "Đoạn B cho biết danh bạ đã cập nhật nhưng danh sách riêng mà biểu mẫu sử dụng vẫn chứa tên quản lý cũ.",
+        "evidence": "The directory had been updated on Thursday, but a separate list used by the request form still named the former manager."
+      }
+    ]
+  },
+  {
+    "id": "reading-072",
+    "title": "Office move brief: keeping the help desk reachable",
+    "topic": "workplace",
+    "level": "B1",
+    "summary": "Bản hướng dẫn chuyển văn phòng nêu cách duy trì hoạt động của bàn hỗ trợ, phân chia công việc và xử lý khách đến trong thời gian di chuyển.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The customer help desk will move from the second floor to the ground floor on Thursday afternoon. The new location is easier for visitors to find and has space for two people to speak privately without blocking the corridor. However, moving during a working day creates a practical problem: customers will still need help while furniture and equipment are being carried downstairs. Closing the desk for the whole afternoon would simplify the move, but several customers have already arranged visits. The office team has therefore prepared a plan that keeps one service point open throughout the change."
+      },
+      {
+        "label": "B",
+        "text": "Until two o'clock, the current desk will operate normally. From two until four, customers will be directed to a temporary desk beside reception. The temporary desk will handle enquiries and collect documents, but it will not print customer reports. Anyone needing a printed report can leave a request and collect it the following morning. Reception staff must explain this limit before a customer joins the queue. A sign at the building entrance will show the temporary location, and the old desk will display the same information so that visitors receive consistent directions."
+      },
+      {
+        "label": "C",
+        "text": "Mai will remain at the temporary desk while Daniel supervises the move. Their roles should stay separate because customers need someone who is fully available, and the moving team needs one person who can answer questions about equipment. Daniel will carry a list showing where each item belongs. Boxes will be marked with their destination, not just the department name. This matters because the ground floor also contains a storage room used by another team. Last month's trial move showed that general labels encouraged helpers to leave boxes wherever they found an empty space."
+      },
+      {
+        "label": "D",
+        "text": "Customer documents require a different process from ordinary office supplies. At one thirty, Mai will place the day's unfinished paper requests in a closed document case. She will keep the case with her at the temporary desk and record any new documents received there. Completed requests will stay in the existing locked cabinet until Friday morning, when two staff members can move and check them together. The team decided against moving every file on Thursday because searching through several boxes while answering customer questions would make mistakes more likely. Empty folders can travel with the furniture."
+      },
+      {
+        "label": "E",
+        "text": "The facilities team will move chairs and tables first, then bring the computer and telephone from the old desk. A spare laptop will be available at reception during that period. Before the ground-floor desk opens, Daniel will check that staff can sign in, open a sample customer record and receive an internal telephone call. A successful sign-in alone is not enough to confirm that the desk is ready. If any check fails, Mai will continue working at reception while the relevant team investigates. The opening time may change, but the temporary service must remain clear and predictable."
+      },
+      {
+        "label": "F",
+        "text": "The new desk has a lower section for visitors who prefer to sit while discussing a request. This section should remain free of boxes, advertising stands and spare equipment. Staff tested the arrangement with a colleague using a large travel bag and found that the original chair position blocked the approach. They moved the chair to the other side and widened the gap. There is no need to ask visitors why they want to sit. The purpose of the arrangement is to offer a useful choice, and staff should simply indicate both available places."
+      },
+      {
+        "label": "G",
+        "text": "At four o'clock, Daniel will tell reception whether the new desk can open. Reception will then replace the temporary sign with the final directions. If the move runs late, a short notice will state that service continues beside reception until closing time. Customers with appointments will be contacted only if the change affects what staff can do for them. The team will not send a general message to every customer, because most people use the online service and would receive information that does not affect their visit or request."
+      },
+      {
+        "label": "H",
+        "text": "On Friday morning, Mai and Daniel will review the move before the first appointment. They will check the document count, remove old signs and ask reception whether any visitors had difficulty finding help. Small problems, such as a sign hidden behind an open door, can be corrected immediately. Larger changes to furniture will be recorded for the facilities team. The review is expected to take fifteen minutes. Success will be judged by whether customers received accurate directions and their requests remained traceable, rather than by whether every box reached its final position on Thursday."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "service point",
+        "meaning": "điểm tiếp nhận hoặc cung cấp dịch vụ"
+      },
+      {
+        "term": "enquiries",
+        "meaning": "các câu hỏi hoặc yêu cầu tìm hiểu thông tin"
+      },
+      {
+        "term": "destination",
+        "meaning": "nơi đồ vật hoặc người cần được chuyển đến"
+      },
+      {
+        "term": "predictable",
+        "meaning": "ổn định và có thể biết trước"
+      },
+      {
+        "term": "traceable",
+        "meaning": "có thể theo dõi lại nguồn gốc hoặc quá trình xử lý"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why will the office keep a service point open during the move?",
+        "options": [
+          "A. Some customers already have planned visits.",
+          "B. Reception is closed on Friday.",
+          "C. The online service is unavailable.",
+          "D. The furniture cannot be moved after closing."
+        ],
+        "answer": "A. Some customers already have planned visits.",
+        "explanation": "Một số khách đã sắp xếp đến, nên đóng cả buổi chiều sẽ ảnh hưởng các cuộc hẹn.",
+        "evidence": "Closing the desk for the whole afternoon would simplify the move, but several customers have already arranged visits."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What must reception explain before customers join the temporary queue?",
+        "options": [
+          "A. Staff will not accept documents.",
+          "B. Appointments must be cancelled.",
+          "C. The temporary desk cannot print reports.",
+          "D. Every request will take two days."
+        ],
+        "answer": "C. The temporary desk cannot print reports.",
+        "explanation": "Bàn tạm tiếp nhận câu hỏi và tài liệu nhưng không in báo cáo; đó là giới hạn cần thông báo.",
+        "evidence": "The temporary desk will handle enquiries and collect documents, but it will not print customer reports."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "How will the team mainly judge the move's success?",
+        "options": [
+          "A. By counting how many boxes were moved.",
+          "B. By checking directions and the ability to track requests.",
+          "C. By measuring the new desk.",
+          "D. By opening exactly at four o'clock."
+        ],
+        "answer": "B. By checking directions and the ability to track requests.",
+        "explanation": "Tiêu chí chính là khách được chỉ dẫn đúng và yêu cầu vẫn có thể theo dõi.",
+        "evidence": "Success will be judged by whether customers received accurate directions and their requests remained traceable, rather than by whether every box reached its final position on Thursday."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Boxes will be labelled with their destination.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài nói rõ nhãn hộp ghi nơi đến, không chỉ tên phòng ban.",
+        "evidence": "Boxes will be marked with their destination, not just the department name."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "All completed paper requests will move on Thursday.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Hồ sơ đã hoàn thành sẽ ở trong tủ đến sáng thứ Sáu.",
+        "evidence": "Completed requests will stay in the existing locked cabinet until Friday morning, when two staff members can move and check them together."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The new furniture cost less than the old furniture.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài mô tả thiết kế bàn mới nhưng không nêu giá đồ nội thất hay so sánh chi phí.",
+        "evidence": "The new desk has a lower section for visitors who prefer to sit while discussing a request."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What will hold the unfinished paper requests? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "closed document case",
+        "explanation": "Mai sẽ đặt hồ sơ chưa hoàn thành trong hộp đựng tài liệu đóng kín. Đáp án có ba từ.",
+        "evidence": "At one thirty, Mai will place the day's unfinished paper requests in a closed document case."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long is the Friday review expected to take? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "fifteen minutes",
+        "explanation": "Buổi kiểm tra dự kiến kéo dài mười lăm phút. Đáp án có hai từ.",
+        "evidence": "The review is expected to take fifteen minutes."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes testing the desk arrangement with a large bag?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F kể việc thử cách bố trí với đồng nghiệp mang túi du lịch lớn.",
+        "evidence": "Staff tested the arrangement with a colleague using a large travel bag and found that the original chair position blocked the approach."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes the equipment checks required before opening?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E liệt kê việc đăng nhập, mở hồ sơ mẫu và nhận cuộc gọi nội bộ.",
+        "evidence": "Before the ground-floor desk opens, Daniel will check that staff can sign in, open a sample customer record and receive an internal telephone call."
+      }
+    ]
+  },
+  {
+    "id": "reading-073",
+    "title": "Car park notice: booking time at the shared chargers",
+    "topic": "daily-life",
+    "level": "B1+",
+    "summary": "Thông báo giới thiệu cách đặt giờ tại bộ sạc dùng chung, xử lý đặt chỗ bị bỏ lỡ và đánh giá thử nghiệm mà không yêu cầu cư dân thay đổi toàn bộ lịch sinh hoạt.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "From next Monday, residents of Willow Court will be able to reserve evening time at the two shared vehicle chargers. Until now, drivers have used the chargers whenever a space was free. This worked reasonably well during the day, but evening demand has increased. Several residents return from work at similar times, and one car sometimes occupies a charging space long after its session has finished. The new booking trial aims to make access more predictable. It does not add more chargers or guarantee that every driver can book a preferred time every evening."
+      },
+      {
+        "label": "B",
+        "text": "Bookings will be available between six and ten in the evening, in two-hour blocks. Outside those hours, the existing first-come arrangement will continue. Residents can reserve through the building website or ask the caretaker to enter a booking during his normal office hours. Each household may hold one evening booking at a time. After that booking ends, it may make another reservation. This limit is intended to stop a small number of households from filling the week's schedule in advance. The booking page will show available times without displaying residents' names or apartment numbers."
+      },
+      {
+        "label": "C",
+        "text": "A reservation gives access to a space, but drivers must still check that the charger is working when they arrive. The booking system does not measure how much charge a vehicle receives. If a charger appears unavailable, residents should report the number printed on its front panel and use the other charger only if its space is unreserved. Moving into someone else's booked space may solve one driver's problem while creating another. The caretaker can cancel the affected booking so that the household can reserve again without waiting for the failed session's scheduled end."
+      },
+      {
+        "label": "D",
+        "text": "Drivers should arrive within fifteen minutes of their booking's start time. After that, the space becomes available to other residents for the rest of the block. A late driver should check the page before entering the space, even if it appears empty. Another resident may already be on the way. Anyone who knows they cannot attend should cancel as soon as possible. During the trial, missed bookings will be recorded so that the committee can understand demand, but there will be no additional charge for missing a reservation. Charging fees themselves will follow the existing payment arrangement."
+      },
+      {
+        "label": "E",
+        "text": "Please move your vehicle when your booked period ends, even if you would prefer to continue charging. A booking cannot promise that a vehicle will reach a particular charge level, because vehicles arrive with different needs. Drivers planning a long journey should allow for another charging option rather than depend entirely on one evening block. For ordinary use, some residents may find that a shorter top-up is sufficient. The committee is providing a booking arrangement, not advice about vehicle settings. Questions about a particular vehicle should be directed to its usual information or support service."
+      },
+      {
+        "label": "F",
+        "text": "The spaces beside the chargers are reserved for vehicles actively using them. They are not general parking spaces during unbooked periods. Residents should also keep the walking route behind the spaces clear of bags and loose equipment. During a recent observation evening, the caretaker noticed that people waiting for a charger stood in the entrance used by cyclists. The new notice board will therefore stand beside the payment machine, where residents can read it without blocking that entrance. Drivers do not need to wait beside another person's vehicle to claim the next available period."
+      },
+      {
+        "label": "G",
+        "text": "The trial will run for four weeks. Residents are invited to send short comments about booking times, cancellation and access to the page. Useful feedback describes an actual difficulty, such as being unable to see free times on a phone, rather than simply requesting unlimited bookings. The committee will compare comments with the number of completed and missed reservations. If the late evening block is often unused while the early block is full, it may consider different starting times. It will not assume that an empty space means nobody needs charging; the timing may simply be unsuitable."
+      },
+      {
+        "label": "H",
+        "text": "At the end of the trial, the committee will publish a brief account of what happened and explain whether the arrangement will continue. Residents who prefer the current system can describe what would become harder for them under permanent booking. The committee recognises that shift workers may not know their return time several days ahead. Keeping daytime access unbooked is one attempt to preserve flexibility, but feedback may suggest a better balance. The aim is a shared routine that residents can understand and use, with clear limits when demand is greater than the spaces available."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "reserve",
+        "meaning": "đặt trước hoặc giữ chỗ"
+      },
+      {
+        "term": "first-come arrangement",
+        "meaning": "cách phục vụ theo nguyên tắc ai đến trước được dùng trước"
+      },
+      {
+        "term": "top-up",
+        "meaning": "việc bổ sung thêm một lượng nhỏ, ở đây là sạc thêm điện"
+      },
+      {
+        "term": "unreserved",
+        "meaning": "chưa được đặt trước"
+      },
+      {
+        "term": "flexibility",
+        "meaning": "sự linh hoạt"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the main purpose of the booking trial?",
+        "options": [
+          "A. To guarantee full charging for every vehicle.",
+          "B. To make access to the chargers more predictable.",
+          "C. To replace both existing chargers.",
+          "D. To stop residents charging during the day."
+        ],
+        "answer": "B. To make access to the chargers more predictable.",
+        "explanation": "Mục tiêu được nêu trực tiếp là giúp việc tiếp cận bộ sạc dễ dự tính hơn.",
+        "evidence": "The new booking trial aims to make access more predictable."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why can a household hold only one evening booking at a time?",
+        "options": [
+          "A. To stop a few households taking the week's available times.",
+          "B. To reduce the speed of charging.",
+          "C. To make the caretaker collect payments.",
+          "D. To prevent residents using the website."
+        ],
+        "answer": "A. To stop a few households taking the week's available times.",
+        "explanation": "Giới hạn nhằm tránh một số ít hộ đặt kín lịch cả tuần trước.",
+        "evidence": "This limit is intended to stop a small number of households from filling the week's schedule in advance."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will the notice board be placed beside the payment machine?",
+        "options": [
+          "A. The caretaker can watch it from his office.",
+          "B. It needs electricity.",
+          "C. Residents can read it without blocking the cyclists' entrance.",
+          "D. Drivers must pay before reading it."
+        ],
+        "answer": "C. Residents can read it without blocking the cyclists' entrance.",
+        "explanation": "Vị trí này cho phép đọc thông báo mà không chắn lối dành cho người đi xe đạp.",
+        "evidence": "The new notice board will therefore stand beside the payment machine, where residents can read it without blocking that entrance."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Residents can ask the caretaker to make a booking during his normal office hours.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Đây là lựa chọn thay thế cho việc đặt qua trang web.",
+        "evidence": "Residents can reserve through the building website or ask the caretaker to enter a booking during his normal office hours."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Drivers may remain in the space after their booking ends if they need more charge.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Thông báo yêu cầu di chuyển xe khi giờ đặt kết thúc dù muốn sạc tiếp.",
+        "evidence": "Please move your vehicle when your booked period ends, even if you would prefer to continue charging."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Most residents own vehicles made by the same manufacturer.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nói các xe có nhu cầu sạc khác nhau, nhưng không nêu hãng xe hay tỷ lệ sở hữu.",
+        "evidence": "A booking cannot promise that a vehicle will reach a particular charge level, because vehicles arrive with different needs."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Within how long after the start should a driver arrive? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "fifteen minutes",
+        "explanation": "Người lái nên đến trong vòng mười lăm phút. Đáp án có hai từ.",
+        "evidence": "Drivers should arrive within fifteen minutes of their booking's start time."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long will the trial last? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "four weeks",
+        "explanation": "Thời gian thử nghiệm là bốn tuần. Đáp án có hai từ.",
+        "evidence": "The trial will run for four weeks."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains what to do when a booked charger is unavailable?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C hướng dẫn báo số bộ sạc và chỉ dùng bộ còn lại nếu chỗ đó chưa được đặt.",
+        "evidence": "If a charger appears unavailable, residents should report the number printed on its front panel and use the other charger only if its space is unreserved."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph acknowledges difficulty planning ahead for people working shifts?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H thừa nhận người làm theo ca có thể chưa biết trước giờ về nhà.",
+        "evidence": "The committee recognises that shift workers may not know their return time several days ahead."
+      }
+    ]
+  },
+  {
+    "id": "reading-074",
+    "title": "Migration proposal: separating private notes from customer replies",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Đề xuất tách ghi chú nội bộ và phản hồi gửi khách hàng thành hai khu vực rõ ràng, đồng thời xử lý dữ liệu cũ cẩn thận để không suy đoán sai người đọc của từng ghi chú.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The support application currently stores customer replies and internal notes in one conversation list. Staff select an audience before adding a message, and a small coloured label shows whether customers can see it. The arrangement keeps the full history together, but it asks staff to remember an important choice during a busy conversation. In a recent observation session, two agents began writing an internal explanation while the customer audience was selected. They noticed before sending, so no message reached the wrong audience. Nevertheless, the product team believes the interface makes an avoidable mistake too easy."
+      },
+      {
+        "label": "B",
+        "text": "The proposal introduces separate areas called Customer Reply and Team Note. Each area will explain who can read its contents, and staff will no longer change the audience through a small menu beside the send button. Both kinds of message will still appear in a combined history for authorised support staff. Customers will continue to see only customer replies. The team considered putting notes in a separate tab, but rejected that design after agents missed useful context during a trial. Clear writing areas are valuable, while hiding part of the conversation history would create a different difficulty."
+      },
+      {
+        "label": "C",
+        "text": "Moving older messages requires more care than changing the screen. Most records include an explicit audience value and can be placed in the correct area directly. However, messages imported from the previous application sometimes have an empty audience field. An empty field does not prove that a message was public or private. Some imported messages contain delivery records showing that a customer received them, while others have no such evidence. The migration must preserve this uncertainty instead of guessing from the wording. A polite greeting, for example, is not reliable evidence that a message was sent externally."
+      },
+      {
+        "label": "D",
+        "text": "For records with an unknown audience, the team proposes a restricted review list. These records will remain visible to authorised support staff, but the migration will not newly expose them to customers. Reviewers can classify a record when reliable delivery information is available. If the evidence remains unclear, the record will keep an Unknown label. Staff must not rewrite the original text to make it fit a category. The review decision will be stored separately with the reviewer's name and date. This approach leaves some records unresolved, but avoids presenting a guess as a confirmed part of the history."
+      },
+      {
+        "label": "E",
+        "text": "The first migration rehearsal will use a copy of records from twenty closed support cases. The sample will include long conversations, imported messages and cases with attachments. Reviewers will compare the old and new histories, checking message order, audience labels and attachment links. They will also confirm that the customer view contains the same customer replies as before. Counting messages is useful, but it cannot show whether a private note has appeared in the wrong place. The rehearsal therefore combines automatic counts with direct inspection of selected cases. Any unexplained difference will stop the next stage."
+      },
+      {
+        "label": "F",
+        "text": "During the live change, staff will have a short period when they can read cases but cannot add messages. The team chose a quiet morning rather than an evening because experienced support agents will be available to check the results. Urgent enquiries will be recorded in a temporary work list and added to the application once writing becomes available again. That list will record the time and responsible agent, so work does not disappear between systems. The customer service lead will approve the exact window after reviewing appointment volumes and confirming that enough staff can cover urgent contacts."
+      },
+      {
+        "label": "G",
+        "text": "Training will focus on recognising the two writing areas and checking the audience before sending. Agents will practise with fictional cases that contain both a customer question and a private discussion about how to answer it. The aim is to build a habit, not simply show where the buttons moved. A draft written in one area will not automatically appear in the other. To move it, an agent must use a clearly labelled action and confirm the new audience. This adds a small amount of effort at the point where the meaning of the action changes."
+      },
+      {
+        "label": "H",
+        "text": "The team will review the change after two weeks of normal use. Useful measures include agents' reports of audience confusion and the number of drafts moved between writing areas. A lower number of moved drafts would not automatically prove improvement; agents might be avoiding the feature or asking colleagues to send messages for them. Short interviews will therefore accompany the figures. If the new areas remain confusing, the team can revise their wording and position without reclassifying old messages again. Success means agents can understand the audience quickly while still finding the conversation context they need."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "audience",
+        "meaning": "những người được phép đọc nội dung"
+      },
+      {
+        "term": "explicit",
+        "meaning": "được ghi rõ, không cần suy đoán"
+      },
+      {
+        "term": "classify",
+        "meaning": "phân loại"
+      },
+      {
+        "term": "rehearsal",
+        "meaning": "lần chạy thử trước khi thực hiện chính thức"
+      },
+      {
+        "term": "unresolved",
+        "meaning": "chưa được xác định hoặc giải quyết"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why was a separate tab for internal notes rejected?",
+        "options": [
+          "A. Customers requested access to all notes.",
+          "B. Agents missed useful context during a trial.",
+          "C. Imported records could not contain tabs.",
+          "D. The tab would remove attachment links."
+        ],
+        "answer": "B. Agents missed useful context during a trial.",
+        "explanation": "Thử nghiệm cho thấy khi tách sang tab khác, nhân viên bỏ sót ngữ cảnh hữu ích.",
+        "evidence": "The team considered putting notes in a separate tab, but rejected that design after agents missed useful context during a trial."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "How will records be treated when their audience cannot be confirmed?",
+        "options": [
+          "A. They will be deleted.",
+          "B. They will all become customer replies.",
+          "C. They will retain an Unknown label.",
+          "D. Their text will be rewritten."
+        ],
+        "answer": "C. They will retain an Unknown label.",
+        "explanation": "Nếu bằng chứng chưa rõ, bản ghi giữ nhãn Unknown thay vì bị phân loại theo suy đoán.",
+        "evidence": "If the evidence remains unclear, the record will keep an Unknown label."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will direct inspection be used alongside message counts?",
+        "options": [
+          "A. Counts cannot reveal every audience placement error.",
+          "B. All automatic counts are unavailable.",
+          "C. Reviewers want to shorten conversations.",
+          "D. Customer replies have no audience values."
+        ],
+        "answer": "A. Counts cannot reveal every audience placement error.",
+        "explanation": "Đếm số lượng không đủ để phát hiện ghi chú riêng tư bị đặt sai chỗ.",
+        "evidence": "Counting messages is useful, but it cannot show whether a private note has appeared in the wrong place."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The two agents noticed their audience mistake before sending.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Hai người phát hiện trước khi gửi nên không có nội dung đến sai đối tượng.",
+        "evidence": "They noticed before sending, so no message reached the wrong audience."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "A polite greeting is enough to prove an imported message was sent to a customer.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài nói rõ lời chào lịch sự không phải bằng chứng đáng tin cậy về việc gửi ra ngoài.",
+        "evidence": "A polite greeting, for example, is not reliable evidence that a message was sent externally."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The previous application was supplied by an overseas company.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nhắc đến ứng dụng cũ nhưng không nói nhà cung cấp hoặc quốc gia của họ.",
+        "evidence": "However, messages imported from the previous application sometimes have an empty audience field."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Where will urgent enquiries be recorded during the live change? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "temporary work list",
+        "explanation": "Các yêu cầu khẩn được ghi vào danh sách công việc tạm thời. Đáp án có ba từ.",
+        "evidence": "Urgent enquiries will be recorded in a temporary work list and added to the application once writing becomes available again."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What kind of cases will agents use in training? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "fictional cases",
+        "explanation": "Nhân viên thực hành bằng tình huống hư cấu. Đáp án có hai từ.",
+        "evidence": "Agents will practise with fictional cases that contain both a customer question and a private discussion about how to answer it."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why a smaller number in a measure may not prove success?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nêu các nguyên nhân khác có thể làm giảm số bản nháp chuyển khu vực.",
+        "evidence": "A lower number of moved drafts would not automatically prove improvement; agents might be avoiding the feature or asking colleagues to send messages for them."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes how a review decision will be recorded separately?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "D",
+        "explanation": "Đoạn D quy định lưu quyết định cùng tên người đánh giá và ngày đánh giá.",
+        "evidence": "The review decision will be stored separately with the reviewer's name and date."
+      }
+    ]
+  },
+  {
+    "id": "reading-075",
+    "title": "Training handover: covering a trainer's unexpected absence",
+    "topic": "workplace",
+    "level": "B1+",
+    "summary": "Ghi chú bàn giao giúp một đồng nghiệp tiếp quản buổi đào tạo khi giảng viên vắng mặt, với phạm vi rõ ràng, bài thực hành phù hợp và cách ghi lại câu hỏi chưa được giải đáp.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Tomorrow's session on handling customer enquiries will go ahead, although the usual trainer, Helen, cannot attend. Omar has agreed to lead it using the prepared materials. The twelve participants work in different departments, and several have arranged cover so they can attend. Cancelling at short notice would waste that preparation. However, Omar should not try to deliver every part of Helen's usual programme. He knows the daily enquiry process well but has less experience with unusual complaints. This handover sets a smaller, useful goal: participants should leave able to record an enquiry clearly and send it to the right team."
+      },
+      {
+        "label": "B",
+        "text": "The session will begin at nine thirty and finish at eleven. The first fifteen minutes should establish what participants currently find difficult. Omar can ask everyone to write one example on a card, without including customer names or contact details. He should group similar examples on the board and explain which ones the session will cover. Some questions may concern situations outside the agreed scope. Those cards should remain visible in a separate area so participants know their concerns were heard. Omar does not need to provide an immediate answer simply because a question appears on the board."
+      },
+      {
+        "label": "C",
+        "text": "The main demonstration uses a fictional enquiry about an incomplete furniture delivery. The customer has received three chairs instead of four and wants to know when the remaining chair will arrive. Omar should show how to record what arrived, what is missing and what the customer is asking for. Participants often write long accounts of the conversation while leaving out the requested action. A short, specific record is more useful to the receiving team than a detailed description of the customer's mood. The demonstration should include one weak example so the group can explain what information needs improving."
+      },
+      {
+        "label": "D",
+        "text": "After the demonstration, participants will work in pairs with three printed scenarios. One person will play the customer while the other records the enquiry, then they will exchange roles. The scenarios contain enough information for the exercise, but customers may naturally ask extra questions. Participants should practise saying that they will check rather than inventing an answer. Omar should circulate and listen for missing facts or promises that the scenario does not support. He should avoid correcting every sentence of English, because the exercise concerns useful records and realistic responses rather than perfect grammar."
+      },
+      {
+        "label": "E",
+        "text": "The prepared slides contain a section on difficult complaints that Omar should leave out. Helen normally teaches it through discussion of carefully chosen examples, and the slides alone do not explain her approach. Instead, Omar will spend ten additional minutes comparing enquiry records produced by the pairs. He can ask which record would let a colleague act without calling the customer again. This replacement activity keeps the session within his experience and gives participants a practical way to judge their own work. The printed agenda has been updated so that nobody expects the omitted section to appear later."
+      },
+      {
+        "label": "F",
+        "text": "Rita from administration will help with materials and attendance. She will place scenario packs on the tables, check the projector before participants arrive and collect the completed feedback cards. If the projector fails, Omar can use the printed demonstration sheets already included in the trainer's folder. The session should not wait while several people try to repair equipment. Rita can report the fault separately. The handover folder also contains the current team contact list, which participants will use when deciding where to send each enquiry. Omar should confirm that the list is the latest version before making copies."
+      },
+      {
+        "label": "G",
+        "text": "Questions that need Helen's experience should be recorded on the question sheet with enough context for her to answer later. Omar should distinguish a general question from a request about an actual customer case. Real cases must go through the normal support route, especially if someone needs action that day. The training question sheet is not another customer service queue. Helen will receive the sheet when she returns, and administration will tell participants when answers are available. No exact reply date should be promised until Helen has reviewed the questions and confirmed what follow-up she can provide."
+      },
+      {
+        "label": "H",
+        "text": "At the end, each participant will improve one enquiry record and write the reason for the change. This final task gives Omar evidence of learning beyond whether people enjoyed the session. Feedback cards will separately ask about pace, clarity and the usefulness of pair work. Omar should leave a brief note for Helen explaining what was covered, which examples caused difficulty and where he changed the timing. He does not need to recreate the whole discussion. A focused handover will help Helen plan a later session on complaints while recognising the skills participants have already practised."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "arranged cover",
+        "meaning": "đã bố trí người làm thay trong thời gian vắng mặt"
+      },
+      {
+        "term": "scope",
+        "meaning": "phạm vi nội dung hoặc công việc"
+      },
+      {
+        "term": "circulate",
+        "meaning": "đi quanh phòng để quan sát và hỗ trợ"
+      },
+      {
+        "term": "omitted",
+        "meaning": "được bỏ ra, không được đưa vào"
+      },
+      {
+        "term": "follow-up",
+        "meaning": "hoạt động phản hồi hoặc xử lý tiếp sau"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What is the reduced goal for this session?",
+        "options": [
+          "A. To teach every part of Helen's programme.",
+          "B. To repair the customer service system.",
+          "C. To record enquiries clearly and route them correctly.",
+          "D. To assess participants' English grammar."
+        ],
+        "answer": "C. To record enquiries clearly and route them correctly.",
+        "explanation": "Mục tiêu thu hẹp là ghi yêu cầu rõ ràng và gửi đúng nhóm xử lý.",
+        "evidence": "This handover sets a smaller, useful goal: participants should leave able to record an enquiry clearly and send it to the right team."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What should participants practise when an extra question has no supported answer?",
+        "options": [
+          "A. Saying that they will check.",
+          "B. Ending the conversation immediately.",
+          "C. Choosing the most likely answer.",
+          "D. Asking Rita to answer every question."
+        ],
+        "answer": "A. Saying that they will check.",
+        "explanation": "Người học nên nói sẽ kiểm tra thay vì tự tạo ra câu trả lời.",
+        "evidence": "Participants should practise saying that they will check rather than inventing an answer."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What will provide direct evidence of learning at the end?",
+        "options": [
+          "A. Counting attendance cards.",
+          "B. Improving a record and explaining the change.",
+          "C. Asking whether the room was comfortable.",
+          "D. Repeating all the slides."
+        ],
+        "answer": "B. Improving a record and explaining the change.",
+        "explanation": "Nhiệm vụ sửa một bản ghi và nêu lý do cho thấy người học áp dụng được nội dung.",
+        "evidence": "At the end, each participant will improve one enquiry record and write the reason for the change."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Participants should avoid putting customer names on their opening cards.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Hướng dẫn yêu cầu không ghi tên hoặc thông tin liên hệ của khách.",
+        "evidence": "Omar can ask everyone to write one example on a card, without including customer names or contact details."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "The session should stop until a failed projector has been repaired.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài yêu cầu không chờ sửa thiết bị; Omar có thể dùng tài liệu in.",
+        "evidence": "The session should not wait while several people try to repair equipment."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "Omar has previously led this course three times.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nói Omar đồng ý phụ trách, nhưng không nêu số lần anh từng dạy khóa này.",
+        "evidence": "Omar has agreed to lead it using the prepared materials."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What will participants use to choose the receiving team? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "team contact list",
+        "explanation": "Người học sử dụng danh sách liên hệ các nhóm. Đáp án có ba từ.",
+        "evidence": "The handover folder also contains the current team contact list, which participants will use when deciding where to send each enquiry."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "On what should questions requiring Helen's experience be recorded? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "question sheet",
+        "explanation": "Những câu hỏi này được ghi trên phiếu câu hỏi. Đáp án có hai từ.",
+        "evidence": "Questions that need Helen's experience should be recorded on the question sheet with enough context for her to answer later."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains why the difficult-complaints section will be omitted?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E cho biết riêng các slide không thể hiện đầy đủ cách Helen dạy phần này.",
+        "evidence": "Helen normally teaches it through discussion of carefully chosen examples, and the slides alone do not explain her approach."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes a customer who received fewer chairs than expected?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C giới thiệu tình huống giao thiếu một chiếc ghế.",
+        "evidence": "The customer has received three chairs instead of four and wants to know when the remaining chair will arrive."
+      }
+    ]
+  },
+  {
+    "id": "reading-076",
+    "title": "Repair estimate: making a dining table steady again",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Bản dự toán sửa bàn ăn giải thích nguyên nhân bàn lung lay, hai lựa chọn sửa chữa, phần công việc không nằm trong giá và những điều khách cần xác nhận trước khi đồng ý.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "Thank you for bringing photographs and measurements of your dining table to our workshop. You explained that it moves from side to side when someone leans against the long edge. You also mentioned a pale mark near the centre, but your main concern is making the table steady enough for everyday meals. During yesterday's visit, our repairer checked the table on your dining-room floor and then on a flat board. It moved in both positions. The estimate therefore focuses on the table's joints rather than suggesting that you change the floor or buy a thicker rug."
+      },
+      {
+        "label": "B",
+        "text": "Two joints connecting the legs to the frame have become loose. The wood around them appears suitable for repair, although the repairer will inspect it again after taking the joints apart. One corner has an old metal bracket, probably added during an earlier repair. We cannot tell from its appearance when that work was done. The bracket is holding its corner firmly, so removing it is not part of the proposed work. A narrow crack in the table's surface will also remain. It does not appear to be the source of the movement observed during the visit."
+      },
+      {
+        "label": "C",
+        "text": "Option One is a repair to the two loose joints only. We would remove the affected legs, clean the old material from the joint surfaces and rebuild the connections using the workshop's normal method for this table. The table would then be checked for movement before collection. This option costs  ninety pounds, including labour and materials. It does not include work on the pale mark or a new surface finish. We recommend this option if your priority is practical use and you are comfortable keeping the table's current appearance, including the marks from years of family meals."
+      },
+      {
+        "label": "D",
+        "text": "Option Two includes the same joint repair plus work to improve the top's appearance. The total estimate is one hundred and sixty pounds. The repairer would first test a small area underneath the top to see how the existing finish responds to the proposed treatment. We would contact you before proceeding if the test suggested an uneven result. The pale mark may become less noticeable, but we cannot promise that it will disappear completely. Replacing the whole finish could give a more even appearance, although that would be a separate job with a different price and longer workshop time."
+      },
+      {
+        "label": "E",
+        "text": "The table will need to stay in the workshop for five working days for Option One, or seven for Option Two. These periods include time when the table is left undisturbed between stages, rather than continuous labour. We can collect it on Tuesday morning if you choose a repair by Friday afternoon. Collection and return together cost thirty pounds within our local delivery area. You may arrange your own transport instead, but please tell us in advance. The legs will be attached when the table is returned, so check that your vehicle can carry its full dimensions."
+      },
+      {
+        "label": "F",
+        "text": "Before collection, please clear the top and remove the small drawer beneath it. Several customers use similar drawers for cutlery or letters, and those items can be overlooked when furniture is moved. Our team will bring protective covers, so you do not need to wrap the table yourself. We will photograph its condition when collecting it and send you a copy. The photographs help both sides distinguish existing marks from any issue noticed later. Please also tell us about steps or narrow entrances, because the delivery team needs to plan how to carry the table without unnecessary delays."
+      },
+      {
+        "label": "G",
+        "text": "If taking the joints apart reveals damage that was not visible during the visit, we will stop and send a revised estimate. You can then decide whether to continue. The original estimate does not authorise additional repair work automatically. If you choose not to proceed, we will discuss returning the table in a suitable condition and explain any charge for work already completed before you decide. We prefer this conversation to making assumptions about your budget. A repair that remains worthwhile at ninety pounds may no longer be the best choice if unexpected damage increases the cost substantially."
+      },
+      {
+        "label": "H",
+        "text": "When the table comes back, the delivery team will place it where you normally use it and check its movement with you. We will also provide a short care sheet suited to the finish actually used. Please follow that sheet rather than general advice intended for a different surface. If you notice the same movement again, contact the workshop with a brief description of when it occurs. You do not need to carry out another repair before contacting us. To accept this estimate, reply with your chosen option, preferred transport arrangement and a telephone number for collection questions."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "joint",
+        "meaning": "mối nối giữa các bộ phận"
+      },
+      {
+        "term": "bracket",
+        "meaning": "miếng hoặc thanh đỡ dùng để cố định"
+      },
+      {
+        "term": "surface finish",
+        "meaning": "lớp hoàn thiện trên bề mặt"
+      },
+      {
+        "term": "undisturbed",
+        "meaning": "được để yên, không bị tác động"
+      },
+      {
+        "term": "revised estimate",
+        "meaning": "bản dự toán đã điều chỉnh"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why does the estimate focus on the table rather than the floor?",
+        "options": [
+          "A. The customer has already replaced the floor.",
+          "B. The table also moved when placed on a flat board.",
+          "C. A thicker rug was too expensive.",
+          "D. The repairer did not visit the dining room."
+        ],
+        "answer": "B. The table also moved when placed on a flat board.",
+        "explanation": "Bàn vẫn lung lay trên tấm phẳng, nên vấn đề không chỉ do sàn phòng ăn.",
+        "evidence": "It moved in both positions."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Who is Option One recommended for?",
+        "options": [
+          "A. Someone wanting every mark removed.",
+          "B. Someone needing a new table top.",
+          "C. Someone prioritising practical use and accepting the current appearance.",
+          "D. Someone wanting the old bracket removed."
+        ],
+        "answer": "C. Someone prioritising practical use and accepting the current appearance.",
+        "explanation": "Lựa chọn một phù hợp khi khách ưu tiên dùng bàn ổn định và chấp nhận hình thức hiện tại.",
+        "evidence": "We recommend this option if your priority is practical use and you are comfortable keeping the table's current appearance, including the marks from years of family meals."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What will happen if hidden damage is discovered?",
+        "options": [
+          "A. Extra work will begin without consultation.",
+          "B. The workshop will stop and provide a revised estimate.",
+          "C. The table will be replaced free of charge.",
+          "D. The original price will cover every possible repair."
+        ],
+        "answer": "B. The workshop will stop and provide a revised estimate.",
+        "explanation": "Xưởng sẽ dừng lại và gửi dự toán mới để khách quyết định.",
+        "evidence": "If taking the joints apart reveals damage that was not visible during the visit, we will stop and send a revised estimate."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "The old metal bracket will remain under the proposed repair.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Miếng đỡ đang giữ chắc góc bàn và việc tháo nó không nằm trong công việc đề xuất.",
+        "evidence": "The bracket is holding its corner firmly, so removing it is not part of the proposed work."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Option Two guarantees that the pale mark will disappear completely.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Xưởng chỉ nói vết có thể bớt rõ, không đảm bảo biến mất hoàn toàn.",
+        "evidence": "The pale mark may become less noticeable, but we cannot promise that it will disappear completely."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The customer's grandfather carried out the earlier bracket repair.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nhắc dấu hiệu sửa trước đây nhưng không xác định người thực hiện.",
+        "evidence": "One corner has an old metal bracket, probably added during an earlier repair."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What should the customer remove from beneath the table? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "small drawer",
+        "explanation": "Khách cần tháo ngăn kéo nhỏ bên dưới bàn. Đáp án có hai từ.",
+        "evidence": "Before collection, please clear the top and remove the small drawer beneath it."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What will the workshop provide for the finish used? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "short care sheet",
+        "explanation": "Xưởng cung cấp tờ hướng dẫn chăm sóc ngắn phù hợp với lớp hoàn thiện. Đáp án có ba từ.",
+        "evidence": "We will also provide a short care sheet suited to the finish actually used."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains that workshop time includes waiting between stages?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E giải thích thời gian lưu bàn gồm cả thời gian để yên giữa các bước.",
+        "evidence": "These periods include time when the table is left undisturbed between stages, rather than continuous labour."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains the purpose of collection photographs?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "F",
+        "explanation": "Đoạn F nói ảnh giúp phân biệt dấu vết có sẵn với vấn đề được phát hiện sau.",
+        "evidence": "The photographs help both sides distinguish existing marks from any issue noticed later."
+      }
+    ]
+  },
+  {
+    "id": "reading-077",
+    "title": "Release plan: saving useful views of a shared task queue",
+    "topic": "software",
+    "level": "B1+",
+    "summary": "Kế hoạch phát hành giới thiệu các chế độ xem hàng đợi đã lưu, phân biệt chia sẻ điều kiện lọc với cấp quyền truy cập và giải thích cách thử nghiệm trước khi mở rộng.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The operations team uses one task queue for requests from several offices. Agents often begin their day by selecting the same filters: their office, open tasks and a particular service category. Repeating these choices takes time, and a forgotten filter can make the queue look unexpectedly large or small. The next release will let agents save a set of filters as a named view. A saved view changes which existing tasks are displayed; it does not create another queue or move tasks between teams. The purpose is to make familiar working arrangements easier to return to."
+      },
+      {
+        "label": "B",
+        "text": "Each agent can create private views for personal use. Team leads can also publish shared views that appear for everyone in their team. We considered allowing every agent to publish shared views, but the pilot group quickly produced several versions with nearly identical names. People could not tell which one reflected the team's agreed process. Restricting publication should keep the list manageable without preventing personal experiments. An agent who finds a useful private view can ask a lead to publish it. The lead should check its filters and description before making it available to colleagues."
+      },
+      {
+        "label": "C",
+        "text": "Names should explain the purpose of a view rather than the person who created it. For example, North Office: Open Deliveries is clearer than Minh's List. A short description can explain when the view is useful and what it leaves out. The name alone must not imply that it contains every task requiring attention. A view filtered to deliveries will naturally exclude other service categories. During testing, one participant treated an attractive list name as evidence that the list was complete. The release will therefore keep the active filters visible above the results, even after a saved view is selected."
+      },
+      {
+        "label": "D",
+        "text": "Relative date filters need particular care. A view saved with Last Seven Days will apply that same rule when it is opened later, so its results will change over time. It will not preserve the exact dates shown when the view was created. A view using fixed start and end dates will keep those dates until someone edits it. The save window will explain this difference in ordinary language. Users preparing a record for a specific reporting period may prefer fixed dates, while agents checking recent work may prefer a relative rule that requires no daily adjustment."
+      },
+      {
+        "label": "E",
+        "text": "Sharing a view will not give colleagues additional access to tasks. The application will continue to apply each person's existing task permissions when showing results. Two agents can therefore open the same shared view and see different numbers of tasks. This difference is not automatically a fault in the view. The description will explain that results depend on access, and support guidance will ask agents to compare active filters and permissions before reporting missing tasks. The team decided against showing the creator's original task count because an old count could suggest a level of completeness that no longer applies."
+      },
+      {
+        "label": "F",
+        "text": "The first release will go to the two offices that participated in the design sessions. They will use the feature for one working week while the rest of the organisation keeps the current queue controls. Support will collect examples of confusing names, unexpected results and difficulty returning to the standard queue. A clear Reset View button will remain available. If the feature causes repeated confusion, the team can hide the saved-view menu while leaving ordinary filters in place. Existing tasks will continue to be handled through the same process, so the pilot does not require a separate task-handling procedure."
+      },
+      {
+        "label": "G",
+        "text": "Shared views also need an owner after publication. The publishing lead will be listed as the owner and receive a reminder to review the view when a service category changes. If that lead leaves the team, another lead must accept ownership before editing the view. Agents can still use it during that handover. Views that are no longer useful can be archived, which removes them from the main menu but preserves their filter settings for later review. Archiving a view will not close, delete or change any task that previously appeared in its results."
+      },
+      {
+        "label": "H",
+        "text": "Before extending the release, the product team will review whether agents can correctly explain what their saved views include. Faster setup is welcome, but speed alone is not the main measure of success. In a short exercise, pilot participants will select a view, describe its filters and return to the unfiltered queue. The team will also inspect support reports for patterns that require clearer wording. If participants work faster but misunderstand which tasks are excluded, the design needs further revision. The release should reduce repeated setup while helping agents maintain an accurate picture of their work."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "saved view",
+        "meaning": "chế độ xem được lưu với một bộ điều kiện lọc"
+      },
+      {
+        "term": "publish",
+        "meaning": "đưa nội dung ra để những người khác sử dụng"
+      },
+      {
+        "term": "relative date",
+        "meaning": "mốc thời gian tương đối, thay đổi theo thời điểm hiện tại"
+      },
+      {
+        "term": "ownership",
+        "meaning": "trách nhiệm quản lý và duy trì"
+      },
+      {
+        "term": "unfiltered",
+        "meaning": "chưa áp dụng điều kiện lọc"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why will only team leads publish shared views?",
+        "options": [
+          "A. Agents cannot create private filters.",
+          "B. The pilot produced confusing views with similar names.",
+          "C. Leads need access to a new task queue.",
+          "D. Shared views must contain every service category."
+        ],
+        "answer": "B. The pilot produced confusing views with similar names.",
+        "explanation": "Nhóm thử nghiệm tạo nhiều phiên bản có tên gần giống nhau, khiến người dùng khó nhận biết.",
+        "evidence": "We considered allowing every agent to publish shared views, but the pilot group quickly produced several versions with nearly identical names."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "What happens when Last Seven Days is used in a saved view?",
+        "options": [
+          "A. The original seven calendar dates are kept forever.",
+          "B. The view becomes unavailable after seven days.",
+          "C. The rule is applied again when the view is opened.",
+          "D. The user must enter new dates every morning."
+        ],
+        "answer": "C. The rule is applied again when the view is opened.",
+        "explanation": "Bộ lọc tương đối được áp dụng lại theo lúc mở, nên kết quả thay đổi theo thời gian.",
+        "evidence": "A view saved with Last Seven Days will apply that same rule when it is opened later, so its results will change over time."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What matters most before the release is extended?",
+        "options": [
+          "A. Agents understand what their views include.",
+          "B. Every agent creates ten views.",
+          "C. The standard queue is removed.",
+          "D. Every shared view shows the same task count."
+        ],
+        "answer": "A. Agents understand what their views include.",
+        "explanation": "Nhóm cần xác minh người dùng hiểu đúng phạm vi của chế độ xem đã lưu.",
+        "evidence": "Before extending the release, the product team will review whether agents can correctly explain what their saved views include."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Active filters will remain visible after a saved view is selected.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài xác nhận các bộ lọc vẫn hiển thị phía trên kết quả.",
+        "evidence": "The release will therefore keep the active filters visible above the results, even after a saved view is selected."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Sharing a view gives colleagues permission to see additional tasks.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Chia sẻ chế độ xem không cấp thêm quyền truy cập nhiệm vụ.",
+        "evidence": "Sharing a view will not give colleagues additional access to tasks."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The two pilot offices are in different countries.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài xác định hai văn phòng thử nghiệm nhưng không nói vị trí quốc gia.",
+        "evidence": "The first release will go to the two offices that participated in the design sessions."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Which button lets users return from a saved view? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Reset View",
+        "explanation": "Nút được nêu là Reset View. Đáp án có hai từ.",
+        "evidence": "A clear Reset View button will remain available."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How long will the initial offices use the feature during the pilot? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "one working week",
+        "explanation": "Đợt thử nghiệm kéo dài một tuần làm việc. Đáp án có ba từ.",
+        "evidence": "They will use the feature for one working week while the rest of the organisation keeps the current queue controls."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains what happens when a view's owner leaves the team?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G quy định một trưởng nhóm khác phải nhận trách nhiệm trước khi chỉnh sửa.",
+        "evidence": "If that lead leaves the team, another lead must accept ownership before editing the view."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why two people may see different results from one shared view?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E cho biết hệ thống tiếp tục áp dụng quyền truy cập riêng của từng người.",
+        "evidence": "The application will continue to apply each person's existing task permissions when showing results."
+      }
+    ]
+  },
+  {
+    "id": "reading-078",
+    "title": "Supplier procedure: confirming a delivery schedule after a delay",
+    "topic": "workplace",
+    "level": "B2",
+    "summary": "Quy trình giúp nhóm mua hàng xác nhận lịch giao đã thay đổi, kiểm tra nhu cầu thực tế trước khi trả phí giao nhanh và gửi một lịch thống nhất cho các bên liên quan.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "When a supplier reports a delay, the purchasing team must turn the revised information into one clear delivery schedule. Last month, a supplier first offered a Friday delivery, then suggested sending half the order on Thursday. Different colleagues replied to different messages, and the warehouse prepared for a full Thursday delivery that never arrived. No goods were lost, but staff spent time clearing space and changing work plans unnecessarily. This procedure explains how to confirm a replacement schedule without treating every suggestion as an agreement. It applies to ordinary supply orders managed by the purchasing team."
+      },
+      {
+        "label": "B",
+        "text": "The buyer responsible for the order should first acknowledge the supplier's message and ask for a complete proposal. The proposal must state the quantities, delivery dates and any change in transport cost. A message saying that some items may arrive early is not enough for the warehouse to plan around. The buyer should also ask whether the proposed dates are confirmed or still estimates. Suppliers may need time to check their own arrangements, and it is better to recognise that uncertainty than pass an optimistic date to colleagues as if it were settled."
+      },
+      {
+        "label": "C",
+        "text": "Next, the buyer should check which items are actually needed first. The original order may contain several products with different uses, and their position on the order does not show their priority. The production team should identify the minimum quantity needed to keep scheduled work moving. The warehouse should confirm when it can receive and store the goods. These checks may reveal that a small early delivery is useful, or that splitting the order would create extra handling without solving the main difficulty. The buyer should record the reason for the preferred arrangement, not merely its dates."
+      },
+      {
+        "label": "D",
+        "text": "Consider the recent order for three hundred printed cartons. The supplier offered to send one hundred cartons on Thursday by express transport and the remainder on Monday. Express delivery would add forty pounds. Production initially supported the offer because Thursday sounded safer than waiting. After checking its work plan, however, it found enough cartons already in stock to cover Friday's run. All three hundred new cartons could therefore arrive on Monday without interrupting scheduled work. The buyer declined express transport and explained why. This saved money while giving the supplier a simpler delivery instruction."
+      },
+      {
+        "label": "E",
+        "text": "If an extra cost is necessary, the buyer must obtain approval from the purchasing lead before accepting it. The approval request should compare the additional charge with the practical effect of waiting. It should not simply label the order urgent. A clear explanation might state that a particular packing session would need to move and that five colleagues would require new assignments. The lead can then decide with useful information. Until approval is received, the buyer should tell the supplier that the proposal is under review. Silence should not be used as a way of suggesting acceptance."
+      },
+      {
+        "label": "F",
+        "text": "Once the arrangement is agreed, the buyer will send a schedule confirmation to the supplier, warehouse and production contact. The confirmation must list every planned delivery, including any part of the order whose date has not changed. This creates one document that colleagues can use without combining several email messages. Earlier proposed schedules should be marked as replaced in the order folder. They should remain available as history, but should not appear beside the current schedule without a clear label. The subject line of the confirmation will include the order number and the words Confirmed Delivery Schedule."
+      },
+      {
+        "label": "G",
+        "text": "The warehouse should acknowledge the confirmation and report any receiving problem immediately. If a vehicle arrives with a different quantity or on a different day, staff should record what actually arrived and contact the buyer. They should not quietly alter the agreed schedule to match the delivery. The buyer needs to distinguish a new supplier change from an internal misunderstanding. A partial delivery may still be accepted when useful, but the remaining quantity must be made clear. The receiving record and the schedule serve different purposes: one describes events, while the other describes the current agreement."
+      },
+      {
+        "label": "H",
+        "text": "At the end of the order, the buyer should note whether the supplier met the confirmed schedule and whether the revised arrangement caused extra work. These notes will help future planning, especially when a supplier regularly offers dates that later change. The purpose is not to produce a long account of every conversation. A short record of the decision, its reason and the outcome is sufficient. During the monthly purchasing review, the team will look for repeated causes of confusion. If colleagues still use old proposals, the folder labels or confirmation format may need improvement rather than another reminder email."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "acknowledge",
+        "meaning": "xác nhận đã nhận thông tin"
+      },
+      {
+        "term": "replacement schedule",
+        "meaning": "lịch mới thay thế lịch trước"
+      },
+      {
+        "term": "split the order",
+        "meaning": "chia đơn hàng thành nhiều lần giao"
+      },
+      {
+        "term": "under review",
+        "meaning": "đang được xem xét"
+      },
+      {
+        "term": "receiving record",
+        "meaning": "bản ghi về hàng thực tế đã tiếp nhận"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "What caused unnecessary warehouse preparation last month?",
+        "options": [
+          "A. Goods were sent to the wrong building.",
+          "B. Colleagues replied to different proposed arrangements.",
+          "C. The order number was missing.",
+          "D. The warehouse lost half the goods."
+        ],
+        "answer": "B. Colleagues replied to different proposed arrangements.",
+        "explanation": "Các đồng nghiệp phản hồi những tin khác nhau, dẫn đến hiểu sai rằng cả đơn sẽ đến thứ Năm.",
+        "evidence": "Different colleagues replied to different messages, and the warehouse prepared for a full Thursday delivery that never arrived."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Why was express transport declined for the cartons?",
+        "options": [
+          "A. Existing stock could cover Friday's planned work.",
+          "B. The supplier could not send any cartons.",
+          "C. Production cancelled the order.",
+          "D. The warehouse rejected Monday deliveries."
+        ],
+        "answer": "A. Existing stock could cover Friday's planned work.",
+        "explanation": "Sau khi kiểm tra, nhóm sản xuất thấy lượng tồn đủ cho công việc thứ Sáu.",
+        "evidence": "After checking its work plan, however, it found enough cartons already in stock to cover Friday's run."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why must a confirmation include deliveries whose dates have not changed?",
+        "options": [
+          "A. To increase the order quantity.",
+          "B. To replace the warehouse receiving record.",
+          "C. To provide one complete schedule without combining emails.",
+          "D. To remove all previous messages."
+        ],
+        "answer": "C. To provide one complete schedule without combining emails.",
+        "explanation": "Một tài liệu đầy đủ giúp mọi người không phải ghép thông tin từ nhiều email.",
+        "evidence": "This creates one document that colleagues can use without combining several email messages."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Extra transport costs require the purchasing lead's approval before acceptance.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Quy trình yêu cầu xin phê duyệt trước khi chấp nhận chi phí thêm.",
+        "evidence": "If an extra cost is necessary, the buyer must obtain approval from the purchasing lead before accepting it."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Warehouse staff should quietly change the schedule to match an unexpected delivery.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Bài cấm âm thầm sửa lịch; nhân viên cần ghi nhận thực tế và liên hệ người mua.",
+        "evidence": "They should not quietly alter the agreed schedule to match the delivery."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The carton supplier has worked with the company for ten years.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu đề xuất giao hàng nhưng không cho biết thời gian hợp tác.",
+        "evidence": "The supplier offered to send one hundred cartons on Thursday by express transport and the remainder on Monday."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "What quantity should production identify to keep work moving? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "minimum quantity",
+        "explanation": "Nhóm sản xuất phải xác định lượng tối thiểu cần thiết. Đáp án có hai từ.",
+        "evidence": "The production team should identify the minimum quantity needed to keep scheduled work moving."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "Which three words must appear in the confirmation subject line? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "Confirmed Delivery Schedule",
+        "explanation": "Đây là cụm ba từ phải có trong tiêu đề thư xác nhận.",
+        "evidence": "The subject line of the confirmation will include the order number and the words Confirmed Delivery Schedule."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph explains that the sequence of products on an order does not establish priority?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "C",
+        "explanation": "Đoạn C phân biệt thứ tự ghi trên đơn với mức độ cần thiết của sản phẩm.",
+        "evidence": "The original order may contain several products with different uses, and their position on the order does not show their priority."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph describes using completed-order notes to improve future planning?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H giải thích các ghi chú cuối đơn giúp lập kế hoạch sau này.",
+        "evidence": "These notes will help future planning, especially when a supplier regularly offers dates that later change."
+      }
+    ]
+  },
+  {
+    "id": "reading-079",
+    "title": "Leisure-centre notice: using the new swimming lockers",
+    "topic": "daily-life",
+    "level": "B1",
+    "summary": "Thông báo hướng dẫn dùng tủ đồ mới tại trung tâm giải trí, giải thích khu vực dành cho túi lớn, cách nhờ hỗ trợ và quy trình xử lý đồ bị bỏ quên cuối ngày.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "The swimming changing rooms at Riverside Leisure Centre will receive new lockers next week. The old lockers require a coin, and several doors have become difficult to close even when they are empty. The new lockers use reusable number tokens collected from reception. Visitors have asked whether this means they must buy a membership or use a phone. Neither is required. The centre wants occasional visitors to use the system as easily as regular swimmers. Installation will take place on Wednesday, when one changing room will remain open while work is completed in the other."
+      },
+      {
+        "label": "B",
+        "text": "When you arrive, reception will give you a token showing your locker number. The same number will appear on the door and on the small key attached to the token. Please keep the token with you and return it at the end of your visit. It is not a reservation for the whole day. If you leave the centre and return later, collect another token for the new visit. Reception needs returned tokens to see which lockers are available. Leaving a token in an empty locker may make staff think that someone is still using that space."
+      },
+      {
+        "label": "C",
+        "text": "Most lockers are suitable for a coat, shoes and a medium-sized bag. Six larger lockers will be available for visitors carrying equipment or larger bags. Ask reception for a large locker before entering the changing room. Staff will allocate them according to what needs storing, rather than membership type. During busy periods, the centre cannot guarantee that a large locker will be free. A visitor with several bags may need to place them in two ordinary lockers if space allows. Please avoid bringing extra belongings that you will not need during your visit."
+      },
+      {
+        "label": "D",
+        "text": "The lockers nearest the changing-room entrance have lower shelves and are easier to reach from a seated position. Visitors who find these useful can request one at reception without explaining personal circumstances. Staff have practised describing the available choices clearly, because asking a visitor to inspect every locker would be inconvenient. The centre has also moved a bench that previously narrowed the route to these doors. Families can still sit together on the longer bench by the far wall. Keeping a clear route matters more than preserving the exact furniture arrangement that regular visitors remember."
+      },
+      {
+        "label": "E",
+        "text": "Please check that the door closes properly before going to the pool. If a door catches or the key is difficult to turn, tell a member of staff rather than forcing it. Staff can allocate another locker and mark the faulty one as unavailable. Remember your locker number, because several tokens look similar apart from their printed numbers. If you lose a token, reception will ask you to describe the contents before helping you open the locker. This may take a few minutes, particularly when staff are assisting other visitors, so allow time before your planned departure."
+      },
+      {
+        "label": "F",
+        "text": "Lockers must be emptied before the centre closes at nine in the evening. They are intended for belongings during a visit, rather than overnight storage. Staff will check any locker whose token has not been returned after closing. Items found inside will be recorded and moved to the reception storage cupboard. Visitors can contact reception the following day to ask about collection. Please give the date of your visit and a description of the items. Staff will not identify belongings from a vague statement such as a blue bag, because several visitors may have left similar things."
+      },
+      {
+        "label": "G",
+        "text": "On installation day, visitors should follow the temporary signs showing which changing room is open. Some sessions may take longer to enter because everyone will be using the same room. Reception will mention this when selling admission and will allow visitors to choose a later session if space is available. The centre will not require people to enter a crowded room simply to keep the usual timetable. Group leaders should arrive ten minutes earlier than normal so they can collect tokens and explain the temporary route before the group moves through the building."
+      },
+      {
+        "label": "H",
+        "text": "For the first two weeks, a member of staff will be available near the changing-room entrance during the busiest evening sessions. This person can explain the token system and report any repeated difficulty. Visitors are welcome to comment on locker size, signs and the return process. The centre will check whether enough ordinary lockers remain available when large bags require two spaces. If this causes regular shortages, staff may revise the allocation arrangement. The change will be considered successful when visitors can store and collect their belongings with clear instructions and without unnecessary waiting at reception."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "token",
+        "meaning": "thẻ hoặc vật nhỏ dùng để nhận và xác định tủ"
+      },
+      {
+        "term": "allocate",
+        "meaning": "phân bổ hoặc chỉ định cho người sử dụng"
+      },
+      {
+        "term": "seated position",
+        "meaning": "tư thế đang ngồi"
+      },
+      {
+        "term": "faulty",
+        "meaning": "bị lỗi hoặc không hoạt động đúng"
+      },
+      {
+        "term": "belongings",
+        "meaning": "đồ dùng cá nhân"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why should visitors return their tokens?",
+        "options": [
+          "A. Reception uses them to identify available lockers.",
+          "B. Tokens must be purchased for every visit.",
+          "C. The pool closes when any token is missing.",
+          "D. Tokens are needed to book swimming lessons."
+        ],
+        "answer": "A. Reception uses them to identify available lockers.",
+        "explanation": "Thẻ được trả giúp quầy lễ tân biết tủ nào đã trống.",
+        "evidence": "Reception needs returned tokens to see which lockers are available."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "How will staff decide who receives a large locker?",
+        "options": [
+          "A. By how long the visitor has been a member.",
+          "B. By what the visitor needs to store.",
+          "C. By the price of the admission ticket.",
+          "D. By whether the visitor owns a phone."
+        ],
+        "answer": "B. By what the visitor needs to store.",
+        "explanation": "Việc phân bổ dựa vào đồ cần cất, không dựa trên loại hội viên.",
+        "evidence": "Staff will allocate them according to what needs storing, rather than membership type."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "What should a visitor do if a locker key is difficult to turn?",
+        "options": [
+          "A. Leave the door open while swimming.",
+          "B. Ask another visitor to force it.",
+          "C. Tell a member of staff.",
+          "D. Take the key home."
+        ],
+        "answer": "C. Tell a member of staff.",
+        "explanation": "Khách cần báo nhân viên thay vì cố dùng lực.",
+        "evidence": "If a door catches or the key is difficult to turn, tell a member of staff rather than forcing it."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "Visitors using the lower-shelf lockers do not need to explain personal circumstances.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài cho phép yêu cầu loại tủ này mà không cần giải thích hoàn cảnh cá nhân.",
+        "evidence": "Visitors who find these useful can request one at reception without explaining personal circumstances."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Visitors may keep belongings in the lockers overnight.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Tủ chỉ dành cho thời gian tham quan, không phải để lưu đồ qua đêm.",
+        "evidence": "They are intended for belongings during a visit, rather than overnight storage."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The new lockers were manufactured locally.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài mô tả cách dùng tủ mới nhưng không nêu nơi sản xuất.",
+        "evidence": "The new lockers use reusable number tokens collected from reception."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "Where will items left after closing be stored? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "reception storage cupboard",
+        "explanation": "Đồ bị để quên sẽ chuyển đến tủ lưu trữ tại lễ tân. Đáp án có ba từ.",
+        "evidence": "Items found inside will be recorded and moved to the reception storage cupboard."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "How much earlier should group leaders arrive on installation day? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "ten minutes",
+        "explanation": "Trưởng nhóm nên đến sớm hơn mười phút. Đáp án có hai từ.",
+        "evidence": "Group leaders should arrive ten minutes earlier than normal so they can collect tokens and explain the temporary route before the group moves through the building."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph describes checking whether large bags cause a shortage of ordinary lockers?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "H",
+        "explanation": "Đoạn H nói trung tâm sẽ kiểm tra tác động khi túi lớn cần dùng hai tủ thường.",
+        "evidence": "The centre will check whether enough ordinary lockers remain available when large bags require two spaces."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains how a misplaced token can make an empty locker seem occupied?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "B",
+        "explanation": "Đoạn B giải thích việc để thẻ trong tủ trống làm nhân viên tưởng tủ vẫn có người dùng.",
+        "evidence": "Leaving a token in an empty locker may make staff think that someone is still using that space."
+      }
+    ]
+  },
+  {
+    "id": "reading-080",
+    "title": "Support investigation: a practice message sent to a real mailbox",
+    "topic": "software",
+    "level": "B2",
+    "summary": "Cuộc trao đổi hỗ trợ làm rõ vì sao thông báo thử nghiệm đến hộp thư thật, phân biệt cấu hình người nhận với địa chỉ phản hồi và đề xuất kiểm soát gửi thử.",
+    "minutes": 25,
+    "paragraphs": [
+      {
+        "label": "A",
+        "text": "At ten fifteen on Monday, a customer account manager received an email saying that a service renewal had been cancelled. The subject began with Practice, but the message included a real customer name and a familiar account number. She contacted support because she could not tell whether the cancellation was genuine or simply badly labelled. The renewal was still active in the customer system, and nobody on her team had cancelled it. Support asked her to forward the message as an attachment so the investigation could examine its delivery details without relying only on a copied screenshot."
+      },
+      {
+        "label": "B",
+        "text": "The message came from the training application used by new support agents. That application contained a recent copy of selected customer records so trainees could practise with realistic examples. Before the latest training course, an administrator had replaced customer email addresses with a shared training mailbox. However, the administrator had not changed the account manager field. The cancellation exercise used that field for its notification recipient. The application therefore sent a practice message to the real account manager, even though the customer email field pointed to the training mailbox. The investigation found a routing mistake rather than a real cancellation."
+      },
+      {
+        "label": "C",
+        "text": "Support reviewed the training session's message history and found six outgoing notifications. Five had reached the shared training mailbox, while the cancellation message had gone to the account manager. No customer address appeared among those six recipients. The team also checked the live renewal record and confirmed that the training action had not changed it. These checks established the scope of this incident, but they did not prove that every exercise in the training application was safe. Other exercises could select recipients from different fields, so the team stopped outgoing email while reviewing the remaining notification paths."
+      },
+      {
+        "label": "D",
+        "text": "The trainer asked whether changing the reply address would solve the problem. Support explained that the reply address controls where a response goes after someone receives a message; it does not decide who receives the original message. Adding Practice to the subject had also failed to prevent confusion because the body looked like a real account update. The immediate repair was to direct all training notifications to the shared mailbox through one central setting. Trainees could continue the exercises and inspect messages there, while individual recipient fields were reviewed before any wider sending was allowed again."
+      },
+      {
+        "label": "E",
+        "text": "The team considered removing all customer details from the training records. That would reduce confusion if a message escaped, but some exercises depend on realistic combinations of account information. For example, trainees need to distinguish a billing contact from the person responsible for a service request. The proposed replacement is a set of fictional accounts designed specifically for training. Their names and addresses will be clearly invented, while their relationships will reflect the situations agents need to understand. This takes more preparation than copying recent records, but makes the purpose of the data clear to everyone using the application."
+      },
+      {
+        "label": "F",
+        "text": "Before the next course, the trainer and support engineer will test each exercise together. The trainer will perform the actions in the order learners normally follow, and the engineer will inspect the resulting message history. Each test will record the intended recipient, actual recipient and message purpose. They will include an exercise where no message should be sent, because checking only successful deliveries could miss unnecessary notifications. The course will not reopen outgoing email until every exercise has an agreed result. A screenshot of the mailbox alone will not be accepted as the complete record of this review."
+      },
+      {
+        "label": "G",
+        "text": "The account manager received an explanation on Monday afternoon stating that the renewal remained active and that the message came from training. Support asked her to keep the original email until the investigation was complete, then remove it according to the team's normal mailbox procedure. The team did not send another practice cancellation as a demonstration, since that would create more uncertainty. Instead, the trainer prepared a short internal example showing the difference between a recipient field and a reply address. Future course materials will include this distinction before learners practise actions that produce notifications."
+      },
+      {
+        "label": "H",
+        "text": "The investigation closed after the central setting had been checked and the six deliveries had been accounted for. Longer-term work on fictional records remained assigned to the training team, with support reviewing the message routes. The team will treat reopening email as a separate decision from completing the data replacement. Either task can reveal an issue that needs attention. The main lesson is that changing one obvious contact field does not establish where every message will go. A realistic training environment needs clear data, visible delivery checks and an agreed boundary between practice actions and real communication."
+      }
+    ],
+    "vocabulary": [
+      {
+        "term": "recipient",
+        "meaning": "người hoặc địa chỉ nhận thông báo"
+      },
+      {
+        "term": "routing",
+        "meaning": "việc xác định đường hoặc nơi thông báo được gửi đến"
+      },
+      {
+        "term": "reply address",
+        "meaning": "địa chỉ nhận thư phản hồi"
+      },
+      {
+        "term": "fictional accounts",
+        "meaning": "các tài khoản hư cấu dùng cho luyện tập"
+      },
+      {
+        "term": "accounted for",
+        "meaning": "đã được kiểm tra và xác định đầy đủ"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "prompt": "Why was the account manager unsure about the message?",
+        "options": [
+          "A. It had no subject line.",
+          "B. It combined a Practice subject with real account details.",
+          "C. It came from her own address.",
+          "D. It contained a different customer's screenshot."
+        ],
+        "answer": "B. It combined a Practice subject with real account details.",
+        "explanation": "Tiêu đề nói Practice nhưng tên khách và số tài khoản thật làm thông báo có vẻ là sự kiện thật.",
+        "evidence": "The subject began with Practice, but the message included a real customer name and a familiar account number."
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "prompt": "Which unchanged field caused the practice email to reach a real person?",
+        "options": [
+          "A. The account manager field.",
+          "B. The customer email field.",
+          "C. The message subject field.",
+          "D. The renewal date field."
+        ],
+        "answer": "A. The account manager field.",
+        "explanation": "Trường quản lý tài khoản chưa được thay đổi và được bài tập dùng làm người nhận.",
+        "evidence": "However, the administrator had not changed the account manager field."
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "prompt": "Why will the next review include an action that should send no message?",
+        "options": [
+          "A. To shorten the training course.",
+          "B. To test the account manager's reply speed.",
+          "C. To detect notifications that should not occur.",
+          "D. To avoid checking actual recipients."
+        ],
+        "answer": "C. To detect notifications that should not occur.",
+        "explanation": "Chỉ kiểm tra thư gửi thành công có thể bỏ sót thông báo không cần thiết.",
+        "evidence": "They will include an exercise where no message should be sent, because checking only successful deliveries could miss unnecessary notifications."
+      },
+      {
+        "id": "q4",
+        "type": "true-false-not-given",
+        "prompt": "None of the six reviewed notifications was sent to a customer address.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "True",
+        "explanation": "Bài xác nhận không có địa chỉ khách hàng trong sáu người nhận đã kiểm tra.",
+        "evidence": "No customer address appeared among those six recipients."
+      },
+      {
+        "id": "q5",
+        "type": "true-false-not-given",
+        "prompt": "Changing the reply address determines who receives the original email.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "False",
+        "explanation": "Địa chỉ phản hồi chỉ quyết định nơi thư trả lời đến, không quyết định người nhận thư gốc.",
+        "evidence": "Support explained that the reply address controls where a response goes after someone receives a message; it does not decide who receives the original message."
+      },
+      {
+        "id": "q6",
+        "type": "true-false-not-given",
+        "prompt": "The administrator who prepared the records was a new employee.",
+        "options": [
+          "True",
+          "False",
+          "Not Given"
+        ],
+        "answer": "Not Given",
+        "explanation": "Bài nêu hành động của quản trị viên nhưng không nói thâm niên làm việc.",
+        "evidence": "Before the latest training course, an administrator had replaced customer email addresses with a shared training mailbox."
+      },
+      {
+        "id": "q7",
+        "type": "short-answer",
+        "prompt": "In what form did support ask the manager to forward the message? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "an attachment",
+        "explanation": "Bộ phận hỗ trợ yêu cầu chuyển thư dưới dạng tệp đính kèm. Đáp án có hai từ.",
+        "evidence": "Support asked her to forward the message as an attachment so the investigation could examine its delivery details without relying only on a copied screenshot."
+      },
+      {
+        "id": "q8",
+        "type": "short-answer",
+        "prompt": "What will the engineer inspect during the exercise tests? Write NO MORE THAN THREE WORDS FROM THE PASSAGE.",
+        "options": [],
+        "answer": "message history",
+        "explanation": "Kỹ sư kiểm tra lịch sử thông báo phát sinh. Đáp án có hai từ.",
+        "evidence": "The trainer will perform the actions in the order learners normally follow, and the engineer will inspect the resulting message history."
+      },
+      {
+        "id": "q9",
+        "type": "matching",
+        "prompt": "Which paragraph proposes accounts created specifically for training?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "E",
+        "explanation": "Đoạn E đề xuất bộ tài khoản hư cấu được thiết kế riêng cho đào tạo.",
+        "evidence": "The proposed replacement is a set of fictional accounts designed specifically for training."
+      },
+      {
+        "id": "q10",
+        "type": "matching",
+        "prompt": "Which paragraph explains why support did not send a second demonstration cancellation?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "answer": "G",
+        "explanation": "Đoạn G nói gửi thêm thư hủy thử sẽ làm tăng sự không chắc chắn.",
+        "evidence": "The team did not send another practice cancellation as a demonstration, since that would create more uncertainty."
+      }
+    ]
+  }
+]
